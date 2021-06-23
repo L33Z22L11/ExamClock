@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+<!-- 代码由纸鹿编写 -->
+<!-- 已经发布至GitHub ThisisHost/exam-clock -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon">
+    <link href="/main.css" rel="stylesheet">
+    <link href="https://fonts.font.im/css?family=Roboto:400|Montserrat:700i" rel="stylesheet">
+    <title>考试时钟</title>
+</head>
+
+<body style="opacity: 0.75; font-size: 1em;">
+
+    <header class="space-between">
+        <h2>沉着冷静&emsp;诚信考试</h2>
+        <nav class="dim">
+
+            <div class="dropdown">
+                <div class="hilit" style="width: 5em;">
+                    <a class="space-between"><span id="type">类型</span><span>▾</span></a>
+                </div>
+                <div class="dropdown-content" style="width: 5em;">
+                    <a onclick="change(this.innerHTML)">高二理科</a>
+                    <a onclick="change(this.innerHTML)">高二文科</a>
+                    <a onclick="change(this.innerHTML)">高一</a>
+                </div>
+            </div>
+            &emsp;
+
+            <div class="dropdown">
+                <a>设置▾</a>
+                <div class="dropdown-content" style="left: -8em; min-width: 12em; ">
+                    <div>缩放
+                        <div class="selectbar">
+                            <a onclick="relStyle('fontSize',-0.05,'em',0.75,1.25)">－</a>
+                            <span id="fontSize">1</span>
+                            <a onclick="relStyle('fontSize',+0.05,'em',0.75,1.25)">＋</a>
+                        </div>
+                    </div>
+                    <p class="dim">非必要情况请勿修改缩放</p>
+                    <div>亮度
+                        <div class="selectbar">
+                            <a onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
+                            <span id="opacity">0.75</span>
+                            <a onclick="relStyle('opacity',+0.05,'',0.5,1)">＋</a>
+                        </div>
+                    </div>
+                    <p class="dim">减少光干扰，视环境光设置</p>
+                    <div class="space-between">
+                        <span>服务商</span>
+                        <a class="selectbar" href="https://thisis.host">ThisisHost</a>
+                    </div>
+                    <!-- <p class="dim">
+                            自动主线路 app.zhilu.cyou<br>
+                            主线路1 app1.zhilu.cyou<br>
+                            主线路2 app2.zhilu.cyou<br>
+                            备用线路 h5.zhilu.cyou
+                        </p> -->
+                    <div class="space-between">
+                        <a href="?" target="_blank"> 调试</a>
+                        <span class="small">Vwxyz_ani</span>
+                    </div>
+
+                    <div class="space-between dim">GitHub
+                        <a href="https://github.com/L33Z22L11">Follow Zhilu</a>
+                        <a href="https://github.com/L33Z22L11/H5-Works">Star</a>
+                    </div>
+                </div>
+            </div>
+            &emsp;
+
+            <a id="fullscreen" onclick="fullscreen()">全屏</a>
+        </nav>
+    </header>
+
+    <div class="dim" id="subtitle">
+        代码无法加载，请使用Chrome/Edge/Firefox等现代浏览器。
+    </div>
+
+    <div class="bar">
+        <div id="bar"></div>
+    </div>
+
+    <div class="card">
+        <div>
+            <div class="dp2" id="subject">科目</div>
+            <div class="dp3" id="duration">16:66~17:77</div>
+        </div>
+        <div>
+            <div class="dp1" id="clock">18:88</div>
+        </div>
+        <div>
+            <div class="dp2" id="timer">199<span class="small">min</span></div>
+            <div class="dp3" id="next">提示文字</div>
+        </div>
+    </div>
+
+    <footer class="dim">
+        <!-- 纸鹿 × 宝中野生技术协会 -->
+        <span>主创</span>
+        <!-- "纸鹿 纸鹿小站 野生技协 拾汘 LittleStar" -->
+        <img src="https://7.dusays.com/2021/05/23/ee48832e0e004.png">
+        <span>合作伙伴</span>
+        <!-- "划水方块 音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社" -->
+        <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png">
+    </footer>
+
+
+</body>
+
+<script src="/main.js"></script>
+
+</html>

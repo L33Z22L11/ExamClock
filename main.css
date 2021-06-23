@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    text-shadow: .1em .1em .5em rgba(0, 0, 0, .2);
+}
+
+a {
+    cursor: pointer;
+    transition: .2s;
+    text-decoration: none;
+    border-radius: .2em;
+}
+
+a:hover {
+    background: rgba(0, 0, 0, .2);
+    box-shadow: .1em .1em .5em rgba(0, 0, 0, .2);
+}
+
+html {
+    font: 2.75vw 'Roboto', '微软雅黑', sans-serif;
+    font: min(2.75vw, 7vh) 'Roboto', '微软雅黑', sans-serif;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100vh;
+    background-color: #098;
+    background-image: url(https://7.dusays.com/2021/05/18/bb67285e264f1.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+body {
+    cursor: not-allowed;
+    transition: .5s;
+    color: white;
+}
+
+.container {
+    opacity: .75;
+}
+
+header {
+    position: relative;
+    z-index: 1;
+}
+
+.space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dim {
+    font-size: .8em;
+    opacity: .6;
+}
+
+.small {
+    font-size: .3em;
+    opacity: .6;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    display: none;
+}
+
+.dropdown:hover>.dropdown-content {
+    display: block;
+}
+
+.hilit,
+.dropdown-content {
+    padding: .2em;
+    color: rgba(0, 0, 0, .8);
+    border-radius: .5em;
+    background: white;
+    box-shadow: .2em .2em 1em rgba(0, 0, 0, .6);
+}
+
+.dropdown-content>a {
+    display: block;
+}
+
+.selectbar {
+    display: flex;
+    float: right;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 5em;
+    color: rgba(0, 0, 0, .6);
+    border-radius: .2em;
+    background: rgba(0, 0, 0, .2);
+}
+
+.bar {
+    height: .25em;
+    margin: .5em auto;
+    background: rgba(255, 255, 255, .1);
+    box-shadow: .1em .1em .5em rgba(0, 0, 0, .6);
+}
+
+#bar {
+    height: 100%;
+    transition: linear 2s;
+    background: white;
+    box-shadow: .1em .1em .5em rgba(0, 0, 0, .6);
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: .5em auto;
+}
+
+.card>div,
+.card>a {
+    display: inline-block;
+    margin: .25em;
+    padding: .25em .75em;
+    transition: transform .5s;
+    text-align: center;
+    border-radius: 1em;
+    background: rgba(255, 255, 255, .1);
+    box-shadow: .2em .2em 1em rgba(0, 0, 0, .6);
+}
+
+.card>div:hover {
+    transform: scale(1.1, 1.1);
+    /* animation: turnover 1s; */
+}
+
+/* @keyframes turnover {
+    0% {
+        transform: rotateY(0) scale(1, 1);
+    }
+
+    50% {
+        transform: rotateY(360deg) scale(1.2, 1.2);
+    }
+
+    100% {
+        transform: rotateY(720deg) scale(1, 1);
+    }
+} */
+
+.dp1 {
+    font: bold 5em 'Montserrat', '微软雅黑';
+    min-width: 2.5em;
+}
+
+.dp2 {
+    font: bold 3em 'Montserrat', '微软雅黑';
+    min-width: 2.5em;
+}
+
+.dp3 {
+    font: bold 1.5em 'Montserrat', '微软雅黑';
+    opacity: .6;
+}
+
+footer>img {
+    max-width: 20em;
+    max-height: 1.2em;
+    vertical-align: middle;
+}
+
+@media (max-aspect-ratio: 1/1) {
+    html {
+        font: 6vw 'Roboto', '微软雅黑', sans-serif;
+        font: min(6vw, 5vh) 'Roboto', '微软雅黑', sans-serif;
+    }
+
+    .menu {
+        top: 0;
+        float: none;
+    }
+
+    header,
+    .card {
+        flex-direction: column;
+    }
+}
