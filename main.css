@@ -14,8 +14,9 @@ a {
 
 a:hover {
     background: rgba(0, 0, 0, .2);
-    box-shadow: .1em .1em .5em rgba(0, 0, 0, .2);
+    box-shadow: 0 0 .5em rgba(0, 0, 0, .2);
 }
+
 
 html {
     font: 2.75vw 'Roboto', '微软雅黑', sans-serif;
@@ -50,6 +51,7 @@ header {
 .space-between {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -131,12 +133,12 @@ header {
     transition: transform .5s;
     text-align: center;
     border-radius: 1em;
-    background: rgba(255, 255, 255, .1);
+    background: linear-gradient(-30deg,rgba(255, 255, 255, .1),rgba(255, 255, 255, .2));
     box-shadow: .2em .2em 1em rgba(0, 0, 0, .6);
 }
 
 .card>div:hover {
-    transform: scale(1.1, 1.1);
+    transform: scale(1.2, 1.2);
     /* animation: turnover 1s; */
 }
 
@@ -187,7 +189,8 @@ footer>img {
     }
 
     header,
-    .card {
+    .card,
+    footer>.space-between {
         flex-direction: column;
     }
 }

@@ -5,7 +5,7 @@ onload = function () {
     // timeZoneOffset = new Date().getTimezoneOffset();
 }
 
-oncontextmenu = onkeydown = onselectstart = function () { return false; }
+// oncontextmenu = onkeydown = onselectstart = function () { return false; }
 
 function change(i) {
     now = new Date("2021-06-28T07:00");
@@ -18,14 +18,17 @@ function change(i) {
     output("type", type);
 
     eleMain.style.filter = "blur(.5em)";
-    setTimeout('eleMain.style.filter="blur(0)"', 500);
+    setTimeout(function () {
+        examTimer();
+        eleMain.style.filter = "blur(0)";
+    }, 500);
 }
 
 function updateClock() {
     now = new Date();
     output("clock", getClock(now));
     examTimer();
-    setTimeout(updateClock, 500);
+    setTimeout(updateClock, 2000);
 }
 
 function check() {
@@ -45,13 +48,16 @@ function $(nextSubject, nextStart, nextEnd) {
     }
 }
 
+/* IE不支持此方法
 function add0Prefix(num, digit) {
     return String(num.length) > digit ? num :
         ("0".repeat(digit) + num).slice(-digit);
-}
+}*/
 
 function getClock(date) {
-    return date.getHours() + ":" + add0Prefix(date.getMinutes(), 2);
+    return date.getMinutes() < 10 ?
+        date.getHours() + ":0" + date.getMinutes() :
+        date.getHours() + ":" + date.getMinutes();
 }
 
 function formatMin(i) {

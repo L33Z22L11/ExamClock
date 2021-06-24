@@ -19,10 +19,10 @@
         <nav class="dim">
 
             <div class="dropdown">
-                <div class="hilit" style="width: 5em;">
+                <div class="hilit" style="width: 5em; min-width: 60px;">
                     <a class="space-between"><span id="type">类型</span><span>▾</span></a>
                 </div>
-                <div class="dropdown-content" style="width: 5em;">
+                <div class="dropdown-content" style="width: 5em; min-width: 60px;">
                     <a onclick="change(this.innerHTML)">高二理科</a>
                     <a onclick="change(this.innerHTML)">高二文科</a>
                     <a onclick="change(this.innerHTML)">高一</a>
@@ -32,7 +32,7 @@
 
             <div class="dropdown">
                 <a>设置▾</a>
-                <div class="dropdown-content" style="left: -8em; min-width: 12em; ">
+                <div class="dropdown-content" style="left: -8em; min-width: 12em;">
                     <div>缩放
                         <div class="selectbar">
                             <a onclick="relStyle('fontSize',-0.05,'em',0.75,1.25)">－</a>
@@ -49,23 +49,20 @@
                         </div>
                     </div>
                     <p class="dim">减少光干扰，视环境光设置</p>
-                    <div class="space-between">
+                    <!-- <div class="space-between">
                         <span>服务商</span>
                         <a class="selectbar" href="https://thisis.host">ThisisHost</a>
-                    </div>
+                    </div> -->
+
                     <!-- <p class="dim">
                             自动主线路 app.zhilu.cyou<br>
                             主线路1 app1.zhilu.cyou<br>
                             主线路2 app2.zhilu.cyou<br>
                             备用线路 h5.zhilu.cyou
                         </p> -->
-                    <div class="space-between">
-                        <a href="?" target="_blank"> 调试</a>
-                        <span class="small">Vwxyz_ani</span>
-                    </div>
-
-                    <div class="space-between dim">GitHub
-                        <a href="https://github.com/L33Z22L11">Follow Zhilu</a>
+                    <div class="space-between dim">
+                        <a href="?" target="_blank">调试</a>
+                        <a href="https://github.com/L33Z22L11">GitHub Zhilu</a>
                         <a href="https://github.com/L33Z22L11/H5-Works">Star</a>
                     </div>
                 </div>
@@ -77,7 +74,7 @@
     </header>
 
     <div class="dim" id="subtitle">
-        代码无法加载，请使用Chrome/Edge/Firefox等现代浏览器。
+        代码无法加载，请将本网址粘贴到其他浏览器打开。
     </div>
 
     <div class="bar">
@@ -98,14 +95,14 @@
         </div>
     </div>
 
-    <footer class="dim">
-        <!-- 纸鹿 × 宝中野生技术协会 -->
-        <span>主创</span>
-        <!-- "纸鹿 纸鹿小站 野生技协 拾汘 LittleStar" -->
-        <img src="https://7.dusays.com/2021/05/23/ee48832e0e004.png">
-        <span>合作伙伴</span>
-        <!-- "划水方块 音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社" -->
-        <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png">
+    <footer class="small space-between">
+        <!-- <img src="https://7.dusays.com/2021/05/23/ee48832e0e004.png"> -->
+        <!-- <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png"> -->
+        <span>主创：纸鹿 × 野生技协</span>
+        <span>友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社 民乐社 心理社</span>
+        <span>合作伙伴：划水方块 拾汘 Star</span>
+        <span>服务商：<a href="https://thisis.host">ThisisHost</a></span>
+        <span>版本：5.1.0_wxy_release</span>
     </footer>
 
 
