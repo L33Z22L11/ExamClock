@@ -175,8 +175,9 @@ function updateExam() {
         activity = "距离结束";
         progress = (now - start) / (end - start) * 100;
     } else {
-        subtitle = ["宝中的各位小蓝们，你们已经完成了本次考试",
-            "联系QQ 2399052066"];
+        subtitle = ["宝中的各位小蓝们，我们已经完成了本次考试！",
+            "马上又要进入新的年级了，过去一年收获了多少？",
+            "一起在短暂的假期里调整状态，迎接新学期！"];
         subject = "";
         duration = "";
         timer = "";
@@ -193,11 +194,11 @@ function updateExam() {
 
 function updateSST() {
     SST -= 1;
-    if (SST<10){
-        document.getElementById("SSTBubble").style.display="flex";
-        output("SST",SST);
+    if (SST < 10) {
+        document.getElementById("SSTBubble").style.display = "flex";
+        output("SST", SST);
     } else {
-        document.getElementById("SSTBubble").style.display="none";
+        document.getElementById("SSTBubble").style.display = "none";
     }
     setTimeout(updateSST, 60000);
 }

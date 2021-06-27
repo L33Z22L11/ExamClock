@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-cmn">
+<!-- 代码由纸鹿编写 -->
+<!-- 已经发布至GitHub ThisisHost/exam-clock -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon">
+    <link href="/main.css" rel="stylesheet">
+    <link href="https://fonts.font.im/css?family=Roboto:400|Montserrat:700i" rel="stylesheet">
+    <title>考试时钟</title>
+</head>
+
+<body style="opacity: 0.75; font-size: 1em;">
+
+    <header class="space-between">
+        <h2>沉着冷静&emsp;诚信考试（旧版）</h2>
+        <nav class="dim">
+
+            <div class="dropdown">
+                <div class="hilit" style="width: 5em; min-width: 60px;">
+                    <a class="space-between"><span id="type">类型</span><span>▾</span></a>
+                </div>
+                <div class="dropdown-content" style="width: 5em; min-width: 60px;">
+                    <a onclick="change(this.innerHTML)">高二理科</a>
+                    <a onclick="change(this.innerHTML)">高二文科</a>
+                    <a onclick="change(this.innerHTML)">高一</a>
+                </div>
+            </div>
+            &emsp;
+
+            <div class="dropdown">
+                <a>设置▾</a>
+                <div class="dropdown-content" style="left: -8em; min-width: 12em;">
+                    <div>缩放
+                        <div class="selectbar">
+                            <a onclick="relStyle('fontSize',-0.05,'em',0.75,1.25)">－</a>
+                            <span id="fontSize">1</span>
+                            <a onclick="relStyle('fontSize',+0.05,'em',0.75,1.25)">＋</a>
+                        </div>
+                    </div>
+                    <p class="dim">非必要情况请勿修改缩放</p>
+                    <div>亮度
+                        <div class="selectbar">
+                            <a onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
+                            <span id="opacity">0.75</span>
+                            <a onclick="relStyle('opacity',+0.05,'',0.5,1)">＋</a>
+                        </div>
+                    </div>
+                    <p class="dim">减少光干扰，视环境光设置</p>
+                    <!-- <div class="space-between">
+                        <span>服务商</span>
+                        <a class="selectbar" href="https://thisis.host">ThisisHost</a>
+                    </div> -->
+
+                    <!-- <p class="dim">
+                            自动主线路 app.zhilu.cyou<br>
+                            主线路1 app1.zhilu.cyou<br>
+                            主线路2 app2.zhilu.cyou<br>
+                            备用线路 h5.zhilu.cyou
+                        </p> -->
+                    <div class="space-between dim">
+                        <a href="?" target="_blank">调试</a>
+                        <a href="https://github.com/L33Z22L11">GitHub Zhilu</a>
+                        <a href="https://github.com/L33Z22L11/H5-Works">Star</a>
+                    </div>
+                </div>
+            </div>
+            &emsp;
+
+            <a id="fullscreen" onclick="fullscreen()">全屏</a>
+        </nav>
+    </header>
+
+    <div class="dim" id="subtitle">
+        代码无法加载，请将本网址粘贴到其他浏览器打开。
+    </div>
+
+    <div class="bar">
+        <div id="bar"></div>
+    </div>
+
+    <div class="card">
+        <div>
+            <div class="dp2" id="subject">科目</div>
+            <div class="dp3" id="duration">16:66~17:77</div>
+        </div>
+        <div>
+            <div class="dp1" id="clock">18:88</div>
+        </div>
+        <div>
+            <div class="dp2" id="timer">199<span class="small">min</span></div>
+            <div class="dp3" id="activity">提示文字</div>
+        </div>
+    </div>
+
+    <footer class="small space-between">
+        <!-- <img src="https://7.dusays.com/2021/05/23/ee48832e0e004.png"> -->
+        <!-- <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png"> -->
+        <span>主创：纸鹿 × 野生技协</span>
+        <span>友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社</span>
+        <span>合作伙伴：划水方块 拾汘 Star</span>
+        <span>服务商：<a href="https://thisis.host">ThisisHost</a></span>
+        <span>版本：5.1.2_wxy_iespt</span>
+    </footer>
+
+
+</body>
+
+<script>
+    onload = function () {
+        eleMain = document.getElementsByTagName("body")[0];
+        change("高二理科");
+        String(location).indexOf("\?") == -1 ? updateClock() : check();
+
+    }
+
+    oncontextmenu = onkeydown = onselectstart = function () { return false; }
+
+    function change(i) {
+        now = new Date("2021-06-28T07:00");
+        end = 0;
+        progress = 0;
+        order = 0;
+
+        type = i;
+        console.log(type);
+        output("type", type);
+
+        eleMain.style.filter = "blur(.5em)";
+        setTimeout(function () {
+            examTimer();
+            eleMain.style.filter = "blur(0)";
+        }, 500);
+    }
+
+    function updateClock() {
+        now = new Date();
+        output("clock", getClock(now));
+        examTimer();
+        setTimeout(updateClock, 2000);
+    }
+
+    function check() {
+        now > new Date("2021-07-01T07:00") ? change(type) : null;
+        now.getHours() == 19 ? now.setHours(31) : null;
+        now.setMinutes(now.getMinutes() + 1);
+        output("clock", getClock(now));
+        examTimer();
+        setTimeout(check, 20);
+    }
+
+    function $(nextSubject, nextStart, nextEnd) {
+        if (now >= end) {
+            subject = nextSubject;
+            start = new Date(nextStart);
+            end = new Date(nextEnd);
+        }
+    }
+
+    /* IE不支持此方法
+    function add0Prefix(num, digit) {
+        return String(num.length) > digit ? num :
+            ("0".repeat(digit) + num).slice(-digit);
+    }*/
+
+    function getClock(date) {
+        return date.getMinutes() < 10 ?
+            date.getHours() + ":0" + date.getMinutes() :
+            date.getHours() + ":" + date.getMinutes();
+    }
+
+    function formatMin(i) {
+        return Math.round(i / 60000) + '<span class="small">min</span>';
+    }
+
+    function output(id, value) {
+        document.getElementById(id).innerHTML = value;
+    }
+
+    function examTimer() {
+        subtitle = ["电脑时间存在误差，仅供参考，请以实际铃声为准。"];
+        switch (type) {
+            case "高二理科":
+                $("语文", "2021-06-29T07:40", "2021-06-29T10:10");
+                $("生物", "2021-06-29T10:40", "2021-06-29T12:10");
+                $("数学", "2021-06-29T14:20", "2021-06-29T16:20");
+                $("物理", "2021-06-29T16:50", "2021-06-29T18:30");
+                $("英语", "2021-06-30T07:40", "2021-06-30T09:50");
+                $("化学", "2021-06-30T10:20", "2021-06-30T12:00");
+                break;
+            case "高二文科":
+                $("语文", "2021-06-29T07:40", "2021-06-29T10:10");
+                $("历史", "2021-06-29T10:40", "2021-06-29T12:20");
+                $("数学", "2021-06-29T14:20", "2021-06-29T16:20");
+                $("政治", "2021-06-29T16:50", "2021-06-29T18:30");
+                $("英语", "2021-06-30T07:40", "2021-06-30T09:50");
+                $("地理", "2021-06-30T10:20", "2021-06-30T12:00");
+                break;
+            case "高一":
+                $("数学", "2021-06-28T14:20", "2021-06-28T16:00");
+                $("英语", "2021-06-28T16:30", "2021-06-28T18:10");
+                $("语文", "2021-06-29T07:50", "2021-06-29T09:50");
+                $("化学", "2021-06-29T10:20", "2021-06-29T12:00");
+                $("物理", "2021-06-29T14:20", "2021-06-29T16:00");
+                $("生物", "2021-06-29T16:30", "2021-06-29T18:00");
+                $("政史", "2021-06-30T07:50", "2021-06-30T09:50");
+                $("地理", "2021-06-30T10:20", "2021-06-30T11:20");
+                break;
+        }
+        duration = getClock(start) + "~" + getClock(end);
+
+        if (now < (start - 18E5)) {
+            timer = "Soon";
+            activity = "考试加油";
+            progress = 0;
+        } else if (now < (start - 12E5)) {
+            timer = formatMin(start - 12E5 - now);
+            activity = "距离入场";
+            progress = (start - 12E5 - now) / 6E3;
+        } else if (now < (start - 6E5)) {
+            timer = formatMin(start - 6E5 - now);
+            activity = "距离发卡";
+            progress = (start - 6E5 - now) / 6E3;
+        } else if (now < (start - 3E5)) {
+            timer = formatMin(start - 3E5 - now);
+            activity = "距离发卷";
+            progress = (start - 3E5 - now) / 3E3;
+        } else if (now < start) {
+            timer = formatMin(start - now);
+            activity = "距离开考";
+            progress = (start - now) / 3E3;
+        } else if (now < end) {
+            timer = formatMin(end - now);
+            activity = "距离结束";
+            progress = (now - start) / (end - start) * 100;
+        } else {
+            // subtitle = ["我们已经迁移服务器",
+            //     "联系QQ 2399052066"];
+            subject = "";
+            duration = "";
+            timer = "";
+            activity = "";
+            progress = 100;
+        }
+
+        document.getElementById("bar").style.width = progress + "%";
+        // console.log(order);
+        output("subtitle", subtitle[order]);
+        order < subtitle.length - 1 ? order++ : order = 0;
+        output("subject", subject);
+        output("duration", duration);
+        output("timer", timer);
+        output("activity", activity)
+    }
+
+    function relStyle(prop, delta, unit, minVal, maxVal) {
+        propVal = Number(eleMain.style[prop].replace(unit, "")) + delta;
+        propVal = Math.max(propVal, minVal);
+        propVal = Math.min(propVal, maxVal);
+        eleMain.style[prop] = propVal + unit;
+        output(prop, Math.round(propVal * 1E2) / 1E2);
+    }
+
+    function fullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+            output("fullscreen", "退出");
+        } else {
+            document.exitFullscreen();
+            output("fullscreen", "全屏");
+        }
+    }
+</script>
+
+</html>
