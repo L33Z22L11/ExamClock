@@ -199,5 +199,5 @@ function updateSST() {
     } else {
         document.getElementById("SSTBubble").style.display="none";
     }
-    setTimeout(updateSST, 60);
+    setTimeout(updateSST, 60000);
 }
