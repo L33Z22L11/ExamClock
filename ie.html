@@ -71,9 +71,6 @@
                     </div>
                 </div>
             </div>
-            &emsp;
-
-            <a id="fullscreen" onclick="fullscreen()">全屏</a>
         </nav>
     </header>
 
@@ -103,10 +100,10 @@
         <!-- <img src="https://7.dusays.com/2021/05/23/ee48832e0e004.png"> -->
         <!-- <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png"> -->
         <span>主创：纸鹿 × 野生技协</span>
-        <span>友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社</span>
         <span>合作伙伴：划水方块 拾汘 Star</span>
+        <span>友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社</span>
         <span>服务商：<a href="https://thisis.host">ThisisHost</a></span>
-        <span>版本：5.1.2_wxy_iespt</span>
+        <span>版本：5.1.3_wxy_iespt</span>
     </footer>
 
 
@@ -123,7 +120,7 @@
     oncontextmenu = onkeydown = onselectstart = function () { return false; }
 
     function change(i) {
-        now = new Date("2021-06-28T07:00");
+        now = new Date("2021-06-28T13:30");
         end = 0;
         progress = 0;
         order = 0;
@@ -131,12 +128,6 @@
         type = i;
         console.log(type);
         output("type", type);
-
-        eleMain.style.filter = "blur(.5em)";
-        setTimeout(function () {
-            examTimer();
-            eleMain.style.filter = "blur(0)";
-        }, 500);
     }
 
     function updateClock() {
@@ -147,7 +138,7 @@
     }
 
     function check() {
-        now > new Date("2021-07-01T07:00") ? change(type) : null;
+        now > new Date("2021-06-30T13:00") ? change(type) : null;
         now.getHours() == 19 ? now.setHours(31) : null;
         now.setMinutes(now.getMinutes() + 1);
         output("clock", getClock(now));
@@ -268,15 +259,6 @@
         output(prop, Math.round(propVal * 1E2) / 1E2);
     }
 
-    function fullscreen() {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen();
-            output("fullscreen", "退出");
-        } else {
-            document.exitFullscreen();
-            output("fullscreen", "全屏");
-        }
-    }
 </script>
 
 </html>
