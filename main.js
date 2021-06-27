@@ -11,7 +11,6 @@ onload = function () {
 onmousemove = onmousedown = function () { SST = 50; }
 
 oncontextmenu = onkeydown = onselectstart = function () {
-    console.log('hei')
     SST = 50;
     return false;
 }
@@ -85,7 +84,12 @@ function $(nextSubject, nextStart, nextEnd) {
 }
 
 /* 
-宝鸡中学信息中心装的新系统只有IE!? 做个适配。
+宝鸡中学信息中心装的新系统只有IE!?
+这个功能用其他方法实现吧。
+21.6.25
+
+就加了一点点功能，IE11又不支持了……
+21.6.27
 
 function add0Prefix(num, digit) {
     return String(num.length) > digit ? num :
@@ -170,7 +174,7 @@ function updateExam() {
         progress = (start - now) / 3E3;
     } else if (now < end) {
         now.getHours() == 18 ?
-            subtitle = ["警告：考场应避免噪音干扰！"] : null;
+            subtitle = ["警告：考场周围应保持环境安静！"] : null;
         timer = formatMin(end - now);
         activity = "距离结束";
         progress = (now - start) / (end - start) * 100;
