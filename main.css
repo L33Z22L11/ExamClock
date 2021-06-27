@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     color: inherit;
-    text-shadow: .1em .1em .5em rgba(0, 0, 0, .2);
 }
 
 a {
@@ -19,8 +18,8 @@ a:hover {
 
 
 html {
-    font: 2.75vw 'Roboto', '微软雅黑', sans-serif;
-    font: min(2.75vw, 7vh) 'Roboto', '微软雅黑', sans-serif;
+    font: 2.7vw 'Roboto', '微软雅黑', sans-serif;
+    font: min(2.7vw, 7vh) 'Roboto', '微软雅黑', sans-serif;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -133,12 +132,12 @@ header {
     transition: transform .5s;
     text-align: center;
     border-radius: 1em;
-    background: linear-gradient(-30deg,rgba(255, 255, 255, .1),rgba(255, 255, 255, .2));
+    background: linear-gradient(-30deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .2));
     box-shadow: .2em .2em 1em rgba(0, 0, 0, .6);
 }
 
 .card>div:hover {
-    transform: scale(1.2, 1.2);
+    transform: scale(1.1, 1.1);
     /* animation: turnover 1s; */
 }
 
@@ -156,19 +155,35 @@ header {
     }
 } */
 
-.dp1 {
+#clock {
     font: bold 5em 'Montserrat', '微软雅黑';
     min-width: 2.5em;
 }
 
-.dp2 {
+#subject,
+#timer {
     font: bold 3em 'Montserrat', '微软雅黑';
     min-width: 2.5em;
 }
 
-.dp3 {
+#duration,
+#activity {
     font: bold 1.5em 'Montserrat', '微软雅黑';
     opacity: .6;
+}
+
+.notify {
+    font-size: .5em;
+
+    margin: .5em 1em;
+    padding: .5em;
+    border-radius: .5em;
+    background: #25f;
+    box-shadow: .5em .5em 1em rgba(0, 0, 0, .2);
+}
+
+#SSTBubble {
+    background: #f52;
 }
 
 footer>img {

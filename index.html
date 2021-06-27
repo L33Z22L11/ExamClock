@@ -74,7 +74,7 @@
     </header>
 
     <div class="dim" id="subtitle">
-        代码无法加载，请将本网址粘贴到其他浏览器打开。
+        代码加载失败，不支持兼容内核或IE浏览器。
     </div>
 
     <div class="bar">
@@ -83,28 +83,45 @@
 
     <div class="card">
         <div>
-            <div class="dp2" id="subject">科目</div>
-            <div class="dp3" id="duration">16:66~17:77</div>
+            <div id="subject">科目</div>
+            <div id="duration">16:66~17:77</div>
         </div>
         <div>
-            <div class="dp1" id="clock">18:88</div>
+            <div id="clock">18:88</div>
         </div>
         <div>
-            <div class="dp2" id="timer">199<span class="small">min</span></div>
-            <div class="dp3" id="next">提示文字</div>
+            <div id="timer">199<span class="small">min</span></div>
+            <div id="activity">提示文字</div>
         </div>
     </div>
 
-    <footer class="small space-between">
+    <div class="space-between notify" onclick="this.style='display: none;'">
+        <p>😉 <b>欢迎！</b>使用前需要注意：<br>
+            （点击可关闭本气泡）</p>
+        <p>1.关闭屏幕保护程序及屏幕锁定；<br>
+            2.建议使用Chrome/Egde/Firefox浏览器以获得更好的使用体验；<br>
+            3.记住本站网址<b>exam.thisis.host</b>。支持电脑、手机、班牌访问。</p>
+        <p>联系QQ：2399052066 (纸鹿)<br>
+        野生技协QQ群：894656456 (面向校友开放)</p>
+    </div>
+
+    <div class="space-between notify" id="SSTBubble" onclick="this.style='display: none;'">
+        <p>⚠ <b>警告：</b>希沃屏保预计在<span id="SST"></span>分钟后弹出！</b>
+        <p>信息中心为高一和新高三新安装的希沃管家会在无操作50分钟后弹出屏保界面，
+            内含大量的古诗词、政史知识。<br>
+            本系统可以通过社会工程学技术避免希沃管家对考试造成干扰，
+            请点击本气泡以关闭50分钟内的屏保界面。</p>
+    </div>
+
+    <footer class="space-between small">
         <!-- <img src="https://7.dusays.com/2021/05/23/ee48832e0e004.png"> -->
         <!-- <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png"> -->
         <span>主创：纸鹿 × 野生技协</span>
-        <span>友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社 民乐社 心理社</span>
         <span>合作伙伴：划水方块 拾汘 Star</span>
+        <span>友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社</span>
         <span>服务商：<a href="https://thisis.host">ThisisHost</a></span>
-        <span>版本：5.1.0_wxy_release</span>
+        <span>版本：5.3.1_wxy_extiespt</span>
     </footer>
-
 
 </body>
 
