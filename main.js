@@ -3,7 +3,12 @@ onload = function () {
     // 默认类型
     change("高二理科");
     // 定时功能应该从这里调用
-    String(location).indexOf("\?") == -1 ? updateClock() : check();
+    if (String(location).indexOf("\?") == -1) {
+        updateClock();
+    } else {
+        alert("已进入调试模式，关闭本选项卡或删除网址末尾的问号可以返回正常模式。")
+        check();
+    }
     updateSubtitle();
     updateSST();
 }
@@ -78,8 +83,8 @@ function check() {
 function $(nextSubject, nextStart, nextEnd) {
     if (now >= end) {
         subject = nextSubject;
-        start = new Date("2021-" + nextStart + "+0800");
-        end = new Date("2021-" + nextEnd + "+0800");
+        start = new Date("2021-" + nextStart + ":00+0800");
+        end = new Date("2021-" + nextEnd + ":00+0800");
     }
 }
 
