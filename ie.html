@@ -9,7 +9,7 @@
     <link href="/favicon.ico" rel="shortcut icon">
     <link href="/main.css" rel="stylesheet">
     <link href="https://fonts.font.im/css?family=Roboto:400|Montserrat:700i" rel="stylesheet">
-    <title>考试时钟(IE11兼容)</title>
+    <title>考试时钟 (IE11兼容)</title>
 </head>
 
 <body style="opacity: 0.75; font-size: 1em;">
@@ -114,7 +114,6 @@
         eleMain = document.getElementsByTagName("body")[0];
         change("高二理科");
         String(location).indexOf("\?") == -1 ? updateClock() : check();
-
     }
 
     oncontextmenu = onkeydown = onselectstart = function () { return false; }
@@ -128,13 +127,14 @@
         type = i;
         console.log(type);
         output("type", type);
+        examTimer();
     }
 
     function updateClock() {
         now = new Date();
         output("clock", getClock(now));
         examTimer();
-        setTimeout(updateClock, 2000);
+        setTimeout(updateClock, 500);
     }
 
     function check() {

@@ -25,8 +25,9 @@ html {
     flex-wrap: wrap;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(120deg,#25f,#098);
-    background: url(https://7.dusays.com/2021/05/18/bb67285e264f1.jpg);
+    background-color: #277;
+    /* background-image: url(https://7.dusays.com/2021/05/18/bb67285e264f1.jpg); */
+    background-image: url(/campus.jpg);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -112,7 +113,7 @@ header {
 
 #bar {
     height: 100%;
-    transition: linear 2s;
+    /* transition: linear .5s; */
     background: white;
     box-shadow: .1em .1em .5em rgba(0, 0, 0, .6);
 }
@@ -191,10 +192,11 @@ footer>img {
     vertical-align: middle;
 }
 
-@media (max-aspect-ratio: 1/1) {
+@media (max-aspect-ratio: 3/4) {
     html {
         font: 6vw 'Roboto', '微软雅黑', sans-serif;
         font: min(6vw, 5vh) 'Roboto', '微软雅黑', sans-serif;
+        align-items: flex-start;
     }
 
     .menu {

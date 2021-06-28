@@ -66,7 +66,7 @@ function updateClock() {
     now = new Date();
     output("clock", getClock(now));
     updateExam();
-    setTimeout(updateClock, 2000);
+    setTimeout(updateClock, 500);
 }
 
 // 调试模式的时间更新
@@ -127,6 +127,7 @@ function updateExam() {
         // 在swich语句中定义的是各类型的缺省subtitle
         case "高二理科":
             subtitle = ["电脑时间存在误差，仅供参考，请以广播和司号为准。"];
+            $("测试", "06-28T22:00", "06-28T22:07")
             $("语文", "06-29T07:40", "06-29T10:10");
             $("生物", "06-29T10:40", "06-29T12:10");
             $("数学", "06-29T14:20", "06-29T16:20");
