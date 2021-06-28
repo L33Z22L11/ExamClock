@@ -25,8 +25,8 @@ html {
     flex-wrap: wrap;
     justify-content: center;
     height: 100vh;
-    background-color: #098;
-    background-image: url(https://7.dusays.com/2021/05/18/bb67285e264f1.jpg);
+    background: linear-gradient(120deg,#25f,#098);
+    background: url(https://7.dusays.com/2021/05/18/bb67285e264f1.jpg);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
