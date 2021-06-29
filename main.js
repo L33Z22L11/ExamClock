@@ -9,6 +9,7 @@ onload = function () {
         setInterval(updateClock, 2000);
     } else {
         alert("已进入调试模式，关闭本选项卡或删除网址末尾的问号可以返回正常模式。")
+        isCheck = 1;
         check();
     }
     updateSubtitle();
@@ -40,7 +41,7 @@ function change(i) {
     eleMain.style.filter = "blur(.5em)";
     setTimeout(function () {
         eleMain.style.filter = "blur(0)";
-        updateClock();
+        isCheck == 1 ? updateExam() : updateClock();
     }, 500);
 }
 
