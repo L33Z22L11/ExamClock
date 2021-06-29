@@ -22,7 +22,7 @@
                 <div class="hilit" style="width: 5em; min-width: 60px;">
                     <a class="space-between"><span id="type">类型</span><span>▾</span></a>
                 </div>
-                <div class="dropdown-content" style="width: 5em; min-width: 60px;">
+                <div class="dropdown-content" style="width: 4em; min-width: 60px;">
                     <a onclick="change(this.innerHTML)">高二理科</a>
                     <a onclick="change(this.innerHTML)">高二文科</a>
                     <a onclick="change(this.innerHTML)">高一</a>
@@ -73,10 +73,16 @@
         </nav>
     </header>
 
-    <div class="dim" id="subtitle">代码正在加载中……</div>
+    <div class="dim" id="subtitle">⚠ 代码正在加载中，请稍等……</div>
 
     <div class="bar">
         <div id="bar"></div>
+    </div>
+
+    <div class="space-between notify" id="SSTBubble" onclick="this.style='display: none;'">
+        <h4>⚠ 希沃屏保警告</h4>
+        <p>信息中心设置<span id="SST">若干</span>分钟后弹出屏保(含古诗词、政史知识)！</p>
+        <a class="hilit">暂时关闭45分钟</a>
     </div>
 
     <div class="card">
@@ -97,49 +103,56 @@
         <div class="space-between">
             <div>
                 <h2>😉 欢迎使用！</h2>
-                <p class="dim">（轻触可关闭本气泡）</p>
+                <p class="dim">轻触可关闭 刷新后显示<br>
+                    (IE不支持关闭)</p>
             </div>
             <div>
-                <p>使用前需要注意：</p>
+                <p>ℹ️ 使用前需要注意：</p>
                 <p class="dim">
                     1.关闭屏幕保护程序及屏幕锁定；<br>
                     2.建议使用Chrome/Egde/Firefox浏览器以获得更好的使用体验；<br>
-                    3.记住本站网址<b>exam.thisis.host</b>。支持电脑、手机、班牌访问。</p>
+                    3.记住本站网址<b class="hilit">exam.thisis.host</b>。支持电脑、手机、班牌访问。</p>
             </div>
-            <p class="dim">联系QQ：2399052066 (纸鹿)<br>
+            <p class="dim">➔ QQ：2399052066 (纸鹿)<br>
                 野生技协是一个自发性的技术协助组织。<br>
                 我们发布了网课APP、电子课本导航和考试时钟。<br>
                 群号：894656456 (面向校友开放)</p>
         </div>
         <br class="small">
         <div class="space-between">
-            <p>⚠ 若无法关闭本气泡，则可能使用了不支持的IE浏览器或者兼容内核。</p>
-            <a class="hilit" href="/ie.html">➔ 进入IE11可用版本(5.1.4_wxy_iespt)</a>
+            <div class="space-between">
+                <div>
+                    <p>🚫 某些电教的打开方法不对。</p>
+                    <p class="dim">只有右侧的按钮才能正常下载本网页。</p>
+                </div>
+                <a class="hilit" href="/考试时钟.url">⤓ 保存到本地</a>
+            </div>
+            <div>
+                <p>🎲 考试时钟核心组件目前最低支持IE9。</p>
+                <p class="dim">信息中心仅安装了落后的浏览器，我们主动适配了IE9/10/11。</p>
+            </div>
+            <div>
+                <p>❗ 12:05定时关机</p>
+                <p class="dim">这个也是信息中心设置的。</p>
+            </div>
         </div>
     </div>
 
-    <div class="space-between notify" id="SSTBubble" onclick="this.style='display: none;'">
-        <div>
-            <h2>⚠ 弹窗警告</h2>
-            <p>希沃屏保可能在<span id="SST">若干</span>分钟后弹出！</p>
-        </div>
-        <p class="dim">信息中心为高一和新高三新安装的希沃管家会在无操作50分钟后弹出屏保界面，
-           <b>内含大量的古诗词、政史知识。</b><br>
-            本系统可以通过社会工程学技术避免希沃管家对考试造成干扰，
-            <u>轻触本气泡</u>以关闭50分钟内的屏保界面。</p>
-    </div>
-
-    <footer class="space-between small">
+    <footer class="small">
         <!-- <img src="https://7.dusays.com/2021/05/23/ee48832e0e004.png"> -->
         <!-- <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png"> -->
-        <span>主创：纸鹿 × 野生技协</span>
-        <span>合作伙伴：划水方块 拾汘 Star</span>
-        <span>友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社</span>
-        <span>服务商：<a href="https://thisis.host">ThisisHost</a></span>
-        <span>项目地址：GitHub/ThisisHost/exam-timer</span>
-        <span>开源协议：GNU General Public License v3.0</span>
-        <span>宝鸡中学目前正在试用此项目，已经产生了一定的费用。</span>
-        <span>版本：5.3.3_wxy_newbub</span>
+        <div class="space-between">
+            <span>主创：纸鹿 × 野生技协</span>
+            <span>合作伙伴：划水方块 拾汘 Star</span>
+            <span>友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社</span>
+        </div>
+        <div class="space-between">
+            <span>服务商：<a href="https://thisis.host">ThisisHost</a></span>
+            <span>项目地址：GitHub/ThisisHost/exam-timer</span>
+            <span>开源协议：GNU通用公共许可证v3.0</span>
+            <span>宝鸡中学目前正在试用此项目，已经产生了一定的费用。</span>
+            <span>版本：5.4.0_wxy_multiv</span>
+        </div>
     </footer>
 
 </body>

@@ -18,6 +18,7 @@ a:hover {
 
 
 html {
+    font: 48px 'Roboto', '微软雅黑', sans-serif;
     font: 2.7vw 'Roboto', '微软雅黑', sans-serif;
     font: min(2.7vw, 7vh) 'Roboto', '微软雅黑', sans-serif;
     display: flex;
@@ -120,9 +121,10 @@ header {
 
 .card {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     margin: .5em auto;
+    max-width: 100vw;
+    /* overflow: hidden; */
 }
 
 .card>div,
@@ -133,6 +135,7 @@ header {
     transition: transform .5s;
     text-align: center;
     border-radius: 1em;
+    background:rgba(255, 255, 255, .2);
     background: linear-gradient(-30deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .2));
     box-shadow: .2em .2em 1em rgba(0, 0, 0, .6);
 }
@@ -158,13 +161,13 @@ header {
 
 #clock {
     font: bold 5em 'Montserrat', '微软雅黑';
-    min-width: 2.4em;
+    min-width: 2.5em;
 }
 
 #subject,
 #timer {
     font: bold 3em 'Montserrat', '微软雅黑';
-    min-width: 2.4em;
+    min-width: 2.5em;
 }
 
 #duration,
@@ -184,6 +187,7 @@ header {
 
 #SSTBubble {
     background: #f52;
+    font-size: .75em;
 }
 
 footer>img {
