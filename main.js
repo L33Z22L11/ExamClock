@@ -162,7 +162,7 @@ function updateExam() {
             $("地理", "06-30T10:20", "06-30T11:20");
             break;
         case "ZYQ":
-            sibtitle = ["您正在通过ZYQ渠道临时调用此考试时钟。"];
+            subtitle = ["您正在通过ZYQ渠道临时调用此考试时钟。"];
             $("物理", "08-01T12:00", "08-01T13:00");
             break;
     }
