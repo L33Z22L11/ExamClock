@@ -161,6 +161,9 @@ function updateExam() {
             $("政史", "06-30T07:50", "06-30T09:50");
             $("地理", "06-30T10:20", "06-30T11:20");
             break;
+        case "ZYQ":
+            $("物理", "08-01T12:00", "08-01T13:00");
+            break;
     }
     duration = getClock(start) + "~" + getClock(end);
 
