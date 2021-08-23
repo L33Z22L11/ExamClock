@@ -38,6 +38,7 @@ body {
     cursor: not-allowed;
     transition: .5s;
     color: white;
+    max-width: 95vw;
 }
 
 .container {
