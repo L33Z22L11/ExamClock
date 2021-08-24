@@ -16,7 +16,7 @@ onload = function () {
     } else {
         alert("已进入调试模式，关闭本选项卡或删除网址末尾的问号可以返回正常模式。")
         updateTime = function () {
-            now > new Date("2021-06-30T13:00+08:00") ? change(type) : null;
+            now > new Date("2021-08-27T17:00+08:00") ? change(type) : null;
             now.getHours() == 19 ? now.setHours(31) : null;
             now.setMinutes(now.getMinutes() + 1);
             output("clock", getClock(now));
@@ -41,7 +41,7 @@ oncontextmenu = onkeydown = onselectstart = function () {
 // 不要从此函数调用定时功能，否则时间会累加
 function change(i) {
     // 调试模式的初始时间
-    now = new Date("2021-06-28T13:30+08:00");
+    now = new Date("2021-08-26T10:00+08:00");
     //  切换类型时需要重新初始化的内容
     end = 0;
     progress = 0;
