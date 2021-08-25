@@ -1,4 +1,3 @@
-// 仅需单次初始化的内容及定时设置
 onload = function () {
     // 希沃屏保，快乐古诗文
     SCREENSAVER_TIME = 45;
@@ -16,6 +15,7 @@ onload = function () {
     } else {
         alert("已进入调试模式，关闭本选项卡或删除网址末尾的问号可以返回正常模式。")
         updateTime = function () {
+            // 超过最晚结束时间则重新开始
             now > new Date("2021-08-27T17:00+08:00") ? change(type) : null;
             now.getHours() == 19 ? now.setHours(31) : null;
             now.setMinutes(now.getMinutes() + 1);
@@ -27,7 +27,6 @@ onload = function () {
     updateTime();
     updateSubtitle();
     setInterval(updateSubtitle, 2000);
-    updateSST();
     setInterval(updateSST, 60000);
 }
 
@@ -38,11 +37,10 @@ oncontextmenu = onkeydown = onselectstart = function () {
     return false;
 }
 
-// 不要从此函数调用定时功能，否则时间会累加
 function change(i) {
     // 调试模式的初始时间
     now = new Date("2021-08-26T10:00+08:00");
-    //  切换类型时需要重新初始化的内容
+    // 切换类型时需要重新初始化的内容
     end = 0;
     progress = 0;
     order = 0;
@@ -78,11 +76,12 @@ function fullscreen() {
     }
 }
 
-function $(nextSubject, nextStart, nextEnd) {
+function $(nextSubject, nextStart, nextEnd, nextSubtitle = subtitle) {
     if (now >= end) {
         subject = nextSubject;
         start = new Date("2021-" + nextStart + ":00+08:00");
         end = new Date("2021-" + nextEnd + ":00+08:00");
+        subtitle = nextSubtitle;
     }
 }
 
@@ -110,24 +109,31 @@ function updateExam() {
     switch (type) {
         // 在swich语句中定义的是各类型的缺省subtitle
         case "高三理科":
-            subtitle = [""];
+            subtitle = ["高三理科诊断性考试：请以实际司号为准。"];
             $("物理", "08-26T10:40", "08-26T12:10");
             $("英语", "08-26T14:20", "08-26T16:20");
             $("化学", "08-26T16:50", "08-26T18:20");
             $("语文", "08-27T07:40", "08-27T10:10");
             $("生物", "08-27T10:40", "08-27T12:10");
             $("数学", "08-27T14:20", "08-27T16:20");
+            $("自习", "08-27T16:20", "08-27T17:00",
+                ["考试已结束，请关闭考试时钟。",
+                    "各位假期愉快！可联系纸鹿反馈建议。"])
             break;
         case "高三文科":
+            subtitle = ["高三文科诊断性考试：请以实际司号为准。"];
             $("历史", "08-26T10:40", "08-26T12:10");
             $("英语", "08-26T14:20", "08-26T16:20");
             $("地理", "08-26T16:50", "08-26T18:20");
             $("语文", "08-27T07:40", "08-27T10:10");
             $("政治", "08-27T10:40", "08-27T12:10");
             $("数学", "08-27T14:20", "08-27T16:20");
+            $("自习", "08-27T16:20", "08-27T17:00",
+                ["考试已结束，请关闭考试时钟。",
+                    "各位假期愉快！可联系纸鹿反馈建议。"])
             break;
         case "高二理科":
-            subtitle = [""];
+            subtitle = ["高二理科诊断性考试：请以实际铃声为准。"];
             $("物理", "08-26T10:40", "08-26T12:20");
             $("数学", "08-26T14:20", "08-26T16:20");
             $("化学", "08-26T16:50", "08-26T18:30");
@@ -136,7 +142,7 @@ function updateExam() {
             $("英语", "08-27T14:20", "08-27T16:20");
             break;
         case "高二文科":
-            subtitle = [""];
+            subtitle = ["高二文科诊断性考试：请以实际铃声为准。"];
             $("历史", "08-26T10:40", "08-26T12:20");
             $("数学", "08-26T14:20", "08-26T16:20");
             $("地理", "08-26T16:50", "08-26T18:30");
@@ -145,7 +151,7 @@ function updateExam() {
             $("英语", "08-27T14:20", "08-27T16:20");
             break;
         case "欢迎高一":
-            subtitle = ["高一暂时没有考试。"];
+            subtitle = ["高一暂未启用考试时钟。"];
             $("数学", "06-28T14:20", "06-28T16:00");
             $("英语", "06-28T16:30", "06-28T18:10");
             $("语文", "06-29T07:50", "06-29T09:50");
@@ -156,8 +162,8 @@ function updateExam() {
             $("地理", "06-30T10:20", "06-30T11:20");
             break;
         default:
-            subtitle = ["不存在的考试类型，请重新选择。"]
-            $("", "01-01T00:00", "01-01T00:01");
+            $("", "01-01T00:00", "01-01T00:01",
+                ["不存在的考试类型，请重新选择。"]);
     }
     duration = getClock(start) + "~" + getClock(end);
 

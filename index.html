@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- 康亦菲考试加油，冲！ -->
 <html lang="zh-cmn">
 <!-- 代码由纸鹿编写 -->
 <!-- 已经发布至GitHub ThisisHost/exam-clock -->
@@ -9,6 +10,7 @@
     <link href="/favicon.ico" rel="shortcut icon">
     <link href="/main.css" rel="stylesheet">
     <link href="https://fonts.font.im/css?family=Roboto:400|Montserrat:700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>考试时钟</title>
 </head>
 
@@ -19,10 +21,11 @@
         <nav class="dim">
 
             <div class="dropdown">
-                <div class="hilit" style="width: 5em; min-width: 60px;">
-                    <a class="space-between"><span id="type">类型</span><span>▾</span></a>
+                <div class="hilit" style="min-width: 5em;">
+                    <a class="space-between"><span id="type">类型</span>
+                        <i class="bi bi-chevron-expand"></i></a>
                 </div>
-                <div class="dropdown-content" style="width: 5em; min-width: 60px;">
+                <div class="dropdown-content" style="min-width: 5em;">
                     <a onclick="change(this.innerHTML)">高三理科</a>
                     <a onclick="change(this.innerHTML)">高三文科</a>
                     <a onclick="change(this.innerHTML)">高二理科</a>
@@ -33,9 +36,9 @@
             &emsp;
 
             <div class="dropdown">
-                <a>设置▾</a>
+                <a><i class="bi bi-sliders"></i> 设置</a>
                 <div class="dropdown-content" style="left: -8em; min-width: 12em;">
-                    <div>缩放
+                    <div><i class="bi bi-aspect-ratio"></i> 缩放
                         <div class="selectbar">
                             <a onclick="relStyle('fontSize',-0.05,'em',0.75,1.25)">－</a>
                             <span id="fontSize">1</span>
@@ -43,7 +46,7 @@
                         </div>
                     </div>
                     <p class="dim">非必要情况请勿修改缩放</p>
-                    <div>亮度
+                    <div><i class="bi bi-brightness-high"></i> 亮度
                         <div class="selectbar">
                             <a onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
                             <span id="opacity">0.75</span>
@@ -63,7 +66,7 @@
                             备用线路 h5.zhilu.cyou
                         </p> -->
                     <div class="space-between dim">
-                        <a href="?" target="_blank">调试</a>
+                        <a href="?" target="_blank"><i class="bi bi-bug"></i> 调试</a>
                         <a href="https://github.com/L33Z22L11">GitHub Zhilu</a>
                         <a href="https://github.com/L33Z22L11/H5-Works">Star</a>
                     </div>
@@ -72,7 +75,8 @@
             &emsp;
 
             <div class="dropdown">
-                <a>帮助</a>
+                <a onclick="document.getElementById('HelpBubble').style.display='block'">
+                    <i class="bi bi-question-circle"></i> 帮助</a>
                 <div class="dropdown-content" style="left: -16em; min-width: 20em; font-size: .75em;">
                     <div>
                         <p>在浏览器地址栏输入<b class="hilit">exam.thisis.host</b>访问。</p>
@@ -99,7 +103,9 @@
             </div>
             &emsp;
 
-            <a id="fullscreen" onclick="fullscreen()">全屏</a>
+            <a onclick="fullscreen()">
+                <i class="bi bi-arrows-fullscreen"></i>
+                <span id="fullscreen">全屏</span></a>
         </nav>
     </header>
 
@@ -110,9 +116,9 @@
     </div>
 
     <div class="space-between notify" id="SSTBubble" onclick="this.style='display: none;'">
-        <h4>⚠ 希沃屏保警告</h4>
-        <p>信息中心设置<span id="SST">若干</span>分钟后弹出屏保(含古诗词、政史知识)！</p>
-        <a class="hilit">暂时关闭45分钟</a>
+        <p><i class="bi bi-exclamation-triangle"></i>
+            希沃管家可能在<span id="SST">若干</span>分钟后弹出屏保(含古诗词、政史知识)！</p>
+        <a class="hilit"><i class="bi bi-clock-history"></i> 暂时关闭45分钟</a>
     </div>
 
     <div class="card">
@@ -129,41 +135,29 @@
         </div>
     </div>
 
-    <div class="notify" onclick="this.style='display: none;'">
+    <div class="notify" id="HelpBubble" onclick="this.style='display: none;'">
         <div class="space-between">
             <div>
-                <h2>😉 欢迎使用！</h2>
-                <p class="dim">轻触可关闭 刷新后显示<br>
-                    (IE不支持关闭)</p>
-            </div>
-            <div>
-                <p>ℹ️ 使用前需要注意：</p>
-                <p class="dim">
-                    1.关闭屏幕保护程序及屏幕锁定；<br>
-                    2.建议使用Chrome/Egde/Firefox浏览器以获得更好的使用体验；<br>
-                    3.记住本站网址<b class="hilit">exam.thisis.host</b>。支持电脑、手机、班牌访问。</p>
-            </div>
-            <p class="dim">➔ QQ：2399052066 (纸鹿)<br>
-                野生技协是一个自发性的技术协助组织。<br>
-                我们发布了网课APP、电子课本导航和考试时钟。<br>
-                群号：894656456 (面向校友开放)</p>
-        </div>
-        <br class="small">
-        <div class="space-between">
-            <div class="space-between">
-                <div>
-                    <p>🚫 某些电教的打开方法不对。</p>
-                    <p class="dim">只有右侧的按钮才能正常下载本网页。</p>
+                <div class="space-between">
+                    <h2>😉 欢迎&emsp;</h2>
+                    <a class="hilit dim" href="/考试时钟.url">
+                        <i class="bi bi-download"></i>保存到本地</a>
                 </div>
-                <a class="hilit" href="/考试时钟.url">⤓ 保存到本地</a>
+                <p class="dim">轻触关闭此消息(IE无法关闭)</p>
             </div>
             <div>
-                <p>🎲 考试时钟核心组件目前最低支持IE9。</p>
-                <p class="dim">信息中心仅安装了落后的浏览器，我们主动适配了IE9/10/11。</p>
+                <p><i class="bi bi-info-circle"></i>使用前需要注意：</p>
+                <p class="dim">
+                    1.关闭屏保，有问题可联系纸鹿；<br>
+                    2.建议使用Chrome/Egde/Firefox浏览器，最低支持IE9；<br>
+                    3.本站网址<b class="hilit">exam.thisis.host</b>不需要加前后缀！</p>
             </div>
             <div>
-                <p>❗ 12:05定时关机</p>
-                <p class="dim">这个也是信息中心设置的。</p>
+                <p><i class="bi bi-people-fill"></i> 野生技协 - 欢迎提问</p>
+                <p class="dim">
+                    做优质的自发性的技术协助组织。<br>
+                    我们发布了网课APP、电子课本导航和考试时钟。<br>
+                    群号：894656456 (面向校友开放)</p>
             </div>
         </div>
     </div>
@@ -173,14 +167,15 @@
         <!-- <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png"> -->
         <div class="space-between">
             <span>主创：纸鹿 × 野生技协</span>
-            <span>合作伙伴：划水方块 拾汘 Star</span>
+            <span>特邀合作：划水方块 拾汘 Star 长安凛冬</span>
             <span>友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社 动漫社 日语社 INSTREET社</span>
         </div>
         <div class="space-between">
+            <span><i class="bi bi-person-plus"></i> 反馈QQ：2399052066</span>
             <span>服务商：<a href="https://thisis.host">ThisisHost</a></span>
             <span>GitHub项目：ThisisHost/exam-clock</span>
             <span>开源协议：GNU通用公共许可证v3.0</span>
-            <span>版本：Epsilon 5.0 wxy</span>
+            <span>版本：5.5.0_wxy_ic</span>
         </div>
     </footer>
 
