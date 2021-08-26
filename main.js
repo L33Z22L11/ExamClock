@@ -36,7 +36,7 @@ onmousemove = onmousedown = function () { SCREENSAVER_TIME = 45; }
 
 oncontextmenu = onkeydown = onselectstart = function () {
     SCREENSAVER_TIME = 45;
-    // return false;
+    return false;
 }
 
 function change(i) {
