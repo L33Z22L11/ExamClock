@@ -3,7 +3,7 @@ onload = function () {
     SCREENSAVER_TIME = 45;
     eleMain = document.getElementsByTagName("body")[0];
     change("高三理科");
-    if (String(location).indexOf("\?") == -1) {
+    if (String(location).indexOf("debug") == -1) {
         updateTime = function () {
             now = new Date();
             // 宝鸡中学铃声快一分钟，诶，就是玩儿~
@@ -18,7 +18,8 @@ onload = function () {
             // 超过最晚结束时间则重新开始
             now > new Date("2021-08-27T17:00+08:00") ? change(type) : null;
             now.getHours() == 19 ? now.setHours(31) : null;
-            now.setMinutes(now.getMinutes() + 1);
+            // now.setMinutes(now.getMinutes() + 1);
+            now.setSeconds(now.getSeconds() + 30);
             output("clock", getClock(now));
             updateExam();
         }
@@ -27,14 +28,15 @@ onload = function () {
     updateTime();
     updateSubtitle();
     setInterval(updateSubtitle, 2000);
-    setInterval(updateSST, 60000);
+    String(location).indexOf("noscreensaver") == -1 ?
+        setInterval(updateSST, 60000) : null;
 }
 
 onmousemove = onmousedown = function () { SCREENSAVER_TIME = 45; }
 
 oncontextmenu = onkeydown = onselectstart = function () {
     SCREENSAVER_TIME = 45;
-    return false;
+    // return false;
 }
 
 function change(i) {
@@ -76,12 +78,12 @@ function fullscreen() {
     }
 }
 
-function $(nextSubject, nextStart, nextEnd, nextSubtitle = subtitle) {
+function $(nextSubject, nextStart, nextEnd, nextSubtitle) {
     if (now >= end) {
         subject = nextSubject;
         start = new Date("2021-" + nextStart + ":00+08:00");
         end = new Date("2021-" + nextEnd + ":00+08:00");
-        subtitle = nextSubtitle;
+        nextSubtitle ? subtitle = nextSubtitle : null;
     }
 }
 
@@ -91,8 +93,8 @@ function getClock(date) {
         date.getHours() + ":" + date.getMinutes();
 }
 
-function formatMin(i) {
-    return Math.round(i / 60000) + '<span class="small">min</span>';
+function small(i) {
+    return "<span class='small'>" + i + "</span>";
 }
 
 function output(id, value) {
@@ -100,7 +102,7 @@ function output(id, value) {
 }
 
 function updateSubtitle() {
-    // 在此处可以设置基于当前时间的subtitle
+    // 在此处可以设置基于当前时间的全局subtitle
     output("subtitle", subtitle[order]);
     order < subtitle.length - 1 ? order++ : order = 0;
 }
@@ -150,7 +152,7 @@ function updateExam() {
             $("政治", "08-27T10:40", "08-27T12:20");
             $("英语", "08-27T14:20", "08-27T16:20");
             break;
-        case "欢迎高一":
+        case "高一":
             subtitle = ["高一暂未启用考试时钟。"];
             $("数学", "06-28T14:20", "06-28T16:00");
             $("英语", "06-28T16:30", "06-28T18:10");
@@ -161,6 +163,10 @@ function updateExam() {
             $("政史", "06-30T07:50", "06-30T09:50");
             $("地理", "06-30T10:20", "06-30T11:20");
             break;
+        case "临时科目":
+            $("", "01-01T00:00", "01-01T00:01",
+                ["该功能开发中，敬请期待。"]);
+            break;
         default:
             $("", "01-01T00:00", "01-01T00:01",
                 ["不存在的考试类型，请重新选择。"]);
@@ -170,32 +176,37 @@ function updateExam() {
     if (now < (start - 18E5)) {
         (now.getHours() == 12 && now.getHours() == 18) ?
             subtitle = "干饭时间到！" : null;
-        timer = "Soon";
+        timer = Math.floor((start - now) / 36E4) / 10 + small("h后");
         activity = "考试加油";
         progress = 0;
     } else if (now < (start - 12E5)) {
-        timer = formatMin(start - 12E5 - now);
-        activity = "距离入场";
+        timer = Math.floor((now - start + 18E5) / 6E4) + small("/10min");
+        activity = "课间休息";
         progress = (start - 12E5 - now) / 6E3;
     } else if (now < (start - 6E5)) {
-        timer = formatMin(start - 6E5 - now);
-        activity = "距离发卡";
+        timer = Math.floor((now - start + 12E5) / 6E4) + small("/10min");
+        activity = "入场扫描";
         progress = (start - 6E5 - now) / 6E3;
     } else if (now < (start - 3E5)) {
-        timer = formatMin(start - 3E5 - now);
-        activity = "距离发卷";
+        timer = Math.floor((now - start + 6E5) / 6E4) + small("/5min");
+        activity = "发卡贴码";
         progress = (start - 3E5 - now) / 3E3;
     } else if (now < start) {
-        timer = formatMin(start - now);
-        activity = "距离开考";
+        timer = Math.floor((now - start + 3E5) / 6E4) + small("/5min");
+        activity = "发卷审题";
         progress = (start - now) / 3E3;
     } else if (now < end) {
         now.getHours() == 12 ?
             subtitle = ["警告：信息中心设置12:05自动关机，请注意取消。"] : null;
         // now.getHours() == 18 ?
         //     subtitle = ["警告：考场周围应保持环境安静！"] : null;
-        timer = formatMin(end - now);
-        activity = "距离结束";
+        if ((now - start) / (end - start) < .5) {
+            timer = Math.floor((now - start) / 6E4) + small("min");
+            activity = "已经开始";
+        } else {
+            timer = Math.floor((end - now) / 6E4) + small("min");
+            activity = "距离结束";
+        }
         progress = (now - start) / (end - start) * 100;
     } else {
         // subtitle = ["宝中的各位小蓝们，我们已经完成了本次考试！",
@@ -217,11 +228,16 @@ function updateExam() {
 }
 
 function updateSST() {
+    eleSST = document.getElementById("SSTBubble");
     SCREENSAVER_TIME -= 1;
-    if (SCREENSAVER_TIME < 10) {
-        document.getElementById("SSTBubble").style.display = "flex";
-        output("SST", SCREENSAVER_TIME);
+    if (SCREENSAVER_TIME < 0) {
+        eleSST.style.backgroundColor = "rgba(255,255,255,.2)";
+        output("SST", "已经");
+    } else if (SCREENSAVER_TIME < 10) {
+        eleSST.style.display = "flex";
+        eleSST.style.backgroundColor = "#f52";
+        output("SST", "在" + SCREENSAVER_TIME + "分钟后");
     } else {
-        document.getElementById("SSTBubble").style.display = "none";
+        eleSST.style.display = "";
     }
 }

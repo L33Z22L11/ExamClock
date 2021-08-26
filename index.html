@@ -21,8 +21,9 @@
         <nav class="dim">
 
             <div class="dropdown">
-                <div class="hilit" style="min-width: 5em;">
-                    <a class="space-between"><span id="type">类型</span>
+                <div class="hilit">
+                    <a class="space-between" style="min-width: 5em;">
+                        <span id="type">类型</span>
                         <i class="bi bi-chevron-expand"></i></a>
                 </div>
                 <div class="dropdown-content" style="min-width: 5em;">
@@ -30,15 +31,20 @@
                     <a onclick="change(this.innerHTML)">高三文科</a>
                     <a onclick="change(this.innerHTML)">高二理科</a>
                     <a onclick="change(this.innerHTML)">高二文科</a>
-                    <a onclick="change(this.innerHTML)">欢迎高一</a>
+                    <a onclick="change('高一')">🎉 高一</a>
+                    <a onclick="change('临时科目')">
+                        <i class="bi bi-plus-square-dotted"></i>
+                        临时</a>
                 </div>
             </div>
             &emsp;
 
             <div class="dropdown">
-                <a><i class="bi bi-sliders"></i> 设置</a>
+                <a><i class="bi bi-sliders"></i>
+                    设置</a>
                 <div class="dropdown-content" style="left: -8em; min-width: 12em;">
-                    <div><i class="bi bi-aspect-ratio"></i> 缩放
+                    <div><i class="bi bi-aspect-ratio-fill"></i>
+                        缩放
                         <div class="selectbar">
                             <a onclick="relStyle('fontSize',-0.05,'em',0.75,1.25)">－</a>
                             <span id="fontSize">1</span>
@@ -46,7 +52,8 @@
                         </div>
                     </div>
                     <p class="dim">非必要情况请勿修改缩放</p>
-                    <div><i class="bi bi-brightness-high"></i> 亮度
+                    <div><i class="bi bi-circle-half"></i>
+                        对比度
                         <div class="selectbar">
                             <a onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
                             <span id="opacity">0.75</span>
@@ -66,9 +73,12 @@
                             备用线路 h5.zhilu.cyou
                         </p> -->
                     <div class="space-between dim">
-                        <a href="?" target="_blank"><i class="bi bi-bug"></i> 调试</a>
-                        <a href="https://github.com/L33Z22L11">GitHub Zhilu</a>
-                        <a href="https://github.com/L33Z22L11/H5-Works">Star</a>
+                        <a href="?debug" target="_blank">
+                            <i class="bi bi-bug"></i>
+                            调试</a>
+                        <a href="?noscreensaver" target="_blank">
+                            <i class="bi bi-shield-slash"></i>
+                            关闭屏保提示</a>
                     </div>
                 </div>
             </div>
@@ -76,8 +86,9 @@
 
             <div class="dropdown">
                 <a onclick="document.getElementById('HelpBubble').style.display='block'">
-                    <i class="bi bi-question-circle"></i> 帮助</a>
-                <div class="dropdown-content" style="left: -16em; min-width: 20em; font-size: .75em;">
+                    <i class="bi bi-question-circle"></i>
+                    帮助</a>
+                <div class="dropdown-content" style="left: -12em; min-width: 20em; font-size: .75em;">
                     <div>
                         <p>在浏览器地址栏输入<b class="hilit">exam.thisis.host</b>访问。</p>
                         <p class="dim">（不需要加任何前后缀）<br>
@@ -117,8 +128,9 @@
 
     <div class="space-between notify" id="SSTBubble" onclick="this.style='display: none;'">
         <p><i class="bi bi-exclamation-triangle"></i>
-            希沃管家可能在<span id="SST">若干</span>分钟后弹出屏保(含古诗词、政史知识)！</p>
-        <a class="hilit"><i class="bi bi-clock-history"></i> 暂时关闭45分钟</a>
+            希沃管家可能<span id="SST">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)！</p>
+        <a class="hilit"><i class="bi bi-clock-history"></i>
+            暂时关闭45分钟</a>
     </div>
 
     <div class="card">
@@ -139,24 +151,28 @@
         <div class="space-between">
             <div>
                 <div class="space-between">
-                    <h2>😉 欢迎&emsp;</h2>
+                    <h2>😉
+                        欢迎&emsp;</h2>
                     <a class="hilit dim" href="/考试时钟.url">
-                        <i class="bi bi-download"></i>保存到本地</a>
+                        <i class="bi bi-download"></i>
+                        保存到本地</a>
                 </div>
                 <p class="dim">轻触关闭此消息(IE无法关闭)</p>
             </div>
             <div>
-                <p><i class="bi bi-info-circle"></i>使用前需要注意：</p>
+                <p><i class="bi bi-info-circle"></i>
+                    使用前需要注意：</p>
                 <p class="dim">
                     1.关闭屏保，有问题可联系纸鹿；<br>
                     2.建议使用Chrome/Egde/Firefox浏览器，最低支持IE9；<br>
                     3.本站网址<b class="hilit">exam.thisis.host</b>不需要加前后缀！</p>
             </div>
             <div>
-                <p><i class="bi bi-people-fill"></i> 野生技协 - 欢迎提问</p>
+                <p><i class="bi bi-people-fill"></i>
+                    野生技协 - 欢迎提问</p>
                 <p class="dim">
-                    做优质的自发性的技术协助组织。<br>
-                    我们发布了网课APP、电子课本导航和考试时钟。<br>
+                    做优质的自发性的技术协助组织<br>
+                    发布了网课APP、电子课本导航和考试时钟<br>
                     群号：894656456 (面向校友开放)</p>
             </div>
         </div>
@@ -166,16 +182,26 @@
         <!-- <img src="https://7.dusays.com/2021/05/23/ee48832e0e004.png"> -->
         <!-- <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png"> -->
         <div class="space-between">
-            <span>主创：纸鹿 × 野生技协</span>
-            <span>特邀合作：划水方块 拾汘 Star 长安凛冬</span>
-            <span>友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社 动漫社 日语社 INSTREET社</span>
+            <span><i class="bi bi-vector-pen"></i>
+                主创：纸鹿 × 野生技协</span>
+            <span><i class="bi bi-award"></i>
+                特邀合作：划水方块 拾汘 Star 长安凛冬</span>
+            <span><i class="bi bi-front"></i>
+                友好社团：音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社 航模社
+                民乐社 心理社 书画社 动漫社 日语社 INSTREET社 机器人社</span>
         </div>
         <div class="space-between">
-            <span><i class="bi bi-person-plus"></i> 反馈QQ：2399052066</span>
-            <span>服务商：<a href="https://thisis.host">ThisisHost</a></span>
-            <span>GitHub项目：ThisisHost/exam-clock</span>
-            <span>开源协议：GNU通用公共许可证v3.0</span>
-            <span>版本：5.5.0_wxy_ic</span>
+            <span><i class="bi bi-person-plus-fill"></i>
+                反馈QQ：2399052066</span>
+            <!-- <span><i class="bi bi-hdd-network-fill"></i>
+                服务商：<a href="https://thisis.host">ThisisHost</a></span> -->
+            <span><i class="bi bi-github"></i>
+                GitHub项目：<a href="https://github.com/ThisisHost/exam-clock">
+                    ThisisHost/exam-clock</a></span>
+            <span><i class="bi bi-code-slash"></i>
+                开源协议：GNU通用公共许可证v3.0</span>
+            <span><i class="bi bi-file-earmark-diff"></i>
+                版本：5.5.0_wxy_ic</span>
         </div>
     </footer>
 

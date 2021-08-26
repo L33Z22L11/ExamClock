@@ -58,7 +58,7 @@ header {
 }
 
 .dim {
-    font-size: .7em;
+    font-size: .75em;
     opacity: .6;
 }
 
@@ -188,7 +188,6 @@ header {
 
 #SSTBubble {
     display: none;
-    background: #f52;
     font-size: .75em;
 }
 
