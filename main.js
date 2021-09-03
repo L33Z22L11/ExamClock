@@ -117,8 +117,7 @@ function updateExam() {
             $("物理", "09-04T16:50", "09-04T18:30");
             now.getHours() == 18 && now.getMinutes() > 30 ?
                 now.getDate() == 4 ?
-                    subtitle = ["今天我就要离开，明天我还会回来。9min！"] : null :
-               now.getDate() == 5 ?
+                    subtitle = ["今天我就要离开，明天我还会回来。9min！"] :
                     subtitle = ["祝各位努力的孩子取得理想的名次！"] : null;
             $("英语", "09-05T14:20", "09-05T16:20");
             $("化学", "09-05T16:50", "09-05T18:30");
@@ -131,8 +130,7 @@ function updateExam() {
             $("历史", "09-04T16:50", "09-04T18:30");
             now.getHours() == 18 && now.getMinutes() > 30 ?
                 now.getDate() == 4 ?
-                    subtitle = ["今天我就要离开，明天我还会回来。9min！"] : null :
-               now.getDate() == 5 ?
+                    subtitle = ["今天我就要离开，明天我还会回来。9min！"] :
                     subtitle = ["祝各位努力的孩子取得理想的名次！"] : null;
             $("英语", "09-05T14:20", "09-05T16:20");
             $("地理", "09-05T16:50", "09-05T18:30");
