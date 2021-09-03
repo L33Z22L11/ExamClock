@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<!-- 康亦菲考试加油，冲！ -->
 <html lang="zh-cmn">
-<!-- 代码由纸鹿编写 -->
-<!-- 已经发布至GitHub ThisisHost/exam-clock -->
+<!-- 康总考试冲！ -->
+<!-- 纸鹿 GitHub ThisisHost/exam-clock -->
 
 <head>
     <meta charset="UTF-8">
@@ -78,7 +77,7 @@
                             调试</a>
                         <a href="?noscreensaver" target="_blank">
                             <i class="bi bi-shield-slash"></i>
-                            关闭屏保提示</a>
+                            屏保预警已全校取消</a>
                     </div>
                 </div>
             </div>
@@ -126,14 +125,14 @@
         <div id="bar"></div>
     </div>
 
-    <div class="space-between notify" id="SSTBubble" onclick="this.style='display: none;'">
+    <div class="space-between notify" id="SSTBubble" onclick="this.style.display=''">
         <p><i class="bi bi-exclamation-triangle"></i>
             希沃管家可能<span id="SST">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)！</p>
         <a class="hilit"><i class="bi bi-clock-history"></i>
             暂时关闭45分钟</a>
     </div>
 
-    <div class="card">
+    <b class="card">
         <div>
             <div id="subject">科目</div>
             <div id="duration">16:66~17:77</div>
@@ -142,10 +141,13 @@
             <div id="clock">18:88</div>
         </div>
         <div>
-            <div id="timer">199<span class="small">min</span></div>
+            <div>
+                <span id="timer">199</span>
+                <span class="dim" id="timersub">min</span>
+            </div>
             <div id="activity">提示文字</div>
         </div>
-    </div>
+    </b>
 
     <div class="notify" id="HelpBubble" onclick="this.style='display: none;'">
         <div class="space-between">
@@ -201,7 +203,7 @@
             <span><i class="bi bi-code-slash"></i>
                 开源协议：GNU通用公共许可证v3.0</span>
             <span><i class="bi bi-file-earmark-diff"></i>
-                版本：5.5.2_wxy_postimin'</span>
+                版本：5.5.3_wxy_seewossoff</span>
         </div>
     </footer>
 
