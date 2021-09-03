@@ -115,8 +115,11 @@ function updateExam() {
             $("生物", "09-04T10:40", "09-04T12:10");
             $("数学", "09-04T14:20", "09-04T16:20");
             $("物理", "09-04T16:50", "09-04T18:30");
-            now.getDate() == 4 && now.getHours() == 18 && now.getMinutes() == 31 ?
-                subtitle = ["9min"] : null;
+            now.getHours() == 18 && now.getMinutes() > 30 ?
+                now.getDate() == 4 ?
+                    subtitle = ["今天我就要离开，明天我还会回来。9min！"] : null :
+               now.getDate() == 5 ?
+                    subtitle = ["祝各位努力的孩子取得理想的名次！"] : null;
             $("英语", "09-05T14:20", "09-05T16:20");
             $("化学", "09-05T16:50", "09-05T18:30");
             break;
@@ -126,8 +129,11 @@ function updateExam() {
             $("政治", "09-04T10:40", "09-04T12:20");
             $("数学", "09-04T14:20", "09-04T16:20");
             $("历史", "09-04T16:50", "09-04T18:30");
-            now.getDate() == 4 && now.getHours() == 18 && now.getMinutes() == 31 ?
-                subtitle = ["9min"] : null;
+            now.getHours() == 18 && now.getMinutes() > 30 ?
+                now.getDate() == 4 ?
+                    subtitle = ["今天我就要离开，明天我还会回来。9min！"] : null :
+               now.getDate() == 5 ?
+                    subtitle = ["祝各位努力的孩子取得理想的名次！"] : null;
             $("英语", "09-05T14:20", "09-05T16:20");
             $("地理", "09-05T16:50", "09-05T18:30");
             break;
