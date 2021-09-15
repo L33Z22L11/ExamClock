@@ -121,7 +121,6 @@ function updateExam() {
             illback();
             // subtitle = ["高三理科诊断考试二：请以实际司号为准。"];
             subtitle = ["高三素质拓展理科模拟训练"];
-            $("测试", "09-15T18:20", "09-18T18:40");
             $("英语", "09-18T16:20", "09-18T18:20");
             $("理综", "09-19T14:25", "09-19T16:55");
             break;
@@ -211,7 +210,7 @@ function updateExam() {
         timer = Math.round((now - start + 3E5) / 6E4);
         timersub = "/5min";
         activity = "发卷审题";
-        progress = (start - now + 3E5) / 3E3;
+        progress = (now - start + 3E5) / 3E3;
     } else if (now < end) {
         now.getHours() == 12 ?
             subtitle = ["12:05可能自动关机，请留意提示。"] : null;
