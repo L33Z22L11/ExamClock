@@ -178,7 +178,7 @@ header {
 #duration,
 #activity {
   font-size: 1.5em;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .notify {
