@@ -1,8 +1,8 @@
 onload = function () {
     console.warn("%c\n欢迎加入野生技协\nQQ群: 894656456\n",
-        "font:bold 3em Roboto,sans-serif;")
+        "font:bold 3em Roboto,sans-serif;");
     // 希沃屏保剩余时间
-    SCREENSAVER_TIME = 45;
+    // SCREENSAVER_TIME = 45;
     eleMain = document.getElementsByTagName("body")[0];
     change("高三理科");
     if (String(location).indexOf("debug") == -1) {
@@ -15,12 +15,17 @@ onload = function () {
         }
         setInterval(updateTime, 2000);
     } else {
-        alert("已进入调试模式，关闭本选项卡或删除网址末尾的问号可以返回正常模式。")
+        alert("已进入调试模式，关闭本页面可返回正常模式。")
         updateTime = function () {
             // 最晚结束时间
-            now > new Date("2021-09-05T19:00+08:00") ? change(type) : null;
+            now > new Date("2021-09-20T19:00+08:00") ? change(type) : null;
+            // 调试模式跳过夜晚
+            if (now.getHours() == 19) {
+                now.setHours(31);
+                today = fixDigit(now.getMonth() + 1)
+                    + "-" + fixDigit(now.getDate());
+            }
             // 调试模式速度设置
-            now.getHours() == 19 ? now.setHours(31) : null;
             // now.setMinutes(now.getMinutes() + 1);
             now.setSeconds(now.getSeconds() + 30);
             output("clock", getClock(now));
@@ -36,20 +41,21 @@ onload = function () {
     //     setInterval(updateSST, 60000) : null;
 }
 
-onmousemove = onmousedown = function () { SCREENSAVER_TIME = 45; }
+// onmousemove = onmousedown = function () { SCREENSAVER_TIME = 45; }
 
 oncontextmenu = onkeydown = onselectstart = function () {
-    SCREENSAVER_TIME = 45;
+    // SCREENSAVER_TIME = 45;
     return false;
 }
 
-function change(i) {
+function change(totype) {
     // 切换类型时需要重新初始化的内容
     // 调试模式初始时间
-    now = new Date("2021-09-04T07:00+08:00");
+    now = new Date("2021-09-18T15:00+08:00");
     end = 0, progress = 0, order = 0;
+    today = fixDigit(now.getMonth() + 1) + "-" + fixDigit(now.getDate());
 
-    type = i;
+    type = totype;
     // console.log(type);
     output("type", type);
 
@@ -85,15 +91,18 @@ function $(nextSubject, nextStart, nextEnd, nextSubtitle) {
         subject = nextSubject;
         start = new Date("2021-" + nextStart + ":00+08:00");
         end = new Date("2021-" + nextEnd + ":00+08:00");
-        // 这个功能有bug，以后有时间再调整
-        nextSubtitle ? subtitle = nextSubtitle : null;
     }
+    subject == nextSubject && nextSubtitle ?
+        subtitle = nextSubtitle : null;
+}
+
+function fixDigit(num) {
+    num = parseInt(num);
+    return num < 10 ? "0" + num : num;
 }
 
 function getClock(date) {
-    return date.getMinutes() < 10 ?
-        date.getHours() + ":0" + date.getMinutes() :
-        date.getHours() + ":" + date.getMinutes();
+    return date.getHours() + ":" + fixDigit(date.getMinutes());
 }
 
 function output(id, value) {
@@ -101,9 +110,20 @@ function output(id, value) {
 }
 
 function updateSubtitle() {
-    // 在此处可以设置基于当前时间的全局subtitle
     order < subtitle.length - 1 ? order++ : order = 0;
     output("subtitle", subtitle[order]);
+}
+
+function setTemp(sh, sm, eh, em) {
+    sh = prompt("考试开始时间所在的小时", 17);
+    sm = prompt("考试开始时间所在的分钟", 0);
+    eh = prompt("考试结束时间所在的小时", 18);
+    em = prompt("考试结束时间所在的分钟", 0);
+    $(prompt("考试科目名称", "临时"),
+        today + "T" + fixDigit(sh) + ":" + fixDigit(sm),
+        today + "T" + fixDigit(eh) + ":" + fixDigit(em));
+    alert("考试科目：" + subject + "\n起止时间："
+        + getClock(start) + "~" + getClock(end));
 }
 
 function illback() {
@@ -118,18 +138,26 @@ function updateExam() {
     $("", "01-01T00:00", "01-01T00:00", ["考试时钟预设内容"]);
     switch (type) {
         case "高三理科":
-            illback();
-            // subtitle = ["高三理科诊断考试二：请以实际司号为准。"];
+            // illback();
             subtitle = ["高三素质拓展理科模拟训练"];
-            $("英语", "09-18T16:20", "09-18T18:20");
+            $("Ext<span class='small'>Holiday</span>",
+                "09-18T17:45", "09-18T18:10",
+                ["本场科目数据仅用作测试",
+                    "高三年级9月18日17:45放学",
+                    "预祝各位中秋快乐！"]);
             $("理综", "09-19T14:25", "09-19T16:55");
+            $("英语", "09-20T16:10", "09-20T18:10");
             break;
         case "高三文科":
-            illback();
-            // subtitle = ["高三文科诊断考试二：请以实际司号为准。"];
+            // illback();
             subtitle = ["高三素质拓展文科模拟训练"];
-            $("英语", "09-18T16:20", "09-18T18:20");
+            $("Ext<span class='small'>Holiday</span>",
+                "09-18T17:45", "09-18T18:10",
+                ["本场科目数据仅用作测试",
+                    "高三年级9月18日17:45放学",
+                    "预祝各位中秋快乐！"]);
             $("文综", "09-19T14:25", "09-19T16:55");
+            $("英语", "09-20T16:10", "09-20T18:10");
             break;
         case "高二理科":
             subtitle = ["高二理科诊断性考试：请以实际铃声为准。"];
@@ -160,28 +188,22 @@ function updateExam() {
             $("政史", "06-30T07:50", "06-30T09:50");
             $("地理", "06-30T10:20", "06-30T11:20");
             break;
-        case "自习考练":
+        case "高三日常":
             subtitle = " "; //加空格，防止length为0
-            subject = "考练";
-            start = new Date();
-            start.setHours(16, 20, 0);
-            end = new Date();
-            end.setHours(17, 05, 0);
-            break;
-        case "小题精练":
-            subtitle = " ";
-            subject = "晚训";
-            start = new Date();
-            start.setHours(18, 45, 0);
-            end = new Date();
-            end.setHours(19, 05, 0);
+            $("晨读1", today + "T07:10", today + "T07:25");
+            $("晨会", today + "T07:25", today + "T07:30");
+            $("晨读2", today + "T07:30", today + "T08:00");
+            $("考练", today + "T16:20", today + "T17:05");
+            $("晚训", today + "T18:45", today + "T19:05");
+            $("晚写", today + "T19:05", today + "T19:15");
             break;
         case "临时科目":
-            subtitle = ["该功能开发中，敬请期待。"];
+            subtitle = ["欢迎使用考试时钟，如有问题可以加入QQ群894656456交流。"];
             break;
         default:
             subtitle = ["不存在的考试类型，请重新选择。"];
     }
+
     duration = getClock(start) + "~" + getClock(end);
 
     if (now < (start - 18E5)) {
@@ -212,8 +234,8 @@ function updateExam() {
         activity = "发卷审题";
         progress = (now - start + 3E5) / 3E3;
     } else if (now < end) {
-        now.getHours() == 12 ?
-            subtitle = ["12:05可能自动关机，请留意提示。"] : null;
+        // now.getHours() == 12 ?
+        //     subtitle = ["12:05可能自动关机，请留意提示。"] : null;
         // now.getHours() == 18 ?
         //     subtitle = ["警告：考场周围应保持环境安静！"] : null;
         if ((now - start) / (end - start) < .5) {
@@ -234,7 +256,7 @@ function updateExam() {
         subject = "";
         duration = "";
         timer = "";
-        timersub = "";
+        timersub = "考试结束";
         activity = "";
         progress = 100;
     }

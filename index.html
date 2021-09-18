@@ -28,12 +28,13 @@
                 <div class="dropdown-content" style="min-width: 5em;">
                     <a onclick="change(this.innerHTML)">高三理科</a>
                     <a onclick="change(this.innerHTML)">高三文科</a>
+                    <a onclick="change(this.innerHTML)">高三日常</a>
                     <a onclick="change(this.innerHTML)">高二理科</a>
                     <a onclick="change(this.innerHTML)">高二文科</a>
-                    <a onclick="change(this.innerHTML)">自习考练</a>
-                    <a onclick="change(this.innerHTML)">小题精练</a>
+                    <!-- <a onclick="change(this.innerHTML)">自习考练</a> -->
+                    <!-- <a onclick="change(this.innerHTML)">小题精练</a> -->
                     <a onclick="change(this.innerHTML)">高一</a>
-                    <a onclick="change('临时科目')">
+                    <a onclick="change('临时科目');setTemp()">
                         <i class="bi bi-plus-square-dotted"></i>
                         临时</a>
                 </div>
@@ -77,9 +78,9 @@
                         <a href="?debug" target="_blank">
                             <i class="bi bi-bug"></i>
                             调试</a>
-                        <a href="?noscreensaver" target="_blank">
+                        <a nohref="?noscreensaver" target="_blank">
                             <i class="bi bi-shield-slash"></i>
-                            屏保预警已全校取消</a>
+                            全校已取消屏保</a>
                     </div>
                 </div>
             </div>
@@ -121,12 +122,13 @@
         </nav>
     </header>
 
-    <div class="dim" id="subtitle">⚠ 代码正在加载中，请稍等……</div>
+    <div class="dim" id="subtitle">⚠ 代码正在加载，若时间过长可以尝试刷新</div>
 
     <div class="bar">
         <div id="bar"></div>
     </div>
 
+    <!-- 希沃屏保被关了，这个暂时不用 -->
     <div class="space-between notify" id="SSTBubble" onclick="this.style.display=''">
         <p><i class="bi bi-exclamation-triangle"></i>
             希沃管家可能<span id="SST">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)！</p>
@@ -191,8 +193,8 @@
             <span><i class="bi bi-award"></i>
                 特邀合作：划水方块 拾汘 Star 长安凛冬</span>
             <span><i class="bi bi-front"></i>
-                友好社团：音幻 朗诵 排球 合唱团 街舞 汉服 航模
-                民乐 心理 书画 动漫 舞蹈队 日语 INSTREET 机器人 推理 篮裁</span>
+                友好社团：音幻宝中 朗诵社 排球社 合唱团 街舞社 汉服社 航模社
+                民乐社 心理社 书画社 动漫社 舞蹈队 日语社 INSTREET社 机器人社 推理社 篮裁社</span>
         </div>
         <div class="space-between">
             <span><i class="bi bi-person-plus-fill"></i>反馈QQ：
@@ -206,7 +208,7 @@
             <span><i class="bi bi-code-slash"></i>
                 开源协议：GNU通用公共许可证v3.0</span>
             <span><i class="bi bi-file-earmark-diff"></i>
-                版本：5.5.4_wxy_progfix</span>
+                版本：5.5.5_wxy_halfdone</span>
         </div>
     </footer>
 
