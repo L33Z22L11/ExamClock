@@ -16,6 +16,8 @@ onload = function () {
         setInterval(updateTime, 2000);
     } else {
         alert("已进入调试模式，关闭本页面可返回正常模式。")
+        // 调试模式初始时间
+        now = new Date("2021-09-18T15:00+08:00");
         updateTime = function () {
             // 最晚结束时间
             now > new Date("2021-09-20T19:00+08:00") ? change(type) : null;
@@ -50,8 +52,7 @@ oncontextmenu = onkeydown = onselectstart = function () {
 
 function change(totype) {
     // 切换类型时需要重新初始化的内容
-    // 调试模式初始时间
-    now = new Date("2021-09-18T15:00+08:00");
+    now = new Date();
     end = 0, progress = 0, order = 0;
     today = fixDigit(now.getMonth() + 1) + "-" + fixDigit(now.getDate());
 
