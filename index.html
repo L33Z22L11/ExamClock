@@ -87,7 +87,7 @@
             &emsp;
 
             <div class="dropdown">
-                <a onclick="document.getElementById('HelpBubble').style.display='block'">
+                <a --onclick="document.getElementById('HelpBubble').style.display='block'">
                     <i class="bi bi-question-circle"></i>
                     帮助</a>
                 <div class="dropdown-content" style="left: -12em; min-width: 20em; font-size: .75em;">
@@ -128,6 +128,18 @@
         <div id="bar"></div>
     </div>
 
+    <div class="notify" id="VerifyBubble">
+        <div class="space-between">
+            <span><i class="bi bi-shield-fill-exclamation"></i>
+                您使用的可能是受第三方修改的或者离线的考试时钟，无法收到官方更新。</span>
+            <div>
+                <a href="https://exam.thisis.host" class="hilit">
+                    <i class="bi bi-arrow-right-square"></i>
+                    访问在线版</a>
+            </div>
+        </div>
+    </div>
+
     <!-- 希沃屏保被关了，这个暂时不用 -->
     <div class="space-between notify" id="SSTBubble" onclick="this.style.display=''">
         <p><i class="bi bi-exclamation-triangle"></i>
@@ -153,6 +165,7 @@
         </div>
     </b>
 
+    <!-- 这个先暂时关掉，文案移动到别处 -->
     <div class="notify" id="HelpBubble" onclick="this.style='display: none;'">
         <div class="space-between">
             <div>
@@ -193,22 +206,23 @@
             <span><i class="bi bi-award"></i>
                 特邀合作：划水方块 拾汘 Star 长安凛冬</span>
             <span><i class="bi bi-front"></i>
-                友好社团：音幻宝中 朗诵社 排球社 合唱团 街舞社 汉服社 航模社
-                民乐社 心理社 书画社 动漫社 舞蹈队 日语社 INSTREET社 机器人社 推理社 篮裁社</span>
+                友好社团：音幻 朗诵 排球 合唱团 街舞 汉服 航模
+                民乐 心理 书画 动漫 舞蹈队 日语 INSTREET 机器人 推理 篮裁</span>
         </div>
         <div class="space-between">
-            <span><i class="bi bi-person-plus-fill"></i>反馈QQ：
+            <span><i class="bi bi-person-plus-fill"></i>
+                反馈QQ：
                 <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066
                 </a></span>
+            <span><i class="bi bi-people-fill"></i>
+                交流群：894656456</span>
             <!-- <span><i class="bi bi-hdd-network-fill"></i>
                 服务商：<a href="https://thisis.host">ThisisHost</a></span> -->
             <span><i class="bi bi-github"></i>
                 GitHub项目：<a href="https://github.com/ThisisHost/exam-clock">
                     ThisisHost/exam-clock</a></span>
             <span><i class="bi bi-code-slash"></i>
-                开源协议：GNU通用公共许可证v3.0</span>
-            <span><i class="bi bi-file-earmark-diff"></i>
-                版本：5.5.5_wxy_halfdone</span>
+                版本：5.5.6_wxy_halfdone</span>
         </div>
     </footer>
 

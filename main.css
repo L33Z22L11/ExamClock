@@ -183,16 +183,19 @@ header {
 
 .notify {
   font-size: 0.5em;
+  display: none;
   margin: 0.5em 1em;
   padding: 0.5em;
   border-radius: 0.5em;
-  background: #25f;
+
+  /* background: #25f; */
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: 0.5em 0.5em 1em rgba(0, 0, 0, 0.2);
 }
 
+#VerifyBubble,
 #SSTBubble {
   font-size: 0.75em;
-  display: none;
 }
 
 footer > img {
