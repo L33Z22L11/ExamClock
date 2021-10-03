@@ -1,16 +1,16 @@
 onload = function () {
     console.warn("%c\n欢迎加入野生技协\nQQ群: 894656456\n", "font:bold 3em Roboto,sans-serif;");
-    // 希沃屏保剩余时间
-    // SCREENSAVER_TIME = 45;
-    eleMain = document.getElementsByTagName("body")[0];
     try {
-        !location.href.match("\/\/exam.thisis.host") ?
+        !location.host.match("exam.thisis.host") ?
             document.getElementById("VerifyBubble").style.display = "block" : null;
     }
     catch (e) {
         alert("检测到盗版的考试时钟且发送警报失败！\n" + e);
         location.href = "https://exam.thisis.host";
     }
+    eleMain = document.getElementsByTagName("body")[0];
+    // 希沃屏保剩余时间
+    // SCREENSAVER_TIME = 45;
     change("高三理科");
     if (!location.href.match("debug")) {
         updateTime = function () {
@@ -23,20 +23,16 @@ onload = function () {
         setInterval(updateTime, 2000);
     } else {
         alert("已进入调试模式，关闭本页面可返回正常模式。")
-        // 调试模式起始时间
-        now = new Date("2021-09-18T15:00+08:00");
-        updateToday();
+        updateExam();
         updateTime = function () {
+            // 调试模式起始时间
+            now < start - 36E5 ? now = new Date(start - 36E5) : null;
             // 调试模式截止时间
-            now > new Date("2021-09-20T19:00+08:00") ? change(type) : null;
-            // 调试模式跳过夜晚
-            if (now.getHours() == 19) {
-                now.setHours(31);
-                updateToday();
-            }
+            // 用加号会直接连接字符串，所以这里得减去负数，太魔幻了
+            now > end - -36E5 ? change(type) : null;
             // 调试模式速度设置
-            // now.setMinutes(now.getMinutes() + 1);
             now.setSeconds(now.getSeconds() + 30);
+            // now.setMinutes(now.getMinutes() + 5);
             output("clock", getClock(now));
             updateExam();
         }
@@ -53,7 +49,7 @@ onload = function () {
 // onmousemove = onmousedown = function () { SCREENSAVER_TIME = 45; }
 
 // SCREENSAVER_TIME = 45;
-// oncontextmenu = onkeydown = onselectstart = function () { return false; }
+oncontextmenu = onkeydown = onselectstart = function () { return false; }
 
 function change(totype) {
     // 切换类型时需要重新初始化的内容
@@ -143,8 +139,7 @@ function illback() {
 }
 
 function updateExam() {
-    // 功能是写出来了，不过到现在都不知道这几个功能应该怎样安排
-    // 想找一个更厉害的人帮忙指导一下我，欸。
+    // 功能是写出来了，不过到现在都不知道subtitle在哪设置合适
     // 防止某些类型由于没有起止时间而崩溃
     $("", "01-01T00:00", "01-01T00:00", ["考试时钟预设内容"]);
     switch (type) {
@@ -186,7 +181,7 @@ function updateExam() {
             $("语文", "10-09T07:40", "10-09T10:10");
             $("历史", "10-09T10:40", "10-09T12:20");
             $("数学", "10-09T14:00", "10-09T16:00");
-            $("政治", "10-09T16:30", "10-09T18:10");
+            $("地理", "10-09T16:30", "10-09T18:10");
             break;
         case "高三日常":
             subtitle = " "; //加空格，防止length为0
@@ -194,7 +189,7 @@ function updateExam() {
             $("晨会", today + "07:25", today + "07:30");
             $("晨读2", today + "07:30", today + "08:00");
             $("午休", today + "12:00", today + "13:55");
-            $("考练", today + "16:20", today + "17:05");
+            $("考练", today + "16:05", today + "16:50");
             $("晚训", today + "18:25", today + "18:45");
             $("晚写", today + "18:45", today + "18:55");
             $("晚一", today + "18:55", today + "19:40");

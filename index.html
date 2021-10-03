@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<!-- 康总考试冲！ -->
-<!-- 纸鹿 GitHub ThisisHost/exam-clock -->
+<!-- 康总考试加油！ -->
+<!-- 纸鹿GitHub L33Z22L11 -->
+<!-- GitHub ThisisHost/exam-clock -->
 
 <head>
     <meta charset="UTF-8">
@@ -13,7 +14,7 @@
     <title>考试时钟</title>
 </head>
 
-<body style="opacity: 0.75; font-size: 1em;">
+<body class="container" style="opacity: 0.75; font-size: 1em;">
 
     <header class="space-between">
         <h2>沉着冷静&emsp;诚信考试</h2>
@@ -38,15 +39,12 @@
                         <i class="bi bi-plus-square-dotted"></i>
                         临时</a>
                 </div>
-            </div>
-            &emsp;
+            </div>&emsp;
 
             <div class="dropdown">
-                <a><i class="bi bi-sliders"></i>
-                    设置</a>
+                <a><i class="bi bi-sliders"></i> 设置</a>
                 <div class="dropdown-content" style="left: -8em; min-width: 12em;">
-                    <div><i class="bi bi-aspect-ratio-fill"></i>
-                        缩放
+                    <div><i class="bi bi-aspect-ratio-fill"></i> 缩放
                         <div class="selectbar">
                             <a onclick="relStyle('fontSize',-0.05,'em',0.75,1.25)">－</a>
                             <span id="fontSize">1</span>
@@ -54,8 +52,7 @@
                         </div>
                     </div>
                     <p class="dim">非必要情况请勿修改缩放</p>
-                    <div><i class="bi bi-circle-half"></i>
-                        对比度
+                    <div><i class="bi bi-circle-half"></i> 对比度
                         <div class="selectbar">
                             <a onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
                             <span id="opacity">0.75</span>
@@ -63,49 +60,34 @@
                         </div>
                     </div>
                     <p class="dim">减少光干扰，视环境光设置</p>
-                    <!-- <div class="space-between">
-                        <span>服务商</span>
-                        <a class="selectbar" href="https://thisis.host">ThisisHost</a>
-                    </div> -->
-
-                    <!-- <p class="dim">
-                            自动主线路 app.zhilu.cyou<br>
-                            主线路1 app1.zhilu.cyou<br>
-                            主线路2 app2.zhilu.cyou<br>
-                            备用线路 h5.zhilu.cyou
-                        </p> -->
                     <div class="space-between dim">
                         <a href="?debug" target="_blank">
-                            <i class="bi bi-bug"></i>
-                            调试</a>
+                            <i class="bi bi-bug"></i> 调试</a>
                         <a nohref="?noscreensaver" target="_blank">
-                            <i class="bi bi-shield-slash"></i>
-                            全校已取消屏保</a>
+                            <i class="bi bi-shield-slash"></i> 全校已取消屏保</a>
                     </div>
                 </div>
-            </div>
-            &emsp;
+            </div>&emsp;
 
             <div class="dropdown">
                 <a onclick="document.getElementById('HelpBubble').style.display='block'">
-                    <i class="bi bi-question-circle"></i>
-                    帮助</a>
+                    <i class="bi bi-question-circle"></i> 帮助</a>
                 <div class="dropdown-content" style="left: -12em; min-width: 20em; font-size: .75em;">
                     <div>
                         <p>在浏览器地址栏输入<b class="hilit">exam.thisis.host</b>访问。</p>
-                        <p class="dim">（不需要加任何前后缀）<br>
+                        <p class="dim">
+                            （不需要加任何前后缀）<br>
                             鬼才案例：某考场访问http//exam.thisis.host(错误的协议头拼写)、
                             www.exam.thisis.host(错误的主机名)显示网站无法访问，
-                            后用其他网站代替了考试时钟。</p>
+                            后用其他网站代替了考试时钟。
+                        </p>
                     </div>
                     <div>
                         <p>推荐使用Chrome、Edge、Firefox访问。</p>
-                        <p class="dim">IE 9/10/11、QQ浏览器内核落后，不建议使用；<br>
-                            IE 8（2009年）或更早的浏览器无法加载。</p>
+                        <p class="dim">IE 9/10/11、QQ浏览器内核落后，不建议使用；<br>IE 8（2009年）或更早的浏览器无法加载。</p>
                     </div>
                     <div>
-                        <p>通过“保存到本地”按钮来获得快捷方式。<br>
-                            野生技协提供安装桌面图标服务。</p>
+                        <p>通过“保存到本地”按钮来获得快捷方式。<br>野生技协提供安装桌面图标服务。</p>
                         <p class="dim">（无需关闭开机还原）<br>
                             鬼才案例：某班下载了此网页的快照到本地，并向其他班推荐此方法，
                             考试时离线打开了快照而不是真正的考试时钟，错过在线升级，
@@ -134,8 +116,7 @@
                 您使用的可能是受第三方修改的或者离线的考试时钟，无法收到官方更新。</span>
             <div>
                 <a href="https://exam.thisis.host" class="hilit">
-                    <i class="bi bi-arrow-right-square"></i>
-                    访问在线版</a>
+                    <i class="bi bi-arrow-right-square"></i> 访问在线版</a>
             </div>
         </div>
     </div>
@@ -170,11 +151,9 @@
         <div class="space-between">
             <div>
                 <div class="space-between">
-                    <h2>😉
-                        欢迎&emsp;</h2>
+                    <h2>😉 欢迎&emsp;</h2>
                     <a class="hilit dim" href="/考试时钟.url">
-                        <i class="bi bi-download"></i>
-                        保存到本地</a>
+                        <i class="bi bi-download"></i> 保存到本地</a>
                 </div>
                 <p class="dim">轻触关闭此消息(IE无法关闭)</p>
             </div>
@@ -222,12 +201,12 @@
                 GitHub项目：<a href="https://github.com/ThisisHost/exam-clock">
                     ThisisHost/exam-clock</a></span>
             <span><i class="bi bi-code-slash"></i>
-                版本：5.5.6_wxy_halfdone</span>
+                版本：5.5.7_wxy_bugofdebug</span>
         </div>
     </footer>
 
 </body>
 
-<script src="/main.js"></script>
+<script src="/main.min.js"></script>
 
 </html>
