@@ -1,5 +1,5 @@
 onload = function () {
-    console.warn("%c\n欢迎加入野生技协\nQQ群: 894656456\n", "font:bold 3em Roboto,sans-serif;");
+    console.log("%c\n欢迎加入野生技协\nQQ群: 894656456\n", "font:bold 3em Roboto,sans-serif;");
     try {
         !location.host.match("exam.thisis.host") ?
             document.getElementById("VerifyBubble").style.display = "block" : null;
