@@ -14,192 +14,226 @@
     <title>考试时钟</title>
 </head>
 
-<body class="container" style="opacity: 0.75; font-size: 1em;">
-
-    <header class="space-between">
-        <h2>沉着冷静&emsp;诚信考试</h2>
-        <nav class="dim">
-
-            <div class="dropdown">
-                <div class="hilit">
-                    <a class="space-between" style="min-width: 5em;">
-                        <span id="type">类型</span>
-                        <i class="bi bi-chevron-expand"></i></a>
-                </div>
-                <div class="dropdown-content" style="min-width: 5em;">
-                    <a onclick="change(this.innerHTML)">高三理科</a>
-                    <a onclick="change(this.innerHTML)">高三文科</a>
-                    <a onclick="change(this.innerHTML)">高三日常</a>
-                    <a onclick="change(this.innerHTML)">高二理科</a>
-                    <a onclick="change(this.innerHTML)">高二文科</a>
-                    <a onclick="change(this.innerHTML)">高一</a>
-                    <a onclick="change('临时科目'); setTemp();">
-                        <i class="bi bi-plus-square-dotted"></i> 临时</a>
-                </div>
-            </div>&emsp;
-
-            <div class="dropdown">
-                <a><i class="bi bi-sliders"></i> 设置</a>
-                <div class="dropdown-content" style="left: -8em; min-width: 12em;">
-                    <div><i class="bi bi-aspect-ratio-fill"></i> 缩放
-                        <div class="selectbar">
-                            <a onclick="relStyle('fontSize',-0.05,'em',0.75,1.25)">－</a>
-                            <span id="fontSize">1</span>
-                            <a onclick="relStyle('fontSize',+0.05,'em',0.75,1.25)">＋</a>
+<body>
+    <div class="dropdown-content" id="menu">
+        <a href=""><i class="bi bi-arrow-repeat"></i> 刷新</a>
+        <div><i class="bi bi-aspect-ratio"></i> 缩放
+            <div class="selectbar">
+                <a onclick="relStyle('fontSize',-0.05,'em',0.75,1.25)">－</a>
+                <span id="fontSize">1</span>
+                <a onclick="relStyle('fontSize',+0.05,'em',0.75,1.25)">＋</a>
+            </div>
+        </div>
+        <p class="sub">非必要情况请勿修改缩放</p>
+        <div><i class="bi bi-circle-half"></i> 对比度
+            <div class="selectbar">
+                <a onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
+                <span id="opacity">0.75</span>
+                <a onclick="relStyle('opacity',+0.05,'',0.5,1)">＋</a>
+            </div>
+        </div>
+        <p class="sub">减少光干扰，视环境光设置</p>
+        <div class="dropdown">
+            <a><i class="bi bi-gear"></i> 高级</a>
+            <div class="dropdown-content">
+                <a href="?debug" target="_blank">
+                    <i class="bi bi-bug"></i> 新建调试页面</a>
+                <a --href="?nossaver" target="_blank">
+                    <i class="bi bi-shield-slash"></i> 全校已取消屏保</a>
+                <a href="https://github.com/ThisisHost/exam-clock">
+                    <i class="bi bi-code-slash"></i> 访问源代码</a>
+                <a onclick="change(prompt('请输入考试类型','高四理科'))">
+                    <i class="bi bi-arrow-left-right"></i> 强制切换类型</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a><i class="bi bi-info-square"></i> 关于</a>
+            <div class="dropdown-content">
+                <div class="dropdown">
+                    <a><i class="bi bi-person-check-fill"></i> 开发者</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown"><a>纸鹿</a>
+                            <div class="dropdown-content">
+                                <a>QQ: 2399052066</a>
+                                <a>微信: zhilubenlu</a>
+                                <a>公众号: 纸鹿本鹿</a>
+                                <a href="https://github.com/L33Z22L11" target="_blank">
+                                    Github: L33Z22L11</a>
+                            </div>
+                        </div>
+                        <div class="dropdown"><a>野生技协</a>
+                            <div class="dropdown-content">
+                                <a>QQ群: 894656456</a>
+                                <a href="https://hi.thisis.host" target="_blank">
+                                    官网: hi.thisis.host</a>
+                                <a href="https://github.com/L33Z22L11" target="_blank">
+                                    Github: ThisisHost</a>
+                            </div>
                         </div>
                     </div>
-                    <p class="dim">非必要情况请勿修改缩放</p>
-                    <div><i class="bi bi-circle-half"></i> 对比度
-                        <div class="selectbar">
-                            <a onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
-                            <span id="opacity">0.75</span>
-                            <a onclick="relStyle('opacity',+0.05,'',0.5,1)">＋</a>
-                        </div>
-                    </div>
-                    <p class="dim">减少光干扰，视环境光设置</p>
-                    <div class="space-between dim">
-                        <a href="?debug" target="_blank">
-                            <i class="bi bi-bug"></i> 调试</a>
-                        <a nohref="?noscreensaver" target="_blank">
-                            <i class="bi bi-shield-slash"></i> 全校已取消屏保</a>
-                    </div>
                 </div>
-            </div>&emsp;
-
-            <div class="dropdown">
-                <a onclick="document.getElementById('HelpBubble').style.display='block'">
-                    <i class="bi bi-question-circle"></i> 帮助</a>
-                <div class="dropdown-content" style="left: -12em; min-width: 20em; font-size: .75em;">
-                    <div>
-                        <p>在浏览器地址栏输入<b class="hilit">exam.thisis.host</b>访问。</p>
-                        <p class="dim">
-                            （不需要加任何前后缀）<br>
-                            鬼才案例：某考场访问http//exam.thisis.host(错误的协议头拼写)、
-                            www.exam.thisis.host(错误的主机名)显示网站无法访问，
-                            后用其他网站代替了考试时钟。
-                        </p>
-                    </div>
-                    <div>
-                        <p>推荐使用Chrome、Edge、Firefox访问。</p>
-                        <p class="dim">IE 9/10/11、QQ浏览器内核落后，不建议使用；<br>IE 8（2009年）或更早的浏览器无法加载。</p>
-                    </div>
-                    <div>
-                        <p>通过“保存到本地”按钮来获得快捷方式。<br>野生技协提供安装桌面图标服务。</p>
-                        <p class="dim">（无需关闭开机还原）<br>
-                            鬼才案例：某班下载了此网页的快照到本地，并向其他班推荐此方法，
-                            考试时离线打开了快照而不是真正的考试时钟，错过在线升级，
-                            导致几个考场发生时间显示错误的事故，该班电教负全责。
-                            （相当于使用几天前的天气预报截图查询今日天气）</p>
-                    </div>
-                </div>
-            </div>&emsp;
-
-            <a onclick="fullscreen()">
-                <i class="bi bi-arrows-fullscreen"></i>
-                <span id="fullscreen">全屏</span></a>
-        </nav>
-    </header>
-
-    <div class="dim" id="subtitle">⚠ 代码正在加载，若时间过长可以尝试刷新</div>
-
-    <div class="bar">
-        <div id="bar"></div>
-    </div>
-
-    <div class="notify" id="Verify-Bubble">
-        <div class="space-between">
-            <span><i class="bi bi-shield-fill-exclamation"></i>
-                您使用的可能是受第三方修改的或者离线的考试时钟，无法收到官方更新。</span>
-            <div>
-                <a href="https://exam.thisis.host" class="hilit">
-                    <i class="bi bi-arrow-right-square"></i> 访问在线版</a>
             </div>
         </div>
     </div>
-
-    <!-- 希沃屏保被关了，这个暂时不用 -->
-    <div class="space-between notify" id="SSTBubble" onclick="this.style.display=''">
-        <p><i class="bi bi-exclamation-triangle"></i>
-            希沃管家可能<span id="SST">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)！</p>
-        <a class="hilit"><i class="bi bi-clock-history"></i>
-            暂时关闭45分钟</a>
-    </div>
-
-    <b class="card">
-        <div>
-            <div id="subject">科目</div>
-            <div id="duration">16:66~17:77</div>
-        </div>
-        <div>
-            <div id="clock">18:88</div>
-        </div>
-        <div>
-            <div>
-                <span id="timer">199</span>
-                <span class="dim" id="timersub">min</span>
+    
+    <div id="main" style="opacity: 0.75; font-size: 1em;">
+        <div class="notify">
+            <div class="space-between" id="verify">
+                <span><i class="bi bi-shield-fill-exclamation"></i>
+                    您使用的可能是受第三方修改的或者离线的考试时钟，无法收到官方更新。</span>
+                <div>
+                    <a href="https://exam.thisis.host" class="hilit">
+                        <i class="bi bi-arrow-right-square"></i> 访问在线版</a>
+                </div>
             </div>
-            <div id="activity">提示文字</div>
+            <!-- 希沃屏保被关了，这个暂时不用 -->
+            <div class="space-between" id="ssaver">
+                <p><i class="bi bi-exclamation-triangle"></i>
+                    希沃管家可能<span id="ssavertime">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)！</p>
+                <a class="hilit"><i class="bi bi-clock-history"></i>
+                    暂时关闭45分钟</a>
+            </div>
+            <div class="space-between" id="msg">
+                <p><i class="bi bi-chat-right-dots"></i>
+                    <span id="msgcontent">这是一条初始消息。</span></p>
+                <a class="bi bi-x-lg"></a>
+            </div>
         </div>
-    </b>
 
-    <!-- 这个先暂时关掉，文案移动到别处 -->
-    <div class="notify" id="HelpBubble" onclick="this.style='display: none;'">
-        <div class="space-between">
-            <div>
+        <div>
+            <header class="space-between">
+                <h2>沉着冷静&emsp;诚信考试</h2>
+                <nav class="dim">
+
+                    <span class="dropdown">
+                        <div class="hilit">
+                            <a class="space-between" style="min-width: 5em;">
+                                <span id="type">类型</span>
+                                <i class="bi bi-chevron-expand"></i></a>
+                        </div>
+                        <div class="dropdown-content" style="min-width: 5em;">
+                            <a onclick="change(this.innerHTML)">高三理科</a>
+                            <a onclick="change(this.innerHTML)">高三文科</a>
+                            <a onclick="change(this.innerHTML)">高三日常</a>
+                            <a onclick="change(this.innerHTML)">高二理科</a>
+                            <a onclick="change(this.innerHTML)">高二文科</a>
+                            <a onclick="change(this.innerHTML)">高一</a>
+                            <a onclick="change('临时科目'); setTemp();">
+                                <i class="bi bi-plus-square-dotted"></i> 临时</a>
+                        </div>
+                    </span>&emsp;
+
+                    <span class="dropdown">
+                        <a onclick="eleHelp.style.display='block';send('帮助')">
+                            <i class="bi bi-question-circle"></i> 帮助</a>
+                        <div class="dropdown-content" style="left: -12em; min-width: 20em; font-size: .75em;">
+                            <div>
+                                <p>在浏览器地址栏输入<b class="hilit">exam.thisis.host</b>访问。</p>
+                                <p class="sub">
+                                    （不需要加任何前后缀）<br>
+                                    鬼才案例：某考场访问http//exam.thisis.host(错误的协议头拼写)、
+                                    www.exam.thisis.host(错误的主机名)显示网站无法访问，
+                                    后用其他网站代替了考试时钟。
+                                </p>
+                            </div>
+                            <div>
+                                <p>推荐使用Chrome、Edge、Firefox访问。</p>
+                                <p class="sub">IE 9/10/11、QQ浏览器内核落后，不建议使用；<br>IE 8（2009年）或更早的浏览器无法加载。</p>
+                            </div>
+                            <div>
+                                <p>通过“保存到本地”按钮来获得快捷方式。<br>野生技协提供安装桌面图标服务。</p>
+                                <p class="sub">（无需关闭开机还原）<br>
+                                    鬼才案例：某班下载了此网页的快照到本地，并向其他班推荐此方法，
+                                    考试时离线打开了快照而不是真正的考试时钟，错过在线升级，
+                                    导致几个考场发生时间显示错误的事故，该班电教负全责。
+                                    （相当于使用几天前的天气预报截图查询今日天气）</p>
+                            </div>
+                        </div>
+                    </span>&emsp;
+
+                    <a onclick="fullscreen()">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                        <span id="fullscreen">全屏</span></a>
+                </nav>
+            </header>
+
+            <div class="dim" id="subtitle">⚠ 代码正在加载，若时间过长可以尝试刷新</div>
+
+            <div class="bar">
+                <div id="bar"></div>
+            </div>
+
+            <b class="card">
+                <div>
+                    <div id="subject">科目</div>
+                    <div id="duration">16:66~17:77</div>
+                </div>
+                <div>
+                    <div id="clock">18:88</div>
+                </div>
+                <div>
+                    <div>
+                        <span id="timer">199</span><span class="dim" id="timersub">min</span>
+                    </div>
+                    <div id="activity">提示文字</div>
+                </div>
+                <!-- <div><br><br><br>test<br><br><br></div> -->
+            </b>
+
+            <!-- 这个先暂时关掉，文案移动到别处 -->
+            <div class="notify" id="help">
                 <div class="space-between">
-                    <h2>😉 欢迎&emsp;</h2>
-                    <a class="hilit dim" href="/考试时钟.url">
-                        <i class="bi bi-download"></i> 保存到本地</a>
+                    <div>
+                        <div class="space-between">
+                            <h2>😉 欢迎&emsp;</h2>
+                            <a class="hilit dim" href="/考试时钟.url">
+                                <i class="bi bi-download"></i> 保存到本地</a>
+                        </div>
+                        <p class="dim">轻触关闭此消息(IE无法关闭)</p>
+                    </div>
+                    <div>
+                        <p><i class="bi bi-info-circle"></i>
+                            若加载异常建议刷新，你还可以：</p>
+                        <p class="dim">
+                            1.关闭屏保，有问题可联系纸鹿；<br>
+                            2.建议使用Chrome/Egde/Firefox浏览器，最低支持IE9；<br>
+                            3.本站网址<b class="hilit">exam.thisis.host</b>不需要加前后缀！</p>
+                    </div>
+                    <div>
+                        <p><i class="bi bi-people-fill"></i>
+                            野生技协 - 欢迎提问</p>
+                        <p class="dim">
+                            做优质的自发性技术协助组织<br>
+                            发布了网课APP、电子课本导航和考试时钟<br>
+                            群号：894656456 (面向校友开放)</p>
+                    </div>
                 </div>
-                <p class="dim">轻触关闭此消息(IE无法关闭)</p>
-            </div>
-            <div>
-                <p><i class="bi bi-info-circle"></i>
-                    若加载异常建议刷新，你还可以：</p>
-                <p class="dim">
-                    1.关闭屏保，有问题可联系纸鹿；<br>
-                    2.建议使用Chrome/Egde/Firefox浏览器，最低支持IE9；<br>
-                    3.本站网址<b class="hilit">exam.thisis.host</b>不需要加前后缀！</p>
-            </div>
-            <div>
-                <p><i class="bi bi-people-fill"></i>
-                    野生技协 - 欢迎提问</p>
-                <p class="dim">
-                    做优质的自发性技术协助组织<br>
-                    发布了网课APP、电子课本导航和考试时钟<br>
-                    群号：894656456 (面向校友开放)</p>
             </div>
         </div>
+
+        <footer class="sub">
+            <!-- <img src="https://7.dusays.com/2021/05/23/ee48832e0e004.png"> -->
+            <!-- <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png"> -->
+            <div class="sub space-between">
+                <span><i class="bi bi-vector-pen"></i>
+                    主创：纸鹿 × 野生技协</span>
+                <span><i class="bi bi-award"></i>
+                    特邀合作：划水方块 拾汘 Star 长安凛冬</span>
+                <span><i class="bi bi-front"></i>
+                    友好社团：音幻 朗诵 排球 合唱团 街舞 汉服 航模
+                    民乐 心理 书画 动漫 舞蹈队 日语 INSTREET 机器人 推理 篮裁</span>
+            </div>
+            <div class="sub space-between">
+                <span><i class="bi bi-person-plus-fill"></i> 反馈QQ：
+                    <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066
+                    </a></span>
+                <span><i class="bi bi-people-fill"></i>
+                    交流群：894656456</span>
+                <span><i class="bi bi-code-slash"></i>
+                    版本：5.6.0_wxy_contextmenu</span>
+            </div>
+        </footer>
     </div>
-
-    <footer class="small">
-        <!-- <img src="https://7.dusays.com/2021/05/23/ee48832e0e004.png"> -->
-        <!-- <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png"> -->
-        <div class="space-between">
-            <span><i class="bi bi-vector-pen"></i>
-                主创：纸鹿 × 野生技协</span>
-            <span><i class="bi bi-award"></i>
-                特邀合作：划水方块 拾汘 Star 长安凛冬</span>
-            <span><i class="bi bi-front"></i>
-                友好社团：音幻 朗诵 排球 合唱团 街舞 汉服 航模
-                民乐 心理 书画 动漫 舞蹈队 日语 INSTREET 机器人 推理 篮裁</span>
-        </div>
-        <div class="space-between">
-            <span><i class="bi bi-person-plus-fill"></i> 反馈QQ：
-                <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066
-                </a></span>
-            <span><i class="bi bi-people-fill"></i>
-                交流群：894656456</span>
-            <!-- <span><i class="bi bi-hdd-network-fill"></i>
-                服务商：<a href="https://thisis.host">ThisisHost</a></span> -->
-            <span><i class="bi bi-github"></i>
-                GitHub项目：<a href="https://github.com/ThisisHost/exam-clock">
-                    ThisisHost/exam-clock</a></span>
-            <span><i class="bi bi-code-slash"></i>
-                版本：5.5.7_wxy_bugofdebug</span>
-        </div>
-    </footer>
-
 </body>
 
 <script src="/main.js"></script>
