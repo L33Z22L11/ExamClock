@@ -23,7 +23,7 @@ onmousemove = onclick = function () { ssavertime = 45; }
 
 onkeydown = function (e) {
     ssavertime = 45;
-    console.log(e.key);
+    send("你按下了" + e.key);
     switch (e.key) {
         case "Escape": eleMenu.style.display = "none";
         case "F12": e.preventDefault(); break;
@@ -59,13 +59,17 @@ if (!location.href.match("debug")) {
     setInterval(updateTime, 2000);
 } else {
     alert("已进入调试模式，关闭本页面可返回正常模式。")
+    now = new Date("1970-01-01");
     updateExam();
     updateTime = function () {
         // 调试模式起始时间
         now < start - 36E5 ? now = new Date(start - 36E5) : null;
         // 调试模式截止时间
         // 用加号会直接连接字符串，所以这里得减去负数，太魔幻了
-        now > end - -36E5 ? change(type) : null;
+        if (now > end - -36E5) {
+            change(type);
+            now = new Date("1970-01-01");
+        }
         // 调试模式速度设置
         now.setSeconds(now.getSeconds() + 30);
         // now.setMinutes(now.getMinutes() + 5);
@@ -81,7 +85,7 @@ setInterval(updateSubtitle, 2000);
 
 function change(totype) {
     // 切换类型时需要重新初始化的内容
-    now = new Date("2003-09-24T04:11:00+08:00");
+    now = new Date();
     end = 0, progress = 0, order = 0;
     updateToday();
 
