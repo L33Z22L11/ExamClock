@@ -1,4 +1,10 @@
 console.log("%c\n欢迎加入野生技协\nQQ群: 894656456\n", "font:bold 3em Roboto,sans-serif;");
+eleMain = document.getElementById("main");
+eleMenu = document.getElementById("menu");
+eleSsaver = document.getElementById("ssaver");
+eleMsg = document.getElementById("msg");
+eleHelp = document.getElementById("help");
+
 try {
     !location.host.match("exam.thisis.host") ?
         document.getElementById("verify").style.display = "flex" : null;
@@ -7,12 +13,6 @@ catch (e) {
     alert("检测到盗版的考试时钟且发送警报失败！\n" + e);
     location.href = "https://exam.thisis.host";
 }
-eleMain = document.getElementById("main");
-eleMenu = document.getElementById("menu");
-eleSsaver = document.getElementById("ssaver");
-eleMsg = document.getElementById("msg");
-eleHelp = document.getElementById("help");
-
 // 希沃屏保预警，已全局关闭
 // !location.href.match("nossaver") ?
 //     setInterval(updateSST, 60000) : null;
