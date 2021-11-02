@@ -136,7 +136,7 @@ function setTemp(sh, sm, eh, em) {
     $(prompt("考试科目名称", "临时"),
         today + fixDigit(sh) + ":" + fixDigit(sm),
         today + fixDigit(eh) + ":" + fixDigit(em));
-    subtitle = prompt("考试标语(可选)", "");
+    subtitle = [prompt("考试标语(可选)", "")];
     !subtitle ? subtitle = ["欢迎使用考试时钟，如有问题可以加入QQ群894656456交流。"] : null;
     alert("考试科目：" + subject + "\n起止时间：" + getClock(start) + "~" + getClock(end));
 }
