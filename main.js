@@ -55,6 +55,7 @@ if (!location.href.match("debug")) {
 } else {
     alert("已进入调试模式，关闭本页面可返回正常模式。")
     now = new Date("1970-01-01");
+    document.getElementById("bar").style.transition = "none";
     updateExam();
     updateTime = function () {
         // 调试模式起始时间
@@ -233,7 +234,7 @@ function updateExam() {
         timer = Math.round((now - start + 18E5) / 6E4);
         timersub = "/ 10 min";
         activity = "课间休息";
-        progress = (now - start + 18E5) / 6E3;
+        progress = (start - now - 12E5) / 6E3;
     } else if (now < (start - 6E5)) {
         timer = Math.round((now - start + 12E5) / 6E4);
         timersub = "/ 10 min";
@@ -253,7 +254,7 @@ function updateExam() {
         timer = Math.round((start - now) / 6E4);
         timersub = "min";
         activity = "距离开始";
-        progress = (now - start + 6E5) / 6E3;
+        progress = (start - now) / 6E3;
     } else if (now < end) {
         // now.getHours() == 12 ?
         //     subtitle = ["12:05可能自动关机，请留意提示。"] : null;
