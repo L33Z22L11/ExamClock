@@ -114,7 +114,7 @@ header {
 
 #clock {
   font-size: 5rem;
-  min-width: 2.5rem;
+  min-width: 2.5em;
 }
 #subject,
 #timer {
