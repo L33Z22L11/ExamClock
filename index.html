@@ -13,8 +13,8 @@
 </head>
 
 <body>
-    <div id="menu">
-        <a href=""><i class="bi bi-arrow-repeat"></i> 刷新</a>
+    <div id="menu" style="min-width: 12em;">
+        <a onclick="location.reload();"><i class="bi bi-arrow-repeat"></i> 刷新</a>
         <div><i class="bi bi-aspect-ratio"></i> 缩放
             <div class="selectbar">
                 <a onclick="relStyle('fontSize',-0.05,'em',0.75,1.25)">－</a>
@@ -22,7 +22,6 @@
                 <a onclick="relStyle('fontSize',+0.05,'em',0.75,1.25)">＋</a>
             </div>
         </div>
-        <p class="sub">非必要情况请勿修改缩放</p>
         <div><i class="bi bi-circle-half"></i> 对比度
             <div class="selectbar">
                 <a onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
@@ -30,16 +29,15 @@
                 <a onclick="relStyle('opacity',+0.05,'',0.5,1)">＋</a>
             </div>
         </div>
-        <p class="sub">减少光干扰，视环境光设置</p>
         <div class="dropdown">
             <i class="bi bi-gear"></i> 高级
             <div>
                 <a href="?debug" target="_blank">
                     <i class="bi bi-bug"></i> 新建调试页面</a>
-                <a --href="?nossaver" target="_blank">
+                <a --href="?noforewarn" target="_blank">
                     <i class="bi bi-shield-slash"></i> 全校已取消屏保</a>
                 <a href="https://github.com/ThisisHost/exam-clock">
-                    <i class="bi bi-code-slash"></i> 访问源代码</a>
+                    <i class="bi bi-code-slash"></i> 访问源代码仓库</a>
                 <a onclick="change(prompt('请输入考试类型','高四理科'))">
                     <i class="bi bi-arrow-left-right"></i> 强制切换类型</a>
             </div>
@@ -59,12 +57,12 @@
                                     Github: L33Z22L11</a>
                             </div>
                         </div>
-                        <div class="dropdown"><a>野生技协</a>
+                        <div class="dropdown">野生技协
                             <div>
                                 <a>QQ群: 894656456</a>
                                 <a href="https://hi.thisis.host" target="_blank">
                                     官网: hi.thisis.host</a>
-                                <a href="https://github.com/L33Z22L11" target="_blank">
+                                <a href="https://github.com/ThisisHost" target="_blank">
                                     Github: ThisisHost</a>
                             </div>
                         </div>
@@ -85,9 +83,9 @@
                 </div>
             </div>
             <!-- 希沃屏保被关了，这个暂时不用 -->
-            <div class="space-between" id="ssaver">
+            <div class="space-between" id="forewarn">
                 <p><i class="bi bi-exclamation-triangle"></i>
-                    希沃管家可能<span id="ssavertime">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)！</p>
+                    希沃管家可能<span id="forewarntime">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)！</p>
                 <a class="hilit"><i class="bi bi-clock-history"></i>
                     暂时关闭45分钟</a>
             </div>
@@ -102,14 +100,14 @@
         <div>
             <div class="space-between">
                 <h2>沉着冷静&emsp;诚信考试</h2>
-                <nav class="dim">
-
-                    <span class="dropdown">
-                        <div style="min-width: 5.5em;">
-                            <a class="hilit" class="space-between">
+                <nav class="sub">
+                    <span class="dropdown" style="min-width: 5.5em;">
+                        <a class="hilit">
+                            <div class="space-between">
                                 <span id="type">类型</span>
-                                <i class="bi bi-chevron-expand"></i></a>
-                        </div>
+                                <i class="bi bi-chevron-expand"></i>
+                            </div>
+                        </a>
                         <div style="min-width: 5.5em;">
                             <a onclick="change(this.innerHTML)">高三理科</a>
                             <a onclick="change(this.innerHTML)">高三文科</a>
@@ -122,27 +120,30 @@
                         </div>
                     </span>&emsp;
 
-                    <span class="dropdown">
-                        <a onclick="eleHelp.style.display='block';send('帮助')">
-                            <i class="bi bi-question-circle"></i> 帮助</a>
-                        <div style="left: -12em; min-width: 20em; font-size: .75em;">
-                            <p>在浏览器地址栏输入<b class="hilit">exam.thisis.host</b>访问。</p>
-                            <p class="sub">
-                                （不需要加任何前后缀）<br>
-                                鬼才案例：某考场访问http//exam.thisis.host(错误的协议头拼写)、
-                                www.exam.thisis.host(错误的主机名)显示网站无法访问，
-                                后用其他网站代替了考试时钟。
-                            </p>
-                            <p>推荐使用Chrome、Edge、Firefox访问。</p>
-                            <p class="sub">IE 9/10/11、QQ浏览器内核落后，不建议使用；<br>IE 8（2009年）或更早的浏览器无法加载。</p>
-                            <p>通过“保存到本地”按钮来获得快捷方式。<br>野生技协提供安装桌面图标服务。</p>
-                            <p class="sub">（无需关闭开机还原）<br>
-                                鬼才案例：某班下载了此网页的快照到本地，并向其他班推荐此方法，
-                                考试时离线打开了快照而不是真正的考试时钟，错过在线升级，
-                                导致几个考场发生时间显示错误的事故，该班电教负全责。
-                                （相当于使用几天前的天气预报截图查询今日天气）</p>
-                        </div>
-                    </span>&emsp;
+                    <!--<spanclass="dropdown">
+<divonclick="eleHelp.style.display='block';send('帮助')">
+<iclass="bibi-question-circle"></i>帮助
+</div>
+<divstyle="left:-12em;min-width:20em;font-size:.5rem;">
+<div>
+<p>在浏览器地址栏输入<bclass="hilit">exam.thisis.host</b>访问。</p>
+<pclass="dim">
+（不需要加任何前后缀）<br>
+鬼才案例：某考场访问http//exam.thisis.host(错误的协议头拼写)、
+www.exam.thisis.host(错误的主机名)显示网站无法访问，
+后用其他网站代替了考试时钟。
+</p>
+<p>推荐使用Chrome、Edge、Firefox访问。</p>
+<pclass="dim">IE9/10/11、QQ浏览器内核落后，不建议使用；<br>IE8（2009年）或更早的浏览器无法加载。</p>
+<p>通过“保存到本地”按钮来获得快捷方式。<br>野生技协提供安装桌面图标服务。</p>
+<pclass="dim">（无需关闭开机还原）<br>
+鬼才案例：某班下载了此网页的快照到本地，并向其他班推荐此方法，
+考试时离线打开了快照而不是真正的考试时钟，错过在线升级，
+导致几个考场发生时间显示错误的事故，该班电教负全责。
+（相当于使用几天前的天气预报截图查询今日天气）</p>
+</div>
+</div>
+</span>&emsp;-->
 
                     <a onclick="fullscreen()">
                         <i class="bi bi-arrows-fullscreen"></i>
@@ -207,24 +208,32 @@
         <footer>
             <!-- <img src="https://bu.dusays.com/2021/05/23/ee48832e0e004.png"> -->
             <!-- <img src="https://bu.dusays.com/2021/05/20/2e7431412dc87.png"> -->
-            <div class="sub space-between">
+            <div class="space-between">
                 <span><i class="bi bi-vector-pen"></i>
-                    主创：纸鹿 × 野生技协</span>
+                    主创：纸鹿 × 混技</span>
                 <span><i class="bi bi-award"></i>
-                    特邀合作：划水方块 拾汘 Star 长安凛冬</span>
-                <span><i class="bi bi-front"></i>
-                    友好社团：音幻 朗诵 排球 合唱团 街舞 汉服 航模
-                    民乐 心理 书画 动漫 舞蹈队 日语 INSTREET 机器人 推理 篮裁</span>
+                    特邀合作：野生技协(混技·宝中分部) 划水方块 拾汘 Star 长安凛冬</span>
+                <span><i class="bi bi-file-earmark-text"></i> 公众号文章： <a
+                        href="https://mp.weixin.qq.com/s?__biz=MzkyMTI4OTcyMw==&mid=2247483696&idx=1&sn=c8df6332c7cceac0187bb96a88a3c4f6">
+                        考试时钟的升级打怪攻略</a></span>
             </div>
-            <div class="sub space-between">
+            <div>
+                <div class="space-between">
+                    <span><i class="bi bi-front"></i> 友好社团：</span>
+                    <span>音幻宝中</span>&emsp;<span>朗诵社</span>&emsp;<span>排球社</span>&emsp;<span>合唱团</span>&emsp;<span>街舞社</span>&emsp;<span>汉服社</span>&emsp;
+                    <span>航模社</span>&emsp;<span>民乐社</span>&emsp;<span>心理社</span>&emsp;<span>书画社</span>&emsp;<span>动漫社</span>&emsp;<span>舞蹈队</span>&emsp;
+                    <span>日语社</span>&emsp;<span>INSTREET社</span>&emsp;<span>机器人社</span>&emsp;<span>推理社</span>&emsp;<span>
+                        篮裁社</span>
+                </div>
+            </div>
+            <div class="space-between">
                 <span><i class="bi bi-person-plus-fill"></i> 反馈QQ：
                     <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066
                     </a></span>
                 <span><i class="bi bi-people-fill"></i>
-                    交流群：894656456</span>
-                <span><i class="bi bi-file-earmark-text"></i> 公众号文章： <a
-                        href="https://mp.weixin.qq.com/s?__biz=MzkyMTI4OTcyMw==&mid=2247483696&idx=1&sn=c8df6332c7cceac0187bb96a88a3c4f6">
-                        考试时钟的升级打怪攻略</a></span>
+                    混技交流群：169994096</span>
+                <span><i class="bi bi-people-fill"></i>
+                    野生技协(混技·宝中分部)群：894656456 (168/200)</span>
                 <span><i class="bi bi-code-slash"></i>
                     版本：5.6.1_wxy_rewritecss</span>
             </div>

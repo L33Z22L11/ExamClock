@@ -1,58 +1,53 @@
-console.log("%c\n欢迎加入野生技协\nQQ群: 894656456\n", "font:bold 3em Roboto,sans-serif;");
+console.log("%c\n加入Techaos! 混技\nQQ群: 169994096\n", "font:bold 3em Roboto,sans-serif;");
+console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:bold 3em Roboto,sans-serif;");
 eleMain = document.getElementById("main");
 eleMenu = document.getElementById("menu");
-eleSsaver = document.getElementById("ssaver");
+eleForewarn = document.getElementById("forewarn");
 eleMsg = document.getElementById("msg");
 eleHelp = document.getElementById("help");
-
-try {
-    !location.host.match("exam.thisis.host") ?
-        document.getElementById("verify").style.display = "flex" : null;
-}
-catch (e) {
-    alert("检测到盗版的考试时钟且发送警报失败！\n" + e);
-    location.href = "https://exam.thisis.host";
-}
-// 希沃屏保预警，已全局关闭
-// !location.href.match("nossaver") ?
-//     setInterval(updateSST, 60000) : null;
-
+setInterval(function () {
+    try {
+        !location.host.match("exam.thisis.host") ?
+            document.getElementById("verify").style.display = "flex" : null;
+    }
+    catch (e) {
+        alert("检测到盗版的考试时钟且发送警报失败！\n" + e);
+        location.href = "https://exam.thisis.host";
+    }
+}, 2000);
+// 希沃屏保预警
+// “屏保都统一关闭了，注释掉，白写个功能”
+// !location.href.match("noforewarn") ? setInterval(updateSST, 600) : null;
 // 希沃屏保剩余时间
-ssavertime = 45;
-onmousemove = onclick = function () { ssavertime = 45; }
-
+forewarntime = 45;
+onmousemove = onclick = function () { forewarntime = 45; }
 onkeydown = function (e) {
-    ssavertime = 45;
+    forewarntime = 45;
     send("你按下了" + e.key);
     switch (e.key) {
         case "Escape": eleMenu.style.display = "none";
-        case "F12": e.preventDefault(); break;
+        case "F12": e.preventDefault(); send("若要调试，请联系混技。"); break;
         case "/": relStyle('fontSize', -0.05, 'em', 0.75, 1.25); break;
         case "*": relStyle('fontSize', +0.05, 'em', 0.75, 1.25); break;
         case "-": relStyle('opacity', -0.05, '', 0.5, 1); break;
         case "+": relStyle('opacity', +0.05, '', 0.5, 1); break;
     }
 }
-
 oncontextmenu = function (e) {
     e.preventDefault();
     eleMenu.style.display = "block";
     eleMenu.style.left = e.clientX + "px";
     eleMenu.style.top = e.clientY + "px";
 }
-
 eleMain.onclick = function () { eleMenu.style.display = "none"; };
-
-eleSsaver.onclick = eleMsg.onclick = eleHelp.onclick =
+eleForewarn.onclick = eleMsg.onclick = eleHelp.onclick =
     function () { this.style.display = ""; }
-
-
 change("高三理科");
 if (!location.href.match("debug")) {
     updateTime = function () {
         now = new Date();
-        // 时钟校准，与学校铃声保持同步
-        // now.setMinutes(now.getMinutes() + 1);
+        // 设置相对时差
+        // now.setSeconds(now.getSeconds() + 30);
         output("clock", getClock(now));
         updateExam();
     }
@@ -65,50 +60,36 @@ if (!location.href.match("debug")) {
         // 调试模式起始时间
         now < start - 36E5 ? now = new Date(start - 36E5) : null;
         // 调试模式截止时间
-        // 用加号会直接连接字符串，所以这里得减去负数，太魔幻了
-        if (now > end - -36E5) {
-            change(type);
-            now = new Date("1970-01-01");
-        }
+        // “用加号会直接连接字符串，所以这里得减去负数，太魔幻了”
+        if (now > end - -36E5) { change(type); now = new Date("1970-01-01"); }
         // 调试模式速度设置
         now.setSeconds(now.getSeconds() + 30);
         // now.setMinutes(now.getMinutes() + 5);
-        output("clock", getClock(now));
-        updateExam();
+        output("clock", getClock(now)); updateExam();
     }
     setInterval(updateTime, 20);
 }
 updateTime();
 updateSubtitle();
 setInterval(updateSubtitle, 2000);
-
-
 function change(totype) {
     // 切换类型时需要重新初始化的内容
     now = new Date();
-    end = 0, progress = 0, order = 0;
+    end = 0, progress = 0, subtitle = null, order = 0;
     updateToday();
-
     type = totype;
-    // console.log(type);
     output("type", type);
-
     // 切换类型的对焦动画
     eleMain.style.filter = "blur(.5em)";
-    setTimeout(function () {
-        eleMain.style.filter = "blur(0)";
-        updateTime();
-    }, 500);
+    // “客户想提升‘应用流畅度’，就把延迟改小点”
+    setTimeout(function () { eleMain.style.filter = "blur(0)"; updateTime(); }, 200);
 }
-
 function send(msg) {
     eleMsg.style.display = "flex";
     output("msgcontent", msg);
     setTimeout(function () { eleMsg.style.display = ""; }, 5000);
-    // 有机会的话弄一个clearTimeout()
+    // “清除任务会重叠，有时间再改吧”
 }
-
-
 function relStyle(prop, delta, unit, minVal, maxVal) {
     propVal = eleMain.style[prop].replace(unit, "") * 1 + delta;
     propVal = Math.round(Math.min(Math.max(propVal, minVal), maxVal) * 1E2) / 1E2;
@@ -117,21 +98,14 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
     output(prop, propVal);
     send(prop + "增加了" + delta + "，调节为" + propVal);
 }
-
 function fullscreen() {
     if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-        output("fullscreen", "退出");
-    } else {
-        document.exitFullscreen();
-        output("fullscreen", "全屏");
-    }
+        document.documentElement.requestFullscreen(); output("fullscreen", "退出");
+    } else { document.exitFullscreen(); output("fullscreen", "全屏"); }
 }
-
 function updateToday() {
     today = fixDigit(now.getMonth() + 1) + "-" + fixDigit(now.getDate()) + "T";
 }
-
 function $(nextSubject, nextStart, nextEnd, nextSubtitle) {
     if (now >= end) {
         subject = nextSubject;
@@ -140,25 +114,20 @@ function $(nextSubject, nextStart, nextEnd, nextSubtitle) {
     }
     subject == nextSubject && nextSubtitle ? subtitle = nextSubtitle : null;
 }
-
 function fixDigit(num) {
     num = parseInt(num);
     return num < 10 ? "0" + num : num;
 }
-
 function getClock(date) {
     return date.getHours() + ":" + fixDigit(date.getMinutes());
 }
-
 function output(id, value) {
     document.getElementById(id).innerHTML = value;
 }
-
 function updateSubtitle() {
     order < subtitle.length - 1 ? order++ : order = 0;
     output("subtitle", subtitle[order]);
 }
-
 function setTemp(sh, sm, eh, em) {
     sh = prompt("考试开始时间(小时)", 16);
     sm = prompt("考试开始时间(分钟)", 25);
@@ -167,45 +136,45 @@ function setTemp(sh, sm, eh, em) {
     $(prompt("考试科目名称", "临时"),
         today + fixDigit(sh) + ":" + fixDigit(sm),
         today + fixDigit(eh) + ":" + fixDigit(em));
+    subtitle = prompt("考试标语(可选)", "");
+    !subtitle ? subtitle = ["欢迎使用考试时钟，如有问题可以加入QQ群894656456交流。"] : null;
     alert("考试科目：" + subject + "\n起止时间：" + getClock(start) + "~" + getClock(end));
 }
-
 function illback() {
     now.getHours() == 18 && now.getMinutes() > 30 ?
         now.getDate() == 4 ?
             subtitle = ["今天我就要离开，明天我还会回来。9min！"] :
             subtitle = ["祝各位努力的孩子取得理想的名次！"] : null;
 }
-
 function updateExam() {
-    // 功能是写出来了，不过到现在都不知道subtitle在哪设置合适
+    // “功能是写出来了，不过到现在都不知道subtitle在哪设置合适”
     // 防止某些类型由于没有起止时间而崩溃
     $("", "01-01T00:00", "01-01T00:00", ["考试时钟预设内容"]);
     switch (type) {
         case "高三理科":
             // illback();
-            subtitle = ["高三理科月考一：请以实际铃声为准。"];
+            subtitle = ["高三理科月考二：请以实际铃声为准。"];
             // subtitle = ["高三素质拓展理科模拟训练"];
-            $("数学", "10-04T14:00", "10-04T16:00");
-            $("化学", "10-04T16:30", "10-04T18:10");
-            $("语文", "10-05T07:40", "10-05T10:10");
-            $("生物", "10-05T10:40", "10-05T12:10");
-            $("英语", "10-05T14:00", "10-05T16:00");
-            $("物理", "10-05T16:30", "10-05T18:10");
+            $("英语", "11-05T14:00", "11-05T16:00");
+            $("物理", "11-05T16:30", "11-05T18:10");
+            $("语文", "11-06T07:40", "11-06T10:10");
+            $("生物", "11-06T10:40", "11-06T12:10");
+            $("数学", "11-06T14:00", "11-06T16:00");
+            $("化学", "11-06T16:30", "11-06T18:10");
             break;
         case "高三文科":
             // illback();
-            subtitle = ["高三文科月考一：请以实际铃声为准。"];
+            subtitle = ["高三文科月考二：请以实际铃声为准。"];
             // subtitle = ["高三素质拓展文科模拟训练"];
-            $("数学", "10-04T14:00", "10-04T16:00");
-            $("政治", "10-04T16:30", "10-04T18:10");
-            $("语文", "10-05T07:40", "10-05T10:10");
-            $("历史", "10-05T10:40", "10-05T12:20");
-            $("英语", "10-05T14:00", "10-05T16:00");
-            $("地理", "10-05T16:30", "10-05T18:10");
+            $("英语", "11-05T14:00", "11-05T16:00");
+            $("历史", "11-05T16:30", "11-05T18:10");
+            $("语文", "11-06T07:40", "11-06T10:10");
+            $("地理", "11-06T10:40", "11-06T12:20");
+            $("数学", "11-06T14:00", "11-06T16:00");
+            $("政治", "11-06T16:30", "11-06T18:10");
             break;
         case "高二理科":
-            subtitle = ["高二理科阶段性考试一：请以实际铃声为准。"];
+            subtitle = ["高二理科期中暨模块结业考试：请以实际铃声为准。"];
             $("英语", "10-08T14:00", "10-08T16:00");
             $("化学", "10-08T16:30", "10-08T18:10");
             $("语文", "10-09T07:40", "10-09T10:10");
@@ -214,7 +183,7 @@ function updateExam() {
             $("物理", "10-09T16:30", "10-09T18:10");
             break;
         case "高二文科":
-            subtitle = ["高二文科阶段性考试一：请以实际铃声为准。"];
+            subtitle = ["高二文科期中暨模块结业考试：请以实际铃声为准。"];
             $("英语", "10-08T14:00", "10-08T16:00");
             $("政治", "10-08T16:30", "10-08T18:10");
             $("语文", "10-09T07:40", "10-09T10:10");
@@ -248,14 +217,11 @@ function updateExam() {
             $("地理", "06-30T10:20", "06-30T11:20");
             break;
         case "临时科目":
-            subtitle = ["欢迎使用考试时钟，如有问题可以加入QQ群894656456交流。"];
             break;
         default:
             subtitle = ["不存在的考试类型，请重新选择。"];
     }
-
     duration = getClock(start) + "~" + getClock(end);
-
     if (now < (start - 18E5)) {
         // now.getHours() == 12 && now.getHours() == 18 ?
         //     subtitle = "干饭时间到！" : null;
@@ -273,16 +239,21 @@ function updateExam() {
         timersub = "/ 10 min";
         activity = "入场扫描";
         progress = (now - start + 12E5) / 6E3;
-    } else if (now < (start - 3E5)) {
-        timer = Math.round((now - start + 6E5) / 6E4);
-        timersub = "/ 5 min";
-        activity = "发卡贴码";
-        progress = (now - start + 6E5) / 3E3;
+        // } else if (now < (start - 3E5)) {
+        //     timer = Math.round((now - start + 6E5) / 6E4);
+        //     timersub = "/ 5 min";
+        //     activity = "发卡贴码";
+        //     progress = (now - start + 6E5) / 3E3;
+        // } else if (now < start) {
+        //     timer = Math.round((now - start + 3E5) / 6E4);
+        //     timersub = "/ 5 min";
+        //     activity = "发卷审题";
+        //     progress = (now - start + 3E5) / 3E3;
     } else if (now < start) {
-        timer = Math.round((now - start + 3E5) / 6E4);
-        timersub = "/ 5 min";
-        activity = "发卷审题";
-        progress = (now - start + 3E5) / 3E3;
+        timer = Math.round((start - now) / 6E4);
+        timersub = "min";
+        activity = "距离开始";
+        progress = (now - start + 6E5) / 6E3;
     } else if (now < end) {
         // now.getHours() == 12 ?
         //     subtitle = ["12:05可能自动关机，请留意提示。"] : null;
@@ -318,18 +289,17 @@ function updateExam() {
     output("timersub", timersub);
     output("activity", activity);
 }
-
 // 希沃屏保预警，2021-09屏保已经更换内容且被信息中心关闭
 function updateSST() {
-    ssavertime -= 1;
-    output("ssavertime", "在" + ssavertime + "分钟后");
-    if (ssavertime < 0) {
-        eleSsaver.style.backgroundColor = "rgba(255,255,255,.2)";
-        output("ssavertime", "已经");
-    } else if (ssavertime < 10) {
-        eleSsaver.style.display = "flex";
-        eleSsaver.style.backgroundColor = "#f52";
+    forewarntime -= 1;
+    output("forewarntime", "在" + forewarntime + "分钟后");
+    if (forewarntime < 0) {
+        eleForewarn.style.backgroundColor = "rgba(255,255,255,.2)";
+        output("forewarntime", "已经");
+    } else if (forewarntime < 10) {
+        eleForewarn.style.display = "flex";
+        eleForewarn.style.backgroundColor = "#f52";
     } else {
-        eleSsaver.style.display = "";
+        eleForewarn.style.display = "";
     }
 }
