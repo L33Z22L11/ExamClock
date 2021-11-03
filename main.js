@@ -306,4 +306,4 @@ function updateSST() {
 }
 setInterval(function () {
     output("runtime", ((now - new Date("2021-04")) / 36E5).toFixed(3) + "小时");
-}, 500);
+}, 1800);

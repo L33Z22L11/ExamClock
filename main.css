@@ -45,6 +45,13 @@ footer {
   font-size: 0.3em;
   color: rgba(255, 255, 255, 0.3);
 }
+.splash{
+  animation: splash 1.8s infinite alternate;
+}
+@keyframes splash {
+  from {color: rgba(255, 255, 255, 0.3);}
+  to{color: rgba(255, 255, 255, 0.6);}
+  }
 /* 选中 */
 ::selection {
   background: rgba(255, 102, 0, 0.8);
