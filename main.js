@@ -42,8 +42,13 @@ oncontextmenu = function (e) {
 eleMain.onclick = function () { eleMenu.style.display = "none"; };
 eleForewarn.onclick = eleMsg.onclick = eleHelp.onclick =
     function () { this.style.display = ""; }
-change("高三理科");
-if (!location.href.match("debug")) {
+search = location.search;
+if (search.match("totype32")) { change("高三文科"); }
+else if (search.match("totype21")) { change("高二理科"); }
+else if (search.match("totype22")) { change("高二文科"); }
+else if (search.match("totype30")) { change("高三日常"); }
+else { change("高三理科"); }
+if (!search.match("debug")) {
     updateTime = function () {
         now = new Date();
         // 设置相对时差
@@ -78,7 +83,7 @@ function change(totype) {
     now = new Date();
     end = 0, progress = 0, subtitle = null, order = 0;
     updateToday();
-    type = totype;
+    totype ? type = totype : null;
     output("type", type);
     // 切换类型的对焦动画
     eleMain.style.filter = "blur(.5em)";
@@ -304,3 +309,6 @@ function updateSST() {
         eleForewarn.style.display = "";
     }
 }
+setInterval(function () {
+    output("runtime", ((now - new Date("2021-04")) / 36E5).toFixed(3) + "小时");
+}, 500);

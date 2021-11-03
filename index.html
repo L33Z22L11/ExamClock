@@ -35,7 +35,7 @@
                 <a href="?debug" target="_blank">
                     <i class="bi bi-bug"></i> 新建调试页面</a>
                 <a --href="?noforewarn" target="_blank">
-                    <i class="bi bi-shield-slash"></i> 全校已取消屏保</a>
+                    <i class="bi bi-shield-slash"></i> 屏保预警已关闭</a>
                 <a href="https://github.com/ThisisHost/exam-clock">
                     <i class="bi bi-code-slash"></i> 访问源代码仓库</a>
                 <a onclick="change(prompt('请输入考试类型','高四理科'))">
@@ -45,27 +45,41 @@
         <div class="dropdown">
             <i class="bi bi-info-square"></i> 关于
             <div>
-                <div class="dropdown">
-                    <i class="bi bi-person-check-fill"></i> 开发者
+                <div class="dropdown">纸鹿
                     <div>
-                        <div class="dropdown">纸鹿
-                            <div>
-                                <a>QQ: 2399052066</a>
-                                <a>微信: zhilubenlu</a>
-                                <a>公众号: 纸鹿本鹿</a>
-                                <a href="https://github.com/L33Z22L11" target="_blank">
-                                    Github: L33Z22L11</a>
-                            </div>
-                        </div>
-                        <div class="dropdown">野生技协
-                            <div>
-                                <a>QQ群: 894656456</a>
-                                <a href="https://hi.thisis.host" target="_blank">
-                                    官网: hi.thisis.host</a>
-                                <a href="https://github.com/ThisisHost" target="_blank">
-                                    Github: ThisisHost</a>
-                            </div>
-                        </div>
+                        <a>QQ: 2399052066</a>
+                        <a>微信: zhilubenlu</a>
+                        <a>公众号: 纸鹿本鹿</a>
+                        <a href="https://github.com/L33Z22L11" target="_blank">
+                            Github: L33Z22L11</a>
+                    </div>
+                </div>
+                <div class="dropdown">混技
+                    <div>
+                        <a>QQ群: 169994096</a>
+                        <!-- <a href="https://hi.thisis.host" target="_blank">
+                                    官网: hi.thisis.host</a> -->
+                        <a href="https://github.com/ThisisHost" target="_blank">
+                            Github: ThisisHost</a>
+                    </div>
+                </div>
+                <div class="dropdown">野生技协(混技分部)
+                    <div>
+                        <a>QQ群: 894656456</a>
+                        <a href="https://hi.thisis.host" target="_blank">
+                            官网: hi.thisis.host</a>
+                        <a href="https://github.com/ThisisHost" target="_blank">
+                            Github: ThisisHost</a>
+                    </div>
+                </div>
+                <div class="dropdown">其他
+                    <div style="min-width: 12em;">
+                        <a>划水方块群: 1142349003</a>
+                        <a>拾汘QQ: 393501440</a>
+                        <a>拾汘QQ: 393501440</a>
+                        <a>拾汘QQ: 393501440</a>
+                        <a>拾汘QQ: 393501440</a>
+                        <a>拾汘QQ: 393501440</a>
                     </div>
                 </div>
             </div>
@@ -120,30 +134,24 @@
                         </div>
                     </span>&emsp;
 
-                    <!--<span class="dropdown">
-<div onclick="eleHelp.style.display='block';send('帮助')">
-<i class="bibi-question-circle"></i>帮助
-</div>
-<div style="left:-12em;min-width:20em;font-size:.5rem;">
-<div>
-<p>在浏览器地址栏输入<b class="hilit">exam.thisis.host</b>访问。</p>
-<p class="dim">
-（不需要加任何前后缀）<br>
-鬼才案例：某考场访问http//exam.thisis.host(错误的协议头拼写)、
-www.exam.thisis.host(错误的主机名)显示网站无法访问，
-后用其他网站代替了考试时钟。
-</p>
-<p>推荐使用Chrome、Edge、Firefox访问。</p>
-<p class="dim">IE9/10/11、QQ浏览器内核落后，不建议使用；<br>IE8（2009年）或更早的浏览器无法加载。</p>
-<p>通过“保存到本地”按钮来获得快捷方式。<br>野生技协提供安装桌面图标服务。</p>
-<p class="dim">（无需关闭开机还原）<br>
-鬼才案例：某班下载了此网页的快照到本地，并向其他班推荐此方法，
-考试时离线打开了快照而不是真正的考试时钟，错过在线升级，
-导致几个考场发生时间显示错误的事故，该班电教负全责。
-（相当于使用几天前的天气预报截图查询今日天气）</p>
-</div>
-</div>
-</span>&emsp;-->
+                    <span class="dropdown">
+                        <a href="/跳转到考试时钟.html" onclick="eleHelp.style.display='flex';">
+                            <i class="bi bi-download"></i> 下载跳转页面
+                        </a>
+                        <div style="right:-5em;min-width:20em;font-size:.5rem;">
+                            <div>
+                                <p>在浏览器地址栏输入<b class="hilit">exam.thisis.host</b>访问。</p>
+                                <p class="dim">（不需要加任何前后缀）<br>鬼才案例：某考场访问http//exam.thisis.host(错误的协议头拼写)、
+                                    www.exam.thisis.host(错误的主机名)显示网站无法访问，后用其他网站代替了考试时钟。</p>
+                                <p>推荐使用Chrome、Edge、Firefox访问。</p>
+                                <p class="dim">IE9/10/11、QQ浏览器内核落后，不建议使用；<br>IE8（2009年）或更早的浏览器无法加载。</p>
+                                <p>通过“保存到本地”按钮来获得快捷方式。<br>野生技协提供安装桌面图标服务。</p>
+                                <p class="dim">（无需关闭开机还原）<br>
+                                    鬼才案例：某班下载了此网页的快照到本地，并向其他班推荐此方法，考试时离线打开了快照而不是真正的考试时钟，错过在线升级，
+                                    导致几个考场发生时间显示错误的事故，该班电教负全责。（相当于使用几天前的天气预报截图查询今日天气）</p>
+                            </div>
+                        </div>
+                    </span>&emsp;
 
                     <a onclick="fullscreen()">
                         <i class="bi bi-arrows-fullscreen"></i>
@@ -174,32 +182,23 @@ www.exam.thisis.host(错误的主机名)显示网站无法访问，
                 <!-- <div><br><br><br>test<br><br><br></div> -->
             </b>
 
-            <!--这个先暂时关掉，文案移动到别处-->
-            <div class="notify" id="help">
-                <div class="space-between">
+            <div class="notify">
+                <div class="space-between" id="help">
                     <div>
                         <div class="space-between">
                             <h2>😉欢迎&emsp;</h2>
-                            <a class="hilitdim" href="/考试时钟.url">
-                                <i class="bibi-download"></i>保存到本地</a>
+                            <a class="hilit" href="/考试时钟.url"> <i class="bi bi-download"></i>保存到本地</a>
                         </div>
                         <p class="dim">轻触关闭此消息(IE无法关闭)</p>
                     </div>
                     <div>
-                        <p><i class="bibi-info-circle"></i>
-                            若加载异常建议刷新，你还可以：</p>
-                        <p class="dim">
-                            1.关闭屏保，有问题可联系纸鹿；<br>
-                            2.建议使用Chrome/Egde/Firefox浏览器，最低支持IE9；<br>
+                        <p><i class="bi bi-info-circle"></i> 若加载异常建议刷新，你还可以：</p>
+                        <p class="dim">1.关闭屏保，有问题可联系纸鹿；<br>2.建议使用Chrome/Egde/Firefox浏览器，最低支持IE9；<br>
                             3.本站网址<b class="hilit">exam.thisis.host</b>不需要加前后缀！</p>
                     </div>
                     <div>
-                        <p><i class="bibi-people-fill"></i>
-                            野生技协-欢迎提问</p>
-                        <p class="dim">
-                            做优质的自发性技术协助组织<br>
-                            发布了网课APP、电子课本导航和考试时钟<br>
-                            群号：894656456(面向校友开放)</p>
+                        <p><i class="bi bi-people-fill"></i> 野生技协-欢迎提问</p>
+                        <p class="dim">做优质的自发性技术协助组织<br>发布了网课APP、电子课本导航和考试时钟<br>群号：894656456(面向校友开放)</p>
                     </div>
                 </div>
             </div>
@@ -211,18 +210,6 @@ www.exam.thisis.host(错误的主机名)显示网站无法访问，
             <div class="space-between">
                 <span><i class="bi bi-vector-pen"></i>
                     主创：纸鹿 × 混技</span>
-                <span><i class="bi bi-award"></i>
-                    特邀合作：野生技协(混技·宝中分部) 划水方块 拾汘 Star 长安凛冬</span>
-                <span></span>
-            </div>
-            <div class="space-between">
-                <span><i class="bi bi-front"></i> 友好社团：音幻宝中 朗诵社 排球社 合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社 动漫社 舞蹈队 日语社 INSTREET社
-                    机器人社 推理社 篮裁社</span>
-                <span><i class="bi bi-file-earmark-text"></i> 公众号文章： <a
-                        href="https://mp.weixin.qq.com/s?__biz=MzkyMTI4OTcyMw==&mid=2247483696&idx=1&sn=c8df6332c7cceac0187bb96a88a3c4f6">
-                        纸鹿本鹿《考试时钟的升级打怪攻略》</a></span>
-            </div>
-            <div class="space-between">
                 <span><i class="bi bi-person-plus-fill"></i> 反馈QQ：
                     <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066
                     </a></span>
@@ -230,6 +217,19 @@ www.exam.thisis.host(错误的主机名)显示网站无法访问，
                     混技交流群：169994096</span>
                 <span><i class="bi bi-people-fill"></i>
                     野生技协(混技·宝中分部)群：894656456 (168/200)</span>
+            </div>
+            <div class="space-between">
+                <span><i class="bi bi-award"></i>
+                    特邀合作：野生技协(混技·宝中分部) 划水方块 拾汘 Star 长安凛冬</span>
+                <span><i class="bi bi-front"></i> 友好社团：音幻宝中 朗诵社 排球社 合唱团 街舞社 汉服社 航模社
+                    民乐社 心理社 书画社 动漫社 舞蹈队 日语社 INSTREET社 机器人社 推理社 篮裁社</span>
+            </div>
+            <div class="space-between">
+                <span><i class="bi bi-file-earmark-text"></i> 公众号文章： <a
+                        href="https://mp.weixin.qq.com/s?__biz=MzkyMTI4OTcyMw==&mid=2247483696&idx=1&sn=c8df6332c7cceac0187bb96a88a3c4f6">
+                        纸鹿本鹿《考试时钟的升级打怪攻略》</a></span>
+                <span>状态：稳定运行 <span id="runtime">7个月</span></span>
+                <span>支持期限：2031年4月</span>
                 <span><i class="bi bi-code-slash"></i>
                     版本：5.7.0_wxy_cssboom</span>
             </div>
