@@ -27,8 +27,8 @@ html {
 .bar,
 .card > div,
 .card > a {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
 }
 /* 一级淡文本（保留字体颜色） */
 .dim {
@@ -169,7 +169,7 @@ footer img {
 #menu .dropdown > :last-child {
   bottom: 0;
   left: 5em;
-  min-width: 10em;
+  min-width: 12em;
 }
 /* 下拉/点击文本 */
 .dropdown,

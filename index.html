@@ -24,9 +24,9 @@
         </div>
         <div><i class="bi bi-circle-half"></i> 对比度
             <div class="selectbar">
-                <a onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
+                <a class="fl" onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
                 <span id="opacity">0.75</span>
-                <a onclick="relStyle('opacity',+0.05,'',0.5,1)">＋</a>
+                <a class="fr" onclick="relStyle('opacity',+0.05,'',0.5,1)">＋</a>
             </div>
         </div>
         <div class="dropdown">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="dropdown">其他
-                    <div style="min-width: 14em;">
+                    <div style="min-width: 15em;">
                         <a>划水方块 群: 1142349003</a>
                         <a>拾汘 QQ: 393501440</a>
                         <a>Star QQ: 2692292636</a>
@@ -124,9 +124,9 @@
                             </div>
                         </a>
                         <div style="min-width: 5.5em;">
+                            <a onclick="change(this.innerHTML)">高三日常</a>
                             <a onclick="change(this.innerHTML)">高三理科</a>
                             <a onclick="change(this.innerHTML)">高三文科</a>
-                            <a onclick="change(this.innerHTML)">高三日常</a>
                             <a onclick="change(this.innerHTML)">高二理科</a>
                             <a onclick="change(this.innerHTML)">高二文科</a>
                             <a onclick="change(this.innerHTML)">高一</a>
@@ -137,19 +137,20 @@
 
                     <span class="dropdown">
                         <a href="/考试时钟.url" onclick="eleHelp.style.display='flex';">
-                            <i class="bi bi-download"></i> 下载快捷方式
+                            <i class="bi bi-bookmark-star"></i> 收藏
                         </a>
-                        <div style="right:-5em;min-width:20em;font-size:.5rem;">
+                        <div style="right:-5em;min-width:18em;font-size:.5rem;">
                             <div>
-                                <p>在浏览器地址栏输入<b class="hilit">exam.thisis.host</b>访问。</p>
+                                <p><i class="bi bi-star"></i> 收藏到浏览器书签栏 请按下Ctrl+D</p>
+                                <p><a href="/考试时钟.url"><i class="bi bi-arrow-up-right-square"></i>
+                                        点击下载快捷方式</a></p>
+                                <p><a href="/跳转到考试时钟.html" download="">
+                                        <i class="bi bi-file-earmark-medical"></i> 点击下载跳转html</a></p>
+                                <!-- <p>在浏览器地址栏输入<b class="hilit">exam.thisis.host</b>访问。</p>
                                 <p class="dim">（不需要加任何前后缀）<br>鬼才案例：某考场访问http//exam.thisis.host(错误的协议头拼写)、
-                                    www.exam.thisis.host(错误的主机名)显示网站无法访问，后用其他网站代替了考试时钟。</p>
-                                <p>推荐使用Chrome、Edge、Firefox访问。</p>
-                                <p class="dim">IE9/10/11、QQ浏览器内核落后，不建议使用；<br>IE8（2009年）或更早的浏览器无法加载。</p>
-                                <p>通过“保存到本地”按钮来获得快捷方式。<br>野生技协提供安装桌面图标服务。</p>
-                                <p class="dim">（无需关闭开机还原）<br>
-                                    鬼才案例：某班下载了此网页的快照到本地，并向其他班推荐此方法，考试时离线打开了快照而不是真正的考试时钟，错过在线升级，
-                                    导致几个考场发生时间显示错误的事故，该班电教负全责。（相当于使用几天前的天气预报截图查询今日天气）</p>
+                                    www.exam.thisis.host(错误的主机名)显示网站无法访问，后用其他网站代替了考试时钟。</p> -->
+                                <p class="dim">鬼才案例：某班下载了此网页的快照到本地，并向其他班推荐此方法，考试时离线打开了快照而不是真正的考试时钟，
+                                    错过在线升级，导致几个考场发生时间显示错误的事故，该班电教负全责。（相当于使用几天前的天气预报截图查询今日天气）</p>
                             </div>
                         </div>
                     </span>&emsp;
@@ -210,7 +211,7 @@
             <!-- <img src="https://bu.dusays.com/2021/05/20/2e7431412dc87.png"> -->
             <div class="space-between">
                 <span><i class="bi bi-code-slash"></i> 开发：纸鹿 × 混技</span>
-                <span><i class="bi bi-person-plus-fill"></i> 校园背景投稿QQ：
+                <span><i class="bi bi-images"></i> 背景投稿QQ：
                     <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066
                     </a></span>
                 <span><i class="bi bi-diagram-3-fill"></i> 混技交流群：169994096</span>

@@ -1,5 +1,6 @@
 console.log("%c\n加入Techaos! 混技\nQQ群: 169994096\n", "font:bold 3em Roboto,sans-serif;");
 console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:bold 3em Roboto,sans-serif;");
+search = location.search;
 eleMain = document.getElementById("main");
 eleMenu = document.getElementById("menu");
 eleForewarn = document.getElementById("forewarn");
@@ -42,11 +43,10 @@ oncontextmenu = function (e) {
 eleMain.onclick = function () { eleMenu.style.display = "none"; };
 eleForewarn.onclick = eleMsg.onclick = eleHelp.onclick =
     function () { this.style.display = ""; }
-search = location.search;
-if (search.match("totype32")) { change("高三文科"); }
+if (search.match("totype30")) { change("高三日常"); }
+else if (search.match("totype32")) { change("高三文科"); }
 else if (search.match("totype21")) { change("高二理科"); }
 else if (search.match("totype22")) { change("高二文科"); }
-else if (search.match("totype30")) { change("高三日常"); }
 else { change("高三理科"); }
 if (!search.match("debug")) {
     updateTime = function () {
@@ -105,9 +105,11 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
     send(prop + "增加了" + delta + "，调节为" + propVal);
 }
 function fullscreen() {
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen(); output("fullscreen", "退出");
-    } else { document.exitFullscreen(); output("fullscreen", "全屏"); }
+    try {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen(); output("fullscreen", "退出");
+        } else { document.exitFullscreen(); output("fullscreen", "全屏"); }
+    } catch (e) { send("该浏览器不支持此操作，请手动最大化窗口或全屏。"); }
 }
 function updateToday() {
     today = fixDigit(now.getMonth() + 1) + "-" + fixDigit(now.getDate()) + "T";
@@ -120,16 +122,9 @@ function $(nextSubject, nextStart, nextEnd, nextSubtitle) {
     }
     subject == nextSubject && nextSubtitle ? subtitle = nextSubtitle : null;
 }
-function fixDigit(num) {
-    num = parseInt(num);
-    return num < 10 ? "0" + num : num;
-}
-function getClock(date) {
-    return date.getHours() + ":" + fixDigit(date.getMinutes());
-}
-function output(id, value) {
-    document.getElementById(id).innerHTML = value;
-}
+function fixDigit(num) { num = parseInt(num); return num < 10 ? "0" + num : num; }
+function getClock(date) { return date.getHours() + ":" + fixDigit(date.getMinutes()); }
+function output(id, value) { document.getElementById(id).innerHTML = value; }
 function updateSubtitle() {
     order < subtitle.length - 1 ? order++ : order = 0;
     output("subtitle", subtitle[order]);
@@ -181,21 +176,21 @@ function updateExam() {
             break;
         case "高二理科":
             subtitle = ["高二理科期中暨模块结业考试：请以实际铃声为准。"];
-            $("英语", "10-08T14:00", "10-08T16:00");
-            $("化学", "10-08T16:30", "10-08T18:10");
-            $("语文", "10-09T07:40", "10-09T10:10");
-            $("生物", "10-09T10:40", "10-09T12:10");
-            $("数学", "10-09T14:00", "10-09T16:00");
-            $("物理", "10-09T16:30", "10-09T18:10");
+            $("数学", "11-12T14:00", "11-12T16:00");
+            $("物理", "11-12T16:30", "11-12T18:10");
+            $("语文", "11-13T07:40", "11-13T10:10");
+            $("生物", "11-13T10:40", "11-13T12:10");
+            $("英语", "11-13T14:00", "11-13T16:00");
+            $("化学", "11-13T16:30", "11-13T18:10");
             break;
         case "高二文科":
             subtitle = ["高二文科期中暨模块结业考试：请以实际铃声为准。"];
-            $("英语", "10-08T14:00", "10-08T16:00");
-            $("政治", "10-08T16:30", "10-08T18:10");
-            $("语文", "10-09T07:40", "10-09T10:10");
-            $("历史", "10-09T10:40", "10-09T12:20");
-            $("数学", "10-09T14:00", "10-09T16:00");
-            $("地理", "10-09T16:30", "10-09T18:10");
+            $("数学", "11-12T14:00", "11-12T16:00");
+            $("历史", "11-12T16:30", "11-12T18:10");
+            $("语文", "11-13T07:40", "11-13T10:10");
+            $("地理", "11-13T10:40", "11-13T12:20");
+            $("英语", "11-13T14:00", "11-13T16:00");
+            $("政治", "11-13T16:30", "11-13T18:10");
             break;
         case "高三日常":
             subtitle = " "; //加空格，防止length为0
