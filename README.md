@@ -8,6 +8,16 @@
 >
 > 野生技协TECHYES 群公告
 
+## 参数 /Params
+
+参数形式：?param1&param2param3
+
+调试：debug
+
+切换到高三理科/高三文科/高三日常/高二理科/高二文科：totype31/totype32/totype30/totype21/totype22
+
+~~关闭屏保预警：noforewarn~~
+
 ## 帮助 / Help
 
 推荐使用Chrome、Edge、Firefox访问。
