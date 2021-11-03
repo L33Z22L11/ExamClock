@@ -8,9 +8,9 @@
 >
 > 野生技协TECHYES 群公告
 
-## 参数 /Params
+## 参数 / Params
 
-参数形式：?param1&param2param3
+参数形式：?param1&param2&param3
 
 调试：debug
 
