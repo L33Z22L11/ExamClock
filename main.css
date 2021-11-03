@@ -60,7 +60,7 @@ footer {
 }
 /* 主体元素间距 */
 #main > * {
-  margin: 0.25rem 1rem 0.5rem;
+  margin: 0.5rem 1rem;
 }
 /* 通知气泡 */
 .notify {
@@ -141,6 +141,7 @@ footer img {
     font: min(5vw, 4vh) "Roboto", "微软雅黑", sans-serif;
     align-items: flex-start;
   }
+  nav.space-between,
   .card,
   footer > .space-between {
     flex-direction: column;
