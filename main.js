@@ -28,10 +28,10 @@ onkeydown = function (e) {
     switch (e.key) {
         case "Escape": eleMenu.style.display = "none";
         case "F12": e.preventDefault(); send("若要调试，请联系混技。"); break;
-        case "/": relStyle('fontSize', -0.05, 'em', 0.75, 1.25); break;
-        case "*": relStyle('fontSize', +0.05, 'em', 0.75, 1.25); break;
-        case "-": relStyle('opacity', -0.05, '', 0.5, 1); break;
-        case "+": relStyle('opacity', +0.05, '', 0.5, 1); break;
+        case ";": relStyle("fontSize", -0.05, "em", 0.75, 1.25); break;
+        case "'": relStyle("fontSize", +0.05, "em", 0.75, 1.25); break;
+        case ",": relStyle("opacity", -0.05, "", 0.5, 1); break;
+        case ".": relStyle("opacity", +0.05, "", 0.5, 1); break;
     }
 }
 oncontextmenu = function (e) {
@@ -193,7 +193,7 @@ function updateExam() {
             $("政治", "11-13T16:30", "11-13T18:10");
             break;
         case "高三日常":
-            subtitle = " "; //加空格，防止length为0
+            subtitle = [""];
             $("晨读1", today + "07:10", today + "07:25");
             $("晨会", today + "07:25", today + "07:30");
             $("晨读2", today + "07:30", today + "08:00");
@@ -217,39 +217,27 @@ function updateExam() {
             $("政史", "06-30T07:50", "06-30T09:50");
             $("地理", "06-30T10:20", "06-30T11:20");
             break;
-        case "临时科目":
-            break;
-        default:
-            subtitle = ["不存在的考试类型，请重新选择。"];
+        case "临时科目": break;
+        default: subtitle = ["不存在的考试类型，请重新选择。"];
     }
     duration = getClock(start) + "~" + getClock(end);
     if (now < (start - 18E5)) {
         // now.getHours() == 12 && now.getHours() == 18 ?
         //     subtitle = "干饭时间到！" : null;
-        timer = Math.round((start - now) / 36E4) / 10;
+        timer = Math.round((start - now - 18E5) / 36E4) / 10;
         timersub = "h";
         activity = "考试加油";
         progress = 0;
     } else if (now < (start - 12E5)) {
         timer = Math.round((now - start + 18E5) / 6E4);
-        timersub = "/ 10 min";
-        activity = "课间休息";
+        timersub = "min";
+        activity = "距离入场";
         progress = (start - now - 12E5) / 6E3;
     } else if (now < (start - 6E5)) {
         timer = Math.round((now - start + 12E5) / 6E4);
         timersub = "/ 10 min";
         activity = "入场扫描";
         progress = (now - start + 12E5) / 6E3;
-        // } else if (now < (start - 3E5)) {
-        //     timer = Math.round((now - start + 6E5) / 6E4);
-        //     timersub = "/ 5 min";
-        //     activity = "发卡贴码";
-        //     progress = (now - start + 6E5) / 3E3;
-        // } else if (now < start) {
-        //     timer = Math.round((now - start + 3E5) / 6E4);
-        //     timersub = "/ 5 min";
-        //     activity = "发卷审题";
-        //     progress = (now - start + 3E5) / 3E3;
     } else if (now < start) {
         timer = Math.round((start - now) / 6E4);
         timersub = "min";
@@ -271,10 +259,7 @@ function updateExam() {
         progress = (now - start) / (end - start) * 100;
     } else {
         // 结束后的subtitle
-        // subtitle = ["宝中的各位小蓝们，我们已经完成了本次考试！",
-        //     "马上又要进入新的年级了，过去一年我们收获了不少",
-        //     "一起调整状态，迎接新的年级！",
-        //     "不过各位在短暂的假期里要先保证休息哦~"];
+        subtitle = ["式微式微，胡不归？"];
         subject = "";
         duration = "";
         timer = "";
@@ -282,7 +267,6 @@ function updateExam() {
         activity = "";
         progress = 100;
     }
-
     document.getElementById("bar").style.width = progress + "%";
     output("subject", subject);
     output("duration", duration);
