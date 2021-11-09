@@ -1,4 +1,6 @@
-/* default */
+/*
+ * default
+ */
 * {
   margin: 0;
   padding: 0;
@@ -9,10 +11,7 @@ html {
   font: 2.75vw "Roboto", "微软雅黑", sans-serif;
   font: min(2.75vw, 7vh) "Roboto", "微软雅黑", sans-serif;
   color: white;
-  background-color: #333;
-  background-image: url(/autumn.jpg);
-  background-attachment: fixed;
-  background-position: center;
+  background: #333 fixed center url(/autumn.jpg);
   background-size: cover;
 }
 /* 分散对齐 */
@@ -45,18 +44,26 @@ footer {
   font-size: 0.3em;
   color: rgba(255, 255, 255, 0.3);
 }
-.splash{
+/* 闪烁文本 */
+.splash {
   animation: splash 1.8s infinite alternate;
 }
 @keyframes splash {
-  from {color: rgba(255, 255, 255, 0.3);}
-  to{color: rgba(255, 255, 255, 0.6);}
+  from {
+    color: rgba(255, 255, 255, 0.3);
   }
+  to {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
 /* 选中 */
 ::selection {
+  color: #000;
   background: rgba(255, 102, 0, 0.8);
 }
-/* elements */
+/*
+ * elements
+ */
 /* 主体排版 */
 #main {
   display: flex;
@@ -155,7 +162,9 @@ footer img {
     margin: auto;
   }
 }
-/* functional */
+/*
+ * functional
+ */
 /* 下拉元素定位 */
 .dropdown {
   position: relative;
@@ -167,10 +176,22 @@ footer img {
   position: absolute;
   z-index: 1;
   display: none;
+  animation: dropdown 2s reverse;
 }
 /* 下拉正文定位（已下拉） */
 .dropdown:hover > :last-child {
   display: block;
+  animation: dropdown 0.1s;
+}
+@keyframes dropdown {
+  from {
+    line-height: 0;
+    opacity: 0.5;
+  }
+  to {
+    line-height: 1em;
+    opacity: 1;
+  }
 }
 /* 菜单展开定位 */
 #menu .dropdown > :last-child {
