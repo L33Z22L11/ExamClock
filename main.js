@@ -8,11 +8,8 @@ eleMsg = document.getElementById("msg");
 eleHelp = document.getElementById("help");
 setInterval(function () {
     try { !location.host.match("exam.thisis.host") ? document.getElementById("verify").style.display = "flex" : null; }
-    catch (e) {
-        alert("检测到盗版的考试时钟且发送警报失败！\n" + e);
-        location.href = "https://exam.thisis.host";
-    }
-}, 2000);
+    catch (e) { alert("检测到意外修改内容的考试时钟！\n" + e); location.href = "https://exam.thisis.host"; }
+}(), 2000);
 // 希沃屏保预警
 // “屏保都统一关闭了，注释掉，白写个功能”
 // !location.href.match("noforewarn") ? setInterval(updateSST, 600) : null;
@@ -22,9 +19,10 @@ onmousemove = onclick = function () { forewarntime = 45; }
 // 键盘功能函数
 onkeydown = function (e) {
     forewarntime = 45;
-    send("你按下了" + e.key);
     switch (e.key) {
-        case "Escape": eleMenu.style.display = "none";
+        // 隐藏右键菜单
+        case "Escape": eleMenu.style.display = "none"; break;
+        // 调试请按Ctrl+Shift+I或从浏览器菜单调出
         case "F12": e.preventDefault(); send("若要调试，请联系混技。"); break;
         case ";": relStyle("fontSize", -0.05, "em", 0.75, 1.25); break;
         case "'": relStyle("fontSize", +0.05, "em", 0.75, 1.25); break;
@@ -44,12 +42,12 @@ eleMain.onclick = function () { eleMenu.style.display = "none"; };
 // 关闭通知气泡
 eleForewarn.onclick = eleMsg.onclick = eleHelp.onclick = function () { this.style.display = ""; }
 // 根据地址参数切换考试类型
-if (search.match("totype30")) { change("高三日常"); }
+if (search.match("totype31")) { change("高三理科"); }
 else if (search.match("totype32")) { change("高三文科"); }
 else if (search.match("totype21")) { change("高二理科"); }
 else if (search.match("totype22")) { change("高二文科"); }
-else { change("高三理科"); }
-// 考试时钟模式切换
+else { change("高三日常"); }
+// 考试时钟模式
 if (!search.match("debug")) {
     // 正常模式
     updateTime = function () {
@@ -59,11 +57,11 @@ if (!search.match("debug")) {
         output("clock", getClock(now));
         updateExam();
     }
-    setInterval(updateTime, 2000);
+    setInterval(updateTime(), 2000);
 } else {
     // 调试模式
-    alert("已进入调试模式，关闭本页面可返回正常模式。")
-    now = new Date("1970-01-01");
+    send("已进入调试模式，关闭本页面可返回正常模式。");
+    now = new Date("2021-04-01");
     document.getElementById("bar").style.transition = "none";
     updateExam();
     updateTime = function () {
@@ -71,26 +69,31 @@ if (!search.match("debug")) {
         now < start - 36E5 ? now = new Date(start - 36E5) : null;
         // 调试模式截止时间
         // “用加号会直接连接字符串，所以这里得减去负数，太魔幻了”
-        if (now > end - -36E5) { change(type); now = new Date("1970-01-01"); }
+        if (now > end - -36E5) { change(type); now = new Date("2021-04-01"); }
         // 调试模式速度设置
         now.setSeconds(now.getSeconds() + 10);
         // now.setMinutes(now.getMinutes() + 5);
-        output("clock", getClock(now)); updateExam();
+        output("clock", getClock(now));
+        updateExam();
     }
-    setInterval(updateTime, 20);
+    setInterval(updateTime(), 20);
 }
 // 考试标语轮播
 setInterval(function updateSubtitle() {
     order < subtitle.length - 1 ? order++ : order = 0;
     output("subtitle", subtitle[order]);
-}, 2000);
+}(), 2000);
+// 运行时间展示
+setInterval(function () {
+    output("runtime", ((now - new Date("2021-04")) / 36E5).toFixed(3) + "小时");
+}, 1800);
 // 切换考试类型
 function change(totype) {
     // 切换类型时需要重新初始化的内容
     now = new Date();
     end = 0, progress = 0, subtitle = null, order = 0;
-
-    updateToday();
+    // 生成$函数的今日日期字符串
+    today = fixDigit(now.getMonth() + 1) + "-" + fixDigit(now.getDate()) + "T";
     type = totype || type;
     output("type", type);
     // 切换类型的对焦动画
@@ -106,7 +109,7 @@ function change(totype) {
 function send(msg) {
     eleMsg.style.display = "flex";
     output("msgcontent", msg);
-    setTimeout(function () { eleMsg.style.display = ""; }, 5000);
+    setInterval(function () { eleMsg.style.display = ""; }, 5000);
     // “清除任务会重叠，有时间再改吧”
 }
 // 主体元素样式调节
@@ -118,6 +121,11 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
     output(prop, propVal);
     send(prop + "增加了" + delta + "，调节为" + propVal);
 }
+// 更换背景
+function stylish(name){
+    eleMain.style.background="rgba(0,0,0,0.75)";
+    document.getElementsByTagName("html")[0].style.backgroundImage="url(https://bu.dusays.com/2021/11/23/"+name+".jpg)";
+}
 // 全屏
 function fullscreen() {
     try {
@@ -126,8 +134,6 @@ function fullscreen() {
         } else { document.exitFullscreen(); output("fullscreen", "全屏"); }
     } catch (e) { send("该浏览器不支持此操作，请手动最大化窗口或全屏。"); }
 }
-// 生成今日日期$参数字符串
-function updateToday() { today = fixDigit(now.getMonth() + 1) + "-" + fixDigit(now.getDate()) + "T"; }
 // “考试时钟的灵魂”
 // 考试科目轮播
 function $(nextSubject, nextStart, nextEnd, nextSubtitle) {
@@ -317,6 +323,3 @@ function updateSST() {
         eleForewarn.style.display = "";
     }
 }
-setInterval(function () {
-    output("runtime", ((now - new Date("2021-04")) / 36E5).toFixed(3) + "小时");
-}, 1800);

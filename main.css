@@ -176,12 +176,11 @@ footer img {
   position: absolute;
   z-index: 1;
   display: none;
-  animation: dropdown 2s reverse;
 }
 /* 下拉正文定位（已下拉） */
 .dropdown:hover > :last-child {
   display: block;
-  animation: dropdown 0.1s;
+  animation: dropdown 0.2s;
 }
 @keyframes dropdown {
   from {
