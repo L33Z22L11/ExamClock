@@ -1,22 +1,24 @@
-console.log("%c\n加入Techaos! 混技\nQQ群: 169994096\n", "font:bold 3em Roboto,sans-serif;");
-console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:bold 3em Roboto,sans-serif;");
 eleMain = document.getElementById("main");
 change("高三日常");
-    // 正常模式
-    updateTime = function () {
-        now = new Date();
-        // 设置相对时差
-        // now.setSeconds(now.getSeconds() + 30);
-        output("clock", getClock(now));
-        updateExam();
-    };
-    setInterval(updateTime, 2000);
-    updateTime();
+// 正常模式
+updateTime = function () {
+    now = new Date();
+    // 设置相对时差
+    // now.setSeconds(now.getSeconds() + 30);
+    output("clock", getClock(now));
+    updateExam();
+};
+setInterval(updateTime, 2000);
+updateTime();
 // 考试标语轮播
-setInterval(function updateSubtitle() {
+setInterval(updateTitle, 2000);
+// 考试标语轮播
+function updateTitle() {
+    maintitle = maintitle || $maintitle;
+    subtitle = subtitle || $subtitle;
     order < subtitle.length - 1 ? order++ : order = 0;
     output("subtitle", subtitle[order]);
-}(), 2000);
+}
 // 运行时间展示
 setInterval(function () {
     output("runtime", ((now - new Date("2021-04")) / 36E5).toFixed(3) + "小时");
@@ -25,7 +27,8 @@ setInterval(function () {
 function change(totype) {
     // 切换类型时需要重新初始化的内容
     now = new Date();
-   start=0, end = 0, progress = 0, subtitle = null, order = 0;
+    subtitle = maintitle = null;
+    start = end = new Date("2021-04-01"), progress = 0, order = 0;
     // 生成$函数的今日日期字符串
     today = fixDigit(now.getMonth() + 1) + "-" + fixDigit(now.getDate()) + "T";
     type = totype || type;
@@ -36,19 +39,21 @@ function change(totype) {
     setTimeout(function () {
         eleMain.style.filter = "blur(0)";
         updateTime();
-        updateSubtitle();
+        updateTitle();
     }, 200);
 }
 // “考试时钟的灵魂”
 // 考试科目轮播
-function $(nextSubject, nextStart, nextEnd, nextSubtitle) {
+function $(nextSubject, nextStart, nextEnd, nextSubtitle, nextMaintitle) {
     if (now >= end) {
         subject = nextSubject;
         start = new Date("2021-" + nextStart + ":00+08:00");
         end = new Date("2021-" + nextEnd + ":00+08:00");
+        subtitle = nextSubtitle || $subtitle;
+        maintitle = nextMaintitle || $maintitle;
     }
     // “下次再好好研究这个怎么写”
-    subject == nextSubject && nextSubtitle ? subtitle = nextSubtitle : null;
+    // subject == nextSubject && nextSubtitle ? subtitle = nextSubtitle : null;
 }
 // 生成考试时间$参数字符串
 function fixDigit(num) { num = parseInt(num); return num < 10 ? "0" + num : num; }
@@ -61,11 +66,6 @@ function fixMinutes(date, friendlyname) {
 }
 // 向页内元素输出值
 function output(id, value) { document.getElementById(id).innerHTML = value; }
-// 考试标语轮播
-function updateSubtitle() {
-    order < subtitle.length - 1 ? order++ : order = 0;
-    output("subtitle", subtitle[order]);
-}
 function setTemp() {
     $(prompt("考试科目名称", "临时"), today + fixDigit(prompt("考试开始时间(小时)", 16)) + ":" +
         fixDigit(prompt("考试开始时间(分钟)", 25)), today + fixDigit(prompt("考试结束时间(小时)", 23))
@@ -79,138 +79,4 @@ function illback() {
         now.getDate() == 4 ?
             subtitle = ["今天我就要离开，明天我还会回来。9min！"] :
             subtitle = ["祝各位努力的孩子取得理想的名次！"] : null;
-}
-function updateExam() {
-    // “功能是写出来了，不过到现在都不知道subtitle在哪设置合适”
-    // 防止某些类型由于没有起止时间而崩溃
-    $("", "01-01T00:00", "01-01T00:00", ["考试时钟预设内容"]);
-    switch (type) {
-        case "高三理科":
-            // illback();
-            maintitle = "沉着冷静&emsp;诚信考试";
-            subtitle = ["高三理科月考二：请以实际司号为准。"];
-            // subtitle = ["高三素质拓展理科模拟训练"];
-            $("英语", "11-05T14:00", "11-05T16:00");
-            $("物理", "11-05T16:30", "11-05T18:10");
-            $("语文", "11-06T07:40", "11-06T10:10");
-            $("生物", "11-06T10:40", "11-06T12:10");
-            $("数学", "11-06T14:00", "11-06T16:00");
-            $("化学", "11-06T16:30", "11-06T18:10");
-            break;
-        case "高三文科":
-            // illback();
-            maintitle = "沉着冷静&emsp;诚信考试";
-            subtitle = ["高三文科月考二：请以实际司号为准。"];
-            // subtitle = ["高三素质拓展文科模拟训练"];
-            $("英语", "11-05T14:00", "11-05T16:00");
-            $("历史", "11-05T16:30", "11-05T18:10");
-            $("语文", "11-06T07:40", "11-06T10:10");
-            $("地理", "11-06T10:40", "11-06T12:20");
-            $("数学", "11-06T14:00", "11-06T16:00");
-            $("政治", "11-06T16:30", "11-06T18:10");
-            break;
-        case "高二理科":
-            maintitle = "沉着冷静&emsp;诚信考试";
-            subtitle = ["高二理科期中暨模块结业考试：请以实际铃声为准。"];
-            $("数学", "11-12T14:00", "11-12T16:00");
-            $("物理", "11-12T16:30", "11-12T18:10");
-            $("语文", "11-13T07:40", "11-13T10:10");
-            $("生物", "11-13T10:40", "11-13T12:10");
-            $("英语", "11-13T14:00", "11-13T16:00");
-            $("化学", "11-13T16:30", "11-13T18:10");
-            break;
-        case "高二文科":
-            maintitle = "沉着冷静&emsp;诚信考试";
-            subtitle = ["高二文科期中暨模块结业考试：请以实际铃声为准。"];
-            $("数学", "11-12T14:00", "11-12T16:00");
-            $("历史", "11-12T16:30", "11-12T18:10");
-            $("语文", "11-13T07:40", "11-13T10:10");
-            $("地理", "11-13T10:40", "11-13T12:20");
-            $("英语", "11-13T14:00", "11-13T16:00");
-            $("政治", "11-13T16:30", "11-13T18:10");
-            break;
-        case "高三日常":
-            maintitle = "";
-            subtitle = [""];
-            $("晨读1", today + "07:10", today + "07:25");
-            $("晨会", today + "07:25", today + "07:30");
-            $("晨读2", today + "07:30", today + "08:00");
-            $("午休", today + "12:00", today + "13:55");
-            $("考练", today + "16:05", today + "16:50");
-            $("晚训", today + "18:25", today + "18:45");
-            $("晚写", today + "18:45", today + "18:55");
-            $("晚一", today + "18:55", today + "19:40");
-            $("晚二", today + "19:50", today + "20:35");
-            $("晚三", today + "20:50", today + "22:00");
-            $("晚修", today + "22:00", today + "23:00");
-            break;
-        case "高一":
-            maintitle = "暂未启用";
-            subtitle = ["高一暂未启用考试时钟。"];
-            $("数学", "06-28T14:20", "06-28T16:00");
-            $("英语", "06-28T16:30", "06-28T18:10");
-            $("语文", "06-29T07:50", "06-29T09:50");
-            $("化学", "06-29T10:20", "06-29T12:00");
-            $("物理", "06-29T14:20", "06-29T16:00");
-            $("生物", "06-29T16:30", "06-29T18:00");
-            $("政史", "06-30T07:50", "06-30T09:50");
-            $("地理", "06-30T10:20", "06-30T11:20");
-            break;
-        case "临时科目": break;
-        default: subtitle = ["不存在的考试类型，请重新选择。"];
-    }
-    duration = getClock(start) + "~" + getClock(end);
-    if (now < (start - 18E5)) {
-        // now.getHours() == 12 && now.getHours() == 18 ?
-        //     subtitle = "干饭时间到！" : null;
-        timer = Math.round((start - now - 12E5) / 36E4) / 10;
-        timersub = "h";
-        activity = "考试加油";
-        progress = 0;
-    } else if (now < (start - 12E5)) {
-        timer = Math.round((start - now - 12E5) / 6E4);
-        timersub = "min";
-        activity = "距离入场";
-        progress = (start - now - 12E5) / 6E3;
-    } else if (now < (start - 6E5)) {
-        timer = Math.round((now - start + 12E5) / 6E4);
-        timersub = "/ 10 min";
-        activity = "入场扫描";
-        progress = (now - start + 12E5) / 6E3;
-    } else if (now < start) {
-        timer = Math.round((start - now) / 6E4);
-        timersub = "min";
-        activity = "距离开始";
-        progress = (start - now) / 6E3;
-    } else if (now < end) {
-        // now.getHours() == 12 ?
-        //     subtitle = ["12:05可能自动关机，请留意提示。"] : null;
-        // now.getHours() == 18 ?
-        //     subtitle = ["警告：考场周围应保持环境安静！"] : null;
-        if ((now - start) / (end - start) < .5) {
-            timer = Math.round((now - start) / 6E4);
-            activity = "已经开始";
-        } else {
-            timer = Math.round((end - now) / 6E4);
-            activity = "距离结束";
-        }
-        timersub = "min";
-        progress = (now - start) / (end - start) * 100;
-    } else {
-        // 结束后的subtitle
-        subtitle = ["式微式微，胡不归？"];
-        subject = "";
-        duration = "";
-        timer = "";
-        timersub = "考试结束";
-        activity = "";
-        progress = 100;
-    }
-    output("maintitle", maintitle);
-    document.getElementById("bar").style.width = progress + "%";
-    output("subject", subject);
-    output("duration", duration);
-    output("timer", timer);
-    output("timersub", timersub);
-    output("activity", activity);
 }

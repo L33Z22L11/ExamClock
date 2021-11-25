@@ -26,7 +26,7 @@ html {
 .bar,
 .card > div,
 .card > a {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
 }
 /* 一级淡文本（保留字体颜色） */
@@ -42,14 +42,7 @@ html {
 /* 页脚文本 */
 footer {
   font-size: 0.3em;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 -2em;
   color: rgba(255, 255, 255, 0.3);
-}
-footer > * {
-  margin: 0 2em;
 }
 /* 闪烁文本 */
 .splash {
@@ -77,7 +70,7 @@ footer > * {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  transition: 0.2s;
+  transition: filter 0.2s;
 }
 /* 主体元素间距 */
 #main > * {
@@ -128,12 +121,12 @@ footer > * {
   display: inline-block;
   margin: 0.25rem;
   padding: 0.25rem 0.75rem;
-  transition: transform 0.5s;
+  transition: background 0.5s;
   text-align: center;
   border-radius: 0.5rem;
 }
 .card > div:hover {
-  transform: scale(1.1, 1.1);
+  background: rgba(0, 0, 0, 0.8);
 }
 /* 时钟字体 */
 #clock {
@@ -149,12 +142,6 @@ footer > * {
   font-size: 1.5em;
   color: rgba(255, 255, 255, 0.6);
 }
-/* 页脚logo */
-footer img {
-  max-width: 20em;
-  max-height: 1.2em;
-  vertical-align: middle;
-}
 /* 适配竖屏 */
 @media (max-aspect-ratio: 4/5) {
   html {
@@ -163,8 +150,7 @@ footer img {
     align-items: flex-start;
   }
   nav.space-between,
-  .card,
-  footer > .space-between {
+  .card {
     flex-direction: column;
     margin: auto;
   }
@@ -209,7 +195,7 @@ footer img {
 .dropdown,
 a {
   cursor: pointer;
-  transition: 0.2s;
+  transition: background,color 0.2s;
   text-decoration: none;
   color: inherit;
   border-radius: 0.2rem;

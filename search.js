@@ -12,7 +12,7 @@ if (search.match("totype21")) { change("高二理科"); }
 if (search.match("totype22")) { change("高二文科"); }
 // 调试模式
 if (search.match("debug")) {
-    alert("已进入调试模式，关闭本页面可返回正常模式。");
+    send("已进入调试模式，关闭本页面可返回正常模式。");
     now = new Date("2021-04-01");
     document.getElementById("bar").style.transition = "none";
     // updateExam();
