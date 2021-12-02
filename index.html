@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/favicon.ico" rel="shortcut icon">
     <link href="/main.css" rel="stylesheet">
-    <link href="https://fonts.font.im/css?family=Roboto:400|Montserrat:700i" rel="stylesheet">
+    <link href="https://fonts.font.im/css?family=Montserrat:500,700" rel="stylesheet">
+    <!-- <link href="https://fonts.proxy.ustclug.org/css?family=Noto+Sans+SC:400,700" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>考试时钟</title>
 </head>
@@ -32,14 +33,13 @@
         <div class="dropdown">
             <i class="bi bi-palette"></i> 背景（测试）
             <div>
-                <a onclick="stylish('9dd5f0f9ae39c')">窗边</a>
-                <a onclick="stylish('10f58d6677aeb')">蒲公英</a>
-                <a onclick="stylish('86f0354849ead')">书堆</a>
-                <a onclick="stylish('b1a6b10044d7e')">光线</a>
-                <a onclick="stylish('4b347391fec34')">商店</a>
-                <a onclick="stylish('aef07ee202d3c')">讲台</a>
-                <a
-                    onclick="document.getElementsByTagName('html')[0].style.backgroundImage='';eleMain.style.background=''">恢复默认</a>
+                <a onclick="stylish1(0)">窗边</a>
+                <a onclick="stylish1(1)">蒲公英</a>
+                <a onclick="stylish1(2)">书堆</a>
+                <a onclick="stylish1(3)">光线</a>
+                <a onclick="stylish1(4)">商店</a>
+                <a onclick="stylish1(5)">讲台</a>
+                <a onclick="stylish1(-1);eleMain.style.background=''">恢复默认</a>
             </div>
         </div>
         <div class="dropdown">
@@ -144,7 +144,7 @@
 
         <div>
             <nav class="space-between">
-                <h2 id="maintitle">沉着冷静&emsp;诚信考试</h2>
+                <h2 id="maintitle">考试时钟</h2>
                 <div class="sub">
                     <span class="dropdown" style="min-width: 5.5em;">
                         <a class="hilit">
@@ -160,7 +160,7 @@
                             <a onclick="change(this.innerHTML)">高二理科</a>
                             <a onclick="change(this.innerHTML)">高二文科</a>
                             <a onclick="change(this.innerHTML)">高一</a>
-                            <a onclick="change('临时科目'); setTemp();">
+                            <a onclick="change('临时科目');">
                                 <i class="bi bi-plus-square-dotted"></i> 临时</a>
                         </div>
                     </span>&emsp;
@@ -246,7 +246,7 @@
                 </div>
                 <div class="space-between">
                     <span><i class="bi bi-diagram-2"></i>
-                        野生技协(混技·宝中分部)群：894656456 (171/200)</span>
+                        野生技协(混技·宝中分部)群：894656456 (172/200)</span>
                     <span><i class="bi bi-stars"></i> 友好社团：音幻宝中 朗诵社 排球社 合唱团 街舞社 汉服社 航模社
                         民乐社 心理社 书画社 动漫社 舞蹈队 日语社 INSTREET社 机器人社 推理社 篮裁社</span>
                 </div>
@@ -254,10 +254,10 @@
                     <span><i class="bi bi-file-earmark-text"></i> 公众号文章： <a
                             href="https://mp.weixin.qq.com/s?__biz=MzkyMTI4OTcyMw==&mid=2247483696&idx=1&sn=c8df6332c7cceac0187bb96a88a3c4f6">
                             纸鹿本鹿《考试时钟的升级打怪攻略》</a></span>
-                    <span class="splash"><i class="bi bi-hdd-network-fill"></i>
-                        状态：稳定运行 <span id="runtime">7个月</span></span>
+                    <span><i class="bi bi-hdd-network-fill"></i>
+                        状态：稳定运行 <span id="runtime">8个月</span></span>
                     <span><i class="bi bi-calendar2-week"></i> 支持期限：2031年4月</span>
-                    <span><i class="bi bi-file-earmark-check"></i> 版本：5.8.3_wxy_bugtest
+                    <span><i class="bi bi-file-earmark-check"></i> 版本：5.9.0_wxy_sched'in
                 </div>
             </footer>
         </div>
@@ -265,8 +265,8 @@
 </body>
 
 <script src="/exam.js"></script>
-<script src="/clock.js"></script>
 <script src="/style.js"></script>
+<script src="/clock.js"></script>
 <script src="/search.js"></script>
 
 </html>

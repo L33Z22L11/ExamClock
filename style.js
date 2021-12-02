@@ -1,10 +1,19 @@
+console.log("%c\n加入Techaos! 混技\nQQ群: 169994096\n", "font:bold 3em Roboto,sans-serif;");
+console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:bold 3em Roboto,sans-serif;");
+search = location.search;
+setInterval(function () {
+    try { !location.host.match("exam.thisis.host") ? document.getElementById("verify").style.display = "flex" : 0; }
+    catch (e) { alert("检测到意外修改内容的考试时钟！\n" + e); location.href = "https://exam.thisis.host"; }
+}(), 2000);
+eleMain = document.getElementById("main");
 eleMenu = document.getElementById("menu");
 eleForewarn = document.getElementById("forewarn");
 eleMsg = document.getElementById("msg");
 eleHelp = document.getElementById("help");
+stylish1(parseInt(now / 1000) % 6);
 // 希沃屏保预警
 // “屏保都统一关闭了，注释掉，白写个功能”
-// !location.href.match("noforewarn") ? setInterval(updateSST, 600) : null;
+// !location.href.match("noforewarn") ? setInterval(updateSST, 600) : 0;
 // 希沃屏保剩余时间
 forewarntime = 45;
 onmousemove = onclick = function () { forewarntime = 45; }
@@ -51,8 +60,9 @@ function updateSST() {
 function send(msg) {
     eleMsg.style.display = "flex";
     output("msgcontent", msg);
-    setInterval(function () { eleMsg.style.display = ""; }, 5000);
-    // “清除任务会重叠，有时间再改吧”
+    // “变量不定义也不会报错了，妙啊”
+    try { clearInterval(numMsg) } catch (e) { };
+    numMsg = setInterval(function () { eleMsg.style.display = ""; }, 5000);
 }
 // 主体元素样式调节
 function relStyle(prop, delta, unit, minVal, maxVal) {
@@ -64,9 +74,11 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
     send(prop + "增加了" + delta + "，调节为" + propVal);
 }
 // 更换背景
-function stylish(name) {
+function stylish1(num) {
     eleMain.style.background = "rgba(0,0,0,0.75)";
-    document.getElementsByTagName("html")[0].style.backgroundImage = "url(https://bu.dusays.com/2021/11/23/" + name + ".jpg)";
+    document.getElementsByTagName("html")[0].style.backgroundImage = num == -1 ? "" :
+        "url(https://bu.dusays.com/2021/11/23/" + ['9dd5f0f9ae39c', '10f58d6677aeb',
+            '86f0354849ead', 'b1a6b10044d7e', '4b347391fec34', 'aef07ee202d3c'][num] + ".jpg)";
 }
 // 全屏
 function fullscreen() {

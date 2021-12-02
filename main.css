@@ -7,11 +7,11 @@
 }
 /* 网页字体及背景 */
 html {
-  font: 48px "Roboto", "微软雅黑", sans-serif;
-  font: 2.75vw "Roboto", "微软雅黑", sans-serif;
-  font: min(2.75vw, 7vh) "Roboto", "微软雅黑", sans-serif;
+  font: 48px "Montserrat", "Noto Sans SC", "微软雅黑", sans-serif;
+  font: 2.75vw "Montserrat", "Noto Sans SC", "微软雅黑", sans-serif;
+  font: min(2.75vw, 7vh) "Montserrat", "Noto Sans SC", "微软雅黑", sans-serif;
   color: white;
-  background: #333 fixed center url(/autumn.jpg);
+  background: #333 fixed center url(/campus.jpg);
   background-size: cover;
 }
 /* 分散对齐 */
@@ -46,7 +46,7 @@ footer {
 }
 /* 闪烁文本 */
 .splash {
-  animation: splash 1.8s infinite alternate;
+  animation: splash 1s infinite alternate;
 }
 @keyframes splash {
   from {
@@ -117,7 +117,7 @@ footer {
 /* 卡片元素字体间距等 */
 .card > div,
 .card > a {
-  font-family: "Montserrat", "Helvetica", "微软雅黑", sans-serif;
+  /* font-family: "Montserrat", "Helvetica", "微软雅黑", sans-serif; */
   display: inline-block;
   margin: 0.25rem;
   padding: 0.25rem 0.75rem;
@@ -145,8 +145,8 @@ footer {
 /* 适配竖屏 */
 @media (max-aspect-ratio: 4/5) {
   html {
-    font: 5vw "Roboto", "微软雅黑", sans-serif;
-    font: min(5vw, 4vh) "Roboto", "微软雅黑", sans-serif;
+    font: 5vw "Montserrat", "微软雅黑", sans-serif;
+    font: min(5vw, 4vh) "Montserrat", "微软雅黑", sans-serif;
     align-items: flex-start;
   }
   nav.space-between,
@@ -195,7 +195,7 @@ footer {
 .dropdown,
 a {
   cursor: pointer;
-  transition: background,color 0.2s;
+  transition: background, color 0.2s;
   text-decoration: none;
   color: inherit;
   border-radius: 0.2rem;
