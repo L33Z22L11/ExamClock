@@ -1,3 +1,5 @@
+// 在考试日切换到考试
+if (now.getDate() == 10 || now.getDate() == 11) { change("高三理科"); }
 // 根据地址参数切换考试类型
 if (search.match("totype31")) { change("高三理科"); }
 if (search.match("totype32")) { change("高三文科"); }
@@ -10,7 +12,7 @@ if (search.match("debug")) {
     document.getElementById("bar").style.transition = "none";
     updateTime = function () {
         // 调试模式起始时间
-        now < start - 36E5 ? now = new Date(start - 36E5) : 0;
+        if (now < start - 36E5) { now = new Date(start - 36E5); }
         // 调试模式截止时间
         // “用加号会直接连接字符串，所以这里得减去负数，太魔幻了”
         if (now > end - -36E5) { change(type); now = new Date("2021-04-01"); }
@@ -43,14 +45,26 @@ function updateTitle() {
     order < subtitle.length - 1 ? order++ : order = 0;
     output("subtitle", subtitle[order]);
 }
+// “考试时钟的灵魂”
+// 考试科目判断
+function $(nextSubject, nextStart, nextEnd, nextMaintitle, nextSubtitle) {
+    if (now >= end) {
+        subject = nextSubject;
+        start = new Date("2021-" + nextStart + ":00+08:00");
+        end = new Date("2021-" + nextEnd + ":00+08:00");
+        maintitle = nextMaintitle || $maintitle;
+        subtitle = nextSubtitle || $subtitle;
+    }
+}
+// 考试时钟科目时间更新
 function updateExam() {
     updateSubject();
     duration = getClock(start) + "~" + getClock(end);
     if (now < (start - 18E5)) {
         // now.getHours() == 12 && now.getHours() == 18 ?
         //     subtitle = "干饭时间到！" : 0;
-        timer = Math.round((start - now - 12E5) / 36E4) / 10;
-        timersub = "h";
+        timer = parseInt((start - now - 12E5) / 36E5);
+        timersub = ((start - now - 12E5) / 36E5).toFixed(1).slice(-2) + " h";
         activity = "考试加油";
         progress = 0;
     } else if (now < (start - 12E5)) {
@@ -73,7 +87,7 @@ function updateExam() {
         //     subtitle = ["12:05可能自动关机，请留意提示。"] : 0;
         // now.getHours() == 18 ?
         //     subtitle = ["警告：考场周围应保持环境安静！"] : 0;
-        if ((now - start) / (end - start) < .5) {
+        if ((now - start) / (end - start) < 0.5) {
             timer = Math.round((now - start) / 6E4);
             activity = "已经开始";
         } else {
@@ -84,7 +98,7 @@ function updateExam() {
         progress = (now - start) / (end - start) * 100;
     } else {
         // 结束后的subtitle
-        // subtitle = ["式微式微，胡不归？"];
+        subtitle = ["式微式微，胡不归？"];
         subject = duration = timer = activity = "";
         timersub = "考试结束";
         progress = 100;
@@ -97,25 +111,14 @@ function updateExam() {
     output("timersub", timersub);
     output("activity", activity);
 }
-// “考试时钟的灵魂”
-// 考试科目轮播
-function $(nextSubject, nextStart, nextEnd, nextMaintitle, nextSubtitle) {
-    if (now >= end) {
-        subject = nextSubject;
-        start = new Date("2021-" + nextStart + ":00+08:00");
-        end = new Date("2021-" + nextEnd + ":00+08:00");
-        maintitle = nextMaintitle || $maintitle;
-        subtitle = nextSubtitle || $subtitle;
-    }
-}
 // 生成考试时间$参数字符串
 function fixDigit(num) { num = parseInt(num); return num < 10 ? "0" + num : num; }
 // 生成友好的时间字符串
 function getClock(date) { return date.getHours() + ":" + fixDigit(date.getMinutes()); }
 // 以分钟为单位相对调整时间
 function fixMinutes(date, friendlyname) {
-    date.setMinutes(date.getMinutes()
-        + Number(prompt(friendlyname || "以分钟为单位增减" + getClock(date), -5)));
+    date.setMinutes(date.getMinutes() +
+        Number(prompt(friendlyname || "以分钟为单位增减" + getClock(date), -5)));
 }
 // 向页内元素输出值
 function output(id, value) { document.getElementById(id).innerHTML = value; }
