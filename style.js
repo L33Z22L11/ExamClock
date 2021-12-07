@@ -1,5 +1,5 @@
-console.log("%c\n加入Techaos! 混技\nQQ群: 169994096\n", "font:bold 3em Roboto,sans-serif;");
-console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:bold 3em Roboto,sans-serif;");
+console.log("%c\n加入Techaos! 混技\nQQ群: 169994096\n", "font:3em Montserrat,sans-serif;");
+console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:3em Montserrat,sans-serif;");
 search = location.search;
 setInterval(function () {
     try { if (!location.host.match("exam.thisis.host")) { document.getElementById("verify").style.display = "flex"; } }
@@ -11,9 +11,9 @@ eleForewarn = document.getElementById("forewarn");
 eleMsg = document.getElementById("msg");
 eleHelp = document.getElementById("help");
 // 随便选一张壁纸
-stylish1(now % 2030924 % 6);
+stylish1(new Date() % 2030924 % 6);
 // 定时换壁纸（康总加成🙏）
-setInterval(stylish1, 2040411, now % 411 % 6);
+setInterval(stylish1, 2040411, new Date()  % 411 % 6);
 // 希沃屏保预警
 // “屏保都统一关闭了，注释掉，白写个功能”
 // !location.href.match("noforewarn") ? setInterval(updateSST, 600) : 0;

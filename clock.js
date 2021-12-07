@@ -1,21 +1,17 @@
-// 在考试日切换到考试
-if (now.getDate() == 10 || now.getDate() == 11) { change("高三理科"); }
-// 根据地址参数切换考试类型
-if (search.match("totype31")) { change("高三理科"); }
-if (search.match("totype32")) { change("高三文科"); }
-if (search.match("totype21")) { change("高二理科"); }
-if (search.match("totype22")) { change("高二文科"); }
+now = new Date();
+// 强制设置时间，需要关闭后面的时间更新
+// now = new Date("2021-12-07T18:00");
 // 正常或调试模式
 if (search.match("debug")) {
     send("已进入调试模式，关闭本页面可返回正常模式。");
-    now = new Date("2021-04-01");
+    now = $now = new Date("2021-12-08T00:00+08:00");
     document.getElementById("bar").style.transition = "none";
     updateTime = function () {
         // 调试模式起始时间
         if (now < start - 36E5) { now = new Date(start - 36E5); }
         // 调试模式截止时间
         // “用加号会直接连接字符串，所以这里得减去负数，太魔幻了”
-        if (now > end - -36E5) { change(type); now = new Date("2021-04-01"); }
+        if (now > end - -36E5) { change(type); now = $now; }
         // 调试模式速度设置
         now.setSeconds(now.getSeconds() + 30);
         output("clock", getClock(now));
@@ -34,6 +30,14 @@ if (search.match("debug")) {
 }
 // 正常模式
 change("高三日常");
+// 在考试日期切换到考试类型
+if (now.getDate() == 10 || now.getDate() == 11) { change("高三理科"); }
+if (now.getDate() == 17 || now.getDate() == 18) { change("高二理科"); }
+// 根据地址参数切换考试类型
+if (search.match("totype31")) { change("高三理科"); }
+if (search.match("totype32")) { change("高三文科"); }
+if (search.match("totype21")) { change("高二理科"); }
+if (search.match("totype22")) { change("高二文科"); }
 updateTime();
 setInterval(updateTitle, 2000);
 // 运行时间展示
@@ -43,15 +47,14 @@ function updateTitle() {
     maintitle = maintitle || $maintitle;
     subtitle = subtitle || $subtitle;
     order < subtitle.length - 1 ? order++ : order = 0;
-    output("subtitle", subtitle[order]);
 }
 // “考试时钟的灵魂”
 // 考试科目判断
 function $(nextSubject, nextStart, nextEnd, nextMaintitle, nextSubtitle) {
     if (now >= end) {
         subject = nextSubject;
-        start = new Date("2021-" + nextStart + ":00+08:00");
-        end = new Date("2021-" + nextEnd + ":00+08:00");
+        start = new Date("2021-" + nextStart + "+08:00");
+        end = new Date("2021-" + nextEnd + "+08:00");
         maintitle = nextMaintitle || $maintitle;
         subtitle = nextSubtitle || $subtitle;
     }
@@ -104,6 +107,7 @@ function updateExam() {
         progress = 100;
     }
     output("maintitle", maintitle);
+    output("subtitle", subtitle[order]);
     document.getElementById("bar").style.width = progress + "%";
     output("subject", subject);
     output("duration", duration);
