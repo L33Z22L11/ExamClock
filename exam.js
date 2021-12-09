@@ -57,7 +57,7 @@ function change(totype) {
             };
             break;
         case "高三日常":
-            today = new Date("2021-12-06");
+            today = new Date();
             todate = fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()) + "T";
             week = parseInt((today - new Date("2021-08-22")) / 6048E5);
             weekday = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()];
