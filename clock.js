@@ -46,6 +46,8 @@ function updateTitle() {
     maintitle = maintitle || $maintitle;
     subtitle = subtitle || $subtitle;
     order < subtitle.length - 1 ? order++ : order = 0;
+    output("maintitle", maintitle);
+    output("subtitle", subtitle[order]);
 }
 // “考试时钟的灵魂”
 // 考试科目判断
@@ -105,8 +107,6 @@ function updateExam() {
         timersub = "考试结束";
         progress = 100;
     }
-    output("maintitle", maintitle);
-    output("subtitle", subtitle[order]);
     document.getElementById("bar").style.width = progress + "%";
     output("subject", subject);
     output("duration", duration);
