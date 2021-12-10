@@ -169,6 +169,7 @@ footer {
   position: absolute;
   z-index: 1;
   display: none;
+  cursor: auto;
 }
 /* 下拉正文定位（已下拉） */
 .dropdown:hover > :last-child {

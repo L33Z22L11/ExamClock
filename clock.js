@@ -6,7 +6,7 @@ if (search.match("debug")) {
     document.getElementById("bar").style.transition = "none";
     updateTime = function () {
         // 调试模式起始时间
-        if (now < start - 36E5) { now = new Date(start - 36E5); }
+        if (now < start - 36E5) now = new Date(start - 36E5);
         // 调试模式截止时间
         // “用加号会直接连接字符串，所以这里得减去负数，太魔幻了”
         if (now > end - -36E5) { change(type); now = new Date("2021-04"); }
@@ -27,17 +27,18 @@ if (search.match("debug")) {
     };
     setInterval(updateTime, 2000);
 }
-// 默认考试类型
 // “切啊切啊切”
-change("高三日常");
-// 在考试日期切换到考试类型
-if (now.getDate() == 10 || now.getDate() == 11) { change("高三理科"); }
-if (now.getDate() == 17 || now.getDate() == 18) { change("高二理科"); }
 // 根据地址参数切换考试类型
-if (search.match("totype31")) { change("高三理科"); }
-if (search.match("totype32")) { change("高三文科"); }
-if (search.match("totype21")) { change("高二理科"); }
-if (search.match("totype22")) { change("高二文科"); }
+if (search.match("totype30")) change("高三日常");
+else if (search.match("totype31")) change("高三理科");
+else if (search.match("totype32")) change("高三文科");
+else if (search.match("totype21")) change("高二理科");
+else if (search.match("totype22")) change("高二文科");
+// 在考试日期切换到考试类型
+else if (now.getDate() == 10 || now.getDate() == 11) change("高三理科");
+else if (now.getDate() == 17 || now.getDate() == 18) change("高二理科");
+// 默认考试类型
+else change("高三日常");
 setInterval(updateTitle, 2000);
 // 运行时间展示
 output("runtime", parseInt((new Date() - new Date("2021-04")) / 864E5) + "天");
@@ -102,7 +103,8 @@ function updateExam() {
         progress = (now - start) / (end - start) * 100;
     } else {
         // 结束后的subtitle
-        subtitle = ["式微式微，胡不归？"];
+        subtitle = ["式微式微，胡不归？", "考试人，考试魂，考试都是人上人",
+            "任何时刻都不轻言放弃", "晚安，考试人，向你salute！"];
         subject = duration = timer = activity = "";
         timersub = "考试结束";
         progress = 100;

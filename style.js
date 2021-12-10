@@ -2,7 +2,7 @@ console.log("%c\n加入Techaos! 混技\nQQ群: 169994096\n", "font:3em Montserra
 console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:3em Montserrat,sans-serif;");
 search = location.search;
 setInterval(function () {
-    try { if (!location.host.match("exam.thisis.host")) { document.getElementById("verify").style.display = "flex"; } }
+    try { if (!location.host.match("exam.thisis.host")) document.getElementById("verify").style.display = "flex"; }
     catch (e) { alert("检测到意外修改内容的考试时钟！\n" + e); location.href = "https://exam.thisis.host"; }
 }(), 2000);
 eleMain = document.getElementById("main");
@@ -13,21 +13,25 @@ eleHelp = document.getElementById("help");
 // 随便选一张壁纸
 stylish1(new Date() % 2030924 % 6);
 // 定时换壁纸（康总加成🙏）
-setInterval(stylish1, 2040411, new Date()  % 411 % 6);
+setInterval(stylish1, 2040411, new Date() % 411 % 6);
 // 希沃屏保预警
 // “屏保都统一关闭了，注释掉，白写个功能”
-// !location.href.match("noforewarn") ? setInterval(updateSST, 600) : 0;
+// !location.href.match("noforewarn") ? setInterval(updateForewarn, 600) : 0;
 // 希沃屏保剩余时间
-forewarntime = 45;
-onmousemove = onclick = function () { forewarntime = 45; };
+// forewarntime = 45;
+// onmousemove = onclick = function () { forewarntime = 45; };
 // 键盘功能函数
 onkeydown = function (e) {
-    forewarntime = 45;
+    // forewarntime = 45;
     switch (e.key) {
         // 隐藏右键菜单
         case "Escape": eleMenu.style.display = "none"; break;
-        // 调试请按Ctrl+Shift+I或从浏览器菜单调出
-        case "F12": e.preventDefault(); send("若要调试，请联系混技。"); break;
+        case "F12":
+            if (confirm("确认要使用F12工具吗？由于本时钟的DOM元素属于异步加载、定时更新，你对网页所做的更改很可能会被随时覆盖。")) {
+                alert("欢迎使用调试工具，若有问题或申请加入我项目组可与我联系，你将对自己所做的行为承担一切可能后果。");
+            } else e.preventDefault();
+            if (confirm("若要访问GitHub上的源代码仓库来研究代码，请点击“确定”。")) { open("https://github.com/ThisisHost/exam-clock"); }
+            break;
         case ";": relStyle("fontSize", -0.05, "em", 0.75, 1.25); break;
         case "'": relStyle("fontSize", +0.05, "em", 0.75, 1.25); break;
         case ",": relStyle("opacity", -0.05, "", 0.5, 1); break;
@@ -36,17 +40,19 @@ onkeydown = function (e) {
 };
 // 展示右键菜单
 oncontextmenu = function (e) {
-    e.preventDefault();
-    eleMenu.style.display = "block";
-    eleMenu.style.left = e.clientX + "px";
-    eleMenu.style.top = e.clientY + "px";
+    if (!e.ctrlKey) {
+        e.preventDefault();
+        eleMenu.style.display = "block";
+        eleMenu.style.left = e.clientX + "px";
+        eleMenu.style.top = e.clientY + "px";
+    }
 };
 // 隐藏右键菜单
 eleMain.onclick = function () { eleMenu.style.display = "none"; };
 // 关闭通知气泡
 eleForewarn.onclick = eleMsg.onclick = eleHelp.onclick = function () { this.style.display = ""; };
 // 希沃屏保预警，2021-09屏保已经更换内容且被信息中心关闭
-function updateSST() {
+function updateForewarn() {
     forewarntime -= 1;
     output("forewarntime", "在" + forewarntime + "分钟后");
     if (forewarntime < 0) {
