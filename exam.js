@@ -72,13 +72,14 @@ function change(totype) {
                 // “这种情况就比较复杂了，代码和人有一个能跑就行”
                 if (today.getDay() == 0) {
                     // 周日下午
+                    $subtitle = ["第" + week + "周" + weekday + "大考练"];
                     // console.log("0simulation" + today);
-                    $(["综合", "语文"][week % 2], todate + "14:10", todate + "16:40", null,
-                        ["第" + week + "周" + weekday + "大考练"]);
-                    $("订正", todate + "16:40", todate + "17:30");
+                    $(["综合", "语文"][week % 2], todate + "14:10", todate + "16:40");
+                    $("订正", todate + "16:50", todate + "17:30");
                 } else {
                     // 非周日的早上
                     // console.log("morning" + today);
+                    if (today.getDay() == 5) $("听力", todate + "07:05", todate + "07:25");
                     // “非得早来10分钟”
                     $("晨读1", todate + "07:00", todate + "07:25");
                     $("晨会", todate + "07:25", todate + "07:30");
@@ -87,11 +88,11 @@ function change(totype) {
                     $("午休", todate + "12:00", todate + "13:50");
                 }
                 if (today.getDay() != 6) {
-                    if (today.getDay() % 2 == 0) {
-                        // 周日、周二、周四下午，但周日的被前面覆盖
+                    if (today.getDay() == 2 || today.getDay() == 4) {
+                        // 周二、周四下午
                         // console.log("test" + today);
-                        $("考练", todate + "16:05", todate + "16:50", null,
-                            ["第" + week + "周(第" + (week % 3 || 3) + "轮)：" + weekday + test + "限时纠错训练"]);
+                        $subtitle = ["第" + week + "周(第" + (week % 3 || 3) + "轮)：" + weekday + test + "限时纠错训练"];
+                        $("考练", todate + "16:05", todate + "16:50");
                     }
                     // 非周六的晚上
                     // console.log("evening" + today);
@@ -130,7 +131,7 @@ function change(totype) {
             // “为什么大多数人都不知道这个功能”
             $maintitle = "沉着冷静&emsp;诚信考试";
             $subtitle = [""];
-            // “自己去右键菜单改标语吧，一般人也用不上”
+            // “自己去右键菜单改标语吧，一般人也用不上，对吧”
             // $maintitle = prompt("考试大标语(可选)") || "沉着冷静&emsp;诚信考试";
             // $subtitle = [prompt("考试副标语(可选)")];
             $(prompt("考试科目名称(3个字以内)", "临时"),
