@@ -73,7 +73,7 @@ function change(totype) {
                 if (today.getDay() == 0) {
                     // 周日下午
                     // console.log("0simulation" + today);
-                    $(["语文", "综合"][week % 2], todate + "14:10", todate + "16:40", null,
+                    $(["综合", "语文"][week % 2], todate + "14:10", todate + "16:40", null,
                         ["第" + week + "周" + weekday + "大考练"]);
                     $("订正", todate + "16:40", todate + "17:30");
                 } else {
