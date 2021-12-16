@@ -62,7 +62,7 @@ function change(totype) {
             week = parseInt((today - new Date("2021-08-22")) / 6048E5);
             weekday = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()];
             // 特别注意，最后一轮求余后应该是数组第0项
-            test = [[, , "语文", , "历史/物理"], [, , "政治/化学", , "英语"], [, , "数学", , "地理/生物"]]
+            test = [[, , "语文", , "历史/物理"], [, , "政治/化学", , "数学"], [, , "英语", , "地理/生物"]]
             [week % 3][today.getDay()] || "无";
             practice = [["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物"],
             ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物"]][week % 2][today.getDay()] || "无";
@@ -72,9 +72,9 @@ function change(totype) {
                 // “这种情况就比较复杂了，代码和人有一个能跑就行”
                 if (today.getDay() == 0) {
                     // 周日下午
-                    $subtitle = ["第" + week + "周" + weekday + "大考练"];
                     // console.log("0simulation" + today);
-                    $(["综合", "语文"][week % 2], todate + "14:10", todate + "16:40");
+                    $(["综合", "语文"][week % 2], todate + "14:10", todate + "16:40", null,
+                        ["第" + week + "周" + weekday + "大考练"]);
                     $("订正", todate + "16:50", todate + "17:30");
                 } else {
                     // 非周日的早上
@@ -91,8 +91,8 @@ function change(totype) {
                     if (today.getDay() == 2 || today.getDay() == 4) {
                         // 周二、周四下午
                         // console.log("test" + today);
-                        $subtitle = ["第" + week + "周(第" + (week % 3 || 3) + "轮)：" + weekday + test + "限时纠错训练"];
-                        $("考练", todate + "16:05", todate + "16:50");
+                        $("考练", todate + "16:05", todate + "16:50", null,
+                            ["第" + week + "周(第" + (week % 3 || 3) + "轮)：" + weekday + test + "限时纠错训练"]);
                     }
                     // 非周六的晚上
                     // console.log("evening" + today);
@@ -113,7 +113,7 @@ function change(totype) {
             };
             break;
         case "高一":
-            // “高一年级部也太不给面子了”
+            // “高一年级竟然不用”
             $maintitle = "暂未启用";
             $subtitle = ["高一暂未启用考试时钟。"];
             updateSubject = function () {
@@ -150,5 +150,5 @@ function change(totype) {
         eleMain.style.filter = "blur(0)";
         updateTime();
         updateTitle();
-    }, 200);
+    }, 400);
 }
