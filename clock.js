@@ -27,6 +27,11 @@ if (search.match("debug")) {
     };
     setInterval(updateTime, 2000);
 }
+// 以当前日期为基础的日常/临时科目
+today = new Date();
+todate = fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()) + "T";
+week = parseInt((today - new Date("2021-08-22")) / 6048E5);
+weekday = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()];
 // “切啊切啊切”
 // 根据地址参数切换考试类型
 if (search.match("totype30")) change("高三日常");
@@ -102,7 +107,8 @@ function updateExam() {
         timersub = "min";
         progress = (now - start) / (end - start) * 100;
     } else {
-        // 结束后的subtitle
+        // 结束后的内容
+        maintitle="欢迎投稿背景图(投稿方式见页脚)"
         subtitle = ["式微式微，胡不归？", "考试人，考试魂，考试都是人上人",
             "任何时刻都不轻言放弃", "晚安，考试人，向你salute！"];
         subject = duration = timer = activity = "";

@@ -7,9 +7,9 @@ function change(totype) {
     output("type", type);
     // 切换类型的对焦动画
     eleMain.style.filter = "blur(.5em)";
+    $maintitle = "沉着冷静&emsp;诚信考试";
     switch (type) {
         case "高三理科":
-            $maintitle = "沉着冷静&emsp;诚信考试";
             $subtitle = ["高三理科月考三：请以实际司号为准。"];
             updateSubject = function () {
                 $("数学", "12-10T14:00", "12-10T16:00");
@@ -21,7 +21,6 @@ function change(totype) {
             };
             break;
         case "高三文科":
-            $maintitle = "沉着冷静&emsp;诚信考试";
             $subtitle = ["高三文科月考三：请以实际司号为准。"];
             updateSubject = function () {
                 $("数学", "12-10T14:00", "12-10T16:00");
@@ -33,7 +32,6 @@ function change(totype) {
             };
             break;
         case "高二理科":
-            $maintitle = "沉着冷静&emsp;诚信考试";
             $subtitle = ["高二理科阶段考试：请以实际铃声为准。"];
             updateSubject = function () {
                 $("英语", "12-17T14:00", "12-17T16:00");
@@ -45,7 +43,6 @@ function change(totype) {
             };
             break;
         case "高二文科":
-            $maintitle = "沉着冷静&emsp;诚信考试";
             $subtitle = ["高二文科阶段考试：请以实际铃声为准。"];
             updateSubject = function () {
                 $("英语", "12-17T14:00", "12-17T16:00");
@@ -57,15 +54,7 @@ function change(totype) {
             };
             break;
         case "高三日常":
-            today = new Date();
-            todate = fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()) + "T";
-            week = parseInt((today - new Date("2021-08-22")) / 6048E5);
-            weekday = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()];
             // 特别注意，最后一轮求余后应该是数组第0项
-            test = [[, , "语文", , "历史/物理"], [, , "政治/化学", , "数学"], [, , "英语", , "地理/生物"]]
-            [week % 3][today.getDay()] || "无";
-            practice = [["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物"],
-            ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物"]][week % 2][today.getDay()] || "无";
             $maintitle = "距离高考" + parseInt((new Date("2022-06-07T22:30+08:00") - today) / 864E5) + "天";
             $subtitle = [""];
             updateSubject = function () {
@@ -92,12 +81,17 @@ function change(totype) {
                         // 周二、周四下午
                         // console.log("test" + today);
                         $("考练", todate + "16:05", todate + "16:50", null,
-                            ["第" + week + "周(第" + (week % 3 || 3) + "轮)：" + weekday + test + "限时纠错训练"]);
+                            ["第" + week + "周(第" + (week % 3 || 3) + "轮)：" + weekday +
+                                ([[, , "语文", , "历史/物理"], [, , "政治/化学", , "数学"], [, , "英语", , "地理/生物"]]
+                                [week % 3][today.getDay()] || "无") + "限时纠错训练"]);
                     }
                     // 非周六的晚上
                     // console.log("evening" + today);
                     $("短训", todate + "18:25", todate + "18:45", null,
-                        ["第" + week + ["周：双周", "周：单周"][week % 2] + weekday + practice + "小题精练"]);
+                        ["第" + week + ["周：双周", "周：单周"][week % 2] + weekday +
+                            ([["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物"],
+                            ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物"]]
+                            [week % 2][today.getDay()] || "无") + "小题精练"]);
                     $("晚写", todate + "18:45", todate + "18:55");
                     $("晚一", todate + "18:55", todate + "19:40");
                     $("晚二", todate + "19:50", todate + "20:35");
@@ -129,7 +123,6 @@ function change(totype) {
             break;
         case "临时科目":
             // “为什么大多数人都不知道这个功能”
-            $maintitle = "沉着冷静&emsp;诚信考试";
             $subtitle = [""];
             // “自己去右键菜单改标语吧，一般人也用不上，对吧”
             // $maintitle = prompt("考试大标语(可选)") || "沉着冷静&emsp;诚信考试";
