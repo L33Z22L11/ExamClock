@@ -11,9 +11,9 @@ eleForewarn = document.getElementById("forewarn");
 eleMsg = document.getElementById("msg");
 eleHelp = document.getElementById("help");
 // 随便选一张壁纸
-stylish1(new Date() % 2030924 % 6);
+stylish2(new Date() % 2030924);
 // 定时换壁纸（康总加成🙏）
-setInterval(stylish1, 2040411, new Date() % 411 % 6);
+setInterval(stylish2, 2040411, new Date() % 411);
 // 希沃屏保预警
 // “屏保都统一关闭了，注释掉，白写个功能”
 // !location.href.match("noforewarn") ? setInterval(updateForewarn, 600) : 0;
@@ -81,11 +81,19 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
     send(prop + "增加了" + delta + "，调节为" + propVal);
 }
 // 更换背景
-function stylish1(num) {
+function stylish1(seed) {
     eleMain.style.background = "rgba(0,0,0,0.75)";
-    document.getElementsByTagName("html")[0].style.backgroundImage = num == -1 ? "" :
+    document.getElementsByTagName("html")[0].style.backgroundImage = seed == -1 ? "" :
         "url(https://bu.dusays.com/2021/11/23/" + ['9dd5f0f9ae39c', '10f58d6677aeb',
-            '86f0354849ead', 'b1a6b10044d7e', '4b347391fec34', 'aef07ee202d3c'][num] + ".jpg)";
+            '86f0354849ead', 'b1a6b10044d7e', '4b347391fec34', 'aef07ee202d3c'][seed % 6] + ".jpg)";
+}
+function stylish2(seed) {
+    eleMain.style.background = "rgba(0,0,0,0.75)";
+    document.getElementsByTagName("html")[0].style.backgroundImage = seed == -1 ? "" :
+        "url(https://bu.dusays.com/2021/12/19/" + ['0e34aef718e53', 'cbb7ca9f47a46',
+            'd9daedc01bca6', '2ecfe0c8ff887', '8a1d489af0279', '12479fb170d16', 'cad676f747c56',
+            'eaf02f09741ea', 'c03de66f3cef0', '84a92ddf8c5c8', '6b4b98bd96ee2', '0b91c8d48bbb0']
+        [seed % 13] + ".jpg)";
 }
 // 全屏
 function fullscreen() {
