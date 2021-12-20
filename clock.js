@@ -131,5 +131,3 @@ function fixMinutes(date, friendlyname) {
     date.setMinutes(date.getMinutes() +
         Number(prompt(friendlyname || "以分钟为单位增减" + getClock(date), -5)));
 }
-// 向页内元素输出值
-function output(id, value) { document.getElementById(id).innerHTML = value; }
