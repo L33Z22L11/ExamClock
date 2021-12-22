@@ -2,7 +2,7 @@
 function change(totype) {
     // 切换类型时需要重新初始化的内容
     // maintitle = subtitle = null;
-    start = end = new Date("2021-04"), progress = 0, order = 0;
+    start = end = new Date("2021-04"), progress = 0, subtitlenum = 0;
     type = totype || type;
     output("type", type);
     // 切换类型的对焦动画

@@ -15,7 +15,7 @@
 
 <body>
     <div id="menu" style="min-width: 12em;">
-        <div class="dim">Ctrl+右键可显示系统右键菜单</div>
+        <div class="dim">右键此处显示系统菜单</div>
         <div><i class="bi bi-aspect-ratio"></i> 缩放
             <div class="selectbar">
                 <a onclick="relStyle('fontSize',-0.05,'em',0.75,1.25)">－</a>
@@ -26,42 +26,14 @@
         <div><i class="bi bi-circle-half"></i> 对比度
             <div class="selectbar">
                 <a class="fl" onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
-                <span id="opacity">0.75</span>
+                <span id="opacity">1</span>
                 <a class="fr" onclick="relStyle('opacity',+0.05,'',0.5,1)">＋</a>
             </div>
         </div>
         <div class="dropdown"> <i class="bi bi-palette"></i> 历史背景
-            <div>
-                <div class="dropdown"><i class="bi bi-dice-1"></i> 2021年11月
-                    <div>
-                        <a onclick="stylish(1,0)">0_绩笑_窗边</a>
-                        <a onclick="stylish(1,1)">1_绩笑_书堆</a>
-                        <a onclick="stylish(1,2)">2_绩笑_讲台</a>
-                        <a onclick="stylish(1,3)">3_绩笑_课桌</a>
-                        <a onclick="stylish(1,4)">4_绩笑_商店</a>
-                        <a onclick="stylish(1,5)">5_绩笑_云层</a>
-                        <a onclick="stylish(1,6)">6_绩笑_蒲公英</a>
-                    </div>
-                </div>
-                <div class="dropdown"><i class="bi bi-dice-2"></i> 2021年12月
-                    <div>
-                        <a onclick="stylish(2,0)">0_純粋な_校门</a>
-                        <a onclick="stylish(2,1)">1_純粋な_楼顶</a>
-                        <a onclick="stylish(2,2)">2_純粋な_操场</a>
-                        <a onclick="stylish(2,3)">3_純粋な_广场</a>
-                        <a onclick="stylish(2,4)">4_齐天_书桌</a>
-                        <a onclick="stylish(2,5)">5_云山_环道</a>
-                        <a onclick="stylish(2,6)">6_Echo_云海</a>
-                        <a onclick="stylish(2,7)">7_Echo_楼顶</a>
-                        <a onclick="stylish(2,8)">8_Echo_树林</a>
-                        <a onclick="stylish(2,9)">9_Echo_操场</a>
-                        <a onclick="stylish(2,10)">10_Echo_楼道</a>
-                        <a onclick="stylish(2,11)">11_Echo_树干</a>
-                        <a onclick="stylish(2,12)">12_凌球_楼侧</a>
-                    </div>
-                </div>
-                <a onclick="stylish(0)"><i class="bi bi-pencil-square"></i> 自定义url</a>
-                <a onclick="stylish(-1)"><i class="bi bi-dash-square-dotted"></i> 恢复默认</a>
+            <div id="bglist">
+                <a onclick="oldBg(0)"><i class="bi bi-pencil-square"></i> 自定义url</a>
+                <a onclick="oldBg(-1)"><i class="bi bi-dash-square-dotted"></i> 恢复默认</a>
             </div>
         </div>
         <div class="dropdown"> <i class="bi bi-gear"></i> 高级
@@ -97,47 +69,36 @@
             <div>
                 <div class="dropdown">纸鹿
                     <div>
-                        <a>QQ: 2399052066</a>
-                        <a>微信: zhilubenlu</a>
-                        <a>公众号: 纸鹿本鹿</a>
-                        <a href="https://github.com/L33Z22L11" target="_blank">
-                            Github: L33Z22L11</a>
+                        <a>QQ: 2399052066</a><a>微信: zhilubenlu</a><a>公众号: 纸鹿本鹿</a>
+                        <a href="https://github.com/L33Z22L11" target="_blank">Github: L33Z22L11</a>
                     </div>
                 </div>
                 <div class="dropdown">混技
                     <div>
                         <a>QQ群: 169994096</a>
                         <!-- <a href="https://hi.thisis.host" target="_blank"> 官网: hi.thisis.host</a> -->
-                        <a href="https://github.com/ThisisHost" target="_blank">
-                            Github: ThisisHost</a>
+                        <a href="https://github.com/ThisisHost" target="_blank">Github: ThisisHost</a>
                     </div>
                 </div>
                 <div class="dropdown">野生技协(混技分部)
                     <div>
                         <a>QQ群: 894656456</a>
-                        <a href="https://hi.thisis.host" target="_blank">
-                            官网: hi.thisis.host</a>
-                        <a href="https://github.com/ThisisHost" target="_blank">
-                            Github: ThisisHost</a>
+                        <a href="https://hi.thisis.host" target="_blank">官网: hi.thisis.host</a>
+                        <a href="https://github.com/ThisisHost" target="_blank">Github: ThisisHost</a>
                     </div>
                 </div>
                 <div class="dropdown">其他
                     <div style="min-width: 15em;">
-                        <a>划水方块 群: 1142349003</a>
-                        <a>拾汘 QQ: 393501440</a>
-                        <a>Star QQ: 2692292636</a>
-                        <a>长安凛冬 QQ: 2252855301</a>
-                        <a>加零 QQ: 3073246100</a>
-                        <a>GX QQ: 63045083</a>
-                        <a>yl QQ: 1413488450</a>
-                        <a>純粋な QQ: 378655447</a>
+                        <a>划水方块 群: 1142349003</a><a>拾汘 QQ: 393501440</a><a>Star QQ: 2692292636</a>
+                        <a>长安凛冬 QQ: 2252855301</a><a>加零 QQ: 3073246100</a><a>GX QQ: 63045083</a>
+                        <a>yl QQ: 1413488450</a><a>純粋な QQ: 378655447</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="main" style="opacity: 0.75; font-size: 1em;">
+    <div id="main" style="opacity: 0.9; font-size: 1em;">
         <div class="notify">
             <div class="space-between" id="verify">
                 <span><i class="bi bi-shield-fill-exclamation"></i>
@@ -173,7 +134,7 @@
                                 <i class="bi bi-chevron-expand"></i>
                             </div>
                         </a>
-                        <div style="min-width: 5.5em;">
+                        <div id="typelist" style="min-width: 5.5em;">
                             <a onclick="change(this.innerHTML)">高三日常</a>
                             <a onclick="change(this.innerHTML)">高三理科</a>
                             <a onclick="change(this.innerHTML)">高三文科</a>
@@ -186,17 +147,36 @@
                     </span>&emsp;
 
                     <span class="dropdown">
-                        <a onclick="eleHelp.style.display='flex';">
-                            <i class="bi bi-bookmark-star"></i> 收藏
+                        <a onclick="bg()">
+                            <i class="bi bi-arrow-repeat"></i> 换背景
                         </a>
-                        <div style="right:-5em;min-width:12em;font-size:0.5rem;">
+                        <div style="right: -5em; min-width: 18em; font-size: 0.5rem;">
                             <div>
-                                <p><a href="/跳转到考试时钟.html" download="">
-                                        <i class="bi bi-file-earmark-medical"></i> 下载跳转html (推荐)</a></p>
-                                <p><a href="/考试时钟.url"><i class="bi bi-arrow-up-right-square"></i>
-                                        下载快捷方式</a></p>
-                                <p class="dim">鬼才案例：某班下载了此网页的快照到本地，并向其他班推荐此方法，考试时离线打开了快照而不是真正的考试时钟，
-                                    错过在线升级，导致几个考场发生时间显示错误的事故，该班电教负全责。（相当于使用几天前的天气预报截图查询今日天气）</p>
+                                <p> <i class="bi bi-mailbox2"></i> 投稿QQ：
+                                    <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066
+                                    </a>
+                                </p>
+                                <p class="dim">背景图片应遵守<a
+                                        href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">署名-相同方式共享 4.0 国际
+                                        (CC BY-SA 4.0)</a>许可。
+                                </p>
+                                <p><a href="https://hi.thisis.host"><i class="bi bi-globe"></i> 野生技协官网 (近200人了！)</a></p>
+                                <p class="dim"><i class="bi bi-diagram-2"></i> 野生技协(混技·宝中分部)群：894656456<br>
+                                    <i class="bi bi-diagram-3-fill"></i> 混技交流群：169994096<br>
+                                    目前由23届<a href="https://space.bilibili.com/11002395">氢化脱氰氰酸</a>负责。
+                                </p>
+                                <p><a href="https://img.xuewuzhibu.cn/album/h8p"><i class="bi bi-images"></i> 考试时钟图库</a>
+                                </p>
+                                <p class="dim">考试时钟图库托管在朋友的学无止步图床上。</p>
+                                <p><a href="/jump-to-exam-clock.html" download="跳转到考试时钟">
+                                        <i class="bi bi-file-earmark-medical"></i> 下载跳转文件</a></p>
+                                <p class="dim">禁止使用浏览器自带的保存功能，否则后果自负。</p>
+                                <p><i class="bi bi-file-earmark-text"></i> 公众号文章</p>
+                                <p class="dim"><a
+                                        href="https://mp.weixin.qq.com/s?__biz=MzkyMTI4OTcyMw==&mid=2247483696&idx=1&sn=c8df6332c7cceac0187bb96a88a3c4f6">
+                                        纸鹿本鹿《考试时钟的升级打怪攻略》</a></p>
+
+
                             </div>
                         </div>
                     </span>&emsp;
@@ -229,56 +209,23 @@
                 </div>
                 <!-- <div><br><br><br>test<br><br><br></div> -->
             </b>
-
-            <div class="notify">
-                <div class="space-between" id="help">
-                    <div>
-                        <div class="space-between">
-                            <h2>😉 欢迎&emsp;</h2>
-                            <a class="hilit dim" href="/跳转到考试时钟.html" download="">
-                                <i class="bi bi-download"></i>下载跳转html</a>
-                        </div>
-                        <p class="dim">轻触关闭此消息(IE无法关闭)</p>
-                    </div>
-                    <div>
-                        <p><i class="bi bi-info-circle"></i> 若加载异常建议刷新，你还可以：</p>
-                        <p class="dim">1.关闭屏保，有问题可联系纸鹿；<br>2.建议使用Chrome/Egde/Firefox浏览器，最低支持IE9；<br>
-                            3.本站网址<b class="hilit">exam.thisis.host</b>不需要加前后缀！</p>
-                    </div>
-                    <div>
-                        <p><i class="bi bi-people-fill"></i> 野生技协-欢迎提问</p>
-                        <p class="dim">做优质的自发性技术协助组织<br>发布了网课APP、电子课本导航和考试时钟<br>群号：894656456(面向校友开放)</p>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div>
             <footer>
                 <div class="space-between">
                     <span><i class="bi bi-code-slash"></i> 开发：纸鹿(22届) × 混技</span>
-                    <span><i class="bi bi-image"></i> 本期供图：純粋な 齐天 云山 Echo 凌球</span>
-                    <span><i class="bi bi-mailbox2"></i> 背景投稿QQ：
-                        <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066
-                        </a></span>
-                    <span><i class="bi bi-diagram-3-fill"></i> 混技交流群：169994096</span>
-                    <span><i class="bi bi-award"></i>
-                        特邀合作：野生技协(混技·宝中分部) 划水方块 拾汘 Star 长安凛冬</span>
-                </div>
-                <div class="space-between">
-                    <span><i class="bi bi-diagram-2"></i>
-                        野生技协(混技·宝中分部)群：894656456 (172/200) (已转交23届王朴暄负责)</span>
+                    <span><i class="bi bi-image"></i> 当前背景：<span id="bg">campus</span></span>
                     <span><i class="bi bi-stars"></i> 友好社团：音幻宝中 朗诵社 排球社 合唱团 街舞社 汉服社 航模社
                         民乐社 心理社 书画社 动漫社 舞蹈队 日语社 Instreet社 机器人社 推理社 篮裁社</span>
                 </div>
                 <div class="space-between">
-                    <span><i class="bi bi-file-earmark-text"></i> 公众号文章： <a
-                            href="https://mp.weixin.qq.com/s?__biz=MzkyMTI4OTcyMw==&mid=2247483696&idx=1&sn=c8df6332c7cceac0187bb96a88a3c4f6">
-                            纸鹿本鹿《考试时钟的升级打怪攻略》</a></span>
+                    <span><i class="bi bi-award"></i>
+                        特邀合作：野生技协(混技·宝中分部) 划水方块 拾汘 Star 长安凛冬</span>
                     <span><i class="bi bi-hdd-network-fill"></i>
-                        状态：正常运行<span id="runtime">8个月</span> 图片服务器已升级</span>
+                        状态：正常运行<span id="runtime">8个月</span> 由学无止步图床赞助图片服务</span>
                     <span><i class="bi bi-calendar2-week"></i> 支持期限：2031年4月</span>
-                    <span><i class="bi bi-file-earmark-check"></i> 版本：5.9.7_wxy_右键菜单更多背景</span>
+                    <span><i class="bi bi-file-earmark-check"></i> 版本：5.9.8_wxy_代码有个嵌套循环</span>
                 </div>
             </footer>
         </div>
@@ -286,6 +233,7 @@
 </body>
 
 <script src="/exam.js"></script>
+<script src="/gallery.json"></script>
 <script src="/style.js"></script>
 <script src="/clock.js"></script>
 

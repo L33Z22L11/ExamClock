@@ -51,9 +51,9 @@ output("runtime", parseInt((new Date() - new Date("2021-04")) / 864E5) + "天");
 function updateTitle() {
     maintitle = maintitle || $maintitle;
     subtitle = subtitle || $subtitle;
-    order < subtitle.length - 1 ? order++ : order = 0;
+    subtitlenum < subtitle.length - 1 ? subtitlenum++ : subtitlenum = 0;
     output("maintitle", maintitle);
-    output("subtitle", subtitle[order]);
+    output("subtitle", subtitle[subtitlenum]);
 }
 // “考试时钟的灵魂”
 // 考试科目判断

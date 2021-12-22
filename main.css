@@ -14,6 +14,11 @@ html {
   background: #333 fixed center url(/campus.jpg);
   background-size: cover;
 }
+body {
+  background: rgba(0, 0, 0, 0.5);
+  /* 吃性能怪，太能卡了 */
+  /* backdrop-filter: blur(4px); */
+}
 /* 分散对齐 */
 .space-between {
   display: flex;
@@ -27,7 +32,7 @@ html {
 .card > div,
 .card > a {
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+  box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.2);
 }
 /* 一级淡文本（保留字体颜色） */
 .dim {
@@ -43,18 +48,6 @@ html {
 footer {
   font-size: 0.3em;
   color: rgba(255, 255, 255, 0.3);
-}
-/* 闪烁文本 */
-.splash {
-  animation: splash 1s infinite alternate;
-}
-@keyframes splash {
-  from {
-    color: rgba(255, 255, 255, 0.3);
-  }
-  to {
-    color: rgba(255, 255, 255, 0.5);
-  }
 }
 /* 选中 */
 ::selection {
@@ -215,7 +208,7 @@ a:hover {
   color: rgba(0, 0, 0, 0.8);
   border-radius: 0.2rem;
   background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.2);
+  box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(0.5em);
 }
 /* 高亮按钮/菜单元素/下拉正文元素边距 */
