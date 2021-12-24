@@ -230,3 +230,34 @@ a.hilit,
   border-radius: 0.2rem;
   background: rgba(0, 0, 0, 0.1);
 }
+/* 2021年12月25日，下个雪 */
+#snow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: url("./snow1.png"), url("./snow2.png");
+  -webkit-animation: snow 15s linear infinite;
+  animation: snow 15s linear infinite;
+}
+@keyframes snow {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 500px 1000px, 500px 500px;
+  }
+}
+@-webkit-keyframes snow {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 500px 1000px, 500px 500px;
+  }
+}
+/* 
+版权声明：本文为CSDN博主「喵大嗷」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/connie_0217/article/details/78872721
+ */
