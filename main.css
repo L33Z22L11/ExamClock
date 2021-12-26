@@ -71,20 +71,21 @@ footer {
 }
 /* 通知气泡 */
 .notify {
-  font-size: 0.5em;
   z-index: 1;
   top: 0;
 }
 /* 通知气泡元素 */
 .notify > div {
+  font-size: 0.5rem;
   display: none;
   margin: 0.2rem auto;
   padding: 0.2rem;
+  animation: dropdown 0.5s;
   border-radius: 0.2rem;
 }
 /* 右键菜单 */
 #menu {
-  font-size: 0.4rem;
+  font-size: 14px;
   position: fixed;
   z-index: 1;
   display: none;
@@ -114,7 +115,7 @@ footer {
   display: inline-block;
   margin: 0.25rem;
   padding: 0.25rem 0.75rem;
-  transition: background 0.5s;
+  transition: 0.5s;
   text-align: center;
   border-radius: 0.5rem;
 }
@@ -186,6 +187,7 @@ footer {
   bottom: 0;
   left: 5em;
   min-width: 12em;
+  max-height: 15em;
 }
 /* 下拉/点击文本 */
 .dropdown,
@@ -205,9 +207,9 @@ a:hover {
 .hilit,
 #menu,
 .dropdown > :last-child {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.9);
   border-radius: 0.2rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(0.5em);
 }
@@ -227,37 +229,6 @@ a.hilit,
   justify-content: space-between;
   min-width: 5em;
   color: rgba(0, 0, 0, 0.8);
-  border-radius: 0.2rem;
+  border-radius: 0.2em;
   background: rgba(0, 0, 0, 0.1);
 }
-/* 2021年12月25日，下个雪 */
-#snow {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: url("./snow1.png"), url("./snow2.png");
-  -webkit-animation: snow 15s linear infinite;
-  animation: snow 15s linear infinite;
-}
-@keyframes snow {
-  0% {
-    background-position: 0 0, 0 0;
-  }
-  100% {
-    background-position: 500px 1000px, 500px 500px;
-  }
-}
-@-webkit-keyframes snow {
-  0% {
-    background-position: 0 0, 0 0;
-  }
-  100% {
-    background-position: 500px 1000px, 500px 500px;
-  }
-}
-/* 
-版权声明：本文为CSDN博主「喵大嗷」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/connie_0217/article/details/78872721
- */

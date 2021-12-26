@@ -14,7 +14,6 @@
 </head>
 
 <body>
-  <div id="snow"></div>
   <div id="menu" style="min-width: 12em;">
     <div class="dim">右键此处显示系统菜单</div>
     <div><i class="bi bi-aspect-ratio"></i> 缩放
@@ -27,7 +26,7 @@
     <div><i class="bi bi-circle-half"></i> 对比度
       <div class="selectbar">
         <a class="fl" onclick="relStyle('opacity',-0.05,'',0.5,1)">－</a>
-        <span id="opacity">1</span>
+        <span id="opacity">0.9</span>
         <a class="fr" onclick="relStyle('opacity',+0.05,'',0.5,1)">＋</a>
       </div>
     </div>
@@ -147,40 +146,25 @@
             </div>
           </span>
           &emsp;
-          <span> <i class="bi bi-tree-fill"></i> 冬雪限定!</span>
-          &emsp;
           <span class="dropdown">
             <a onclick="bg()">
-              <i class="bi bi-arrow-repeat"></i> 点我换背景
+              <i class="bi bi-arrow-repeat"></i> 换背景
             </a>
-            <div style="right: -5em; min-width: 18em; font-size: 0.5rem;">
+            <div style="right: -5em; min-width: 15em; font-size: 0.5rem;">
               <div>
                 <p> <i class="bi bi-mailbox2"></i> 投稿QQ：
-                  <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066
-                  </a>
+                  <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066</a>
                 </p>
                 <p class="dim">背景图片应遵守<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA
-                    4.0</a>许可。
-                </p>
-                <p><a href="https://hi.thisis.host"><i class="bi bi-globe"></i> 野生技协官网 (近200人了！)</a></p>
-                <p class="dim"><i class="bi bi-diagram-2"></i> 野生技协(混技·宝中分部)群：894656456<br>
-                  野生技协目前由23届<a href="https://space.bilibili.com/11002395">氢化脱氰氰酸</a>负责。<br>
-                  <i class="bi bi-diagram-3-fill"></i> 混技交流群：169994096<br>
-                </p>
-                <p><a href="https://img.xuewuzhibu.cn/album/h8p"><i class="bi bi-images"></i> 自建校园图库
-                    (本站背景图片)</a>
-                </p>
-                <p class="dim">考试时钟图库托管在朋友的学无止步图床上。</p>
+                    4.0</a>许可。</p>
+                <p><a href="https://img.xuewuzhibu.cn/album/h8p"><i class="bi bi-images"></i> 宝中一卷图库
+                    (正在使用)</a></p>
+                <p class="dim">由小伙伴的学无止步图床托管。</p>
+                <p><a href="https://hi.thisis.host"><i class="bi bi-globe"></i> 野生技协官网 (174人!)</a></p>
+                <p class="dim">野生技协(混技·宝中分部)群：894656456<br>混技交流群：169994096</p>
                 <p><a href="/jump-to-exam-clock.html" download="跳转到考试时钟">
-                    <i class="bi bi-file-earmark-medical"></i> 下载跳转文件 (HTML 52B)</a></p>
-                <p class="dim">禁止使用浏览器自带的保存功能，否则后果自负。</p>
-                <p><i class="bi bi-box-arrow-up-right"></i>
-                  其他链接</p>
-                <p class="dim"><a
-                    href="https://mp.weixin.qq.com/s?__biz=MzkyMTI4OTcyMw==&mid=2247483696&idx=1&sn=c8df6332c7cceac0187bb96a88a3c4f6">
-                    公众号文章：纸鹿本鹿《考试时钟的升级打怪攻略》</a></p>
-
-
+                    <i class="bi bi-file-earmark-medical"></i> 下载跳转HTML文件</a></p>
+                <p class="dim">千万别用浏览器自带的保存功能。</p>
               </div>
             </div>
           </span>
@@ -229,7 +213,7 @@
           <span><i class="bi bi-hdd-network-fill"></i>
             状态：正常运行<span id="runtime">8个月</span> 由学无止步图床赞助图片服务</span>
           <span><i class="bi bi-calendar2-week"></i> 支持期限：2031年4月</span>
-          <span><i class="bi bi-file-earmark-check"></i> 版本：5.9.9_wxy_因为一个需求改了一堆代码</span>
+          <span><i class="bi bi-file-earmark-check"></i> 版本：6.0.0_wxy_图库很大，多刷几下。</span>
         </div>
       </footer>
     </div>
@@ -237,6 +221,7 @@
 </body>
 
 <script src="./exam.js"></script>
+<script src="./gallery.js"></script>
 <script src="./style.js"></script>
 <script src="./clock.js"></script>
 

@@ -40,8 +40,8 @@ else if (search.match("totype32")) change("高三文科");
 else if (search.match("totype21")) change("高二理科");
 else if (search.match("totype22")) change("高二文科");
 // 在考试日期切换到考试类型
-else if (now.getDate() == 10 || now.getDate() == 11) change("高三理科");
-else if (now.getDate() == 17 || now.getDate() == 18) change("高二理科");
+// else if (now.getDate() == 10 || now.getDate() == 11) change("高三理科");
+// else if (now.getDate() == 17 || now.getDate() == 18) change("高二理科");
 // 默认考试类型
 else change("高三日常");
 setInterval(updateTitle, 2000);
@@ -58,14 +58,17 @@ function updateTitle() {
 // “考试时钟的灵魂”
 // 考试科目判断
 function $(nextSubject, nextDate, nextStart, nextEnd, nextMaintitle, nextSubtitle) {
-  if (now >= end) {
+  if (now < end) console.log("目前科目未结束，故不注入科目：" + nextSubject);
+  else if (now >= new Date(nextDate + "T" + nextEnd + "+08:00"))
+    console.log("请求科目已结束，故不注入科目：" + nextSubject);
+  else {
     subject = nextSubject;
     start = new Date(nextDate + "T" + nextStart + "+08:00");
     end = new Date(nextDate + "T" + nextEnd + "+08:00");
     maintitle = nextMaintitle || $maintitle;
     subtitle = nextSubtitle || $subtitle;
-    console.log(now + "\n注入科目：" + nextSubject + "\n开始时间：" + nextDate, nextStart + "\n结束时间：" + nextDate, nextEnd + ["\n指定大标语：", "\n默认大标语："][!nextMaintitle * 1] + maintitle + ["\n指定副标语：", "\n默认副标语："][!nextSubtitle * 1] + subtitle);
-  } else { console.log(now + "<" + end); }
+    console.log(getClock(now) + "时成功注入科目：" + nextSubject + "\n开始时间：" + nextDate, nextStart + "\n结束时间：" + nextDate, nextEnd + ["\n指定大标语：", "\n默认大标语："][!nextMaintitle * 1] + maintitle + ["\n指定副标语：", "\n默认副标语："][!nextSubtitle * 1] + subtitle);
+  }
 }
 // 考试时钟科目时间更新
 function updateExam() {
