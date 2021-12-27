@@ -88,8 +88,9 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
 // 更换背景
 function bg(phasenum, seed) {
   try {
-    if (!phasenum) phasenum = new Date() % gallery.length || gallery.length - 1;
-    if (!seed) seed = new Date() % 20030924;
+    if (phasenum == null) phasenum = [3, 4, 5][new Date() % 3];
+    setTimeout(console.log, 1000, phasenum);
+    if (seed == null) seed = new Date() % 20030924;
     document.getElementsByTagName("html")[0].style.backgroundImage =
       "url(https://images.xuewuzhibu.cn/" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].xwzbid + ".jpg)";
     send("背景已更换为" + gallery[phasenum].phase + "：" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name + "。 <span class='dim'>该背景函数为bg(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，在右键菜单还可选择更多背景。</div>");
@@ -103,6 +104,7 @@ function bg(phasenum, seed) {
     else if (phasenum == 2) document.getElementsByTagName("html")[0].style.backgroundImage =
       "url(https://bu.dusays.com/2021/12/19/" + ['0e34aef718e53', 'cbb7ca9f47a46', 'd9daedc01bca6', '2ecfe0c8ff887', '8a1d489af0279', '12479fb170d16', '9b17e5fffdb73', 'cad676f747c56', 'eaf02f09741ea', 'c03de66f3cef0', '84a92ddf8c5c8', '6b4b98bd96ee2', '0b91c8d48bbb0'][seed % 13] + ".jpg)";
     else document.getElementsByTagName("html")[0].style.backgroundImage = eleMain.style.background = "";
+    console.warn("主背景函数出错，已启用备用背景。\n" + e);
   }
 }
 // 全屏
