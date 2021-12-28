@@ -88,9 +88,9 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
 // 更换背景
 function bg(phasenum, seed) {
   try {
-    if (phasenum == null) phasenum = [3, 4, 5][new Date() % 3];
+    if (phasenum == null) phasenum = [3, 4, 5][new Date() % 1234567 % 3];
     setTimeout(console.log, 1000, phasenum);
-    if (seed == null) seed = new Date() % 20030924;
+    if (seed == null) seed = new Date() % 1234567;
     document.getElementsByTagName("html")[0].style.backgroundImage =
       "url(https://images.xuewuzhibu.cn/" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].xwzbid + ".jpg)";
     send("背景已更换为" + gallery[phasenum].phase + "：" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name + "。 <span class='dim'>该背景函数为bg(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，在右键菜单还可选择更多背景。</div>");
