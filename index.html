@@ -10,6 +10,7 @@
   <link href="https://fonts.font.im/css?family=Montserrat:500,700" rel="stylesheet">
   <!-- <link href="https://fonts.proxy.ustclug.org/css?family=Noto+Sans+SC:400,700" rel="stylesheet"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <base target="_blank">
   <title>考试时钟</title>
 </head>
 
@@ -38,9 +39,9 @@
     </div>
     <div class="dropdown"> <i class="bi bi-gear"></i> 高级
       <div>
-        <a href="?debug" target="_blank">
+        <a href="?debug">
           <i class="bi bi-bug"></i> 新建调试页面</a>
-        <a --href="?noforewarn" target="_blank">
+        <a --href="?noforewarn">
           <i class="bi bi-shield-slash"></i> 屏保预警已关闭</a>
         <a href="https://github.com/ThisisHost/exam-clock">
           <i class="bi bi-code-slash"></i> 访问源代码仓库</a>
@@ -70,21 +71,21 @@
         <div class="dropdown">纸鹿
           <div>
             <a>QQ: 2399052066</a><a>微信: zhilubenlu</a><a>公众号: 纸鹿本鹿</a>
-            <a href="https://github.com/L33Z22L11" target="_blank">Github: L33Z22L11</a>
+            <a href="https://github.com/L33Z22L11">Github: L33Z22L11</a>
           </div>
         </div>
         <div class="dropdown">混技
           <div>
             <a>QQ群: 169994096</a>
-            <!-- <a href="https://hi.thisis.host" target="_blank"> 官网: hi.thisis.host</a> -->
-            <a href="https://github.com/ThisisHost" target="_blank">Github: ThisisHost</a>
+            <!-- <a href="https://hi.thisis.host"> 官网: hi.thisis.host</a> -->
+            <a href="https://github.com/ThisisHost">Github: ThisisHost</a>
           </div>
         </div>
         <div class="dropdown">野生技协(混技分部)
           <div>
             <a>QQ群: 894656456</a>
-            <a href="https://hi.thisis.host" target="_blank">官网: hi.thisis.host</a>
-            <a href="https://github.com/ThisisHost" target="_blank">Github: ThisisHost</a>
+            <a href="https://hi.thisis.host">官网: hi.thisis.host</a>
+            <a href="https://github.com/ThisisHost">Github: ThisisHost</a>
           </div>
         </div>
         <div class="dropdown">其他
@@ -100,18 +101,14 @@
 
   <div id="main" style="opacity: 0.9; font-size: 1em;">
     <div class="notify">
-      <div class="space-between" id="verify">
-        <span><i class="bi bi-shield-fill-exclamation"></i>
-          您使用的可能是受篡改的或者离线的考试时钟，无法收到官方更新。</span>
-        <div>
-          <a href="https://exam.thisis.host" class="hilit">
-            <i class="bi bi-arrow-right-square"></i> 访问在线版</a>
-        </div>
+      <div id="verify"><i class="bi bi-shield-fill-exclamation"></i>
+        <span id="verifycontent">安全提示内容</span>
       </div>
       <!-- 希沃屏保被关了，这个暂时不用 -->
       <div class="space-between" id="forewarn">
         <p><i class="bi bi-exclamation-triangle"></i>
-          希沃管家可能<span id="forewarntime">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)！</p>
+          希沃管家可能<span id="forewarntime">在无操作45分钟后</span>
+          弹出屏保(含古诗词、政史知识)！</p>
         <a class="hilit"><i class="bi bi-clock-history"></i>
           暂时关闭45分钟</a>
       </div>

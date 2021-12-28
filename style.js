@@ -2,7 +2,13 @@ console.log("%c\n加入Techaos! 混技\nQQ群: 169994096\n", "font:3em Montserra
 console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:3em Montserrat,sans-serif;");
 search = location.search;
 setInterval(function () {
-  try { if (!location.host.match("exam.thisis.host")) document.getElementById("verify").style.display = "flex"; }
+  try {
+    if (!location.host.match("exam.thisis.host")) {
+      document.getElementById("verify").style.display = "block";
+      output("verifycontent","您使用的可能是受篡改的或者离线的考试时钟，无法收到官方更新。<u><a href='https://exam.thisis.host'>点击访问在线考试时钟官网https://exam.thisis.host</a></u>");
+    }
+    // “这里埋个坑，提示IE”
+  }
   catch (e) { alert("检测到意外修改内容的考试时钟！\n" + e); location.href = "https://exam.thisis.host"; }
 }, 2000);
 eleMain = document.getElementById("main");
@@ -10,6 +16,7 @@ eleMenu = document.getElementById("menu");
 // eleForewarn = document.getElementById("forewarn");
 eleMsg = document.getElementById("msg");
 // 随便选一张壁纸
+$phasenum = [3, 4, 5];
 bg();
 // 定时换壁纸（康总加成🙏）
 setInterval(bg, 2004 * 0411);
@@ -48,7 +55,7 @@ eleMain.oncontextmenu = function (e) {
   }
 };
 // 隐藏右键菜单
-eleMain.onclick = function () { eleMenu.style.display = "none"; };
+eleMain.onclick = function () { eleMenu.style.display = ""; };
 // 关闭通知气泡
 // eleForewarn.onclick = 
 eleMsg.onclick = function () { this.style.display = ""; };
@@ -88,30 +95,33 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
 // 更换背景
 function bg(phasenum, seed) {
   try {
-    if (phasenum == null) phasenum = [3, 4, 5][new Date() % 1234567 % 3];
-    setTimeout(console.log, 1000, phasenum);
-    if (seed == null) seed = new Date() % 1234567;
-    document.getElementsByTagName("html")[0].style.backgroundImage =
+    // 若同时以new Date()作为phasenum和seed的随机种子，会产生特定的余数对应关系
+    if (phasenum == null) phasenum = $phasenum[~~(Math.random() * $phasenum.length)];
+    if (seed == null) seed = ~~(Math.random() * gallery[phasenum].list.length);
+    // setTimeout(console.log, 1000, seed % (gallery[phasenum].list.length));
+    document.documentElement.style.backgroundImage =
       "url(https://images.xuewuzhibu.cn/" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].xwzbid + ".jpg)";
     send("背景已更换为" + gallery[phasenum].phase + "：" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name + "。 <span class='dim'>该背景函数为bg(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，在右键菜单还可选择更多背景。</div>");
     output("bg", gallery[phasenum].phase + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name);
   } catch (e) {
-    eleMain.style.background = "rgba(0,0,0,0.75)";
-    if (phasenum == 0) document.getElementsByTagName('html')[0].style.backgroundImage =
-      'url(' + prompt('输入背景url') + ')';
-    else if (phasenum == 1) document.getElementsByTagName("html")[0].style.backgroundImage =
-      "url(https://bu.dusays.com/2021/11/23/" + ['9dd5f0f9ae39c', '86f0354849ead', 'aef07ee202d3c', 'a3676bbf32d4e', '4b347391fec34', 'b1a6b10044d7e', '10f58d6677aeb'][seed % 7] + ".jpg)";
-    else if (phasenum == 2) document.getElementsByTagName("html")[0].style.backgroundImage =
-      "url(https://bu.dusays.com/2021/12/19/" + ['0e34aef718e53', 'cbb7ca9f47a46', 'd9daedc01bca6', '2ecfe0c8ff887', '8a1d489af0279', '12479fb170d16', '9b17e5fffdb73', 'cad676f747c56', 'eaf02f09741ea', 'c03de66f3cef0', '84a92ddf8c5c8', '6b4b98bd96ee2', '0b91c8d48bbb0'][seed % 13] + ".jpg)";
-    else document.getElementsByTagName("html")[0].style.backgroundImage = eleMain.style.background = "";
     console.warn("主背景函数出错，已启用备用背景。\n" + e);
+    eleMain.style.background = "rgba(0,0,0,0.75)";
+    if (phasenum == 0) document.getElementsByTagName('html')[0].style.backgroundImage = 'url(' + prompt('输入背景url') + ')';
+    else if (phasenum == 1) document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/11/23/" + ['9dd5f0f9ae39c', '86f0354849ead', 'aef07ee202d3c', 'a3676bbf32d4e', '4b347391fec34', 'b1a6b10044d7e', '10f58d6677aeb'][seed % 7] + ".jpg)";
+    else if (phasenum == 2) document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/12/19/" + ['0e34aef718e53', 'cbb7ca9f47a46', 'd9daedc01bca6', '2ecfe0c8ff887', '8a1d489af0279', '12479fb170d16', '9b17e5fffdb73', 'cad676f747c56', 'eaf02f09741ea', 'c03de66f3cef0', '84a92ddf8c5c8', '6b4b98bd96ee2', '0b91c8d48bbb0'][seed % 13] + ".jpg)";
+    else document.documentElement.style.backgroundImage = eleMain.style.background = "";
   }
 }
 // 全屏
 function fullscreen() {
   try {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen(); output("fullscreen", "退出");
-    } else { document.exitFullscreen(); output("fullscreen", "全屏"); }
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+      output("fullscreen", "全屏");
+    }
+    else {
+      document.documentElement.requestFullscreen();
+      output("fullscreen", "退出");
+    }
   } catch (e) { send("该浏览器不支持此操作，请手动最大化窗口或全屏。"); }
 }
