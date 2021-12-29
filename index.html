@@ -15,6 +15,8 @@
 </head>
 
 <body>
+  <div id="bg2022"></div>
+
   <div id="menu" style="min-width: 12em;">
     <div class="dim">右键此处显示系统菜单</div>
     <div><i class="bi bi-aspect-ratio"></i> 缩放
@@ -33,8 +35,8 @@
     </div>
     <div class="dropdown"> <i class="bi bi-palette"></i> 历史背景
       <div id="bglist">
-        <a onclick="oldBg(0)"><i class="bi bi-pencil-square"></i> 自定义url</a>
-        <a onclick="oldBg(-1)"><i class="bi bi-dash-square-dotted"></i> 恢复默认</a>
+        <a onclick="bg(0)"><i class="bi bi-pencil-square"></i> 自定义url</a>
+        <a onclick="bg(-1)"><i class="bi bi-dash-square-dotted"></i> 恢复默认</a>
       </div>
     </div>
     <div class="dropdown"> <i class="bi bi-gear"></i> 高级
@@ -141,12 +143,12 @@
               <a onclick="change('临时科目');">
                 <i class="bi bi-plus-square-dotted"></i> 临时</a>
             </div>
-          </span>
-          &emsp;
+          </span>&emsp;
+
+          <a onclick="bg2022()"><i class="bi bi-slack"></i>2022</a>&emsp;
+
           <span class="dropdown">
-            <a onclick="bg()">
-              <i class="bi bi-arrow-repeat"></i> 换背景
-            </a>
+            <a onclick="bg()"><i class="bi bi-arrow-repeat"></i> 换背景</a>
             <div style="right: -5em; min-width: 15em; font-size: 0.5rem;">
               <div>
                 <p> <i class="bi bi-mailbox2"></i> 投稿QQ：
@@ -164,8 +166,8 @@
                 <p class="dim">千万别用浏览器自带的保存功能。</p>
               </div>
             </div>
-          </span>
-          &emsp;
+          </span>&emsp;
+
           <a onclick="fullscreen()">
             <i class="bi bi-arrows-fullscreen"></i>
             <span id="fullscreen">全屏</span></a>
@@ -208,9 +210,9 @@
           <span><i class="bi bi-award"></i>
             特邀合作：野生技协(混技·宝中分部) 划水方块 拾汘 Star 长安凛冬</span>
           <span><i class="bi bi-hdd-network-fill"></i>
-            状态：正常运行<span id="runtime">8个月</span> 由学无止步图床赞助图片服务</span>
+            状态：正常运行<span id="runtime">8个月</span></span>
           <span><i class="bi bi-calendar2-week"></i> 支持期限：2031年4月</span>
-          <span><i class="bi bi-file-earmark-check"></i> 版本：6.0.0_wxy_图库很大，多刷几下。</span>
+          <span><i class="bi bi-file-earmark-check"></i> 版本：6.0.1_wxy_2022彩蛋</span>
         </div>
       </footer>
     </div>

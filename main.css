@@ -14,11 +14,6 @@ html {
   background: #333 fixed center url(/campus.jpg);
   background-size: cover;
 }
-body {
-  background: rgba(0, 0, 0, 0.5);
-  /* 吃性能怪，太能卡了 */
-  /* backdrop-filter: blur(4px); */
-}
 /* 分散对齐 */
 .space-between {
   display: flex;
@@ -63,7 +58,7 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  transition: filter 0.2s;
+  background: rgba(0, 0, 0, 0.6);
 }
 /* 主体元素间距 */
 #main > * {
@@ -107,6 +102,7 @@ footer {
   justify-content: center;
   max-width: 100vw;
   margin: 0.5rem -1rem;
+  transition: filter 0.2s;
 }
 /* 卡片元素字体间距等 */
 .card > div,

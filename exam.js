@@ -146,10 +146,10 @@ function change(totype) {
   type = totype || type;
   output("type", type);
   // 切换类型的对焦动画
-  eleMain.style.filter = "blur(.5em)";
+  eleCard.style.filter = "blur(.5em)";
   // “客户想提升‘应用流畅度’，就把延迟改小点”
   setTimeout(function () {
-    eleMain.style.filter = "blur(0)";
+    eleCard.style.filter = "blur(0)";
     updateTime();
     updateTitle();
   }, 400);

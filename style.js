@@ -5,7 +5,7 @@ setInterval(function () {
   try {
     if (!location.host.match("exam.thisis.host")) {
       document.getElementById("verify").style.display = "block";
-      output("verifycontent","您使用的可能是受篡改的或者离线的考试时钟，无法收到官方更新。<u><a href='https://exam.thisis.host'>点击访问在线考试时钟官网https://exam.thisis.host</a></u>");
+      output("verifycontent", "您使用的可能是受篡改的或者离线的考试时钟，无法收到官方更新。<u><a href='https://exam.thisis.host'>点击访问在线考试时钟官网https://exam.thisis.host</a></u>");
     }
     // “这里埋个坑，提示IE”
   }
@@ -15,6 +15,7 @@ eleMain = document.getElementById("main");
 eleMenu = document.getElementById("menu");
 // eleForewarn = document.getElementById("forewarn");
 eleMsg = document.getElementById("msg");
+eleCard = document.getElementsByClassName("card")[0];
 // 随便选一张壁纸
 $phasenum = [3, 4, 5];
 bg();
