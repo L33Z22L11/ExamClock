@@ -40,7 +40,6 @@ else if (search.match("totype32")) change("高三文科");
 else if (search.match("totype21")) change("高二理科");
 else if (search.match("totype22")) change("高二文科");
 // 在考试日期切换到考试类型
-else if (now < new Date("2022-01-02")) bg2022();
 // else if (now.getDate() == 10 || now.getDate() == 11) change("高三理科");
 // else if (now.getDate() == 17 || now.getDate() == 18) change("高二理科");
 // 默认考试类型

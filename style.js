@@ -82,7 +82,7 @@ function send(msg) {
   return msg;
 }
 // 向页内元素输出值
-function output(id, value) { document.getElementById(id).innerHTML = value; }
+function output(id, value) { return document.getElementById(id).innerHTML = value; }
 // 主体元素样式调节
 function relStyle(prop, delta, unit, minVal, maxVal) {
   propVal = eleMain.style[prop].replace(unit, "") * 1 + delta;
@@ -104,8 +104,7 @@ function bg(phasenum, seed) {
     // 定时换壁纸（康总加成🙏）
     try { clearInterval(bgnum); } catch (e) { }
     bgnum = setInterval(bg, 2004 * 0411);
-    send("背景已更换为" + gallery[phasenum].phase + "：" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name + "。 <span class='dim'>该背景函数为bg(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，在右键菜单还可选择更多背景。</div>");
-    output("bg", gallery[phasenum].phase + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name);
+    send("背景已更换为" + output("bg", gallery[phasenum].phase + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name) + "。 <span class='dim'>该背景函数为bg(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，在右键菜单还可选择更多背景。</div>");
   } catch (e) {
     console.warn("主背景函数出错，已启用备用背景。\n" + e);
     eleMain.style.background = "rgba(0,0,0,0.75)";
@@ -115,15 +114,6 @@ function bg(phasenum, seed) {
     else document.documentElement.style.backgroundImage = eleMain.style.background = "";
   }
 }
-// 2022大彩蛋
-function bg2022() {
-  bg();
-  if (!document.getElementById("bg2022").innerHTML) {
-    output("bg2022", "<video autoplay loop muted style='position:fixed;min-width:100vw;min-height:100vh;'><source id='bg2022' src='https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/45/66/436386645/436386645-1-208.mp4?e=ig8euxZM2rNcNbhjhwdVhwdlhzTVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1640873231&gen=playurlv2&os=cosbv&oi=454921871&trid=89a49a36d2f944fcabd90e577edbd5f6T&platform=html5&upsig=0805fe3ca56f7fc2255e5342df7050f7&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform'></video>");
-    output("bg", send("视频背景：<a href='https://www.bilibili.com/video/BV1434y1o7Fu?p=2'>为了拍到烟花爆炸中心的画面，我们炸了两台穿越机！-循环Cycle-哔哩哔哩</a>"));
-  }
-  else output("bg2022", "")
-};
 // 全屏
 function fullscreen() {
   try {
