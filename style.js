@@ -118,7 +118,7 @@ function bg(phasenum, seed) {
 function bg2022() {
   bg();
   if (!document.getElementById("bg2022").innerHTML) {
-    output("bg2022", "<video autoplay loop muted style='position:fixed;min-width:100vw;min-height:100vh;'><source id='bg2022' src='https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/45/66/436386645/436386645-1-208.mp4?e=ig8euxZM2rNcNbhjhwdVhwdlhzTVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1640833728&gen=playurlv2&os=cosbv&oi=993818920&trid=c34c65947f8042c9a7865b2f5f44f383T&platform=html5&upsig=6a6ca7e9fcd17429480c0452bea42f92&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform'></video>");
+    output("bg2022", "<video autoplay loop muted style='position:fixed;min-width:100vw;min-height:100vh;'><source id='bg2022' src='https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/45/66/436386645/436386645-1-208.mp4?e=ig8euxZM2rNcNbhjhwdVhwdlhzTVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1640858157&gen=playurlv2&os=cosbv&oi=3723219503&trid=cba9178831fe413f9c130bb0640b3afaT&platform=html5&upsig=e45721bcddc7b24fb64516a18ab13e37&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform'></video>");
     send("视频背景：<a href='https://www.bilibili.com/video/BV1434y1o7Fu?p=2'>为了拍到烟花爆炸中心的画面，我们炸了两台穿越机！-循环Cycle-哔哩哔哩</a>");
     output("bg", "<a href='https://www.bilibili.com/video/BV1434y1o7Fu?p=2'>为了拍到烟花爆炸中心的画面，我们炸了两台穿越机！-循环Cycle-哔哩哔哩</a>");
   }
