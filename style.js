@@ -11,12 +11,6 @@ setInterval(function () {
   }
   catch (e) { alert("检测到意外修改内容的考试时钟！\n" + e); location.href = "https://exam.thisis.host"; }
 }, 2000);
-// Microsoft Clarity tracking code for https://thisis.host/
-(function (c, l, a, r, i, t, y) {
-  c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-  t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
-  y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-})(window, document, "clarity", "script", "9yxeu8ecwa");
 eleMain = document.getElementById("main");
 eleMenu = document.getElementById("menu");
 // eleForewarn = document.getElementById("forewarn");

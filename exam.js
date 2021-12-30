@@ -102,12 +102,14 @@ function change(totype) {
         }
       };
       break;
-    case "12.31临时": 
-    $maintitle="";
-    $subtitle=["可能要换课表，所以赶制了一个。若课表正常请切换到“高三日常”。"];
-    $("英语","2021-12-31", "16:00", "17:45");
-    updateSubject=function(){};
-    break;
+    case "12.31临时":
+      $maintitle = "";
+      $subtitle = ["可能要换课表，所以赶制了一个。若课表正常请切换到“高三日常”。"];
+      updateSubject = function () {
+        $("英语", "2021-12-31", "16:00", "17:45");
+        $("订正", "2021-12-31", "17:45", "17:55");
+      };
+      break;
     case "高一":
       // “高一年级竟然不用”
       $maintitle = "暂未启用";
