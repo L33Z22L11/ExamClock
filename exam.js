@@ -102,6 +102,12 @@ function change(totype) {
         }
       };
       break;
+    case "12.31临时": 
+    $maintitle="";
+    $subtitle=["可能要换课表，所以赶制了一个。若课表正常请切换到“高三日常”。"];
+    $("英语","2021-12-31", "16:00", "17:45");
+    updateSubject=function(){};
+    break;
     case "高一":
       // “高一年级竟然不用”
       $maintitle = "暂未启用";
@@ -129,13 +135,13 @@ function change(totype) {
         !(tsm = prompt("考试开始时间(分钟)", 25)) ||
         !(teh = prompt("考试结束时间(小时)", 23)) ||
         !(tem = prompt("考试结束时间(分钟)", 55))) {
-          console.warn("由于操作取消，未生成临时科目。");
+        console.warn(send("由于操作取消，未生成临时科目。"));
         totype = null;
       } else {
         $(ts, todate, fixDigit(tsh) + ":" + fixDigit(tsm), fixDigit(teh) + ":" + fixDigit(tem));
-        alert("考试科目：" + subject + "\n起止时间：" + getClock(start) + "~" + getClock(end));
+        // alert("考试科目：" + subject + "\n起止时间：" + getClock(start) + "~" + getClock(end));
         updateSubject = function () { };
-        console.log(ts, todate, fixDigit(tsh) + ":" + fixDigit(tsm), fixDigit(teh) + ":" + fixDigit(tem))
+        console.log(send("添加了一门在 " + todate + " 从 " + fixDigit(tsh) + ":" + fixDigit(tsm) + " 到 " + fixDigit(teh) + ":" + fixDigit(tem) + " 的科目：" + ts));
       };
       break;
     default:
@@ -152,5 +158,6 @@ function change(totype) {
     eleCard.style.filter = "blur(0)";
     updateTime();
     updateTitle();
+    updateExam();
   }, 400);
 }

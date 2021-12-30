@@ -11,6 +11,12 @@ setInterval(function () {
   }
   catch (e) { alert("检测到意外修改内容的考试时钟！\n" + e); location.href = "https://exam.thisis.host"; }
 }, 2000);
+// Microsoft Clarity tracking code for https://thisis.host/
+(function (c, l, a, r, i, t, y) {
+  c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+  t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+  y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+})(window, document, "clarity", "script", "9yxeu8ecwa");
 eleMain = document.getElementById("main");
 eleMenu = document.getElementById("menu");
 // eleForewarn = document.getElementById("forewarn");
@@ -71,7 +77,7 @@ function updateForewarn() {
   } else {
     eleForewarn.style.display = "";
   }
-}
+};
 // 发送气泡通知
 function send(msg) {
   eleMsg.style.display = "flex";
@@ -82,7 +88,7 @@ function send(msg) {
   return msg;
 }
 // 向页内元素输出值
-function output(id, value) { return document.getElementById(id).innerHTML = value; }
+function output(id, value) { return document.getElementById(id).innerHTML = value; };
 // 主体元素样式调节
 function relStyle(prop, delta, unit, minVal, maxVal) {
   propVal = eleMain.style[prop].replace(unit, "") * 1 + delta;
@@ -91,39 +97,33 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
   // 保留两位小数，然而toFixed()有精度问题
   output(prop, propVal);
   console.log(send(prop + "增加了" + delta + "，调节为" + propVal));
-}
+};
 // 更换背景
 function bg(phasenum, seed) {
   try {
     // 若同时以new Date()作为phasenum和seed的随机种子，会产生特定的余数对应关系
     if (phasenum == null) phasenum = $phasenum[~~(Math.random() * $phasenum.length)];
     if (seed == null) seed = ~~(Math.random() * gallery[phasenum].list.length);
-    // setTimeout(console.log, 1000, seed % (gallery[phasenum].list.length));
-    document.documentElement.style.backgroundImage =
-      "url(https://images.xuewuzhibu.cn/" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].xwzbid + ".jpg)";
+    document.documentElement.style.backgroundImage = "url(https://images.xuewuzhibu.cn/" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].xwzbid + ".jpg)";
     // 定时换壁纸（康总加成🙏）
     try { clearInterval(bgnum); } catch (e) { }
     bgnum = setInterval(bg, 2004 * 0411);
-    send("背景已更换为" + output("bg", gallery[phasenum].phase + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name) + "。 <span class='dim'>该背景函数为bg(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，在右键菜单还可选择更多背景。</div>");
+    send("当前背景：" + output("bg", gallery[phasenum].phase + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name) + " <span class='dim'>背景数对(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，在右键菜单可指定背景。</div>");
   } catch (e) {
-    console.warn("主背景函数出错，已启用备用背景。\n" + e);
+    console.warn(send("主背景函数出错，已启用备用背景。\n") + e);
     eleMain.style.background = "rgba(0,0,0,0.75)";
-    if (phasenum == 0) document.getElementsByTagName('html')[0].style.backgroundImage = 'url(' + prompt('输入背景url') + ')';
-    else if (phasenum == 1) document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/11/23/" + ['9dd5f0f9ae39c', '86f0354849ead', 'aef07ee202d3c', 'a3676bbf32d4e', '4b347391fec34', 'b1a6b10044d7e', '10f58d6677aeb'][seed % 7] + ".jpg)";
-    else if (phasenum == 2) document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/12/19/" + ['0e34aef718e53', 'cbb7ca9f47a46', 'd9daedc01bca6', '2ecfe0c8ff887', '8a1d489af0279', '12479fb170d16', '9b17e5fffdb73', 'cad676f747c56', 'eaf02f09741ea', 'c03de66f3cef0', '84a92ddf8c5c8', '6b4b98bd96ee2', '0b91c8d48bbb0'][seed % 13] + ".jpg)";
-    else document.documentElement.style.backgroundImage = eleMain.style.background = "";
+    switch (phasenum) {
+      case 0: document.getElementsByTagName('html')[0].style.backgroundImage = 'url(' + prompt('输入背景url') + ')'; break;
+      case 1: document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/11/23/" + ['9dd5f0f9ae39c', '86f0354849ead', 'aef07ee202d3c', 'a3676bbf32d4e', '4b347391fec34', 'b1a6b10044d7e', '10f58d6677aeb'][seed % 7] + ".jpg)"; break;
+      case 2: document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/12/19/" + ['0e34aef718e53', 'cbb7ca9f47a46', 'd9daedc01bca6', '2ecfe0c8ff887', '8a1d489af0279', '12479fb170d16', '9b17e5fffdb73', 'cad676f747c56', 'eaf02f09741ea', 'c03de66f3cef0', '84a92ddf8c5c8', '6b4b98bd96ee2', '0b91c8d48bbb0'][seed % 13] + ".jpg)"; break;
+      default: document.documentElement.style.backgroundImage = eleMain.style.background = "";
+    }
   }
-}
+};
 // 全屏
 function fullscreen() {
   try {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-      output("fullscreen", "全屏");
-    }
-    else {
-      document.documentElement.requestFullscreen();
-      output("fullscreen", "退出");
-    }
-  } catch (e) { send("该浏览器不支持此操作，请手动最大化窗口或全屏。"); }
-}
+    if (document.fullscreenElement) document.exitFullscreen(output("fullscreen", "全屏"));
+    else document.documentElement.requestFullscreen(output("fullscreen", "退出"));
+  } catch (e) { console.warn(send("不支持IE/QQ浏览器，请手动最大化窗口或全屏。<span class='dim'>建议使用Chrome/Edge/Firefox浏览器。</span>\n") + e); }
+};
