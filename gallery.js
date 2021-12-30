@@ -15,10 +15,3 @@ for (bglist = '<!-- 通过style.js生成的历史背景树状目录 -->\n', gall
   bglist += '    </div>\n </div>\n';
 }
 document.getElementById("bglist").innerHTML = bglist;
-function bg2022() {
-  if (!document.getElementById("bg2022").innerHTML) {
-    output("bg2022", "<video autoplay loop muted style='position:fixed;top:0;left:0;min-width:50%;min-height:50%;'><source id='bg2022' src='https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/45/66/436386645/436386645-1-208.mp4?e=ig8euxZM2rNcNbhjhwdVhwdlhzTVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1640779892&gen=playurlv2&os=cosbv&oi=1959868674&trid=d0220400c55e4381a644f70e8604f600T&platform=html5&upsig=1490ed87b306d42eb754e2c2068b322c&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform'></video>");
-    send("视频背景：<a href='https://www.bilibili.com/video/BV1434y1o7Fu?p=2'>为了拍到烟花爆炸中心的画面，我们炸了两台穿越机！-循环Cycle-哔哩哔哩</a>")
-  }
-  else output("bg2022", "")
-}

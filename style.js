@@ -19,8 +19,6 @@ eleCard = document.getElementsByClassName("card")[0];
 // 随便选一张壁纸
 $phasenum = [3, 4, 5];
 bg();
-// 定时换壁纸（康总加成🙏）
-setInterval(bg, 2004 * 0411);
 // 希沃屏保预警
 // “屏保都统一关闭了，注释掉，白写个功能”
 // !location.href.match("noforewarn") ? setInterval(updateForewarn, 600) : 0;
@@ -102,6 +100,9 @@ function bg(phasenum, seed) {
     // setTimeout(console.log, 1000, seed % (gallery[phasenum].list.length));
     document.documentElement.style.backgroundImage =
       "url(https://images.xuewuzhibu.cn/" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].xwzbid + ".jpg)";
+    // 定时换壁纸（康总加成🙏）
+    try { clearInterval(bgnum); } catch (e) { }
+    bgnum = setInterval(bg, 2004 * 0411);
     send("背景已更换为" + gallery[phasenum].phase + "：" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name + "。 <span class='dim'>该背景函数为bg(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，在右键菜单还可选择更多背景。</div>");
     output("bg", gallery[phasenum].phase + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name);
   } catch (e) {
@@ -113,6 +114,16 @@ function bg(phasenum, seed) {
     else document.documentElement.style.backgroundImage = eleMain.style.background = "";
   }
 }
+// 2022大彩蛋
+function bg2022() {
+  bg();
+  if (!document.getElementById("bg2022").innerHTML) {
+    output("bg2022", "<video autoplay loop muted style='position:fixed;min-width:100vw;min-height:100vh;'><source id='bg2022' src='https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/45/66/436386645/436386645-1-208.mp4?e=ig8euxZM2rNcNbhjhwdVhwdlhzTVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1640833728&gen=playurlv2&os=cosbv&oi=993818920&trid=c34c65947f8042c9a7865b2f5f44f383T&platform=html5&upsig=6a6ca7e9fcd17429480c0452bea42f92&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform'></video>");
+    send("视频背景：<a href='https://www.bilibili.com/video/BV1434y1o7Fu?p=2'>为了拍到烟花爆炸中心的画面，我们炸了两台穿越机！-循环Cycle-哔哩哔哩</a>")
+    output("bg", "<a href='https://www.bilibili.com/video/BV1434y1o7Fu?p=2'>为了拍到烟花爆炸中心的画面，我们炸了两台穿越机！-循环Cycle-哔哩哔哩</a>")
+  }
+  else output("bg2022", "")
+};
 // 全屏
 function fullscreen() {
   try {
