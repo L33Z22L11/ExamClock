@@ -79,6 +79,7 @@ function send(msg) {
   // “变量不定义也不会报错了，妙啊”
   try { clearInterval(msgnum); } catch (e) { }
   msgnum = setInterval(function () { eleMsg.style.display = ""; }, 15000);
+  return msg;
 }
 // 向页内元素输出值
 function output(id, value) { document.getElementById(id).innerHTML = value; }
@@ -89,7 +90,7 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
   eleMain.style[prop] = propVal + unit;
   // 保留两位小数，然而toFixed()有精度问题
   output(prop, propVal);
-  send(prop + "增加了" + delta + "，调节为" + propVal);
+  console.log(send(prop + "增加了" + delta + "，调节为" + propVal));
 }
 // 更换背景
 function bg(phasenum, seed) {
@@ -118,9 +119,8 @@ function bg(phasenum, seed) {
 function bg2022() {
   bg();
   if (!document.getElementById("bg2022").innerHTML) {
-    output("bg2022", "<video autoplay loop muted style='position:fixed;min-width:100vw;min-height:100vh;'><source id='bg2022' src='https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/45/66/436386645/436386645-1-208.mp4?e=ig8euxZM2rNcNbhjhwdVhwdlhzTVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1640858157&gen=playurlv2&os=cosbv&oi=3723219503&trid=cba9178831fe413f9c130bb0640b3afaT&platform=html5&upsig=e45721bcddc7b24fb64516a18ab13e37&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform'></video>");
-    send("视频背景：<a href='https://www.bilibili.com/video/BV1434y1o7Fu?p=2'>为了拍到烟花爆炸中心的画面，我们炸了两台穿越机！-循环Cycle-哔哩哔哩</a>");
-    output("bg", "<a href='https://www.bilibili.com/video/BV1434y1o7Fu?p=2'>为了拍到烟花爆炸中心的画面，我们炸了两台穿越机！-循环Cycle-哔哩哔哩</a>");
+    output("bg2022", "<video autoplay loop muted style='position:fixed;min-width:100vw;min-height:100vh;'><source id='bg2022' src='https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/45/66/436386645/436386645-1-208.mp4?e=ig8euxZM2rNcNbhjhwdVhwdlhzTVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1640873231&gen=playurlv2&os=cosbv&oi=454921871&trid=89a49a36d2f944fcabd90e577edbd5f6T&platform=html5&upsig=0805fe3ca56f7fc2255e5342df7050f7&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform'></video>");
+    output("bg", send("视频背景：<a href='https://www.bilibili.com/video/BV1434y1o7Fu?p=2'>为了拍到烟花爆炸中心的画面，我们炸了两台穿越机！-循环Cycle-哔哩哔哩</a>"));
   }
   else output("bg2022", "")
 };
