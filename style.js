@@ -106,7 +106,7 @@ function bg(phasenum, seed) {
   } catch (e) {
     console.warn(send("主背景函数出错，已启用备用背景。\n") + e);
     eleMain.style.background = "rgba(0,0,0,0.75)";
-    switch (phasenum) {
+    switch (phasenum % 3) {
       case 0: document.getElementsByTagName('html')[0].style.backgroundImage = 'url(' + prompt('输入背景url') + ')'; break;
       case 1: document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/11/23/" + ['9dd5f0f9ae39c', '86f0354849ead', 'aef07ee202d3c', 'a3676bbf32d4e', '4b347391fec34', 'b1a6b10044d7e', '10f58d6677aeb'][seed % 7] + ".jpg)"; break;
       case 2: document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/12/19/" + ['0e34aef718e53', 'cbb7ca9f47a46', 'd9daedc01bca6', '2ecfe0c8ff887', '8a1d489af0279', '12479fb170d16', '9b17e5fffdb73', 'cad676f747c56', 'eaf02f09741ea', 'c03de66f3cef0', '84a92ddf8c5c8', '6b4b98bd96ee2', '0b91c8d48bbb0'][seed % 13] + ".jpg)"; break;
@@ -117,7 +117,12 @@ function bg(phasenum, seed) {
 // 全屏
 function fullscreen() {
   try {
-    if (document.fullscreenElement) document.exitFullscreen(output("fullscreen", "全屏"));
-    else document.documentElement.requestFullscreen(output("fullscreen", "退出"));
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+      output("fullscreen", "全屏");
+    } else {
+      document.documentElement.requestFullscreen();
+      output("fullscreen", "退出");
+    };
   } catch (e) { console.warn(send("不支持IE/QQ浏览器，请手动最大化窗口或全屏。<span class='dim'>建议使用Chrome/Edge/Firefox浏览器。</span>\n") + e); }
 };
