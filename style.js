@@ -9,7 +9,7 @@ setInterval(function () {
     }
     // “这里埋个坑，提示IE”
   }
-  catch (e) { alert("检测到意外修改内容的考试时钟！\n" + e); location.href = "https://exam.thisis.host"; }
+  catch (e) { alert("检测到意外修改内容的考试时钟!\n" + e); location.href = "https://exam.thisis.host"; }
 }, 2000);
 eleMain = document.getElementById("main");
 eleMenu = document.getElementById("menu");
@@ -17,7 +17,7 @@ eleMenu = document.getElementById("menu");
 eleMsg = document.getElementById("msg");
 eleCard = document.getElementsByClassName("card")[0];
 // 随便选一张壁纸
-$phasenum = [3, 4, 5];
+$phasenum = [3, 4, 5, 6];
 bg();
 // 希沃屏保预警
 // “屏保都统一关闭了，注释掉，白写个功能”
@@ -40,7 +40,7 @@ onkeydown = function (e) {
     case ",": relStyle("opacity", -0.05, "", 0.5, 1); break;
     case ".": relStyle("opacity", +0.05, "", 0.5, 1); break;
     case "\\": try { alert(eval(prompt("Enter command"))); }
-      catch (e) { alert(e) } break;
+      catch (e) { alert(e); } break;
     default: console.log(e.key);
   }
 };
@@ -71,7 +71,7 @@ function updateForewarn() {
   } else {
     eleForewarn.style.display = "";
   }
-};
+}
 // 发送气泡通知
 function send(msg) {
   eleMsg.style.display = "flex";
@@ -82,7 +82,7 @@ function send(msg) {
   return msg;
 }
 // 向页内元素输出值
-function output(id, value) { return document.getElementById(id).innerHTML = value; };
+function output(id, value) { return document.getElementById(id).innerHTML = value; }
 // 主体元素样式调节
 function relStyle(prop, delta, unit, minVal, maxVal) {
   propVal = eleMain.style[prop].replace(unit, "") * 1 + delta;
@@ -91,7 +91,7 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
   // 保留两位小数，然而toFixed()有精度问题
   output(prop, propVal);
   console.log(send(prop + "增加了" + delta + "，调节为" + propVal));
-};
+}
 // 更换背景
 function bg(phasenum, seed) {
   try {
@@ -102,7 +102,7 @@ function bg(phasenum, seed) {
     // 定时换壁纸（康总加成🙏）
     try { clearInterval(bgnum); } catch (e) { }
     bgnum = setInterval(bg, 2004 * 0411);
-    send("当前背景：" + output("bg", gallery[phasenum].phase + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name) + " <span class='dim'>背景数对(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，在右键菜单可指定背景。</div>");
+    send("当前背景: " + output("bg", gallery[phasenum].phase + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name) + " <span class='dim'>(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，还可在右键菜单指定背景。</div>");
   } catch (e) {
     console.warn(send("主背景函数出错，已启用备用背景。\n") + e);
     eleMain.style.background = "rgba(0,0,0,0.75)";
@@ -113,7 +113,7 @@ function bg(phasenum, seed) {
       default: document.documentElement.style.backgroundImage = eleMain.style.background = "";
     }
   }
-};
+}
 // 全屏
 function fullscreen() {
   try {
@@ -123,6 +123,6 @@ function fullscreen() {
     } else {
       document.documentElement.requestFullscreen();
       output("fullscreen", "退出");
-    };
+    }
   } catch (e) { console.warn(send("不支持IE/QQ浏览器，请手动最大化窗口或全屏。<span class='dim'>建议使用Chrome/Edge/Firefox浏览器。</span>\n") + e); }
-};
+}

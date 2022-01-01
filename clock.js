@@ -40,7 +40,7 @@ else if (search.match("totype32")) change("高三文科");
 else if (search.match("totype21")) change("高二理科");
 else if (search.match("totype22")) change("高二文科");
 // 在考试日期切换到考试类型
-else if (now.getDate() == 1) change("1.1临时");
+else if (now.getDate() == "某日") change("今天临时");
 // else if (now.getDate() == 10 || now.getDate() == 11) change("高三理科");
 // else if (now.getDate() == 17 || now.getDate() == 18) change("高二理科");
 // 默认考试类型
@@ -59,16 +59,16 @@ function updateTitle() {
 // “考试时钟的灵魂”
 // 考试科目判断
 function $(nextSubject, nextDate, nextStart, nextEnd, nextMaintitle, nextSubtitle) {
-  if (now < end) console.log("当前科目未结束，故不注入科目：" + nextSubject);
+  if (now < end) console.log("当前科目未结束，故不注入科目: " + nextSubject);
   else if (now >= new Date(nextDate + "T" + nextEnd + "+08:00"))
-    console.log("请求科目已结束，故不注入科目：" + nextSubject);
+    console.log("请求科目已结束，故不注入科目: " + nextSubject);
   else {
     subject = nextSubject;
     start = new Date(nextDate + "T" + nextStart + "+08:00");
     end = new Date(nextDate + "T" + nextEnd + "+08:00");
     maintitle = nextMaintitle || $maintitle;
     subtitle = nextSubtitle || $subtitle;
-    console.log(getClock(now) + "时成功注入科目：" + nextSubject + "\n开始时间：" + nextDate, nextStart + "\n结束时间：" + nextDate, nextEnd + ["\n指定大标语：", "\n默认大标语："][!nextMaintitle * 1] + maintitle + ["\n指定副标语：", "\n默认副标语："][!nextSubtitle * 1] + subtitle);
+    console.log(getClock(now) + "时成功注入科目: " + nextSubject + "\n开始时间: " + nextDate, nextStart + "\n结束时间: " + nextDate, nextEnd + ["\n指定大标语: ", "\n默认大标语: "][!nextMaintitle * 1] + maintitle + ["\n指定副标语: ", "\n默认副标语: "][!nextSubtitle * 1] + subtitle);
   }
 }
 // 考试时钟科目时间更新
@@ -107,7 +107,7 @@ function updateExam() {
     // now.getHours() == 12 ?
     //   subtitle = ["12:05可能自动关机，请留意提示。"] : 0;
     // now.getHours() == 18 ?
-    //   subtitle = ["警告：考场周围应保持环境安静！"] : 0;
+    //   subtitle = ["警告: 考场周围应保持环境安静！"] : 0;
     if ((now - start) / (end - start) < 0.5) {
       timer = Math.round((now - start) / 6E4);
       activity = "已经开始";
@@ -122,8 +122,8 @@ function updateExam() {
     updateSubject = function () {
       maintitle = "考试结束";
       subtitle = ["式微式微，胡不归？", "考试人，考试魂，考试都是人上人",
-        "任何时刻都不轻言放弃", "晚安，考试人，向你salute！"];
-    }
+        "任何时刻都不轻言放弃", "晚安，考试人，向你salute!"];
+    };
     subject = duration = timer = timersub = activity = "";
     progress = 100;
   }
@@ -140,6 +140,5 @@ function fixDigit(num) { num = parseInt(num); return num < 10 ? "0" + num : num;
 function getClock(date) { return date.getHours() + ":" + fixDigit(date.getMinutes()); }
 // 以分钟为单位相对调整时间
 function fixMinutes(date, friendlyname) {
-  date.setMinutes(date.getMinutes() +
-    Number(prompt(friendlyname || "以分钟为单位增减" + getClock(date), -5)));
+  date.setMinutes(date.getMinutes() + Number(prompt("以分钟为单位增减" + (friendlyname || getClock(date)), -5)));
 }

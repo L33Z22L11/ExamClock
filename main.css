@@ -114,7 +114,7 @@ footer {
   padding: 0.25rem 0.75rem;
   transition: 0.5s;
   text-align: center;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
 }
 .card > div:hover {
   background: rgba(0, 0, 0, 0.8);
