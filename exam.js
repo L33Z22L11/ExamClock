@@ -1,4 +1,3 @@
-// 这是你的考试时钟代码，一个承载着痛苦的开始。
 function change(totype) {
   // 切换类型时需要重新初始化的内容
   // maintitle = subtitle = null;
@@ -7,11 +6,12 @@ function change(totype) {
   $maintitle = "沉着冷静&emsp;诚信考试";
   switch (totype) {
     case "1.2临时":
+      // “希望这样的安排以后都不要有”
       $maintitle = "";
       $subtitle = [""];
       updateSubject = function () {
         $("英语", "2022-01-02", "16:05", "18:00");
-        $("晚训", "2022-01-02", "18:25", "18:55", "今晚无", ["我猜应该是历史/生物"]);
+        $("晚训", "2022-01-02", "18:25", "18:55", null, ["我猜应该是历史/生物"]);
       };
       break;
     case "高三日常":

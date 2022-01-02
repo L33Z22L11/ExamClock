@@ -3,11 +3,14 @@ console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:3em Mont
 search = location.search;
 setInterval(function () {
   try {
+    if (navigator.userAgent.match("(Trident)|(QQBrowser)")) {
+      document.getElementById("verify").style.display = "block";
+      output("verifycontent", "IE/QQ浏览器功能老旧，我们推荐使用Chrome/Edge/Firefox浏览器。");
+    }
     if (!location.host.match("exam.thisis.host")) {
       document.getElementById("verify").style.display = "block";
       output("verifycontent", "您使用的可能是受篡改的或者离线的考试时钟，无法收到官方更新。<u><a href='https://exam.thisis.host'>点击访问在线考试时钟官网https://exam.thisis.host</a></u>");
     }
-    // “这里埋个坑，提示IE”
   }
   catch (e) { alert("检测到意外修改内容的考试时钟!\n" + e); location.href = "https://exam.thisis.host"; }
 }, 2000);
@@ -16,8 +19,6 @@ eleMenu = document.getElementById("menu");
 // eleForewarn = document.getElementById("forewarn");
 eleMsg = document.getElementById("msg");
 eleCard = document.getElementsByClassName("card")[0];
-// 随便选一张壁纸
-bg();
 // 希沃屏保预警
 // “屏保都统一关闭了，注释掉，白写个功能”
 // !location.href.match("noforewarn") ? setInterval(updateForewarn, 600) : 0;
@@ -77,7 +78,7 @@ function send(msg) {
   output("msgcontent", msg);
   // “变量不定义也不会报错了，妙啊”
   try { clearInterval(msgnum); } catch (e) { }
-  msgnum = setInterval(function () { eleMsg.style.display = ""; }, 15000);
+  msgnum = setInterval(function () { eleMsg.style.display = ""; }, 30000);
   return msg;
 }
 // 向页内元素输出值
