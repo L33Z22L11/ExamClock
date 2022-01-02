@@ -6,12 +6,12 @@ function change(totype) {
   progress = subtitlenum = 0;
   $maintitle = "沉着冷静&emsp;诚信考试";
   switch (totype) {
-    case "今天临时":
+    case "1.2临时":
       $maintitle = "";
       $subtitle = [""];
       updateSubject = function () {
-        $("综合", "2022-01-01", "18:30", "21:00");
-        $("订正", "2022-01-01", "21:10", "22:00");
+        $("英语", "2022-01-02", "16:00", "17:45");
+        $("晚训", "2022-01-02", "18:25", "18:55", null, ["我猜应该是历史/生物"]);
       };
       break;
     case "高三日常":
@@ -48,7 +48,7 @@ function change(totype) {
           }
           // 非周六的晚上
           // console.log("evening" + today);
-          $("短训", todate, "18:25", "18:45", null,
+          $("晚训", todate, "18:25", "18:45", null,
             ["第" + week + ["周: 双周", "周: 单周"][week % 2] + weekday +
               ([["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物"],
               ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物"]]

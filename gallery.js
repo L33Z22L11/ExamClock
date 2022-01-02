@@ -6,9 +6,10 @@ gallery = [
   { phase: "2021年12月③", author: ["2201李欣源", "2215刘辰靖"], list: [{ name: "211232_Stars_操场", xwzbid: "d48b74b952603771a200c84ef987bceb" }, { name: "211233_Stars_广场", xwzbid: "8e2bab626390aa6c028c8c11c1ba4ed1" }, { name: "211234_Stars_操场的云", xwzbid: "f4bc39ce9dabf094144ede0f9aa6a14e" }, { name: "211235_Stars_云与合欢", xwzbid: "c7c7a922db451d29d7c59594772ae1de" }, { name: "211236_靖靖子_夕晖", xwzbid: "2b7dd636bc86d45d59b3315312d41231" }, { name: "211237_靖靖子_不落", xwzbid: "9efaae46b92844286176d5c59564b84b" }, { name: "211238_靖靖子_夕云", xwzbid: "627489cebe36f3d4deb35e81be6de23e" }, { name: "211239_靖靖子_运动会", xwzbid: "0a30aa1d60450824ebbcda1e0ec07987" }, { name: "211240_靖靖子_金叶女贞", xwzbid: "43587a6d8b599ad74faf07a7e6db0bac" }, { name: "211241_靖靖子_教室后", xwzbid: "3723ab6fa16c6fcfb77a44750cce82ec" }, { name: "211242_靖靖子_对面宿舍", xwzbid: "f98487cf34fd3f2c46955d7d96d52792" }, { name: "211243_靖靖子_书架", xwzbid: "9c5595051c1efa899d4cb631c98fbd3c" }, { name: "211244_靖靖子_楼外楼", xwzbid: "60f04203cd77c2edd3d0649b0730b7c3" }, { name: "211245_靖靖子_讲桌下", xwzbid: "7edd089e817c0e0760fa31022a119827" }, { name: "211246_靖靖子_谁的课桌", xwzbid: "b92d78904365196b62671f6ae18c783d" }, { name: "211247_靖靖子_午间", xwzbid: "5e4ca1325b1131b9033692d54b560b64" }, { name: "211248_靖靖子_货架", xwzbid: "840afd0bef2f8e7db8902f682a01c3bf" }, { name: "211249_靖靖子_这又是谁的课桌", xwzbid: "133043b71104bcfd3857fb7a1c37f934" }] },
   { phase: "2021年12月④", author: ["2203郑小雨",], list: [{ name: "211250_秤砣_墙上", xwzbid: "cd6c6646c287c61186a8dc8e9a37c122" }, { name: "211251_秤砣_捉光", xwzbid: "e784b18a14ee01a346cbe5b3dcb9d2fa" }, { name: "211252_秤砣_楼间松", xwzbid: "0accbbd75a7e388c49570c8b7942b60f" }, { name: "211253_秤砣_栾树外", xwzbid: "cc64de25816d74e1c331aa742c908ae6" }, { name: "211254_秤砣_枫香树下", xwzbid: "8978baa3db6e135df052ce27cd275119" }, { name: "211255_秤砣_鳞状云", xwzbid: "b488e5316d3f9d618238513b87eba901" }, { name: "211256_秤砣_第二场雪", xwzbid: "ea1b46a7492764684940a21c0a330cfa" }, { name: "211257_秤砣_是水杉", xwzbid: "58f5c3cbbe3b9a8f3c30ee187c8d86bc" }, { name: "211258_秤砣_放飞气球", xwzbid: "3f364038682a6e14fa979cec7ab1f537" }, { name: "211259_秤砣_气球外的梦", xwzbid: "6a6817decfb67e533f6233973391de4f" }, { name: "211260_秤砣_远方的灯", xwzbid: "8b3e96da5f9815accda9d45a7b1ad934" }, { name: "211261_秤砣_晴", xwzbid: "eb33091a563ffcc451f2a7e0110b91a5" }, { name: "211262_秤砣_月", xwzbid: "984018fb175143bbfaf789cf0482c382" },] },
   { phase: "2021年12月⑤", author: ["2210龚泽城", "2225安睿琦"], list: [{ name: "211263_北盼城南烟花繁_看操场", xwzbid: "e7cdfcb8c3d6e9a5e40500cfd06dfb07" }, { name: "211264_北盼城南烟花繁_球场", xwzbid: "4e13762feb990cd70f7c85202f79c602" }, { name: "211265_东隅_日落", xwzbid: "42e670813470264ab26564603cb339b4" }, { name: "211266_东隅_对面", xwzbid: "892e21899186de12922f1c3637eba077" }, { name: "211267_东隅_操场与日落", xwzbid: "02d88527ad0c8c52bc1783c913b3f40b" }, { name: "211268_SuperR1SE_一框", xwzbid: "af5aff6617de43af5e02427a7e47b917" }, { name: "211269_SuperR1SE_背后", xwzbid: "128c64fa0b384652dcc1927ffc177349" }, { name: "211270_SuperR1SE_日", xwzbid: "5e0180e07eefbe0111f6190047f13f66" },] },
-  { phase: "2021年1月①", author: ["2205董家亦", "2219郎国璇"], list: [{}] }
+  { phase: "2021年1月①", author: ["2205董家亦", "2219郎国璇"], list: [{ name: "220301_亦_于云出", xwzbid: "b541338cf74529c25c2bdc49bc60a0e7" }, { name: "220302_亦_楼与楼", xwzbid: "3779bba383ac9bac48edb3b5f985ec7c" }, { name: "220303_亦_看台上", xwzbid: "c3466dba45a7cd5d994239864c3337fa" }, { name: "220304_亦_球场的黄昏", xwzbid: "a77709bdf5e66108d01df9d2e0ec574c" }, { name: "220305_亦_旗杆与云海", xwzbid: "e9c907be322c6ccb1fb12a758c077118" }, { name: "220306_亦_操场", xwzbid: "a9905c6f35a0ce234c445047ba6831ac" }, { name: "220307_亦_绚", xwzbid: "028e6b27082a3f639cd76cf2412c3870" }, { name: "220308_亦_霞", xwzbid: "8399df720705576b96b3fa5614b20a0f" }, { name: "220309_亦_天空之下是热爱", xwzbid: "3fb8a659e3f007028ed6a883feb2c826" }, { name: "220310_亦_射者中", xwzbid: "880c7bab6ff2758e613026061057b66d" }, { name: "220311_亦_胶囊仓降落台", xwzbid: "5281c3afcfc0ed009ad30e0ce904e2b1" }, { name: "220312_泡泡_捉云", xwzbid: "5f86951f06b25fe14bf64eacfd9b98d7" }, { name: "220313_泡泡_云上冲浪", xwzbid: "f0f626c3c35de4fbfce1e559239f05be" }, { name: "220314_泡泡_日落于东", xwzbid: "da54edf43f49d0787be388214595f0d9" }, { name: "220315_泡泡_饱和度战士", xwzbid: "726df029cc3363b74b4ebf6735e3a7a1" },] }
 ];
 future_author = ["", ""];
+$phasenum = [4, 5, 6, 6, 6, 7, 7, 7, 7, 7];
 for (bglist = '<!-- 通过style.js生成的历史背景树状目录 -->\n', gallerynum = 0; gallerynum < gallery.length; gallerynum++) {
   bglist += '  <div class="dropdown">' + gallery[gallerynum].phase + '\n    <div style="min-width:16em;overflow-y:auto;">\n';
   for (listnum = 0; listnum < gallery[gallerynum].list.length; listnum++) {
@@ -17,3 +18,25 @@ for (bglist = '<!-- 通过style.js生成的历史背景树状目录 -->\n', gall
   bglist += '    </div>\n </div>\n';
 }
 document.getElementById("bglist").innerHTML = bglist;
+// 更换背景
+function bg(phasenum, seed) {
+  try {
+    // 若同时以new Date()作为phasenum和seed的随机种子，会产生特定的余数对应关系
+    if (phasenum == null) phasenum = $phasenum[~~(Math.random() * $phasenum.length)];
+    if (seed == null) seed = ~~(Math.random() * gallery[phasenum].list.length);
+    document.documentElement.style.backgroundImage = "url(https://images.xuewuzhibu.cn/" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].xwzbid + ".jpg)";
+    // 定时换壁纸（康总加成🙏）
+    try { clearInterval(bgnum); } catch (e) { }
+    bgnum = setInterval(bg, 2004 * 0411);
+    send("当前背景: " + output("bg", gallery[phasenum].phase + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name) + " <span class='dim'>(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，还可在右键菜单指定背景。</div>");
+  } catch (e) {
+    console.warn(send("主背景函数出错，已启用备用背景。\n") + e);
+    eleMain.style.background = "rgba(0,0,0,0.75)";
+    switch (phasenum % 3) {
+      case 0: document.getElementsByTagName('html')[0].style.backgroundImage = 'url(' + prompt('输入背景url') + ')'; break;
+      case 1: document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/11/23/" + ['9dd5f0f9ae39c', '86f0354849ead', 'aef07ee202d3c', 'a3676bbf32d4e', '4b347391fec34', 'b1a6b10044d7e', '10f58d6677aeb'][seed % 7] + ".jpg)"; break;
+      case 2: document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/12/19/" + ['0e34aef718e53', 'cbb7ca9f47a46', 'd9daedc01bca6', '2ecfe0c8ff887', '8a1d489af0279', '12479fb170d16', '9b17e5fffdb73', 'cad676f747c56', 'eaf02f09741ea', 'c03de66f3cef0', '84a92ddf8c5c8', '6b4b98bd96ee2', '0b91c8d48bbb0'][seed % 13] + ".jpg)"; break;
+      default: document.documentElement.style.backgroundImage = eleMain.style.background = "";
+    }
+  }
+}

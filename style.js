@@ -17,7 +17,6 @@ eleMenu = document.getElementById("menu");
 eleMsg = document.getElementById("msg");
 eleCard = document.getElementsByClassName("card")[0];
 // 随便选一张壁纸
-$phasenum = [3, 4, 5, 6];
 bg();
 // 希沃屏保预警
 // “屏保都统一关闭了，注释掉，白写个功能”
@@ -91,28 +90,6 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
   // 保留两位小数，然而toFixed()有精度问题
   output(prop, propVal);
   console.log(send(prop + "增加了" + delta + "，调节为" + propVal));
-}
-// 更换背景
-function bg(phasenum, seed) {
-  try {
-    // 若同时以new Date()作为phasenum和seed的随机种子，会产生特定的余数对应关系
-    if (phasenum == null) phasenum = $phasenum[~~(Math.random() * $phasenum.length)];
-    if (seed == null) seed = ~~(Math.random() * gallery[phasenum].list.length);
-    document.documentElement.style.backgroundImage = "url(https://images.xuewuzhibu.cn/" + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].xwzbid + ".jpg)";
-    // 定时换壁纸（康总加成🙏）
-    try { clearInterval(bgnum); } catch (e) { }
-    bgnum = setInterval(bg, 2004 * 0411);
-    send("当前背景: " + output("bg", gallery[phasenum].phase + gallery[phasenum].list[seed % (gallery[phasenum].list.length)].name) + " <span class='dim'>(" + phasenum + "," + seed % (gallery[phasenum].list.length) + ")，还可在右键菜单指定背景。</div>");
-  } catch (e) {
-    console.warn(send("主背景函数出错，已启用备用背景。\n") + e);
-    eleMain.style.background = "rgba(0,0,0,0.75)";
-    switch (phasenum % 3) {
-      case 0: document.getElementsByTagName('html')[0].style.backgroundImage = 'url(' + prompt('输入背景url') + ')'; break;
-      case 1: document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/11/23/" + ['9dd5f0f9ae39c', '86f0354849ead', 'aef07ee202d3c', 'a3676bbf32d4e', '4b347391fec34', 'b1a6b10044d7e', '10f58d6677aeb'][seed % 7] + ".jpg)"; break;
-      case 2: document.documentElement.style.backgroundImage = "url(https://bu.dusays.com/2021/12/19/" + ['0e34aef718e53', 'cbb7ca9f47a46', 'd9daedc01bca6', '2ecfe0c8ff887', '8a1d489af0279', '12479fb170d16', '9b17e5fffdb73', 'cad676f747c56', 'eaf02f09741ea', 'c03de66f3cef0', '84a92ddf8c5c8', '6b4b98bd96ee2', '0b91c8d48bbb0'][seed % 13] + ".jpg)"; break;
-      default: document.documentElement.style.backgroundImage = eleMain.style.background = "";
-    }
-  }
 }
 // 全屏
 function fullscreen() {
