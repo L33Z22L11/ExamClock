@@ -1,32 +1,15 @@
-console.log("%c\n加入Techaos! 混技\nQQ群: 169994096\n", "font:3em Montserrat,sans-serif;");
-console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:3em Montserrat,sans-serif;");
-search = location.search;
-setInterval(function () {
-  try {
-    if (navigator.userAgent.match("(Trident)|(QQBrowser)")) {
-      document.getElementById("verify").style.display = "block";
-      output("verifycontent", "IE/QQ浏览器功能老旧，我们推荐使用Chrome/Edge/Firefox浏览器。");
-    }
-    if (!location.host.match("exam.thisis.host")) {
-      document.getElementById("verify").style.display = "block";
-      output("verifycontent", "您使用的可能是受篡改的或者离线的考试时钟，无法收到官方更新。<u><a href='https://exam.thisis.host'>点击访问在线考试时钟官网https://exam.thisis.host</a></u>");
-    }
-  }
-  catch (e) { alert("检测到意外修改内容的考试时钟!\n" + e); location.href = "https://exam.thisis.host"; }
-}, 2000);
-eleMain = document.getElementById("main");
-eleMenu = document.getElementById("menu");
-// eleForewarn = document.getElementById("forewarn");
-eleMsg = document.getElementById("msg");
-eleCard = document.getElementsByClassName("card")[0];
+/* 
+ * 页面交互
+ * 已于2022-01-03自查代码质量
+ */
 // 希沃屏保预警
 // “屏保都统一关闭了，注释掉，白写个功能”
-// !location.href.match("noforewarn") ? setInterval(updateForewarn, 600) : 0;
+// if (!location.href.match("noforewarn")) setInterval(updateForewarn, 600);
 // 希沃屏保剩余时间
-// forewarntime = 45;
+var forewarntime = 45;
 // onmousemove = onclick = function () { forewarntime = 45; };
 // 键盘功能函数
-onkeydown = function (e) {
+window.onkeydown = function (e) {
   // forewarntime = 45;
   switch (e.key) {
     // 隐藏右键菜单
@@ -39,7 +22,7 @@ onkeydown = function (e) {
     case "'": relStyle("fontSize", +0.05, "em", 0.75, 1.25); break;
     case ",": relStyle("opacity", -0.05, "", 0.5, 1); break;
     case ".": relStyle("opacity", +0.05, "", 0.5, 1); break;
-    case "\\": try { alert(eval(prompt("Enter command"))); }
+    case "/": try { alert(eval(prompt("Enter command"))); }
       catch (e) { alert(e); } break;
     default: console.log(e.key);
   }
@@ -72,26 +55,25 @@ function updateForewarn() {
     eleForewarn.style.display = "";
   }
 }
-// 发送气泡通知
-function send(msg) {
-  eleMsg.style.display = "flex";
-  output("msgcontent", msg);
-  // “变量不定义也不会报错了，妙啊”
-  try { clearInterval(msgnum); } catch (e) { }
-  msgnum = setInterval(function () { eleMsg.style.display = ""; }, 30000);
-  return msg;
-}
-// 向页内元素输出值
-function output(id, value) { return document.getElementById(id).innerHTML = value; }
-// 主体元素样式调节
-function relStyle(prop, delta, unit, minVal, maxVal) {
-  propVal = eleMain.style[prop].replace(unit, "") * 1 + delta;
-  propVal = Math.round(Math.min(Math.max(propVal, minVal), maxVal) * 1E2) / 1E2;
-  eleMain.style[prop] = propVal + unit;
-  // 保留两位小数，然而toFixed()有精度问题
-  output(prop, propVal);
-  console.log(send(prop + "增加了" + delta + "，调节为" + propVal));
-}
+// 运行时间展示
+output("runtime", parseInt((new Date() - new Date("2021-04")) / 864E5) + "天");
+// 篡改与浏览器检测
+setInterval(function () {
+  try {
+    if (navigator.userAgent.match("( Trident)|( QQBrowser)")) {
+      document.getElementById("verify").style.display = "block";
+      console.warn(output("verifycontent", "IE/QQ浏览器功能老旧，我们推荐使用Chrome/Edge/Firefox浏览器。"));
+    }
+    if (!location.host.match("exam.thisis.host")) {
+      document.getElementById("verify").style.display = "block";
+      output("verifycontent", "您使用的可能是受篡改的或者离线的考试时钟，无法收到官方更新。<u><a href='https://exam.thisis.host'>点击访问在线考试时钟官网https://exam.thisis.host</a></u>");
+    }
+  }
+  catch (e) {
+    alert("检测到非法篡改，请将此代码发送给纸鹿：\n" + e);
+    if (confirm("是否访问在线考试时钟官网https://exam.thisis.host？")) location.href = "https://exam.thisis.host";
+  }
+}, 2000);
 // 全屏
 function fullscreen() {
   try {
@@ -102,5 +84,5 @@ function fullscreen() {
       document.documentElement.requestFullscreen();
       output("fullscreen", "退出");
     }
-  } catch (e) { console.warn(send("不支持IE/QQ浏览器，请手动最大化窗口或全屏。<span class='dim'>建议使用Chrome/Edge/Firefox浏览器。</span>\n") + e); }
+  } catch (e) { console.warn(send("操作失败，请手动最大化窗口或全屏。<span class='dim'>建议使用Chrome/Edge/Firefox浏览器。</span>\n") + e); }
 }

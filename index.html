@@ -56,12 +56,13 @@
         <div class="dropdown">
           <i class="bi bi-arrow-left-right"></i> 强制切换
           <div>
-            <a onclick="maintitle=prompt('请输入考试大标语')||maintitle">
+            <a onclick="mainslogan=prompt('请输入考试大标语')||mainslogan">
               <i class="bi bi-chat-left-quote-fill"></i> 考试大标语</a>
-            <a onclick="subtitle=[prompt('请输入考试副标语')]||subtitle">
+            <a onclick="subslogan=[prompt('请输入考试副标语')]||subslogan">
               <i class="bi bi-blockquote-left"></i> 考试副标语</a>
             <a onclick="change(prompt('请输入考试类型','高四理科'))">
               <i class="bi bi-archive-fill"></i> 考试类型</a>
+            <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
             <a onclick="output('type',prompt('请输入机构名称','纸鹿教育')||type)">
               <i class="bi bi-building"></i> 机构名称(仅显示)</a>
             <a onclick="subject=prompt('考试科目名称','考练')||subject">
@@ -130,7 +131,7 @@
 
     <div>
       <nav class="space-between">
-        <h2 id="maintitle">考试时钟</h2>
+        <h2 id="mainslogan">考试时钟</h2>
         <div class="sub">
           <span class="dropdown" style="min-width: 5.5em;">
             <a class="hilit">
@@ -178,7 +179,7 @@
         </div>
       </nav>
 
-      <div class="dim" id="subtitle">⚠ 代码正在加载，您还可以
+      <div class="dim" id="subslogan">⚠ 代码正在加载，您还可以
         刷新或访问<a href="http://bz.rf.gd">备用考试时钟</a>。
       </div>
 
@@ -213,19 +214,20 @@
             动漫社 舞蹈队 日语社 Instreet社 机器人社 推理社 篮裁社</span>
         </div>
         <div class="space-between">
-          <span><i class="bi bi-image"></i> 当前背景: <span id="bg">campus</span></span>
+          <span><i class="bi bi-image"></i> <span id="bg">当前背景: campus</span></span>
           <span><i class="bi bi-hdd-network-fill"></i>
             状态: 正常运行<span id="runtime">8个月</span></span>
-          <span><i class="bi bi-file-earmark-check"></i> ver_pre_6.0.7_起名废发现许多命名问题</span>
+          <span><i class="bi bi-file-earmark-check"></i> ver_pre_6.1.0_大规模重构JS(看不下去之前写的烂代码了)</span>
         </div>
       </footer>
     </div>
   </div>
 </body>
 
-<script src="./exam.js"></script>
-<script src="./style.js"></script>
-<script src="./gallery.js"></script>
-<script src="./clock.js"></script>
+<script src="./pubfunc.js"></script>
+<script src="./exam.js" js-dependence="pubfunc clock"></script>
+<script src="./clock.js" js-dependence="pubfunc exam"></script>
+<script src="./style.js" js-dependence="pubfunc"></script>
+<script src="./gallery.js" js-dependence="pubfunc"></script>
 
 </html>

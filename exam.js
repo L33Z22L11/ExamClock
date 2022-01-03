@@ -1,14 +1,23 @@
+/* 
+ * 适用于宝鸡中学的考试科目列表
+ */
+console.log("%c\n加入Techaos! 混技\nQQ群: 169994096\n", "font:3em Montserrat,sans-serif;");
+console.log("%c\n野生技协(混技分部)\nQQ群: 894656456\n", "font:3em Montserrat,sans-serif;");
+/* 
+ * 考试科目内容实现
+ */
+var subject, start, end, updateSubject;
 function change(totype) {
   // 切换类型时需要重新初始化的内容
-  // maintitle = subtitle = null;
+  // mainslogan = subslogan = null;
   start = end = new Date("2021-04");
-  progress = subtitlenum = 0;
-  $maintitle = "沉着冷静&emsp;诚信考试";
+  progress = subslogannum = 0;
+  $mainslogan = "沉着冷静&emsp;诚信考试";
   switch (totype) {
     case "1.2临时":
       // “希望这样的安排以后都不要有”
-      $maintitle = "";
-      $subtitle = [""];
+      $mainslogan = "";
+      $subslogan = [""];
       updateSubject = function () {
         $("英语", "2022-01-02", "16:05", "18:00");
         $("晚训", "2022-01-02", "18:25", "18:55", null, ["我猜应该是历史/生物"]);
@@ -16,8 +25,8 @@ function change(totype) {
       break;
     case "高三日常":
       // 特别注意，最后一轮求余后应该是数组第0项
-      $maintitle = "距离高考" + parseInt((new Date("2022-06-07T22:30+08:00") - today) / 864E5) + "天";
-      $subtitle = [""];
+      $mainslogan = "距离高考" + parseInt((new Date("2022-06-07T22:30+08:00") - today) / 864E5) + "天";
+      $subslogan = [""];
       updateSubject = function () {
         // “这种情况就比较复杂了，代码和人有一个能跑就行”
         if (today.getDay() == 0) {
@@ -68,7 +77,7 @@ function change(totype) {
       };
       break;
     case "高三理科":
-      $subtitle = ["高三理科月考三: 请以实际司号为准。"];
+      $subslogan = ["高三理科月考三: 请以实际司号为准。"];
       updateSubject = function () {
         $("数学", "2021-12-10", "14:00", "16:00");
         $("化学", "2021-12-10", "16:30", "18:10");
@@ -79,7 +88,7 @@ function change(totype) {
       };
       break;
     case "高三文科":
-      $subtitle = ["高三文科月考三: 请以实际司号为准。"];
+      $subslogan = ["高三文科月考三: 请以实际司号为准。"];
       updateSubject = function () {
         $("数学", "2021-12-10", "14:00", "16:00");
         $("地理", "2021-12-10", "16:30", "18:10");
@@ -90,7 +99,7 @@ function change(totype) {
       };
       break;
     case "高二理科":
-      $subtitle = ["高二理科阶段考试: 请以实际铃声为准。"];
+      $subslogan = ["高二理科阶段考试: 请以实际铃声为准。"];
       updateSubject = function () {
         $("英语", "2021-12-17", "14:00", "16:00");
         $("物理", "2021-12-17", "16:30", "18:10");
@@ -101,7 +110,7 @@ function change(totype) {
       };
       break;
     case "高二文科":
-      $subtitle = ["高二文科阶段考试: 请以实际铃声为准。"];
+      $subslogan = ["高二文科阶段考试: 请以实际铃声为准。"];
       updateSubject = function () {
         $("英语", "2021-12-17", "14:00", "16:00");
         $("地理", "2021-12-17", "16:30", "18:10");
@@ -113,8 +122,8 @@ function change(totype) {
       break;
     case "高一":
       // “高一年级竟然不用”
-      $maintitle = "暂未启用";
-      $subtitle = ["高一暂未启用考试时钟。"];
+      $mainslogan = "暂未启用";
+      $subslogan = ["高一暂未启用考试时钟。"];
       updateSubject = function () {
         $("数学", "2021-06-28", "14:20", "16:00");
         $("英语", "2021-06-28", "16:30", "18:10");
@@ -127,20 +136,19 @@ function change(totype) {
       };
       break;
     case "临时科目":
-      // “大多数人都不知道这个功能”
-      $subtitle = [""];
-      // “自己去右键菜单改标语吧，一般人也用不上，对吧”
-      // $maintitle = prompt("考试大标语(可选)") || "沉着冷静&emsp;诚信考试";
-      // $subtitle = [prompt("考试副标语(可选)")];
+      // “大多数人都没用过这个功能”
+      $subslogan = [""];
       var ts, tsh, tsm, teh, tem;
       if (!(ts = prompt("考试科目名称(3个字以内)", "临时")) ||
         !(tsh = prompt("考试开始时间(小时)", 16)) ||
         !(tsm = prompt("考试开始时间(分钟)", 25)) ||
         !(teh = prompt("考试结束时间(小时)", 23)) ||
         !(tem = prompt("考试结束时间(分钟)", 55))) {
+        // 取消创建临时科目
         console.warn(send("由于操作取消，未生成临时科目。"));
         totype = null;
       } else {
+        // 成功创建临时科目
         $(ts, todate, fixDigit(tsh) + ":" + fixDigit(tsm), fixDigit(teh) + ":" + fixDigit(tem));
         // alert("考试科目: " + subject + "\n起止时间: " + getClock(start) + "~" + getClock(end));
         updateSubject = function () { };
@@ -148,8 +156,8 @@ function change(totype) {
       }
       break;
     default:
-      $maintitle = "考试时钟";
-      $subtitle = ["不存在的考试类型，请重新选择。"];
+      $mainslogan = "考试时钟";
+      $subslogan = ["不存在的考试类型，请重新选择。"];
       updateSubject = function () { };
   }
   type = totype || type;
@@ -161,6 +169,7 @@ function change(totype) {
     eleCard.style.filter = "blur(0)";
     updateTime();
     updateExam();
-    updateTitle();
+    // 及时更新标语
+    updateSlogan();
   }, 400);
 }
