@@ -1,6 +1,5 @@
 /* 
  * 背景切换
- * 已于2022-01-03自查代码质量
  */
 var gallery = [
   { volname: "默认", author: ["宝鸡中学官网"], pic: [{ name: "campus", xwzbid: "e6e5b4e8e80debb10e61f854696cef7f" }, { name: "autumn", xwzbid: "da07a39c238357f9c39e5717b8a9c8f9" },] },
@@ -23,7 +22,7 @@ function bg(volnum, picseed) {
     // 定时换壁纸（康总加成🙏）
     clearInterval(bgInterval);
     bgInterval = setInterval(bg, 2004 * 0411);
-    send(output("bg", "背景: " + gallery[volnum].pic[picseed % (gallery[volnum].pic.length)].name + "@" + gallery[volnum].volname) + " <span class='dim'>(" + volnum + "," + picseed % (gallery[volnum].pic.length) + ") 在右键菜单可指定背景，使用须遵守<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'> CC BY-NC-SA 4.0 </a>许可。</div>");
+    send(output("bg", "背景: " + gallery[volnum].pic[picseed % (gallery[volnum].pic.length)].name + "@" + gallery[volnum].volname) + " <span class='dim'>内部代码bg(" + volnum + "," + picseed % (gallery[volnum].pic.length) + ") 在右键菜单可指定背景，使用须遵守<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'> CC BY-NC-SA 4.0 </a>许可。</div>");
   } catch (e) {
     console.warn(send("主背景函数出错，已启用备用背景。\n") + e);
     eleMain.style.background = "rgba(0,0,0,0.75)";

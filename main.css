@@ -47,8 +47,7 @@ footer {
 }
 /* 选中 */
 ::selection {
-  color: #000;
-  background: rgba(255, 102, 0, 0.8);
+  background: transparent;
 }
 /*
  * elements

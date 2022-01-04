@@ -1,13 +1,11 @@
 /* 
  * 公用功能
- * 已于2022-01-03自查代码质量
  */
 // 页面基本元素
 var eleMain = document.getElementById("main");
 var eleMenu = document.getElementById("menu");
 // var eleForewarn = document.getElementById("forewarn");
 var eleMsg = document.getElementById("msg");
-var eleCard = document.getElementsByClassName("card")[0];
 // 在一位数前补“0”
 function fixDigit(num) { num = parseInt(num); return num < 10 ? "0" + num : num; }
 // 输入Date对象，返回友好的时间(如"8:00")
