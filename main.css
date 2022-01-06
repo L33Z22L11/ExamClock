@@ -47,7 +47,8 @@ footer {
 }
 /* 选中 */
 ::selection {
-  background: transparent;
+  color: #fc0;
+  text-shadow: #fa3 0 0 0.1em;
 }
 /*
  * elements
@@ -183,7 +184,7 @@ footer {
   bottom: 0;
   left: 5em;
   min-width: 12em;
-  max-height: 15em;
+  max-height: 20em;
 }
 /* 下拉/点击文本 */
 .dropdown,
@@ -214,7 +215,7 @@ a.hilit,
 #menu > *,
 .dropdown > :last-child > * {
   display: block;
-  padding: 0.25em;
+  padding: 0.2em;
 }
 /* 调节框样式 */
 .selectbar {
