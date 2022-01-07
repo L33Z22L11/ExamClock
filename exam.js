@@ -13,6 +13,7 @@ function change(toSubjectType) {
   subject.end = new Date("2021-04");
   timer.progress = 0;
   slogan.subnum = 0;
+  slogan.main = slogan.sub = null;
   slogan.$main = "沉着冷静&emsp;诚信考试";
   switch (toSubjectType) {
     case "1.2临时":
@@ -75,6 +76,17 @@ function change(toSubjectType) {
             ["第" + today.week + "周" + today.weekday + "大考练"]);
           $("订正", today.date, "17:45", "17:55");
         }
+      };
+      break;
+    case "高三一检":
+      slogan.$sub = ["2022年宝鸡市高考模拟检测(一): 请以实际司号及广播通知为准。"];
+      subject.update = function () {
+        $("语文", "2022-01-08", "09:00", "11:30");
+        $("午休", "2022-01-08", "11:30", "12:50", "好好干饭，莫打球");
+        $("数学", "2022-01-08", "15:00", "17:00");
+        $("综合", "2022-01-09", "09:00", "11:30");
+        $("午休", "2022-01-09", "11:30", "12:50", "好好干饭，莫打球");
+        $("英语", "2022-01-09", "15:00", "17:00");
       };
       break;
     case "高三理科":

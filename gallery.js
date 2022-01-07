@@ -12,7 +12,7 @@ var gallery = [
   { volname: "2022年1月①期", author: ["2205董家亦", "2219郎国璇"], pic: [{ name: "220101_亦_于云出", xwzbid: "b541338cf74529c25c2bdc49bc60a0e7" }, { name: "220102_亦_楼与楼", xwzbid: "3779bba383ac9bac48edb3b5f985ec7c" }, { name: "220103_亦_看台上", xwzbid: "c3466dba45a7cd5d994239864c3337fa" }, { name: "220104_亦_球场的黄昏", xwzbid: "a77709bdf5e66108d01df9d2e0ec574c" }, { name: "220105_亦_旗杆与云海", xwzbid: "e9c907be322c6ccb1fb12a758c077118" }, { name: "220106_亦_操场", xwzbid: "a9905c6f35a0ce234c445047ba6831ac" }, { name: "220107_亦_绚", xwzbid: "028e6b27082a3f639cd76cf2412c3870" }, { name: "220108_亦_霞", xwzbid: "8399df720705576b96b3fa5614b20a0f" }, { name: "220109_亦_天空之下是热爱", xwzbid: "3fb8a659e3f007028ed6a883feb2c826" }, { name: "220110_亦_射者中", xwzbid: "880c7bab6ff2758e613026061057b66d" }, { name: "220111_亦_胶囊仓降落台", xwzbid: "5281c3afcfc0ed009ad30e0ce904e2b1" }, { name: "220112_泡泡_捉云", xwzbid: "5f86951f06b25fe14bf64eacfd9b98d7" }, { name: "220113_泡泡_云上冲浪", xwzbid: "f0f626c3c35de4fbfce1e559239f05be" }, { name: "220114_泡泡_日落于东", xwzbid: "da54edf43f49d0787be388214595f0d9" }, { name: "220115_泡泡_饱和度战士", xwzbid: "726df029cc3363b74b4ebf6735e3a7a1" },] },
   { volname: "2022年1月②期", author: ["2216吴滢羽", "2210李维钒"], pic: [{ name: "220116_吴鸭鸭_艺术节的夜", xwzbid: "f8a8b60d377a67ccc84a4b7fdeddbd2d" }, { name: "220117_吴鸭鸭_落日与晚风", xwzbid: "44843696ffc75688134a689b2fe8208d" }, { name: "220118_吴鸭鸭_校庆人海", xwzbid: "288b4ac91a4c8ba1ccc44844e2b444c7" }, { name: "220119_吴鸭鸭_校庆幕后", xwzbid: "39005bc4839eef48712d66869bb00774" }, { name: "220120_SuperR1SE_广场", xwzbid: "970e5ad16c4d9bd5610146813a572ef3" }, { name: "220121_SuperR1SE_球场", xwzbid: "092ea5b17974b750e3497af6a9a4dc5e" },] },
 ];
-var $volnum = [4, 5, 6, 6, 7, 7, 7, 8, 8];
+var $volnum = [1, 2, 3, 4, 5, 6, 7, 8];
 var bgInterval;
 function bg(volnum, picseed) {
   try {
@@ -20,10 +20,10 @@ function bg(volnum, picseed) {
     if (volnum == null) volnum = $volnum[~~(Math.random() * $volnum.length)];
     if (picseed == null) picseed = ~~(Math.random() * gallery[volnum].pic.length);
     document.documentElement.style.backgroundImage = "url(https://images.xuewuzhibu.cn/" + gallery[volnum].pic[picseed % (gallery[volnum].pic.length)].xwzbid + ".jpg)";
+    send(output("bg", "背景: " + gallery[volnum].pic[picseed % (gallery[volnum].pic.length)].name + "@" + gallery[volnum].volname) + " <span class='dim'>内部代码bg(" + volnum + "," + picseed % (gallery[volnum].pic.length) + ") 在右键菜单可指定背景，使用须遵守<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'> CC BY-NC-SA 4.0 </a>许可。</div>");
     // 定时换壁纸（康总加成🙏）
     clearInterval(bgInterval);
-    bgInterval = setInterval(bg, 2004 * 0411);
-    send(output("bg", "背景: " + gallery[volnum].pic[picseed % (gallery[volnum].pic.length)].name + "@" + gallery[volnum].volname) + " <span class='dim'>内部代码bg(" + volnum + "," + picseed % (gallery[volnum].pic.length) + ") 在右键菜单可指定背景，使用须遵守<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'> CC BY-NC-SA 4.0 </a>许可。</div>");
+    bgInterval = setInterval(bg, 2040411);
   } catch (e) {
     console.warn(send("主背景函数出错，已启用备用背景。\n") + e);
     eleMain.style.background = "rgba(0,0,0,0.75)";

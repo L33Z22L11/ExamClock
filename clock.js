@@ -18,8 +18,8 @@ var type, today = new Date(),
   },
   slogan = {
     update: function () {
-      // this.main = this.main || this.$main;
-      // this.sub = this.sub || this.$sub;
+      this.main = this.main || this.$main;
+      this.sub = this.sub || this.$sub;
       this.subnum < this.sub.length - 1 ? this.subnum++ : this.subnum = 0;
       output("mainslogan", this.main || this.$main);
       output("subslogan", (this.sub || this.$sub)[this.subnum]);
@@ -29,15 +29,33 @@ var type, today = new Date(),
     update: function () {
       if (now >= subject.end) { subject.update(); }
       if (now < (subject.start - 6E5) && type.match("日常")) {
-        this.num = parseInt((subject.start - now) / 36E5);
-        this.sub = ((subject.start - now) / 36E5).toFixed(1).slice(-2) + " h";
+        this.num = (subject.start - now) / 36E5;
+        this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
+        this.sub = " h";
         this.activity = "距离开始";
         this.progress = 0;
-      }
-      else if (now < (subject.start - 18E5)) {
-        // if (now.getHours().match(12|8)) slogan.sub = "干饭时间到！" : 0;
-        this.num = parseInt((subject.start - now - 12E5) / 36E5);
-        this.sub = ((subject.start - now - 12E5) / 36E5).toFixed(1).slice(-2) + " h";
+      } else if (now < subject.start && type.match("检|模")) {
+        if (now < (subject.start - 3E6)) {
+          this.num = (subject.start - now - 24E5) / 36E5;
+          this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
+          this.sub = " h";
+          this.activity = "考试加油";
+          this.progress = 0;
+        } else if (now < (subject.start - 24E5)) {
+          this.num = Math.round((subject.start - now - 24E5) / 6E4);
+          this.sub = "min";
+          this.activity = "距离入场";
+          this.progress = (subject.start - now - 24E5) / 6E3;
+        } else if (now < subject.start) {
+          this.num = Math.round((subject.start - now) / 6E4);
+          this.sub = "min";
+          this.activity = "距离开始";
+          this.progress = (subject.start - now) / 24E3;
+        }
+      } else if (now < (subject.start - 18E5)) {
+        this.num = (subject.start - now - 12E5) / 36E5;
+        this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
+        this.sub = " h";
         this.activity = "考试加油";
         this.progress = 0;
       } else if (now < (subject.start - 12E5)) {
@@ -56,8 +74,6 @@ var type, today = new Date(),
         this.activity = "距离开始";
         this.progress = (subject.start - now) / 6E3;
       } else if (now < subject.end) {
-        // if (now.getHours() == 12) slogan.sub = ["12:05可能自动关机，请留意提示。"];
-        // if (now.getHours() == 18) slogan.sub = ["警告: 考场周围应保持环境安静！"];
         if ((now - subject.start) / (subject.end - subject.start) < 0.5) {
           this.num = Math.round((now - subject.start) / 6E4);
           this.activity = "已经开始";
@@ -69,11 +85,7 @@ var type, today = new Date(),
         this.progress = (now - subject.start) / (subject.end - subject.start) * 100;
       } else {
         // 结束后的内容
-        subject.update = function () {
-          slogan.main = "考试结束";
-          slogan.sub = ["式微式微，胡不归？", "考试人，考试魂，考试都是人上人",
-            "任何时刻都不轻言放弃", "晚安，考试人，向你salute!"];
-        };
+        subject.update = function () { };
         subject.name = this.num = this.sub = this.activity = "";
         this.progress = 100;
       }
@@ -93,7 +105,7 @@ else if (location.search.match("totype21")) change("高二理科");
 else if (location.search.match("totype22")) change("高二文科");
 // 再在考试日期切换到考试类型
 // else if (todate == "2022-01-02") change("1.2临时");
-else if (today.date.match("2022-01-08|9")) change("高三理科");
+else if (today.date.match("2022-01-08|9")) change("高三一检");
 // else if (todate.match("2022-01-15|6")) change("高二理科");
 // 最后设置缺省考试类型
 else change("高三日常");
@@ -132,7 +144,7 @@ if (!location.search.match("debug")) {
   var now = new Date("2021-04");
   setInterval(function () {
     // 调试模式起始时间
-    if (now < subject.start - 36E5) now = new Date(subject.start - 36E5);
+    if (now < subject.start - 72E5) now = new Date(subject.start - 72E5);
     // 调试模式截止时间
     // 用加号会直接连接字符串，所以这里得减去负数，太魔幻了
     if (now > subject.end - -36E5) { change(type); now = new Date("2021-04"); }
@@ -140,5 +152,5 @@ if (!location.search.match("debug")) {
     now.setSeconds(now.getSeconds() + 30);
     output("clock", getClock(now));
     timer.update();
-  }, 20);
+  }, 50);
 }
