@@ -82,7 +82,7 @@ footer {
 }
 /* 右键菜单 */
 #menu {
-  font-size: 14px;
+  font-size: 0.5rem;
   position: fixed;
   z-index: 1;
   display: none;
