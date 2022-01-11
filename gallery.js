@@ -10,7 +10,7 @@ var gallery = [
   { volname: "2021年12月④期", author: ["2203郑小雨"], pic: [{ name: "211250_秤砣_墙上", xwzbid: "cd6c6646c287c61186a8dc8e9a37c122" }, { name: "211251_秤砣_捉光", xwzbid: "e784b18a14ee01a346cbe5b3dcb9d2fa" }, { name: "211252_秤砣_楼间松", xwzbid: "0accbbd75a7e388c49570c8b7942b60f" }, { name: "211253_秤砣_栾树外", xwzbid: "cc64de25816d74e1c331aa742c908ae6" }, { name: "211254_秤砣_枫香树下", xwzbid: "8978baa3db6e135df052ce27cd275119" }, { name: "211255_秤砣_鳞状云", xwzbid: "b488e5316d3f9d618238513b87eba901" }, { name: "211256_秤砣_第二场雪", xwzbid: "ea1b46a7492764684940a21c0a330cfa" }, { name: "211257_秤砣_外立面", xwzbid: "58f5c3cbbe3b9a8f3c30ee187c8d86bc" }, { name: "211258_秤砣_放飞气球", xwzbid: "3f364038682a6e14fa979cec7ab1f537" }, { name: "211259_秤砣_气球外的梦", xwzbid: "6a6817decfb67e533f6233973391de4f" }, { name: "211260_秤砣_远方的灯", xwzbid: "8b3e96da5f9815accda9d45a7b1ad934" }, { name: "211261_秤砣_晴", xwzbid: "eb33091a563ffcc451f2a7e0110b91a5" }, { name: "211262_秤砣_月", xwzbid: "984018fb175143bbfaf789cf0482c382" },] },
   { volname: "2021年末补充", author: ["2210龚泽城", "2225安睿琦", "2210李维钒"], pic: [{ name: "211263_北盼城南烟花繁_看操场", xwzbid: "e7cdfcb8c3d6e9a5e40500cfd06dfb07" }, { name: "211264_北盼城南烟花繁_球场", xwzbid: "4e13762feb990cd70f7c85202f79c602" }, { name: "211265_东隅_日出", xwzbid: "42e670813470264ab26564603cb339b4" }, { name: "211266_东隅_对面", xwzbid: "892e21899186de12922f1c3637eba077" }, { name: "211267_东隅_操场与日落", xwzbid: "02d88527ad0c8c52bc1783c913b3f40b" }, { name: "211268_SuperR1SE_一框", xwzbid: "af5aff6617de43af5e02427a7e47b917" }, { name: "211269_SuperR1SE_背后", xwzbid: "128c64fa0b384652dcc1927ffc177349" }, { name: "211270_SuperR1SE_日", xwzbid: "5e0180e07eefbe0111f6190047f13f66" },] },
   { volname: "2022年1月①期", author: ["2205董家亦", "2219郎国璇"], pic: [{ name: "220101_亦_于云出", xwzbid: "b541338cf74529c25c2bdc49bc60a0e7" }, { name: "220102_亦_楼与楼", xwzbid: "3779bba383ac9bac48edb3b5f985ec7c" }, { name: "220103_亦_看台上", xwzbid: "c3466dba45a7cd5d994239864c3337fa" }, { name: "220104_亦_球场的黄昏", xwzbid: "a77709bdf5e66108d01df9d2e0ec574c" }, { name: "220105_亦_旗杆与云海", xwzbid: "e9c907be322c6ccb1fb12a758c077118" }, { name: "220106_亦_操场", xwzbid: "a9905c6f35a0ce234c445047ba6831ac" }, { name: "220107_亦_绚", xwzbid: "028e6b27082a3f639cd76cf2412c3870" }, { name: "220108_亦_霞", xwzbid: "8399df720705576b96b3fa5614b20a0f" }, { name: "220109_亦_天空之下是热爱", xwzbid: "3fb8a659e3f007028ed6a883feb2c826" }, { name: "220110_亦_射者中", xwzbid: "880c7bab6ff2758e613026061057b66d" }, { name: "220111_亦_胶囊仓降落台", xwzbid: "5281c3afcfc0ed009ad30e0ce904e2b1" }, { name: "220112_泡泡_捉云", xwzbid: "5f86951f06b25fe14bf64eacfd9b98d7" }, { name: "220113_泡泡_云上冲浪", xwzbid: "f0f626c3c35de4fbfce1e559239f05be" }, { name: "220114_泡泡_日落于东", xwzbid: "da54edf43f49d0787be388214595f0d9" }, { name: "220115_泡泡_饱和度战士", xwzbid: "726df029cc3363b74b4ebf6735e3a7a1" },] },
-  { volname: "2022年1月②期", author: ["2216吴滢羽", "2210李维钒", "2216刘子璐"], pic: [{ name: "220116_吴鸭鸭_艺术节的夜", xwzbid: "f8a8b60d377a67ccc84a4b7fdeddbd2d" }, { name: "220117_吴鸭鸭_落日与晚风", xwzbid: "44843696ffc75688134a689b2fe8208d" }, { name: "220118_吴鸭鸭_校庆人海", xwzbid: "288b4ac91a4c8ba1ccc44844e2b444c7" }, { name: "220119_吴鸭鸭_校庆幕后", xwzbid: "39005bc4839eef48712d66869bb00774" }, { name: "220120_SuperR1SE_广场", xwzbid: "970e5ad16c4d9bd5610146813a572ef3" }, { name: "220121_SuperR1SE_球场", xwzbid: "092ea5b17974b750e3497af6a9a4dc5e" }, { name: "220122_纸某鹿_火烧云", xwzbid: "be34c217f3de6044e147b427b783abf0" }, { name: "220123_纸某鹿_云的形状", xwzbid: "c2f6bb262cff512e92be10c108742402" }, { name: "220124_纸某鹿_持不稳的黄昏", xwzbid: "fdafcbc4e761fe99ff7c9b52846541f7" }, { name: "220125_木鱼_欢庆之夜", xwzbid: "139b8a1732ac6526a000d0caac8e8aa9" }, { name: "220126_木鱼_虹", xwzbid: "cab48045c6647b148cd4d31b133f3fac" },] },
+  { volname: "2022年1月②期", author: ["2216吴滢羽", "2210李维钒", "2216刘子璐"], pic: [{ name: "220116_吴鸭鸭_艺术节的夜", xwzbid: "f8a8b60d377a67ccc84a4b7fdeddbd2d" }, { name: "220117_吴鸭鸭_落日与晚风", xwzbid: "44843696ffc75688134a689b2fe8208d" }, { name: "220118_吴鸭鸭_校庆人海", xwzbid: "288b4ac91a4c8ba1ccc44844e2b444c7" }, { name: "220119_吴鸭鸭_校庆幕后", xwzbid: "39005bc4839eef48712d66869bb00774" }, { name: "220120_SuperR1SE_广场", xwzbid: "970e5ad16c4d9bd5610146813a572ef3" }, { name: "220121_SuperR1SE_球场", xwzbid: "092ea5b17974b750e3497af6a9a4dc5e" }, { name: "220122_纸某鹿_火烧云", xwzbid: "be34c217f3de6044e147b427b783abf0" }, { name: "220123_纸某鹿_云的形状", xwzbid: "c2f6bb262cff512e92be10c108742402" }, { name: "221024_纸某鹿_持不稳的黄昏", xwzbid: "fdafcbc4e761fe99ff7c9b52846541f7" },] },
 ];
 var $volnum = [1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8];
 var bgInterval;
@@ -20,7 +20,7 @@ function bg(volnum, picseed) {
     if (volnum == null) volnum = $volnum[~~(Math.random() * $volnum.length)];
     if (picseed == null) picseed = ~~(Math.random() * gallery[volnum].pic.length);
     document.documentElement.style.backgroundImage = "url(https://images.xuewuzhibu.cn/" + gallery[volnum].pic[picseed % (gallery[volnum].pic.length)].xwzbid + ".jpg)";
-    send(output("bg", "背景: " + gallery[volnum].pic[picseed % (gallery[volnum].pic.length)].name + "@" + gallery[volnum].volname) + " <span class='dim'>内部代码bg(" + volnum + "," + picseed % (gallery[volnum].pic.length) + ") 在右键菜单可指定背景，使用须遵守<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'> CC BY-NC-SA 4.0 </a>许可。</div>");
+    send((document.getElementById("bg").innerHTML = "背景: " + gallery[volnum].pic[picseed % (gallery[volnum].pic.length)].name + "@" + gallery[volnum].volname) + " <span class='dim'>内部代码bg(" + volnum + "," + picseed % (gallery[volnum].pic.length) + ") 在右键菜单可指定背景，使用须遵守<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'> CC BY-NC-SA 4.0 </a>许可。</div>");
     // 定时换壁纸（康总加成🙏）
     clearInterval(bgInterval);
     bgInterval = setInterval(bg, 2040411);
@@ -36,13 +36,13 @@ function bg(volnum, picseed) {
   }
 }
 bg();
-output("bglist", function () {
+document.getElementById("bglist").innerHTML = function () {
   for (var l = '<!-- 通过style.js生成的历史背景树状目录 -->\n', v = 0; v < gallery.length; v++) {
-    l += '  <div class="dropdown">' + gallery[v].volname + '\n    <div style="min-width:16em;overflow-y:auto;">\n';
+    l += '<details>\n  <summary>' + gallery[v].volname + '</summary>\n';
     for (picnum = 0; picnum < gallery[v].pic.length; picnum++) {
-      l += '      <a onclick="bg(' + v + ',' + picnum + ')">' + gallery[v].pic[picnum].name + '</a>\n';
+      l += '  <a onclick="bg(' + v + ',' + picnum + ')">' + gallery[v].pic[picnum].name + '</a>\n';
     }
-    l += '    </div>\n </div>\n';
+    l += '</details>\n';
   }
   return l;
-}());
+}();

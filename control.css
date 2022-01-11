@@ -1,0 +1,72 @@
+#control {
+  font-size: 0.5rem;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  display: none;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  gap: 1em;
+}
+#control > .backdrop {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(1em);
+}
+#control > div {
+  display: inline-block;
+  overflow: auto;
+  width: 10rem;
+  max-height: 90vh;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+#control > div > * {
+  margin: 0.5rem;
+}
+.barset > div {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.2rem;
+  background: rgba(255, 255, 255, 0.2);
+}
+.barset > div > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 50%;
+  color: rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.8);
+}
+.barset i{
+  margin: 0.5em;
+}
+.iconset {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.iconset > * {
+  margin: 0.1rem;
+  padding: 0.2rem;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 0.2rem;
+  background: rgba(255, 255, 255, 0.8);
+}
+.iconset > * > i {
+  font-size: 1rem;
+}
+details > a {
+  display: block;
+}
