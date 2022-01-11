@@ -56,7 +56,6 @@ function change(toSubjectType) {
               ["第" + today.week + "周(第" + (today.week % 3 || 3) + "轮): " + today.weekday +
                 ([[, , "语文", , "历史/物理"], [, , "政治/化学", , "数学"], [, , "英语", , "地理/生物"]]
                 [today.week % 3][today.day] || "无") + "限时纠错训练"]);
-            $("考练", today.date, "17:00", "17:45", null, "目前暂未更新课表");
           }
           // 非周六的晚上
           // console.log("evening" + new Date());
@@ -175,9 +174,8 @@ function change(toSubjectType) {
       subject.update = function () { };
   }
   type = toSubjectType || type;
-  output("type", type);
+  eleType.innerHTML = type;
   // 切换类型的对焦动画
-  var eleCard = document.getElementsByClassName("card")[0];
   eleCard.style.filter = "blur(.5em)";
   // “客户想提升‘应用流畅度’，就把延迟改小点”
   setTimeout(function () {
@@ -186,3 +184,5 @@ function change(toSubjectType) {
     slogan.update();
   }, 400);
 }
+// 在一位数前补“0”
+function fixDigit(num) { num = parseInt(num); return num < 10 ? "0" + num : num; }

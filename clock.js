@@ -3,6 +3,16 @@
  */
 // 以当前日期为基础的日常/临时科目
 var type, today = new Date(),
+  eleType = document.getElementById("type"),
+  eleCard = document.getElementsByClassName("card")[0],
+  eleMainslogan = document.getElementById("mainslogan"),
+  eleSubslogan = document.getElementById("subslogan"),
+  eleSubject = document.getElementById("subject"),
+  eleDuration = document.getElementById("duration"),
+  eleClock = document.getElementById("clock"),
+  eleTimer = document.getElementById("timer"),
+  eleTimersub = document.getElementById("timersub"),
+  eleActivity = document.getElementById("activity"),
   today = {
     date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
     week: parseInt((today - new Date("2021-08-22")) / 6048E5),
@@ -21,12 +31,13 @@ var type, today = new Date(),
       this.main = this.main || this.$main;
       this.sub = this.sub || this.$sub;
       this.subnum < this.sub.length - 1 ? this.subnum++ : this.subnum = 0;
-      output("mainslogan", this.main || this.$main);
-      output("subslogan", (this.sub || this.$sub)[this.subnum]);
+      eleMainslogan.innerHTML = this.main || this.$main;
+      eleSubslogan.innerHTML = (this.sub || this.$sub)[this.subnum];
     }
   },
   timer = {
     update: function () {
+      eleClock.innerHTML = getClock(now);
       if (now >= subject.end) { subject.update(); }
       if (now < (subject.start - 6E5) && type.match("日常")) {
         this.num = (subject.start - now) / 36E5;
@@ -90,27 +101,13 @@ var type, today = new Date(),
         this.progress = 100;
       }
       document.getElementById("bar").style.width = this.progress + "%";
-      output("subject", subject.name);
-      output("duration", subject.duration());
-      output("timer", this.num);
-      output("timersub", this.sub);
-      output("activity", this.activity);
+      eleSubject.innerHTML = subject.name;
+      eleDuration.innerHTML = subject.duration();
+      eleTimer.innerHTML = this.num;
+      eleTimersub.innerHTML = this.sub;
+      eleActivity.innerHTML = this.activity;
     }
   };
-// 先根据地址参数判断考试类型
-if (location.search.match("totype30")) change("高三日常");
-else if (location.search.match("totype31")) change("高三理科");
-else if (location.search.match("totype32")) change("高三文科");
-else if (location.search.match("totype21")) change("高二理科");
-else if (location.search.match("totype22")) change("高二文科");
-// 再在考试日期切换到考试类型
-// else if (todate == "2022-01-02") change("1.2临时");
-else if (today.date.match("2022-01-08|9")) change("高三一检");
-// else if (todate.match("2022-01-15|6")) change("高二理科");
-// 最后设置缺省考试类型
-else change("高三日常");
-// 若不再包一层，slogan.update内的this就会指向window
-setInterval(function () { slogan.update(); }, 2000);
 // 注入当前科目
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
   if (now < subject.end) console.log("当前科目未结束，故不注入科目: " + toSubject);
@@ -126,31 +123,9 @@ function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
     console.log(getClock(now) + "时成功注入科目: " + toSubject + "\n开始时间: " + toDate, toStart + "\n结束时间: " + toDate, toEnd + ["\n默认大标语: ", "\n指定大标语: "][~!toMainslogan + 2] + slogan.main + ["\n默认副标语: ", "\n指定副标语: "][!!toSubslogan - -0] + slogan.sub);
   }
 }
-// 正常或调试模式
-if (!location.search.match("debug")) {
-  var now = new Date();
-  output("clock", getClock(now));
-  timer.update();
-  setInterval(function () {
-    now = new Date();
-    // 设置相对时差
-    // now.setSeconds(now.getSeconds() + 30);
-    output("clock", getClock(now));
-    timer.update();
-  }, 2000);
-} else {
-  send("已进入调试模式，关闭本页面可返回正常模式。");
-  document.getElementById("bar").style.transition = "none";
-  var now = new Date("2021-04");
-  setInterval(function () {
-    // 调试模式起始时间
-    if (now < subject.start - 72E5) now = new Date(subject.start - 72E5);
-    // 调试模式截止时间
-    // 用加号会直接连接字符串，所以这里得减去负数，太魔幻了
-    if (now > subject.end - -36E5) { change(type); now = new Date("2021-04"); }
-    // 调试模式速度设置
-    now.setSeconds(now.getSeconds() + 30);
-    output("clock", getClock(now));
-    timer.update();
-  }, 50);
+// 输入Date对象，返回友好的时间(如"8:00")
+function getClock(date) { return date.getHours() + ":" + fixDigit(date.getMinutes()); }
+// 以分钟为单位相对调整Date对象的时间
+function fixMinutes(date, friendlyname) {
+  date.setMinutes(date.getMinutes() + Number(prompt("以分钟为单位增减" + (friendlyname || getClock(date)), -5)));
 }

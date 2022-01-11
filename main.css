@@ -77,7 +77,7 @@ footer {
   display: none;
   margin: 0.2rem auto;
   padding: 0.2rem;
-  animation: dropdown 0.5s;
+  animation: fade 0.5s;
   border-radius: 0.2rem;
 }
 /* 右键菜单 */
@@ -159,6 +159,7 @@ footer {
   border-radius: 0.2rem;
 }
 /* 下拉正文定位（未下拉） */
+.iconset > * > :last-child,
 .dropdown > :last-child {
   position: absolute;
   z-index: 1;
@@ -166,17 +167,16 @@ footer {
   cursor: auto;
 }
 /* 下拉正文定位（已下拉） */
+.iconset > *:hover > :last-child,
 .dropdown:hover > :last-child {
   display: block;
-  animation: dropdown 0.2s;
+  animation: fade 0.2s;
 }
-@keyframes dropdown {
+@keyframes fade {
   from {
-    line-height: 0.1em;
     opacity: 0;
   }
   to {
-    line-height: 1em;
     opacity: 1;
   }
 }
@@ -188,6 +188,7 @@ footer {
   max-height: 20em;
 }
 /* 下拉/点击文本 */
+.iconset > *,
 .dropdown,
 a {
   cursor: pointer;
@@ -196,6 +197,7 @@ a {
   color: inherit;
   border-radius: 0.2rem;
 }
+.iconset > *:hover,
 .dropdown:hover,
 a:hover {
   color: #fff;
