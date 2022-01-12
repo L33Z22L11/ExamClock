@@ -49,14 +49,14 @@ function change(toSubjectType) {
           $("午休", today.date, "12:00", "13:50");
         }
         if (today.day != 6) {
-          if (today.day == 2 || today.day == 4) {
+          if (today.day == 2 || today.day == 3 || today.day == 4) {
             // 周二、周四下午
             // console.log("test" + new Date());
             // $("考练", today.date, "16:05", "16:50", null,
             //   ["第" + today.week + "周(第" + (today.week % 3 || 3) + "轮): " + today.weekday +
             //     ([[, , "语文", , "历史/物理"], [, , "政治/化学", , "数学"], [, , "英语", , "地理/生物"]]
             //     [today.week % 3][today.day] || "无") + "限时纠错训练"]);
-            $("考练", today.date, "17:00", "17:45", null, "目前暂未更新课表");
+            $("考练", today.date, "17:00", "17:45", null, ["周三文科地理，周四物理/文数"]);
           }
           // 非周六的晚上
           // console.log("evening" + new Date());
