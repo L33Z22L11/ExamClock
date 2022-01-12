@@ -188,7 +188,6 @@ footer {
   max-height: 20em;
 }
 /* 下拉/点击文本 */
-.iconset > *,
 .dropdown,
 a {
   cursor: pointer;
@@ -197,7 +196,6 @@ a {
   color: inherit;
   border-radius: 0.2rem;
 }
-.iconset > *:hover,
 .dropdown:hover,
 a:hover {
   color: #fff;

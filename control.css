@@ -11,6 +11,9 @@
   width: 100vw;
   height: 100vh;
   gap: 1em;
+  overflow: auto;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 #control > .backdrop {
   position: fixed;
@@ -20,7 +23,11 @@
   bottom: 0;
   left: 0;
   transition: 0.5s;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    30deg,
+    rgba(51, 170, 255, 0.2),
+    rgba(51, 187, 153, 0.2)
+  );
   backdrop-filter: blur(1em);
 }
 #control > div {
@@ -49,11 +56,11 @@
   color: rgba(0, 0, 0, 0.8);
   background: rgba(255, 255, 255, 0.8);
 }
-.barset i{
+.barset i {
   margin: 0.5em;
 }
-.fullheight{
-  height: 90vh;
+.fullheight {
+  height: 100%;
 }
 .iconset {
   display: flex;
@@ -70,6 +77,7 @@
 .iconset > * > i {
   font-size: 1rem;
 }
+.alist > a,
 details > a {
   display: block;
 }
