@@ -52,6 +52,9 @@
 .barset i{
   margin: 0.5em;
 }
+.fullheight{
+  height: 90vh;
+}
 .iconset {
   display: flex;
   flex-wrap: wrap;

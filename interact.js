@@ -43,27 +43,29 @@ eleMain.oncontextmenu = function (e) {
   }
 };
 eleSizebar.onmousedown = eleSizebar.ontouchstart =
-  eleSizebar.onmousemove = eleSizebar.ontouchmove
-  = function (e) {
+  eleSizebar.onmousemove = eleSizebar.ontouchmove =
+  eleSizebar.ondrag = function (e) {
     if (e.type != "mousemove" || e.buttons == 1) {
+      e.preventDefault();
       eleBackdrop.style.opacity = "0";
       eleSizebar.firstElementChild.style.width = e.offsetX + "px";
       eleMain.style.fontSize = (e.offsetX / eleSizebar.clientWidth) / 2 + 0.75 + "em";
     }
   };
 eleContrastbar.onmousedown = eleContrastbar.ontouchstart =
-  eleContrastbar.onmousemove = eleContrastbar.ontouchmove
-  = function (e) {
-    if (e.type != "mousemove" || e.buttons == 1) {
+  eleContrastbar.onmousemove = eleContrastbar.ontouchmove =
+  eleContrastbar.ondrag = function (e) {
+    e.preventDefault();
+    if (e.buttons == 1) {
       eleBackdrop.style.opacity = "0";
       eleContrastbar.firstElementChild.style.width = e.offsetX + "px";
       eleMain.style.opacity = (e.offsetX / eleContrastbar.clientWidth) / 2 + 0.5;
       console.log((e.offsetX / eleContrastbar.clientWidth) / 2 + 0.5);
     }
   };
-eleSizebar.ondragstart = eleContrastbar.ondragstart = function (e) {
-  return false;
-}
+// eleSizebar.ondragstart = eleContrastbar.ondragstart = function (e) {
+//   e.preventDefault();
+// }
 onmouseup = function (e) {
   eleBackdrop.style.opacity = "";
 };

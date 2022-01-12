@@ -161,11 +161,7 @@
   <div id="control" style="min-width: 12em;">
     <span class="backdrop" onclick="eleControl.style.display=''"></span>
 
-    <div>
-      <p>未完成开发的控制中心<br>诸多特性亟待实现。</p>
-    </div>
-
-    <div class="barset">
+    <div class="barset" draggable="true">
       <div id="sizebar">
         <div><i class="fas fa-text-height fa-fw"></i></div>
         <i class="fas fa-text-height fa-fw"></i>
@@ -173,14 +169,6 @@
       <div id="contrastbar">
         <div><i class="fas fa-adjust fa-fw"></i></div>
         <i class="fas fa-adjust fa-fw"></i>
-      </div>
-    </div>
-
-    <div>
-      <p><i class="far fa-images"></i> 背景列表</p>
-      <div id="bglist">
-        <a onclick="bg(0)"><i class="far fa-edit"></i> 自定义url</a>
-        <a onclick="bg(-1)"><i class="far fa-edit"></i> 恢复默认</a>
       </div>
     </div>
 
@@ -221,6 +209,19 @@
           <i class="fas fa-hourglass-end fa-fw"></i><span>结束时间</span>
         </a>
       </div>
+    </div>
+
+    <div class="fullheight">
+      <p><i class="far fa-images"></i> 背景列表</p>
+      <div id="bglist">
+        <a onclick="bg(0)"><i class="far fa-edit"></i> 自定义url</a>
+        <a onclick="bg(-1)"><i class="far fa-edit"></i> 恢复默认</a>
+      </div>
+    </div>
+
+    <div>
+      <p>未完成开发的控制中心<br>诸多特性亟待实现。<br>
+        © 2022 Control Panel Digital Design (CPDD). All rights reserved.</p>
     </div>
 
     <div>
