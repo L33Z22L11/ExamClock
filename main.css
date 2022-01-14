@@ -9,7 +9,6 @@
 html {
   font: 48px "Montserrat", "Noto Sans SC", "微软雅黑", sans-serif;
   font: 2.75vw "Montserrat", "Noto Sans SC", "微软雅黑", sans-serif;
-  font: min(2.75vw, 7vh) "Montserrat", "Noto Sans SC", "微软雅黑", sans-serif;
   color: white;
   background: #333 fixed center url(/campus.jpg);
   background-size: cover;
@@ -140,7 +139,6 @@ footer {
 @media (max-aspect-ratio: 4/5) {
   html {
     font: 5vw "Montserrat", "微软雅黑", sans-serif;
-    font: min(5vw, 4vh) "Montserrat", "微软雅黑", sans-serif;
     align-items: flex-start;
   }
   nav.space-between,

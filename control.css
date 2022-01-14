@@ -10,10 +10,15 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  gap: 1em;
   overflow: auto;
   padding: 1rem;
   box-sizing: border-box;
+}
+@media (max-aspect-ratio: 4/5) {
+  #control {
+    flex-wrap: nowrap;
+   align-items: center;
+  }
 }
 #control > .backdrop {
   position: fixed;
@@ -31,10 +36,11 @@
   backdrop-filter: blur(1em);
 }
 #control > div {
+  margin: 0.5em;
   display: inline-block;
   overflow: auto;
   width: 10rem;
-  max-height: 90vh;
+  /* max-height: 90vh; */
   border-radius: 0.5rem;
   background: rgba(0, 0, 0, 0.5);
 }
@@ -58,9 +64,6 @@
 }
 .barset i {
   margin: 0.5em;
-}
-.fullheight {
-  height: 100%;
 }
 .iconset {
   display: flex;

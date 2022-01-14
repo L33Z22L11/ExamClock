@@ -24,15 +24,12 @@ setInterval(function () {
         console.warn(eleVerifycontent.innerHTML = warn);
       }
     }
-    ifwarn(navigator.userAgent.match("( Trident)|( QQBrowser)"),
-      "IE/QQ浏览器功能老旧，我们推荐使用Chrome/Edge/Firefox浏览器。");
-    ifwarn(!location.host.match("exam.thisis.host"),
-      "您使用的可能是受篡改的或者离线的考试时钟，无法收到官方更新。<u><a href='https://exam.thisis.host'>点击访问在线考试时钟官网https://exam.thisis.host</a></u>");
-    ifwarn(search.match("debug"),
-      "您目前处于科目检查(调试)模式。<u><a href='https://exam.thisis.host'>点击返回正常模式</a></u>");
+    ifwarn(navigator.userAgent.match("( Trident)|( QQBrowser)"), "IE/QQ浏览器功能老旧，我们推荐使用Chrome/Edge/Firefox浏览器。");
+    ifwarn(!location.host.match("(exam.thisis.host)|(exam-clock.vercel.app)|(exam.js.cool)"), "您可能在使用第三方或离线的考试时钟，无法保证内容时效性。<u><a href='https://exam.thisis.host '>点击访问考试时钟在线官网 https://exam.thisis.host </a></u>");
+    ifwarn(search.match("debug"), "您目前处于科目检查(调试)模式。<u><a href='https://exam.thisis.host'>点击返回正常模式</a></u>");
   }
   catch (e) {
-    alert("检测到非法篡改，请将此代码发送给纸鹿：\n" + e);
+    alert("检测到非法篡改，请将此代码发送给纸鹿:\n" + e);
     if (confirm("是否访问在线考试时钟官网https://exam.thisis.host？")) location.href = "https://exam.thisis.host";
   }
 }, 2000);
@@ -50,10 +47,10 @@ if (!search.match("debug")) {
   document.getElementById("bar").style.transition = "none";
   var now = new Date("2021-04");
   setInterval(function () {
-    // 调试模式起始时间
-    if (now < subject.start - 72E5) now = new Date(subject.start - 72E5);
-    // 调试模式截止时间
     // 用加号会直接连接字符串，所以这里得减去负数，太魔幻了
+    // 跳转到科目开始前一小时
+    if (now < subject.start - 36E5) now = new Date(subject.start - 36E5);
+    // 最后一场科目结束后重置时间
     if (now > subject.end - -36E5) { change(type); now = new Date("2021-04"); }
     // 调试模式速度设置
     now.setSeconds(now.getSeconds() + 30);

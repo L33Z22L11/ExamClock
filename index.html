@@ -49,6 +49,7 @@
     <div>
       <nav class="space-between">
         <h2 id="mainslogan">考试时钟</h2>
+
         <div class="sub space-between" style="gap:1em;">
           <span class="dropdown" style="min-width: 5.5em;">
             <a class="hilit">
@@ -57,11 +58,10 @@
                 <i class="fas fa-caret-down"></i>
               </div>
             </a>
+
             <div id="typelist" style="min-width: 5.5em;">
               <a onclick="change(this.innerHTML)">高三日常</a>
               <a onclick="change(this.innerHTML)">高三一检</a>
-              <a onclick="change(this.innerHTML)">高三理科</a>
-              <a onclick="change(this.innerHTML)">高三文科</a>
               <a onclick="change(this.innerHTML)">高二理科</a>
               <a onclick="change(this.innerHTML)">高二文科</a>
               <a onclick="change(this.innerHTML)">高一</a>
@@ -70,11 +70,11 @@
             </div>
           </span>
 
-          <a onclick="eleControl.style.display = 'flex'"><i class="fas fa-sliders-h"></i></a>
+          <a href="https://img.xuewuzhibu.cn/bjzx" class="far fa-calendar-alt"></a>
 
           <span class="dropdown">
-            <span onclick="bg()"><i class="fas fa-random"></i> 换背景</span>
-            <div style="right: -5em; min-width: 15em; font-size: 0.5rem;">
+            <i class="fas fa-random" onclick="bg()"></i>
+            <div style="right: -1em; min-width: 15em;">
               <div>
                 <p><i class="fab fa-qq"></i> 投稿QQ:
                   <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066</a>
@@ -88,24 +88,23 @@
                   由小伙伴的学无止步图床托管。</p>
                 <p><a href="https://hi.thisis.host">
                     <i class="fas fa-sitemap"></i> 野生技协174人!
-                    <i class="fas fa-globe-asia"></i> 官网</a></p>
+                    <span class="dim"><i class="fas fa-globe-asia"></i>官网</span>
+                  </a></p>
                 <p class="dim"><i class="fab fa-qq"></i>
                   野生技协(混技分部)群: 894656456<br>
                   <i class="fab fa-qq"></i> 混技总群: 169994096
                 </p>
                 <p><a href="/jump-to-exam-clock.html" download="跳转到考试时钟"><i class="fas fa-download"></i>
-                    下载跳转HTML文件</a>
-                </p>
+                    下载跳转HTML文件</a></p>
                 <p class="dim"><i class="fas fa-exclamation-triangle"></i>
                   勿使用浏览器菜单的保存功能。</p>
               </div>
             </div>
           </span>
 
-          <a onclick="fullscreen()">
-            <span id="fullscreen">
-              <i class="fas fa-expand-arrows-alt"></i> 全屏</span></a>
-        </div>
+          <a onclick="eleControl.style.display = 'flex'" class="fas fa-sliders-h"></a>
+
+          <a onclick="fullscreen()" id="fullscreen" class="fas fa-expand-arrows-alt"></a>
       </nav>
 
       <div class="dim" id="subslogan">⚠ 代码正在加载，您还可以
@@ -147,7 +146,7 @@
           <span><i class="fas fa-network-wired"></i>
             状态: 正常运行<span id="runtime">10个月</span></span>
           <span><i class="fas fa-hashtag"></i> 高一高二快期末考试了</span>
-          <span><i class="fas fa-file-medical-alt"></i> ver_6.3.2_控制中心,诶嘿</span>
+          <span><i class="fas fa-file-medical-alt"></i> ver_6.3.3_控制中心,诶嘿</span>
         </div>
       </footer>
     </div>
@@ -159,7 +158,7 @@
   <div id="control" style="min-width: 12em;">
     <span class="backdrop" onclick="eleControl.style.display=''"></span>
 
-    <div class="barset" draggable="true">
+    <div class="barset">
       <div id="sizebar">
         <div><i class="fas fa-text-height fa-fw"></i></div>
         <i class="fas fa-text-height fa-fw"></i>
@@ -181,45 +180,45 @@
         <a href="https://github.com/ThisisHost/exam-clock">
           <i class="fab fa-github fa-fw"></i>
           <span>访问源代码仓库</span></a>
+        <details>
+          <summary><i class="fas fa-sliders-h"></i> 强制切换</summary>
+          <div class="alist -iconset">
+            <a onclick="slogan.main=prompt('请输入考试大标语')||slogan.main">
+              <i class="fas fa-quote-left fa-fw"></i>
+              <span>考试大标语</span>
+            </a>
+            <a onclick="slogan.sub=[prompt('请输入考试副标语')]||slogan.sub">
+              <i class="fas fa-quote-right fa-fw"></i>
+              <span>考试副标语</span>
+            </a>
+            <a onclick="change(prompt('请输入考试类型','高四理科'))">
+              <i class="fas fa-archive fa-fw"></i>
+              <span>考试类型</span>
+            </a>
+            <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
+            <a onclick="type.innerHTML= prompt('请输入机构名称','纸鹿教育')||type">
+              <i class="far fa-building fa-fw"></i>
+              <span>机构名称(仅显示)</span>
+            </a>
+            <a onclick="subject.name=prompt('考试科目名称','考练')||subject.name">
+              <i class="fas fa-book fa-fw"></i>
+              <span>考试科目</span>
+            </a>
+            <a onclick="fixMinutes(subject.start,'开始时间')">
+              <i class="fas fa-hourglass-start fa-fw"></i>
+              <span>开始时间</span>
+            </a>
+            <a onclick="fixMinutes(subject.end,'结束时间')">
+              <i class="fas fa-hourglass-end fa-fw"></i>
+              <span>结束时间</span>
+            </a>
+          </div>
+        </details>
       </div>
     </div>
 
-    <div>
-      <p><i class="fas fa-sliders-h"></i> 强制切换</p>
-      <div class="alist -iconset">
-        <a onclick="slogan.main=prompt('请输入考试大标语')||slogan.main">
-          <i class="fas fa-quote-left fa-fw"></i>
-          <span>考试大标语</span>
-        </a>
-        <a onclick="slogan.sub=[prompt('请输入考试副标语')]||slogan.sub">
-          <i class="fas fa-quote-right fa-fw"></i>
-          <span>考试副标语</span>
-        </a>
-        <a onclick="change(prompt('请输入考试类型','高四理科'))">
-          <i class="fas fa-archive fa-fw"></i>
-          <span>考试类型</span>
-        </a>
-        <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
-        <a onclick="type.innerHTML= prompt('请输入机构名称','纸鹿教育')||type">
-          <i class="far fa-building fa-fw"></i>
-          <span>机构名称(仅显示)</span>
-        </a>
-        <a onclick="subject.name=prompt('考试科目名称','考练')||subject.name">
-          <i class="fas fa-book fa-fw"></i>
-          <span>考试科目</span>
-        </a>
-        <a onclick="fixMinutes(subject.start,'开始时间')">
-          <i class="fas fa-hourglass-start fa-fw"></i>
-          <span>开始时间</span>
-        </a>
-        <a onclick="fixMinutes(subject.end,'结束时间')">
-          <i class="fas fa-hourglass-end fa-fw"></i>
-          <span>结束时间</span>
-        </a>
-      </div>
-    </div>
 
-    <div class="fullheight">
+    <div style="height: 100%;">
       <p><i class="far fa-images"></i> 背景列表</p>
       <div id="bglist">
         <a onclick="bg(0)"><i class="far fa-edit"></i> 自定义url</a>
@@ -239,30 +238,32 @@
       </div>
     </div>
 
-    <div>
+    <div style="max-height: 50%;">
       <p><i class="fas fa-info-circle"></i> 关于</p>
       <details>
         <summary>纸鹿</summary>
-        <a>QQ: 2399052066</a><a>微信: zhilubenlu</a><a>公众号: 纸鹿本鹿</a>
-        <a href="https://github.com/L33Z22L11">Github: L33Z22L11</a>
+        <a><i class="fab fa-qq fa-fw"></i> QQ 2399052066</a>
+        <a><i class="fab fa-weixin fa-fw"></i> 微信 zhilubenlu</a>
+        <a><i class="fab fa-weixin fa-fw"></i> 公众号 纸鹿本鹿</a>
+        <a href="https://github.com/L33Z22L11"><i class="fab fa-github fa-fw"></i> Github L33Z22L11</a>
       </details>
 
       <details>
         <summary>野生技协@混技</summary>
-        <a>QQ群: 169994096</a>
+        <a><i class="fab fa-qq fa-fw"></i> 野生技协分群 169994096</a>
         <!-- <a href="https://hi.thisis.host"> 官网: hi.thisis.host</a> -->
-        <a href="https://github.com/ThisisHost">Github: ThisisHost</a>
-        <a>QQ群: 894656456</a>
-        <a href="https://hi.thisis.host">官网: hi.thisis.host</a>
+        <a href="https://github.com/ThisisHost"><i class="fab fa-github fa-fw"></i> Github ThisisHost</a>
+        <a><i class="fab fa-qq fa-fw"></i> 混技总群 894656456</a>
+        <a href="https://hi.thisis.host"><i class="fas fa-globe-asia fa-fw"></i> 官网 hi.thisis.host</a>
       </details>
       <details>
         <summary>其他</summary>
-        <a>划水方块群: 1142349003</a>
+        <a><i class="fab fa-qq fa-fw"></i> 划水方块群 1142349003</a>
         <details>
-          <summary>其他个人QQ</summary>
-          <a>拾汘: 393501440</a><a>Star: 2692292636</a>
-          <a>长安凛冬: 2252855301</a><a>加零: 3073246100</a><a>GX: 63045083</a>
-          <a>yl: 1413488450</a><a>純粋な: 378655447</a>
+          <summary><i class="fab fa-qq fa-fw"></i> 其他个人QQ</summary>
+          <a>拾汘 393501440</a><a>Star 2692292636</a>
+          <a>长安凛冬 2252855301</a><a>加零 3073246100</a><a>GX 63045083</a>
+          <a>yl 1413488450</a><a>純粋な 378655447</a>
         </details>
       </details>
     </div>
