@@ -38,11 +38,12 @@ function bg(volnum, picseed) {
 bg();
 document.getElementById("bglist").innerHTML = function () {
   for (var l = '<!-- 通过style.js生成的历史背景树状目录 -->\n', v = 0; v < gallery.length; v++) {
-    l += '<details>\n  <summary>' + gallery[v].volname + '</summary>\n';
+    l += '<details>\n  <summary>' + gallery[v].volname + '</summary>\n  <div class="alist">\n';
     for (picnum = 0; picnum < gallery[v].pic.length; picnum++) {
-      l += '  <a onclick="bg(' + v + ',' + picnum + ')">' + gallery[v].pic[picnum].name + '</a>\n';
+      l += '    <a onclick="bg(' + v + ',' + picnum + ')">' + gallery[v].pic[picnum].name + '</a>\n';
     }
-    l += '</details>\n';
+    l += '  </div>\n</details>\n';
   }
+  console.log(l)
   return l;
 }();

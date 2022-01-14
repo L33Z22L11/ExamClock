@@ -80,7 +80,6 @@
 .iconset > * > i {
   font-size: 1rem;
 }
-.alist > a,
-details > a {
+.alist > a {
   display: block;
 }
