@@ -45,7 +45,11 @@ function change(toSubjectType) {
           $("晨读2", today.date, "07:30", "08:00");
           $("午休", today.date, "12:00", "13:50");
         }
-        if (today.day != 6) {
+        if (today.day == 6) {
+          // 周六的下午和晚上
+          // console.log("6simulation" + new Date());
+          $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", null, ["第" + today.week + "周" + today.weekday + "大考练: 根据年级原定两小时考练安排，结束后请自行订正答案。"]);
+        } else {
           if (today.weekday.match("二|四")) {
             // 周二、周四下午
             // console.log("test" + new Date());
@@ -61,11 +65,6 @@ function change(toSubjectType) {
           $("晚二", today.date, "19:50", "20:35");
           $("晚三", today.date, "20:50", "22:00");
           $("晚修", today.date, "22:00", "23:00");
-        } else {
-          // 周六的下午和晚上
-          // console.log("6simulation" + new Date());
-          $(["数学", "英语",][today.week % 2], today.date, "16:00", "17:45", null, ["第" + today.week + "周" + today.weekday + "大考练"]);
-          $("订正", today.date, "17:45", "17:55");
         }
       };
       break;

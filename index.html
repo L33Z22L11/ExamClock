@@ -70,10 +70,12 @@
             </div>
           </span>
 
-          <a href="https://img.xuewuzhibu.cn/bjzx" class="far fa-calendar-alt"></a>
+          <a href="https://img.xuewuzhibu.cn/bjzx"><i class="far fa-calendar-alt" data-sub="高三课表"></i></a>
+
+          <a href="https://examined.thisis.host"><i class="fas fa-hourglass-half" data-sub="时光局"></i></a>
 
           <span class="dropdown">
-            <i class="fas fa-random" onclick="bg()"></i>
+            <i class="fas fa-random" onclick="bg()" data-sub="换背景"></i>
             <div style="right: -1em; min-width: 15em;">
               <div>
                 <p><i class="fab fa-qq"></i> 投稿QQ:
@@ -102,9 +104,9 @@
             </div>
           </span>
 
-          <a onclick="eleControl.style.display = 'flex'" class="fas fa-sliders-h"></a>
+          <a onclick="eleControl.style.display = 'flex'"><i class="fas fa-sliders-h" data-sub="控制中心"></i></a>
 
-          <a onclick="fullscreen()" id="fullscreen" class="fas fa-expand-arrows-alt"></a>
+          <a onclick="fullscreen()"><i class="fas fa-expand-arrows-alt" id="fullscreen" data-sub="全屏"></i></a>
       </nav>
 
       <div class="dim" id="subslogan">⚠ 代码正在加载，您还可以
@@ -146,7 +148,7 @@
           <span><i class="fas fa-network-wired"></i>
             状态: 正常运行<span id="runtime">10个月</span></span>
           <span><i class="fas fa-hashtag"></i> 高一高二快期末考试了</span>
-          <span><i class="fas fa-file-medical-alt"></i> ver_6.3.3_控制中心+上个考试</span>
+          <span><i class="fas fa-file-medical-alt"></i> ver_6.3.4_只改了版本号你信吗</span>
         </div>
       </footer>
     </div>
@@ -156,7 +158,7 @@
   <script src="./search.js" clock></script>
 
   <div id="control" style="min-width: 12em;">
-    <span class="backdrop" onclick="eleControl.style.display=''"></span>
+    <span id="controlbd"></span>
 
     <div class="barset">
       <div id="sizebar">
@@ -227,15 +229,8 @@
     </div>
 
     <div>
-      <div class="alist">
-        <p>一个未完成开发的控制中心。<br>诸多特性亟待实现。<br>
-          © 2022 Control Panel Digital Design (CPDD). All rights reserved.</p>
-        <br>
-        <a href="https://examined.thisis.host">
-          <i class="fas fa-hourglass-half"></i> 时光局</a>
-        <a onclick="eleBackdrop.click()">
-          <i class="fas fa-times"></i> 关闭控制中心</a>
-      </div>
+      <p>一个未完成开发的控制中心。<br>诸多特性亟待实现。<br>
+        © 2022 Control Panel Digital Design (CPDD). All rights reserved.</p>
     </div>
 
     <div style="max-height: 50%;">

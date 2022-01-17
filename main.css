@@ -41,7 +41,7 @@ html {
 }
 /* 页脚文本 */
 footer {
-  font-size: 0.3em;
+  font-size: 0.3rem;
   color: rgba(255, 255, 255, 0.3);
 }
 /* 选中 */
@@ -85,6 +85,27 @@ footer {
   position: fixed;
   z-index: 1;
   display: none;
+}
+/* 带注释的图标 */
+[data-sub] {
+  line-height: 1em;
+
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+[data-sub]::after {
+  font: normal normal 0.5em "Montserrat", "微软雅黑", sans-serif;
+  display: block;
+  margin-top: 0.2em;
+
+  content: attr(data-sub);
+}
+.icon {
+  text-align: center;
+}
+.icon > p {
+  font-size: 0.3rem;
 }
 /* 进度条 */
 .bar {

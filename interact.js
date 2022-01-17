@@ -3,7 +3,7 @@
  */
 var eleMain = document.getElementById("main"),
   eleControl = document.getElementById("control"),
-  eleBackdrop = document.getElementsByClassName("backdrop")[0],
+  eleControlbd = document.getElementById("controlbd"),
   eleSizebar = document.getElementById("sizebar"),
   eleContrastbar = document.getElementById("contrastbar"),
   eleFullscreen = document.getElementById("fullscreen"),
@@ -35,14 +35,24 @@ eleMain.oncontextmenu = function (e) {
   if (!e.ctrlKey) {
     e.preventDefault();
     eleControl.style.display = "flex";
+    eleControl.style.opacity = 0;
+    setTimeout(function () { eleControl.style.opacity = 1; }, 10);
   }
 };
+eleControlbd.onclick = function (e) {
+  eleControl.style.opacity = 0;
+  setTimeout(function () {
+    eleControl.style.display = "";
+  }, 200);
+}
+eleSizebar.firstElementChild.style.width = (parseInt(eleMain.style.fontSize) - 0.75) * 200 + "%";
+eleContrastbar.firstElementChild.style.width = (eleMain.style.opacity - 0.5) * 200 + "%";
 eleSizebar.onmousedown = eleSizebar.ontouchstart =
   eleSizebar.onmousemove = eleSizebar.ontouchmove =
   eleSizebar.ondrag = function (e) {
     if (e.buttons == 1) {
       e.preventDefault();
-      eleBackdrop.style.opacity = "0";
+      eleControlbd.style.opacity = "0";
       eleSizebar.firstElementChild.style.width = e.offsetX + "px";
       eleMain.style.fontSize = (e.offsetX / eleSizebar.clientWidth) / 2 + 0.75 + "em";
     }
@@ -52,7 +62,7 @@ eleContrastbar.onmousedown = eleContrastbar.ontouchstart =
   eleContrastbar.ondrag = function (e) {
     e.preventDefault();
     if (e.buttons == 1) {
-      eleBackdrop.style.opacity = "0";
+      eleControlbd.style.opacity = "0";
       eleContrastbar.firstElementChild.style.width = e.offsetX + "px";
       eleMain.style.opacity = (e.offsetX / eleContrastbar.clientWidth) / 2 + 0.5;
     }
@@ -61,7 +71,7 @@ eleContrastbar.onmousedown = eleContrastbar.ontouchstart =
 //   e.preventDefault();
 // }
 onmouseup = function (e) {
-  eleBackdrop.style.opacity = "";
+  eleControlbd.style.opacity = "";
 };
 // 运行时间展示
 eleRuntime.innerHTML = parseInt((new Date() - new Date("2021-04")) / 864E5) + "天";
@@ -80,9 +90,11 @@ function fullscreen() {
     if (document.fullscreenElement) {
       document.exitFullscreen();
       eleFullscreen.setAttribute("class", "fas fa-expand-arrows-alt");
+      eleFullscreen.setAttribute("data-sub", "全屏");
     } else {
       document.documentElement.requestFullscreen();
       eleFullscreen.setAttribute("class", "fas fa-compress-arrows-alt");
+      eleFullscreen.setAttribute("data-sub", "退出");
     }
   } catch (e) { console.warn(send("操作失败，请手动最大化窗口或全屏。<span class='dim'>建议使用Chrome/Edge/Firefox浏览器。</span>\n") + e); }
 }
