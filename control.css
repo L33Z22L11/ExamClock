@@ -64,6 +64,7 @@
 }
 .barset i {
   margin: 0.5em;
+  pointer-events: none;
 }
 .iconset {
   display: flex;
