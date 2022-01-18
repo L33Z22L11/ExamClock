@@ -34,15 +34,18 @@ window.onkeydown = function (e) {
 eleMain.oncontextmenu = function (e) {
   if (!e.ctrlKey) {
     e.preventDefault();
-    eleControl.style.display = "flex";
+    eleControl.style.display = "";
     eleControl.style.opacity = eleControlbd.style.opacity = 0;
-    setTimeout(function () { eleControl.style.opacity = 1; }, 0);
-    setTimeout(function () { eleControlbd.style.opacity = 1; }, 50);
+    setTimeout(function () { eleControl.style.opacity = ""; }, 0);
+    setTimeout(function () { eleControlbd.style.opacity = ""; }, 50);
   }
 };
 eleControlbd.onclick = function (e) {
   eleControl.style.opacity = 0;
-  setTimeout(function () { eleControl.style.display = ""; }, 200);
+  setTimeout(function () {
+    eleControl.style.display = "none"; 
+    eleControl.style.opacity = "";
+  }, 200);
 }
 eleSizebar.firstElementChild.style.width = (parseInt(eleMain.style.fontSize) - 0.75) * 200 + "%";
 eleContrastbar.firstElementChild.style.width = (eleMain.style.opacity - 0.5) * 200 + "%";
@@ -70,17 +73,6 @@ eleContrastbar.onmousedown = eleContrastbar.ontouchstart =
 //   e.preventDefault();
 // }
 onmouseup = function (e) { eleControlbd.style.opacity = ""; };
-// 运行时间展示
-eleRuntime.innerHTML = parseInt((new Date() - new Date("2021-04")) / 864E5) + "天";
-// eleMain样式调节
-function relStyle(prop, delta, unit, minVal, maxVal) {
-  var propVal = eleMain.style[prop].replace(unit, "") * 1 + delta;
-  // 保留两位小数，然而toFixed()有精度问题
-  propVal = Math.round(Math.min(Math.max(propVal, minVal), maxVal) * 1E2) / 1E2;
-  eleMain.style[prop] = propVal + unit;
-  document.getElementById(prop).innerHTML = propVal;
-  console.log(send(prop + "增加了" + delta + "，调节为" + propVal));
-}
 // 全屏
 function fullscreen() {
   try {

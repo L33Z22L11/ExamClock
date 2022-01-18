@@ -5,13 +5,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="纸鹿(L33Z22L11@Github)">
+  <meta name="description" content="考试时钟用于宝中考试时展示考试科目、起止时间、当前时间等信息。考试时钟背景由一卷图库提供，祝各位同学使用考试时钟时心情愉悦，考试顺利。">
+  <meta name="keywords" content="考试时钟,网页时钟,在线时钟,考试时间">
   <link rel="shortcut icon" href="/logo_g_64.png" type="image/x-icon">
-  <link href="./main.css" rel="stylesheet">
-  <link href="./control.css" rel="stylesheet">
-  <link href="https://fonts.font.im/css?family=Montserrat:500,700" rel="stylesheet">
-  <!-- <link href="https://fonts.proxy.ustclug.org/css?family=Noto+Sans+SC:400,700" rel="stylesheet"> -->
-  <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./control.css">
+  <link rel="stylesheet" href="https://fonts.font.im/css?family=Montserrat:500,700">
+  <!-- <link rel="stylesheet" href="https://fonts.proxy.ustclug.org/css?family=Noto+Sans+SC:400,700"> -->
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> -->
   <base target="_blank">
   <!-- Microsoft Clarity tracking code for https://thisis.host/ -->
   <script type="text/javascript">
@@ -27,21 +30,15 @@
 <body>
   <div id="main" style="opacity: 0.9; font-size: 1em;">
     <div class="notify">
-      <div id="verify"><i class="fas fa-shield-alt"></i>
-        <span id="verifycontent">安全提示内容</span>
-      </div>
+      <div id="verify"><i class="fas fa-shield-alt"></i><span id="verifycontent">安全提示内容</span></div>
       <!-- 希沃屏保被关了，这个暂时不用 -->
       <div class="space-between" id="forewarn">
         <p><i class="fas fa-exclamation-triangle"></i>
-          希沃管家可能<span id="forewarntime">在无操作45分钟后</span>
-          弹出屏保(含古诗词、政史知识)!</p>
-        <a class="hilit"><i class="fas fa-history"></i>
-          暂时关闭45分钟</a>
+          希沃管家可能<span id="forewarntime">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)!</p>
+        <a class="hilit"><i class="fas fa-history"></i> 暂时关闭45分钟</a>
       </div>
       <div class="space-between" id="msg">
-        <p><i class="fas fa-info-circle"></i>
-          <span id="msgcontent">这是一条初始消息。</span>
-        </p>
+        <p><i class="fas fa-info-circle"></i><span id="msgcontent">这是一条初始消息。</span></p>
         <a class="fas fa-times"></a>
       </div>
     </div>
@@ -64,7 +61,7 @@
               <a onclick="change(this.innerHTML)">高三一检</a>
               <a onclick="change(this.innerHTML)">高二理科</a>
               <a onclick="change(this.innerHTML)">高二文科</a>
-              <a onclick="change(this.innerHTML)">高一</a>
+              <!-- <a onclick="change(this.innerHTML)">高一</a> -->
               <a onclick="change('临时科目');">
                 <i class="far fa-plus-square"></i> 临时</a>
             </div>
@@ -76,41 +73,39 @@
 
           <span class="dropdown">
             <i class="fas fa-random" onclick="bg()" data-sub="换背景"></i>
-            <div style="right: -1em; min-width: 15em;">
+            <div style="right: -4em; min-width: 12em;">
               <div>
-                <p><i class="fab fa-qq"></i> 投稿QQ:
-                  <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066</a>
-                </p>
-                <p class="dim"><i class="far fa-closed-captioning"></i>
-                  通过<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>授权。</p>
-                <p><a href="https://img.xuewuzhibu.cn/album/h8p">
-                    <i class="fas fa-paper-plane"></i>
-                    宝中一卷图库 (时钟背景)</a></p>
-                <p class="dim"><i class="far fa-handshake"></i>
-                  由小伙伴的学无止步图床托管。</p>
-                <p><a href="https://hi.thisis.host">
-                    <i class="fas fa-sitemap"></i> 野生技协174人!
-                    <span class="dim"><i class="fas fa-globe-asia"></i>官网</span>
-                  </a></p>
-                <p class="dim"><i class="fab fa-qq"></i>
-                  野生技协(混技分部)群: 894656456<br>
-                  <i class="fab fa-qq"></i> 混技总群: 169994096
-                </p>
-                <p><a href="/jump-to-exam-clock.html" download="跳转到考试时钟"><i class="fas fa-download"></i>
-                    下载跳转HTML文件</a></p>
-                <p class="dim"><i class="fas fa-exclamation-triangle"></i>
-                  勿使用浏览器菜单的保存功能。</p>
+                <p><i class="fab fa-qq"></i> 投稿QQ:<a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066</a></p>
+                <p class="dim">通过<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">
+                    CC BY-NC-SA 4.0</a>授权。</p>
+                <p><a href="https://img.xuewuzhibu.cn/album/h8p"><i class="fas fa-paper-plane"></i>
+                    宝中一卷图库</a></p>
+                <p class="dim">由小伙伴的学无止步图床托管。</p>
               </div>
             </div>
           </span>
 
-          <a onclick="eleControl.style.display = 'flex'"><i class="fas fa-sliders-h" data-sub="控制中心"></i></a>
+          <span class="dropdown">
+            <i class="fas fa-sliders-h" data-sub="控制中心"></i>
+            <div style="right: -2em; min-width: 12em;">
+              <a onclick="eleControl.style.display = ''"><i class="fas fa-bars"></i>
+                点击调出控制中心<p class="dim">建议通过右键或者二指呼出</p>
+              </a>
+              <div>
+                <p><a href="https://hi.thisis.host"><i class="fas fa-sitemap"></i> 野生技协174人!
+                    <span class="dim"><i class="fas fa-globe-asia"></i>官网</span></a></p>
+                <p class="dim">野生技协分群: 894656456<br>混技总群: 169994096</p>
+                <p><a href="/jump-to-exam-clock.html" download="跳转到考试时钟"><i class="fas fa-download"></i>
+                    下载跳转HTML文件</a></p>
+                <p class="dim">勿使用浏览器菜单的保存功能。</p>
+              </div>
+            </div>
+          </span>
 
           <a onclick="fullscreen()"><i class="fas fa-expand-arrows-alt" id="fullscreen" data-sub="全屏"></i></a>
       </nav>
 
-      <div class="dim" id="subslogan">⚠ 代码正在加载，您还可以
-        刷新或访问<a href="http://bz.rf.gd">备用考试时钟</a>。
+      <div class="dim" id="subslogan">⚠ 代码正在加载，您还可以刷新或访问<a href="http://bz.rf.gd">备用考试时钟</a>。
       </div>
 
       <div class="bar">
@@ -119,17 +114,17 @@
 
       <b class="card">
         <div>
-          <div id="subject">2022</div>
-          <div id="duration">1.1~12.31</div>
+          <div id="subject">科目</div>
+          <div id="duration">16:66~17:77</div>
         </div>
         <div>
           <div id="clock">18:88</div>
         </div>
         <div>
           <div>
-            <span id="timer">365</span><span class="dim" id="timersub">天</span>
+            <span id="timer">199</span><span class="dim" id="timersub">sub</span>
           </div>
-          <div id="activity">好运时长</div>
+          <div id="activity">当前活动</div>
         </div>
         <!-- <div><br><br><br>test<br><br><br></div> -->
       </b>
@@ -138,17 +133,16 @@
     <div>
       <footer>
         <div class="space-between">
-          <span><i class="fas fa-code"></i> 开发: 纸鹿@考试时钟项目组</span>
-          <span><i class="fas fa-hand-sparkles"></i> 野生技协合作: 划水方块 音幻宝中 朗诵社
-            排球社 合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社
-            动漫社 舞蹈队 日语社 Instreet社 机器人社 推理社 篮裁社</span>
+          <p><i class="fab fa-qq"></i> 背景投稿QQ: 2399052066 (纸鹿)</p>
+          <p>野生技协合作: 划水方块 音幻宝中 朗诵社 排球社 合唱团
+            街舞社 汉服社 航模社 民乐社 心理社 书画社 动漫社
+            舞蹈队 日语社 Instreet社 机器人社 推理社 篮裁社</p>
         </div>
         <div class="space-between">
-          <span><i class="fas fa-image"></i> <span id="bg">当前背景: campus</span></span>
-          <span><i class="fas fa-network-wired"></i>
-            状态: 正常运行<span id="runtime">10个月</span></span>
-          <span><i class="fas fa-hashtag"></i> 最近发热缺课人挺多，注意防护</span>
-          <span><i class="fas fa-file-medical-alt"></i> ver_6.3.4_只改了版本号你信吗</span>
+          <p><i class="fas fa-image"></i> <span id="bg">背景: campus</span></p>
+          <p><i class="fas fa-hashtag"></i> 最近发热缺课人挺多，注意防护</p>
+          <p><i class="fas fa-hashtag"></i> 高二学弟学妹们考试加油冲冲冲</p>
+          <p>ver_6.3.5_高一已经被我删了,就这样</p>
         </div>
       </footer>
     </div>
@@ -157,7 +151,7 @@
   <script src="./clock.js" exam></script>
   <script src="./search.js" clock></script>
 
-  <div id="control" style="min-width: 12em;">
+  <div id="control" style="display: none;">
     <span id="controlbd"></span>
 
     <div class="barset">
@@ -193,7 +187,7 @@
               <i class="fas fa-quote-right fa-fw"></i>
               <span>考试副标语</span>
             </a>
-            <a onclick="change(prompt('请输入考试类型','高四理科'))">
+            <a onclick="change(prompt('请输入考试类型','高一'))">
               <i class="fas fa-archive fa-fw"></i>
               <span>考试类型</span>
             </a>

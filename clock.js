@@ -110,10 +110,11 @@ var type, today = new Date(),
   };
 // 注入当前科目
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
-  if (now < subject.end) console.log("当前科目未结束，故不注入科目: " + toSubject);
-  else if (now >= new Date(toDate + "T" + toEnd + "+08:00"))
-    console.log("请求科目已结束，故不注入科目: " + toSubject);
-  else {
+  if (now < subject.end) {
+    // console.log("当前科目未结束，故不注入科目: " + toSubject);
+  } else if (now >= new Date(toDate + "T" + toEnd + "+08:00")) {
+    // console.log("请求科目已结束，故不注入科目: " + toSubject);
+  } else {
     subject.name = toSubject;
     subject.start = new Date(toDate + "T" + toStart + "+08:00");
     subject.end = new Date(toDate + "T" + toEnd + "+08:00");

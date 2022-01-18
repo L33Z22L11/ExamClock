@@ -44,6 +44,6 @@ document.getElementById("bglist").innerHTML = function () {
     }
     l += '  </div>\n</details>\n';
   }
-  console.log(l)
+  // console.log(l);
   return l;
 }();
