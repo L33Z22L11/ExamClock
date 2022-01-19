@@ -104,7 +104,7 @@ function change(toSubjectType) {
       break;
     case "高一":
       // “高一年级竟然不用”
-      slogan.$main = "暂未启用";
+      slogan.$main = "未启用 仅供测试";
       slogan.$sub = ["高一期末暨模块结业考试: 请以实际铃声为准。"];
       subject.update = function () {
         $("语文", "2022-01-20", "07:50", "09:50");

@@ -89,7 +89,6 @@ footer {
 /* 带注释的图标 */
 [data-sub] {
   line-height: 1em;
-
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -98,14 +97,7 @@ footer {
   font: normal normal 0.5em "Montserrat", "微软雅黑", sans-serif;
   display: block;
   margin-top: 0.2em;
-
   content: attr(data-sub);
-}
-.icon {
-  text-align: center;
-}
-.icon > p {
-  font-size: 0.3rem;
 }
 /* 进度条 */
 .bar {
