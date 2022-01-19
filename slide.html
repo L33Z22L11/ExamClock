@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/logo_g_64.png" type="image/x-icon">
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./control.css">
+  <link rel="stylesheet" href="https://fonts.font.im/css?family=Montserrat:500,700">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <base target="_blank">
+  <!-- Microsoft Clarity tracking code for https://thisis.host/ -->
+  <title>一键幻灯片 | 考试时钟</title>
+  <style>
+    .textarea {
+      background: none;
+      color: inherit;
+      font: inherit;
+      width: fit-content;
+      height: fit-content;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main" style="opacity: 0.9; font-size: 1em;">
+    <div class="notify">
+      <nav class="space-between">
+        <div></div>
+        <div class="sub space-between" style="gap:1em;">
+          <a class="fas fa-random" onclick="bg()" data-sub="换背景"></a>
+          <a onclick="fullscreen()"><i class="fas fa-expand-arrows-alt" id="fullscreen" data-sub="全屏"></i></a>
+      </nav>
+      <div class="space-between" id="msg">
+        <p><i class="fas fa-info-circle"></i>
+          <span id="msgcontent">这是一条初始消息。</span>
+        </p>
+        <a class="fas fa-times"></a>
+      </div>
+    </div>
+
+    <div>
+      <h2 id="activity" contenteditable>2021年度总结大会暨颁奖典礼</h2>
+      <h1 id="subject" contenteditable>开放互助 活跃创新</h1>
+      <h3 id="duration" contenteditable>做优质的自发性技术协助组织</h3>
+      <br>
+      <p class="dim" contenteditable>野生技协</p>
+      <p class="dim" contenteditable>2077年1月</p>
+    </div>
+
+    <footer class="space-between">
+      <p><i class="fas fa-file-powerpoint"></i> 一键幻灯片 - 内容不会被保存</p>
+      <p><i class="fas fa-image"></i> <span id="bg">背景: campus</span></p>
+    </footer>
+  </div>
+
+  </div>
+  <div id="control" style="display: none;">
+    <span id="controlbd"></span>
+
+    <div class="barset">
+      <div id="sizebar">
+        <div><i class="fas fa-text-height"></i></div>
+        <i class="fas fa-text-height"></i>
+      </div>
+      <div id="contrastbar">
+        <div><i class="fas fa-adjust"></i></div>
+        <i class="fas fa-adjust"></i>
+      </div>
+    </div>
+
+    <div style="height: 100%;">
+      <p><i class="far fa-images"></i> 背景列表</p>
+      <div id="bglist">
+        <a onclick="bg(0)"><i class="far fa-edit"></i> 自定义url</a>
+        <a onclick="bg(-1)"><i class="far fa-edit"></i> 恢复默认</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./msg.js"></script>
+  <script src="./interact.js" msg></script>
+  <script src="./gallery.js" msg interact></script>
+</body>
+
+</html>
