@@ -13,8 +13,7 @@
   <link rel="stylesheet" href="./control.css">
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Montserrat:500,700">
   <!-- <link rel="stylesheet" href="https://fonts.proxy.ustclug.org/css?family=Noto+Sans+SC:400,700"> -->
-  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> -->
+  <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> -->
   <base target="_blank">
   <!-- Microsoft Clarity tracking code for https://thisis.host/ -->
   <script type="text/javascript">
@@ -30,20 +29,20 @@
 <body>
   <div id="main" style="opacity: 0.9; font-size: 1em;">
     <div class="notify">
-      <div id="verify"><i class="fas fa-shield-alt"></i>
+      <div id="verify"><i class="fa-solid fa-shield"></i>
         <span id="verifycontent">安全提示内容</span>
       </div>
       <!-- 希沃屏保被关了，这个暂时不用 -->
       <div class="space-between" id="forewarn">
-        <p><i class="fas fa-exclamation-triangle"></i>
+        <p><i class="fa-solid fa-circle-exclamation"></i>
           希沃管家可能<span id="forewarntime">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)!</p>
-        <a class="hilit"><i class="fas fa-history"></i> 暂时关闭45分钟</a>
+        <a class="hilit"><i class="fa-solid fa-clock-rotate-left"></i> 暂时关闭45分钟</a>
       </div>
       <div class="space-between" id="msg">
-        <p><i class="fas fa-info-circle"></i>
+        <p><i class="fa-solid fa-circle-info"></i>
           <span id="msgcontent">这是一条初始消息。</span>
         </p>
-        <a class="fas fa-times"></a>
+        <a class="fa-solid fa-xmark"></a>
       </div>
     </div>
 
@@ -56,7 +55,7 @@
             <a class="hilit">
               <div class="space-between">
                 <span id="type">选择类型</span>
-                <i class="fas fa-caret-down"></i>
+                <i class="fa-solid fa-caret-down"></i>
               </div>
             </a>
 
@@ -67,49 +66,49 @@
               <a onclick="change(this.innerHTML)">高二文科</a>
               <a onclick="change(this.innerHTML)">高一</a>
               <a onclick="change('临时科目');">
-                <i class="far fa-plus-square"></i> 临时</a>
+                <i class="fa-regular fa-square-plus"></i> 临时</a>
             </div>
           </span>
 
-          <a href="https://img.xuewuzhibu.cn/bjzx"><i class="far fa-calendar-alt" data-sub="高三课表"></i></a>
+          <a href="https://img.xuewuzhibu.cn/bjzx"><i class="fa-regular fa-calendar-days" data-sub="高三课表"></i></a>
 
 
           <span class="dropdown">
-            <i class="fas fa-random" onclick="bg()" data-sub="换背景"></i>
+            <i class="fa-solid fa-shuffle" onclick="bg()" data-sub="换背景"></i>
             <div style="right: -4em; min-width: 12em;">
               <div>
-                <p><i class="fab fa-qq"></i> 投稿QQ <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066</a></p>
+                <p><i class="fa-brands fa-qq"></i> 投稿QQ <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066</a></p>
                 <p class="dim">通过<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">
                     CC BY-NC-SA 4.0</a> 授权。</p>
               </div>
-              <a href="https://img.xuewuzhibu.cn/album/h8p"><i class="fas fa-paper-plane"></i> 宝中一卷图库
+              <a href="https://img.xuewuzhibu.cn/album/h8p"><i class="fa-solid fa-images"></i> 宝中一卷图库
                 <p class="dim">由小伙伴的学无止步图床托管。</p>
               </a>
-              <a href="https://examined.thisis.host"><i class="fas fa-hourglass-half"></i> 考试时钟时光局
-                <p class="dim">背景、版本列表和简要文档</p>
+              <a href="https://examined.thisis.host"><i class="fa-solid fa-hourglass"></i> 考试时钟时光局
+                <p class="dim">查看背景/版本列表及文档。</p>
               </a>
             </div>
           </span>
 
           <span class="dropdown">
-            <i class="fas fa-bars" data-sub="更多"></i>
+            <i class="fa-solid fa-bars" data-sub="菜单"></i>
             <div style="right: -2em; min-width: 12em;">
-              <a onclick="eleControl.style.display = ''"><i class="fas fa-sliders-h"></i> 控制中心
+              <a onclick="eleControl.style.display = ''"><i class="fa-solid fa-sliders"></i> 控制中心
                 <span class="dim">右键或二指呼出</span>
               </a>
-              <a href="./slide.html"><i class="fas fa-file-powerpoint"></i>
+              <a href="./slide.html"><i class="fa-solid fa-file-powerpoint"></i>
                 一键幻灯片 <span class="dim">可编辑内容</span></a>
-              <a href="https://hi.thisis.host"><i class="fas fa-external-link-alt"></i> 野生技协官网
+              <a href="https://hi.thisis.host"><i class="fa-solid fa-up-right-from-square"></i> 野生技协官网
                 <span class="dim">175人了!</span>
                 <p class="dim">野生技协分群: 894656456<br>混技总群: 169994096</p>
               </a>
-              <a href="/jump-to-exam-clock.html" download="跳转到考试时钟"><i class="fas fa-download"></i> 下载跳转HTML文件
+              <a href="/jump-to-exam-clock.html" download="跳转到考试时钟"><i class="fa-solid fa-file-arrow-down"></i> 下载跳转HTML文件
                 <p class="dim">勿使用浏览器菜单的保存功能。</p>
               </a>
             </div>
           </span>
 
-          <a onclick="fullscreen()"><i class="fas fa-expand-arrows-alt" id="fullscreen" data-sub="全屏"></i></a>
+          <a onclick="fullscreen()"><i class="fa-solid fa-expand" id="fullscreen" data-sub="全屏"></i></a>
       </nav>
 
       <div class="dim" id="subslogan">⚠ 代码正在加载，您还可以刷新或访问
@@ -140,16 +139,16 @@
 
     <footer>
       <div class="space-between">
-        <p><i class="fab fa-qq"></i> 背景投稿QQ: 2399052066 (纸鹿)</p>
-        <p><i class="far fa-handshake"></i> 野生技协合作: 划水方块 音幻宝中
+        <p><i class="fa-brands fa-qq"></i> 背景投稿QQ: 2399052066 (纸鹿)</p>
+        <p><i class="fa-solid fa-paw"></i> 野生技协合作: 划水方块 音幻宝中
           朗诵社 排球社 合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社 动漫社
           舞蹈队 日语社 Instreet社 机器人社 推理社 篮裁社</p>
       </div>
       <div class="space-between">
-        <p><i class="fas fa-image"></i> <span id="bg">背景: campus</span></p>
-        <p><i class="fas fa-hashtag"></i> 最近发热缺课人挺多，注意防护</p>
-        <p><i class="fas fa-hashtag"></i> 高二学弟学妹们考试加油冲冲冲</p>
-        <p><i class="fas fa-file-signature"></i> ver_6.3.6_改了版本号</p>
+        <p><i class="fa-solid fa-image"></i> <span id="bg">背景: 雨后校园</span></p>
+        <p><i class="fa-solid fa-hashtag"></i> 最近发热缺课人挺多，注意防护</p>
+        <p><i class="fa-solid fa-hashtag"></i> 高二学弟学妹们考试加油冲冲冲</p>
+        <p><i class="fa-solid fa-file-arrow-up"></i> ver_6.3.7_优化细节</p>
       </div>
     </footer>
   </div>
@@ -162,56 +161,56 @@
 
     <div class="barset">
       <div id="sizebar">
-        <div><i class="fas fa-text-height"></i></div>
-        <i class="fas fa-text-height"></i>
+        <div><i class="fa-solid fa-text-height"></i></div>
+        <i class="fa-solid fa-text-height"></i>
       </div>
       <div id="contrastbar">
-        <div><i class="fas fa-adjust"></i></div>
-        <i class="fas fa-adjust"></i>
+        <div><i class="fa-solid fa-circle-half-stroke"></i></div>
+        <i class="fa-solid fa-circle-half-stroke"></i>
       </div>
     </div>
 
     <div>
-      <p><i class="fas fa-cog"></i> 高级</p>
+      <p><i class="fa-solid fa-gears"></i> 高级</p>
       <div class="alist -iconset">
-        <a href="?debug"><i class="fas fa-bug"></i>
+        <a href="?debug"><i class="fa-solid fa-list-check"></i>
           <span>新建调试页面</span></a>
         <a --href="?noforewarn">
-          <i class="fas fa-virus-slash"></i>
+          <i class="fa-solid fa-triangle-exclamation"></i>
           <span>屏保预警已关闭</span></a>
         <a href="https://github.com/ThisisHost/exam-clock">
-          <i class="fab fa-github"></i>
+          <i class="fa-brands fa-github"></i>
           <span>访问源代码仓库</span></a>
         <details>
-          <summary><i class="fas fa-sliders-h"></i> 强制切换</summary>
+          <summary><i class="fa-solid fa-sliders"></i> 强制切换</summary>
           <div class="alist -iconset">
             <a onclick="slogan.main=prompt('请输入考试大标语')||slogan.main">
-              <i class="fas fa-quote-left"></i>
+              <i class="fa-solid fa-quote-left"></i>
               <span>考试大标语</span>
             </a>
             <a onclick="slogan.sub=[prompt('请输入考试副标语')]||slogan.sub">
-              <i class="fas fa-quote-right"></i>
+              <i class="fa-solid fa-quote-right"></i>
               <span>考试副标语</span>
             </a>
             <a onclick="change(prompt('请输入考试类型','高一'))">
-              <i class="fas fa-archive"></i>
+              <i class="fa-solid fa-box-archive"></i>
               <span>考试类型</span>
             </a>
             <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
             <a onclick="type.innerHTML= prompt('请输入机构名称','纸鹿教育')||type">
-              <i class="far fa-building"></i>
+              <i class="fa-regular fa-building"></i>
               <span>机构名称(仅显示)</span>
             </a>
             <a onclick="subject.name=prompt('考试科目名称','考练')||subject.name">
-              <i class="fas fa-book"></i>
+              <i class="fa-solid fa-book"></i>
               <span>考试科目</span>
             </a>
             <a onclick="fixMinutes(subject.start,'开始时间')">
-              <i class="fas fa-hourglass-start"></i>
+              <i class="fa-solid fa-hourglass-start"></i>
               <span>开始时间</span>
             </a>
             <a onclick="fixMinutes(subject.end,'结束时间')">
-              <i class="fas fa-hourglass-end"></i>
+              <i class="fa-solid fa-hourglass-end"></i>
               <span>结束时间</span>
             </a>
           </div>
@@ -221,10 +220,10 @@
 
 
     <div style="height: 100%;">
-      <p><i class="far fa-images"></i> 背景列表</p>
+      <p><i class="fa-regular fa-images"></i> 背景列表</p>
       <div id="bglist">
-        <a onclick="bg(0)"><i class="far fa-edit"></i> 自定义url</a>
-        <a onclick="bg(-1)"><i class="far fa-edit"></i> 恢复默认</a>
+        <a onclick="bg(0)"><i class="fa-solid fa-pen-to-square"></i> 自定义url</a>
+        <a onclick="bg(-1)"><i class="fa-regular fa-square-minus"></i> 恢复默认</a>
       </div>
     </div>
 
@@ -234,34 +233,34 @@
     </div>
 
     <div style="max-height: 50%;">
-      <p><i class="fas fa-info-circle"></i> 关于</p>
+      <p><i class="fa-solid fa-info-circle"></i> 关于</p>
       <details>
         <summary>纸鹿</summary>
         <div class="alist">
-          <a><i class="fab fa-qq"></i> QQ 2399052066</a>
-          <a><i class="fab fa-weixin"></i> 微信 zhilubenlu</a>
-          <a><i class="fab fa-weixin"></i> 公众号 纸鹿本鹿</a>
-          <a href="https://music.163.com/user/444705789"><i class="fas fa-compact-disc"></i> 网易云音乐 纸鹿本鹿</a>
-          <a href="https://github.com/L33Z22L11"><i class="fab fa-github"></i> Github L33Z22L11</a>
-          <a href="https://zhilu.cyou"><i class="fas fa-globe-asia"></i> 纸鹿小站 zhilu.cyou</a>
+          <a><i class="fa-brands fa-qq"></i> QQ 2399052066</a>
+          <a><i class="fa-brands fa-weixin"></i> 微信 zhilubenlu</a>
+          <a><i class="fa-brands fa-weixin"></i> 公众号 纸鹿本鹿</a>
+          <a href="https://music.163.com/user/444705789"><i class="fa-solid fa-compact-disc"></i> 网易云音乐 纸鹿本鹿</a>
+          <a href="https://github.com/L33Z22L11"><i class="fa-brands fa-github"></i> Github L33Z22L11</a>
+          <a href="https://zhilu.cyou"><i class="fa-solid fa-earth-asia"></i> 纸鹿小站 zhilu.cyou</a>
         </div>
       </details>
 
       <details>
         <summary>野生技协@混技</summary>
         <div class="alist">
-          <a><i class="fab fa-qq"></i> 野生技协分群 169994096</a>
+          <a><i class="fa-brands fa-qq"></i> 野生技协分群 169994096</a>
           <!-- <a href="https://hi.thisis.host"> 官网: hi.thisis.host</a> -->
-          <a href="https://github.com/ThisisHost"><i class="fab fa-github"></i> Github ThisisHost</a>
-          <a><i class="fab fa-qq"></i> 混技总群 894656456</a>
-          <a href="https://hi.thisis.host"><i class="fas fa-globe-asia"></i> 官网 hi.thisis.host</a>
+          <a href="https://github.com/ThisisHost"><i class="fa-brands fa-github"></i> Github ThisisHost</a>
+          <a><i class="fa-brands fa-qq"></i> 混技总群 894656456</a>
+          <a href="https://hi.thisis.host"><i class="fa-solid fa-earth-asia"></i> 官网 hi.thisis.host</a>
         </div>
       </details>
       <details>
         <summary>其他</summary>
-        <a><i class="fab fa-qq"></i> 划水方块群 1142349003</a>
+        <a><i class="fa-brands fa-qq"></i> 划水方块群 1142349003</a>
         <details>
-          <summary><i class="fab fa-qq"></i> 其他个人QQ</summary>
+          <summary><i class="fa-brands fa-qq"></i> 其他个人QQ</summary>
           <div class="alist">
             <a>拾汘 393501440</a><a>Star 2692292636</a>
             <a>长安凛冬 2252855301</a><a>加零 3073246100</a><a>GX 63045083</a>

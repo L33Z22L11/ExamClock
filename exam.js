@@ -50,7 +50,7 @@ function change(toSubjectType) {
           // console.log("6simulation" + new Date());
           $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", null, ["第" + today.week + "周" + today.weekday + "大考练: 根据年级原定两小时考练安排，结束后请自行订正答案。"]);
         } else {
-          if (today.weekday.match("二|四")) {
+          if (today.day == 2 || today.day == 4) {
             // 周二、周四下午
             // console.log("test" + new Date());
             // $("考练", today.date, "16:05", "16:50", null, ["第" + today.week + "周(第" + (today.week % 3 || 3) + "轮): " + today.weekday + ([[, , "语文", , "历史/物理"], [, , "政治/化学", , "数学"], [, , "英语", , "地理/生物"]][today.week % 3][today.day] || "无") + "限时纠错训练"]);
@@ -64,7 +64,7 @@ function change(toSubjectType) {
           $("晚写", today.date, "18:45", "18:55");
           $("晚一", today.date, "18:55", "19:40");
           $("晚二", today.date, "19:50", "20:35");
-          $("晚三", today.date, "20:50", "22:00");
+          $("晚三", today.date, "20:50", "22:00", null, ["抬头六十秒，浪费一分钟。", "抬头半分钟，浪费三十秒。", "自习要专注! ——2019级文科一班",]);
           $("晚修", today.date, "22:00", "23:00");
         }
       };
