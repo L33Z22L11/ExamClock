@@ -228,6 +228,7 @@ a.hilit,
 .dropdown > :last-child > * {
   display: block;
   padding: 0.2em;
+  box-sizing: border-box;
 }
 /* 调节框样式 */
 .selectbar {

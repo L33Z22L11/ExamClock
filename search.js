@@ -12,7 +12,7 @@ else if (search.match("totype22")) change("高二文科");
 else if (today.date.match("2022-01-0(8|9)")) {console.log(today.date); change("高三一检");}
 else if (today.date.match("2022-01-2(0|1)")) change("高二理科");
 // 最后设置缺省考试类型
-else change("高三日常");
+else change("高三素质拓展");
 // 若不再包一层，slogan.update内的this就会指向window
 setInterval(function () { slogan.update(); }, 2000);
 // 篡改与浏览器检测

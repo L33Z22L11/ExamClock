@@ -25,7 +25,7 @@ function change(toSubjectType) {
         $("晚训", "2022-01-02", "18:25", "18:55", null, ["我猜应该是历史/生物"]);
       };
       break;
-    case "高三日常":
+    case "高三素质拓展":
       // 特别注意，最后一轮求余后应该是数组第0项
       slogan.$main = "距离高考" + parseInt((new Date("2022-06-07T22:30+08:00") - new Date()) / 864E5) + "天";
       slogan.$sub = [""];
