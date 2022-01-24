@@ -20,14 +20,14 @@
       <nav class="space-between">
         <div></div>
         <div class="sub space-between" style="gap:1em;">
-          <a class="fas fa-random" onclick="bg()" data-sub="换背景"></a>
-          <a onclick="fullscreen()"><i class="fas fa-expand-arrows-alt" id="fullscreen" data-sub="全屏"></i></a>
+          <i class="fa-solid fa-shuffle" onclick="bg()" data-sub="换背景"></i>
+          <a onclick="fullscreen()"><i class="fa-solid fa-expand" id="fullscreen" data-sub="全屏"></i></a>
       </nav>
       <div class="space-between" id="msg">
-        <p><i class="fas fa-info-circle"></i>
+        <p><i class="fa-solid fa-circle-info"></i>
           <span id="msgcontent">这是一条初始消息。</span>
         </p>
-        <a class="fas fa-times"></a>
+        <a class="fa-solid fa-xmark"></a>
       </div>
     </div>
 
@@ -41,8 +41,8 @@
     </div>
 
     <footer class="space-between">
-      <p><i class="fas fa-file-powerpoint"></i> 一键幻灯片 - 内容不会被保存</p>
-      <p><i class="fas fa-image"></i> <span id="bg">背景: campus</span></p>
+      <p><i class="fa-solid fa-file-powerpoint"></i> 一键PPT - 内容不会被保存</p>
+      <p><i class="fa-solid fa-image"></i> <span id="bg">背景: campus</span></p>
     </footer>
   </div>
 
@@ -52,20 +52,20 @@
 
     <div class="barset">
       <div id="sizebar">
-        <div><i class="fas fa-text-height"></i></div>
-        <i class="fas fa-text-height"></i>
+        <div><i class="fa-solid fa-text-height"></i></div>
+        <i class="fa-solid fa-text-height"></i>
       </div>
       <div id="contrastbar">
-        <div><i class="fas fa-adjust"></i></div>
-        <i class="fas fa-adjust"></i>
+        <div><i class="fa-solid fa-circle-half-stroke"></i></div>
+        <i class="fa-solid fa-circle-half-stroke"></i>
       </div>
     </div>
 
     <div style="height: 100%;">
-      <p><i class="far fa-images"></i> 背景列表</p>
+      <p><i class="fa-regular fa-images"></i> 背景列表</p>
       <div id="bglist">
-        <a onclick="bg(0)"><i class="far fa-edit"></i> 自定义url</a>
-        <a onclick="bg(-1)"><i class="far fa-edit"></i> 恢复默认</a>
+        <a onclick="bg(0)"><i class="fa-solid fa-pen-to-square"></i> 自定义url</a>
+        <a onclick="bg(-1)"><i class="fa-regular fa-square-minus"></i> 恢复默认</a>
       </div>
     </div>
 
