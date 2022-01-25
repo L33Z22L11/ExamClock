@@ -50,13 +50,14 @@ function change(toSubjectType) {
           // console.log("6simulation" + new Date());
           $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", null, ["第" + today.week + "周" + today.weekday + "大考练: 根据年级原定两小时考练安排，结束后请自行订正答案。"]);
         } else {
-          if (today.day == 2 || today.day == 4) {
-            // 周二、周四下午
-            // console.log("test" + new Date());
-            // $("考练", today.date, "16:05", "16:50", null, ["第" + today.week + "周(第" + (today.week % 3 || 3) + "轮): " + today.weekday + ([[, , "语文", , "历史/物理"], [, , "政治/化学", , "数学"], [, , "英语", , "地理/生物"]][today.week % 3][today.day] || "无") + "限时纠错训练"]);
-            $("考练", today.date, "16:05", "16:50", null, ["周二理数/政治，周四物理/文数"]);
-            $("考练", today.date, "17:00", "17:45", null, ["周二理数/政治，周四物理/文数"]);
-          } else $("自习", today.date, "17:00", "17:45");
+          // if (today.day == 2 || today.day == 4) {
+          // 周二、周四下午
+          // console.log("test" + new Date());
+          // $("考练", today.date, "16:05", "16:50", null, ["第" + today.week + "周(第" + (today.week % 3 || 3) + "轮): " + today.weekday + ([[, , "语文", , "历史/物理"], [, , "政治/化学", , "数学"], [, , "英语", , "地理/生物"]][today.week % 3][today.day] || "无") + "限时纠错训练"]);
+          $("考练", today.date, "16:05", "16:50", null, ["总之应该有考练。素质拓展课表已上传。"]);
+          // } else {
+          $("自习", today.date, "17:00", "17:45");
+          // }
           // 非周六的晚上
           // console.log("evening" + new Date());
           $("晚训", today.date, "18:25", "18:45", null, ["第" + today.week + ["周: 双周", "周: 单周"][today.week % 2] + today.weekday +
