@@ -54,7 +54,7 @@ function change(toSubjectType) {
           // 周二、周四下午
           // console.log("test" + new Date());
           // $("考练", today.date, "16:05", "16:50", null, ["第" + today.week + "周(第" + (today.week % 3 || 3) + "轮): " + today.weekday + ([[, , "语文", , "历史/物理"], [, , "政治/化学", , "数学"], [, , "英语", , "地理/生物"]][today.week % 3][today.day] || "无") + "限时纠错训练"]);
-          $("考练", today.date, "16:05", "16:50", null, ["总之应该有考练。素质拓展课表已上传。"]);
+          $("考练", today.date, "16:05", "16:50", null, ["素质拓展课表和考练安排已上传至“课表”。"]);
           // } else {
           $("自习", today.date, "17:00", "17:45");
           // }
