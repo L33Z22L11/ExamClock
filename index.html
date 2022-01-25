@@ -76,7 +76,7 @@
             !function () {
               var tau = (new Date("2022-01-29T16:50+08:00") - Date.now()) / 6E4;
               document.getElementById("runouttaschool").setAttribute("data-sub",
-                tau > 1440 ? (tau / 1440).toFixed(1) : tau > 60 ? (tau / 60).toFixed(1) : tau.toFixed(1))
+                tau > 1440 ? (tau / 1440).toFixed(1) + "天" : tau > 60 ? (tau / 60).toFixed(1) + "时" : tau.toFixed(1) + "分")
             }()
           </script>
 
