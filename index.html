@@ -71,6 +71,15 @@
             </div>
           </span>
 
+          <i class="fa-solid fa-person-running" id="runouttaschool" data-sub="距离放假"></i>
+          <script>
+            !function () {
+              var tau = (new Date("2022-01-29T16:50+08:00") - Date.now()) / 6E4;
+              document.getElementById("runouttaschool").setAttribute("data-sub",
+                tau > 1440 ? (tau / 1440).toFixed(1) : tau > 60 ? (tau / 60).toFixed(1) : tau.toFixed(1))
+            }()
+          </script>
+
           <a href="https://img.xuewuzhibu.cn/bjzx"><i class="fa-regular fa-calendar-days" data-sub="高三课表"></i></a>
 
           <span class="dropdown">

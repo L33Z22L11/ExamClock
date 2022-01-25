@@ -48,6 +48,9 @@ function change(toSubjectType) {
         if (today.day == 6) {
           // 周六的下午和晚上
           // console.log("6simulation" + new Date());
+          /* 
+           * 放个大假
+           */
           if (today.date == "2022-01-29") $("安排", today.date, "16:05", "16:50", null, "");
           $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", null, ["第" + today.week + "周" + today.weekday + "大考练: 根据年级原定两小时考练安排，结束后请自行订正答案。"]);
         } else {
@@ -62,7 +65,7 @@ function change(toSubjectType) {
           // 非周六的晚上
           // console.log("evening" + new Date());
           // $("晚训", today.date, "18:25", "18:45", null, ["第" + today.week + ["周: 双周", "周: 单周"][today.week % 2] + today.weekday + ([["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物",], ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物",]][today.week % 2][today.day] || "无") + "小题精练"]);
-          $("晚训", today.date, "18:25", "18:45", null, ["年前素质拓展: " + today.weekday + ([["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物",], ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物",]][today.week % 2][today.day] || "无") + "小题精练"]);
+          $("晚训", today.date, "18:25", "18:45", null, ["年前素质拓展: " + today.weekday + (["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物",][today.day] || "无") + "小题精练"]);
           $("晚写", today.date, "18:45", "18:55");
           $("晚一", today.date, "18:55", "19:40");
           $("晚二", today.date, "19:50", "20:35");
