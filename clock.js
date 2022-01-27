@@ -2,17 +2,7 @@
  * 时间更新
  */
 // 以当前日期为基础的日常/临时科目
-var type, today = new Date(),
-  eleType = document.getElementById("type"),
-  eleCard = document.getElementsByClassName("card")[0],
-  eleMainslogan = document.getElementById("mainslogan"),
-  eleSubslogan = document.getElementById("subslogan"),
-  eleSubject = document.getElementById("subject"),
-  eleDuration = document.getElementById("duration"),
-  eleClock = document.getElementById("clock"),
-  eleTimer = document.getElementById("timer"),
-  eleTimersub = document.getElementById("timersub"),
-  eleActivity = document.getElementById("activity"),
+var today = new Date(), TOS = 0,
   today = {
     date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
     week: parseInt((today - new Date("2021-08-22")) / 6048E5),
@@ -21,93 +11,43 @@ var type, today = new Date(),
   },
   // 各个对象内置功能
   subject = {
-    duration: function () {
+    get duration() {
       if (now > this.end) return "";
       else return getClock(this.start) + "~" + getClock(this.end);
-    }
+    },
+    set duration(duration) {
+      // document.getElementById("duration").innerHTML = duration;
+    },
   },
   slogan = {
-    update: function () {
-      this.main = this.main || this.$main;
-      this.sub = this.sub || this.$sub;
-      this.subnum < this.sub.length - 1 ? this.subnum++ : this.subnum = 0;
-      eleMainslogan.innerHTML = this.main || this.$main;
-      eleSubslogan.innerHTML = (this.sub || this.$sub)[this.subnum];
-    }
+
+
+
   },
   timer = {
-    update: function () {
-      eleClock.innerHTML = getClock(now);
-      if (now >= subject.end) { subject.update(); }
-      if (now < (subject.start - 6E5) && type.match("日常")) {
-        this.num = (subject.start - now) / 36E5;
-        this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
-        this.sub = " h";
-        this.activity = "距离开始";
-        this.progress = 0;
-      } else if (now < subject.start && type.match("检|模")) {
-        if (now < (subject.start - 3E6)) {
-          this.num = (subject.start - now - 24E5) / 36E5;
-          this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
-          this.sub = " h";
-          this.activity = "考试加油";
-          this.progress = 0;
-        } else if (now < (subject.start - 24E5)) {
-          this.num = Math.round((subject.start - now - 24E5) / 6E4);
-          this.sub = "min";
-          this.activity = "距离入场";
-          this.progress = (subject.start - now - 24E5) / 6E3;
-        } else if (now < subject.start) {
-          this.num = Math.round((subject.start - now) / 6E4);
-          this.sub = "min";
-          this.activity = "距离开始";
-          this.progress = (subject.start - now) / 24E3;
-        }
-      } else if (now < (subject.start - 18E5)) {
-        this.num = (subject.start - now - 12E5) / 36E5;
-        this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
-        this.sub = " h";
-        this.activity = "考试加油";
-        this.progress = 0;
-      } else if (now < (subject.start - 12E5)) {
-        this.num = Math.round((subject.start - now - 12E5) / 6E4);
-        this.sub = "min";
-        this.activity = "距离入场";
-        this.progress = (subject.start - now - 12E5) / 6E3;
-      } else if (now < (subject.start - 6E5)) {
-        this.num = Math.round((now - subject.start + 12E5) / 6E4);
-        this.sub = "/ 10 min";
-        this.activity = "入场扫描";
-        this.progress = (now - subject.start + 12E5) / 6E3;
-      } else if (now < subject.start) {
-        this.num = Math.round((subject.start - now) / 6E4);
-        this.sub = "min";
-        this.activity = "距离开始";
-        this.progress = (subject.start - now) / 6E3;
-      } else if (now < subject.end) {
-        if ((now - subject.start) / (subject.end - subject.start) < 0.5) {
-          this.num = Math.round((now - subject.start) / 6E4);
-          this.activity = "已经开始";
-        } else {
-          this.num = Math.round((subject.end - now) / 6E4);
-          this.activity = "距离结束";
-        }
-        this.sub = "min";
-        this.progress = (now - subject.start) / (subject.end - subject.start) * 100;
-      } else {
-        // 结束后的内容
-        subject.update = function () { };
-        subject.name = this.num = this.sub = this.activity = "";
-        this.progress = 100;
-      }
-      document.getElementById("bar").style.width = this.progress + "%";
-      eleSubject.innerHTML = subject.name;
-      eleDuration.innerHTML = subject.duration();
-      eleTimer.innerHTML = this.num;
-      eleTimersub.innerHTML = this.sub;
-      eleActivity.innerHTML = this.activity;
-    }
+
+
+
   };
+subject.to = function (to) {
+  if (!(to in exam)) return;
+  // 切换类型时需要重新初始化的内容
+  this.name = "";
+  // this.start = new Date("2021-04");
+  this.end = new Date("2021-04");
+  timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
+  slogan.$main = "沉着冷静&emsp;诚信考试";
+  slogan.$sub = [""];
+  document.getElementById("type").innerHTML = this.on = to;
+  // 切换类型的对焦动画
+  document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
+  // “客户想提升‘应用流畅度’，就把延迟改小点”
+  setTimeout(function () {
+    document.getElementsByClassName("card")[0].style.filter = "blur(0)";
+    timer.update();
+    slogan.update();
+  }, 200);
+}
 // 注入当前科目
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
   if (now < subject.end) {
@@ -124,9 +64,91 @@ function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
     console.log(getClock(now) + "时成功注入科目: " + toSubject + "\n开始时间: " + toDate, toStart + "\n结束时间: " + toDate, toEnd + ["\n默认大标语: ", "\n指定大标语: "][~!toMainslogan + 2] + slogan.main + ["\n默认副标语: ", "\n指定副标语: "][!!toSubslogan - -0] + slogan.sub);
   }
 }
+slogan.update = function () {
+  this.main = this.main || this.$main;
+  document.getElementById("mainslogan").innerHTML = this.main || this.$main;
+  this.sub = this.sub || this.$sub;
+  this.subnum < this.sub.length - 1 ? this.subnum++ : this.subnum = 0;
+  document.getElementById("subslogan").innerHTML = (this.sub || this.$sub)[this.subnum];
+}
+timer.update = function () {
+  document.getElementById("clock").innerHTML = getClock(now);
+  if (now >= subject.end) {
+    exam[subject.on]();
+    document.getElementById("subject").innerHTML = subject.name;
+    document.getElementById("duration").innerHTML = subject.duration;
+  }
+  if (now < (subject.start - 6E5) && subject.on.match("日常")) {
+    this.num = (subject.start - now) / 36E5;
+    this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
+    this.sub = " h";
+    this.activity = "距离开始";
+    this.progress = 0;
+  } else if (now < subject.start && subject.on.match("检|模")) {
+    if (now < (subject.start - 3E6)) {
+      this.num = (subject.start - now - 24E5) / 36E5;
+      this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
+      this.sub = " h";
+      this.activity = "考试加油";
+      this.progress = 0;
+    } else if (now < (subject.start - 24E5)) {
+      this.num = Math.round((subject.start - now - 24E5) / 6E4);
+      this.sub = "min";
+      this.activity = "距离入场";
+      this.progress = (subject.start - now - 24E5) / 6E3;
+    } else if (now < subject.start) {
+      this.num = Math.round((subject.start - now) / 6E4);
+      this.sub = "min";
+      this.activity = "距离开始";
+      this.progress = (subject.start - now) / 24E3;
+    }
+  } else if (now < (subject.start - 18E5)) {
+    this.num = (subject.start - now - 12E5) / 36E5;
+    this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
+    this.sub = " h";
+    this.activity = "考试加油";
+    this.progress = 0;
+  } else if (now < (subject.start - 12E5)) {
+    this.num = Math.round((subject.start - now - 12E5) / 6E4);
+    this.sub = "min";
+    this.activity = "距离入场";
+    this.progress = (subject.start - now - 12E5) / 6E3;
+  } else if (now < (subject.start - 6E5)) {
+    this.num = Math.round((now - subject.start + 12E5) / 6E4);
+    this.sub = "/ 10 min";
+    this.activity = "入场扫描";
+    this.progress = (now - subject.start + 12E5) / 6E3;
+  } else if (now < subject.start) {
+    this.num = Math.round((subject.start - now) / 6E4);
+    this.sub = "min";
+    this.activity = "距离开始";
+    this.progress = (subject.start - now) / 6E3;
+  } else if (now < subject.end) {
+    if ((now - subject.start) / (subject.end - subject.start) < 0.5) {
+      this.num = Math.round((now - subject.start) / 6E4);
+      this.activity = "已经开始";
+    } else {
+      this.num = Math.round((subject.end - now) / 6E4);
+      this.activity = "距离结束";
+    }
+    this.sub = "min";
+    this.progress = (now - subject.start) / (subject.end - subject.start) * 100;
+  } else {
+    // 结束后的内容
+    // subject.update = function () { };
+    subject.name = this.num = this.sub = this.activity = "";
+    this.progress = 100;
+  }
+  document.getElementById("bar").style.width = this.progress + "%";
+  document.getElementById("timer").innerHTML = this.num;
+  document.getElementById("timersub").innerHTML = this.sub;
+  document.getElementById("activity").innerHTML = this.activity;
+}
 // 输入Date对象，返回友好的时间(如"8:00")
 function getClock(date) { return date.getHours() + ":" + fixDigit(date.getMinutes()); }
 // 以分钟为单位相对调整Date对象的时间
 function fixMinutes(date, friendlyname) {
   date.setMinutes(date.getMinutes() + Number(prompt("以分钟为单位增减" + (friendlyname || getClock(date)), -5)));
 }
+// 在一位数前补“0”
+function fixDigit(num) { num = parseInt(num); return num < 10 ? "0" + num : num; }

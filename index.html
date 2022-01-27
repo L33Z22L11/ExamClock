@@ -10,7 +10,7 @@
   <meta name="keywords" content="考试时钟,网页时钟,在线时钟,考试时间">
   <link rel="shortcut icon" href="/logo_g_64.png" type="image/x-icon">
   <link rel="stylesheet" href="./main.css">
-  <link rel="stylesheet" href="./control.css">
+  <link rel="stylesheet" href="./cp.css">
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Montserrat:500,700">
   <!-- <link rel="stylesheet" href="https://fonts.proxy.ustclug.org/css?family=Noto+Sans+SC:400,700"> -->
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -33,12 +33,6 @@
       <div id="verify"><i class="fa-solid fa-shield"></i>
         <span id="verifycontent">安全提示内容</span>
       </div>
-      <!-- 希沃屏保被关了，这个暂时不用 -->
-      <div class="space-between" id="forewarn">
-        <p><i class="fa-solid fa-circle-exclamation"></i>
-          希沃管家可能<span id="forewarntime">在无操作45分钟后</span>弹出屏保(含古诗词、政史知识)!</p>
-        <a class="hilit"><i class="fa-solid fa-clock-rotate-left"></i> 暂时关闭45分钟</a>
-      </div>
       <div class="space-between" id="msg">
         <p><i class="fa-solid fa-circle-info"></i>
           <span id="msgcontent">这是一条初始消息。</span>
@@ -51,41 +45,39 @@
       <nav class="space-between">
         <h2 id="mainslogan">考试时钟</h2>
 
-        <div class="sub space-between" style="gap:1em;">
+        <div class="sub space-between">
           <span class="dropdown" style="min-width: 5.5em;">
             <a class="hilit">
               <div class="space-between">
-                <span id="type">选择类型</span>
+                <span id="type">选择类型</span>&nbsp;
                 <i class="fa-solid fa-caret-down"></i>
               </div>
             </a>
-
             <div id="typelist" style="min-width: 6.4em; width: 100%;">
-              <a onclick="change(this.innerHTML)">高三素质拓展</a>
-              <a onclick="change(this.innerHTML)">高三一检</a>
-              <a onclick="change(this.innerHTML)">高二理科</a>
-              <a onclick="change(this.innerHTML)">高二文科</a>
-              <a onclick="change(this.innerHTML)">高一</a>
-              <a onclick="change('临时科目');">
+              <a onclick="subject.to(this.innerHTML)">高三素质拓展</a>
+              <a onclick="subject.to(this.innerHTML)">高三一检</a>
+              <a onclick="subject.to(this.innerHTML)">高二理科</a>
+              <a onclick="subject.to(this.innerHTML)">高二文科</a>
+              <a onclick="subject.to(this.innerHTML)">高一</a>
+              <a onclick="subject.to('临时科目');">
                 <i class="fa-regular fa-square-plus"></i> 临时</a>
             </div>
           </span>
-
-          <i class="fa-solid fa-person-running" id="outtaschool" data-sub="距离放假"></i>
+          &emsp;
+          <i class="fa-solid fa-house-chimney-user" id="outtaschool" data-sub="距离放假"></i>
           <script>
             !function run() {
               var tau = (new Date("2022-01-29T16:50+08:00") - Date.now()) / 6E4;
               document.getElementById("outtaschool").setAttribute("data-sub",
-                tau > 1440 ? (tau / 1440).toFixed(1) + "d" :
-                  tau > 60 ? (tau / 60).toFixed(1) + "h" :
-                    tau > 0 ? ~~tau + "min" : "START");
+                tau > 240 ? (tau / 60).toFixed(2) + "h" :
+                  tau > 0 ? tau.toFixed(1) + "min" : "START");
               if (tau > 0) setTimeout(run, 1000);
-              else document.getElementById("outtaschool").style.color="#3f7";
+              else document.getElementById("outtaschool").style.color = "#3f7";
             }()
           </script>
-
+          &emsp;
           <a href="https://img.xuewuzhibu.cn/bjzx"><i class="fa-regular fa-calendar-days" data-sub="高三课表"></i></a>
-
+          &emsp;
           <span class="dropdown">
             <i class="fa-solid fa-shuffle" onclick="bg()" data-sub="换背景"></i>
             <div style="right: -4em; min-width: 12em;">
@@ -103,7 +95,7 @@
               </a>
             </div>
           </span>
-
+          &emsp;
           <span class="dropdown">
             <i class="fa-solid fa-bars" data-sub="菜单"></i>
             <div style="right: -2em; min-width: 12em;">
@@ -111,7 +103,7 @@
                 <span class="dim">右键或二指呼出</span>
               </a>
               <a href="./slide.html"><i class="fa-solid fa-file-powerpoint"></i>
-                一键PPT <span class="dim">可编辑内容</span></a>
+                一键PPT <span class="dim">适合演讲、班会</span></a>
               <a href="https://hi.thisis.host"><i class="fa-solid fa-up-right-from-square"></i> 野生技协官网
                 <span class="dim">175人了!</span>
                 <p class="dim">野生技协分群: 894656456<br>混技总群: 169994096</p>
@@ -122,7 +114,7 @@
               </a>
             </div>
           </span>
-
+          &emsp;
           <a onclick="fullscreen()"><i class="fa-solid fa-expand" id="fullscreen" data-sub="全屏"></i></a>
       </nav>
 
@@ -163,7 +155,7 @@
         <p><i class="fa-solid fa-image"></i> <span id="bg">背景: 雨后校园</span></p>
         <p><i class="fa-solid fa-hashtag"></i> 最近发热缺课人挺多，注意防护</p>
         <p><i class="fa-solid fa-hashtag"></i> 此位置长期征集鸡汤{x:365}</p>
-        <p><i class="fa-solid fa-file-arrow-up"></i> ver_6.3.8_划水方块新年庆{z:791}</p>
+        <p><i class="fa-solid fa-file-arrow-up"></i> ver_6.4.0_持续重构测试{z:791}</p>
       </div>
     </footer>
   </div>
@@ -171,8 +163,8 @@
   <script src="./clock.js" exam></script>
   <script src="./search.js" clock></script>
 
-  <div id="control" style="display: none;">
-    <span id="controlbd"></span>
+  <div id="cp" style="display: none;">
+    <span id="cpbd"></span>
 
     <div class="barset">
       <div id="sizebar">
@@ -207,12 +199,12 @@
               <i class="fa-solid fa-quote-right"></i>
               <span>考试副标语</span>
             </a>
-            <a onclick="change(prompt('请输入考试类型','高一'))">
+            <a onclick="subject.to(prompt('请输入考试类型','高一'))">
               <i class="fa-solid fa-box-archive"></i>
               <span>考试类型</span>
             </a>
             <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
-            <a onclick="type.innerHTML= prompt('请输入机构名称','纸鹿教育')||type">
+            <a onclick="document.getElementById('type').innerHTML= prompt('请输入机构名称','纸鹿教育')||subject.on">
               <i class="fa-regular fa-building"></i>
               <span>机构名称(仅显示)</span>
             </a>

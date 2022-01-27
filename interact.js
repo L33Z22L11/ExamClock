@@ -2,59 +2,47 @@
  * 页面交互
  */
 var eleMain = document.getElementById("main"),
-  eleControl = document.getElementById("control"),
-  eleControlbd = document.getElementById("controlbd"),
+  eleCP = document.getElementById("cp"),
+  eleCPBD = document.getElementById("cpbd"),
   eleSizebar = document.getElementById("sizebar"),
   eleContrastbar = document.getElementById("contrastbar"),
-  eleFullscreen = document.getElementById("fullscreen"),
-  eleRuntime = document.getElementById("runtime");
-// 希沃屏保预警
-// “屏保都统一关闭了，注释掉，白写个功能”
-// if (!location.href.match("noforewarn")) setInterval(updateForewarn, 600);
-// 希沃屏保剩余时间
-var forewarntime = 45;
-// onmousemove = onclick = function () { forewarntime = 45; };
+  eleFullscreen = document.getElementById("fullscreen");
 // 键盘功能函数
-window.onkeydown = function (e) {
-  // forewarntime = 45;
+onkeydown = function (e) {
   switch (e.key) {
     // 隐藏右键菜单
-    case "Escape":
-      try { eleControl.style.display = ""; }
-      catch (e) { } break;
-    case "F12": if (confirm("若要访问GitHub上的源代码仓库来研究代码，请点击“确定”。")) open("https://github.com/ThisisHost/exam-clock");
-    else if (confirm("确认要使用F12工具吗？由于本时钟的DOM元素属于异步加载、定时更新，你对网页所做的更改很可能会被随时覆盖。")) alert("欢迎使用调试工具，若有问题或申请加入我项目组可与我联系，你将对自己所做的行为承担一切可能后果。");
-    else e.preventDefault(); break;
-    case "/": try { if (e.ctrlKey) alert(eval(prompt("Enter command to debug:", "bg()"))); }
-      catch (e) { alert(e); } break;
-    default: console.log(e.key);
+    case "Escape": try { eleCP.style.display = "none"; } catch (e) { } break;
   }
 };
 // 右键控制中心
+function displayCP() {
+  eleCP.style.display = "";
+  eleCP.style.opacity = eleCPBD.style.opacity = 0;
+  setTimeout(function () { eleCP.style.opacity = ""; }, 0);
+  setTimeout(function () { eleCPBD.style.opacity = ""; }, 50);
+}
+function hideCP() {
+  eleCP.style.opacity = 0;
+  setTimeout(function () {
+    eleCP.style.display = "none";
+    eleCP.style.opacity = "";
+  }, 200);
+}
 eleMain.oncontextmenu = function (e) {
   if (!e.ctrlKey) {
     e.preventDefault();
-    eleControl.style.display = "";
-    eleControl.style.opacity = eleControlbd.style.opacity = 0;
-    setTimeout(function () { eleControl.style.opacity = ""; }, 0);
-    setTimeout(function () { eleControlbd.style.opacity = ""; }, 50);
+    displayCP();
   }
 };
-eleControlbd.onclick = function (e) {
-  eleControl.style.opacity = 0;
-  setTimeout(function () {
-    eleControl.style.display = "none"; 
-    eleControl.style.opacity = "";
-  }, 200);
-}
+eleCPBD.onclick = function (e) { hideCP(); }
 eleSizebar.firstElementChild.style.width = (parseInt(eleMain.style.fontSize) - 0.75) * 200 + "%";
 eleContrastbar.firstElementChild.style.width = (eleMain.style.opacity - 0.5) * 200 + "%";
 eleSizebar.onmousedown = eleSizebar.ontouchstart =
   eleSizebar.onmousemove = eleSizebar.ontouchmove =
   eleSizebar.ondrag = function (e) {
+    e.preventDefault();
     if (e.buttons == 1) {
-      e.preventDefault();
-      eleControlbd.style.opacity = 0;
+      eleCPBD.style.opacity = 0;
       eleSizebar.firstElementChild.style.width = e.offsetX + "px";
       eleMain.style.fontSize = (e.offsetX / eleSizebar.clientWidth) / 2 + 0.75 + "em";
     }
@@ -64,7 +52,7 @@ eleContrastbar.onmousedown = eleContrastbar.ontouchstart =
   eleContrastbar.ondrag = function (e) {
     e.preventDefault();
     if (e.buttons == 1) {
-      eleControlbd.style.opacity = 0;
+      eleCPBD.style.opacity = 0;
       eleContrastbar.firstElementChild.style.width = e.offsetX + "px";
       eleMain.style.opacity = (e.offsetX / eleContrastbar.clientWidth) / 2 + 0.5;
     }
@@ -72,7 +60,7 @@ eleContrastbar.onmousedown = eleContrastbar.ontouchstart =
 // eleSizebar.ondragstart = eleContrastbar.ondragstart = function (e) {
 //   e.preventDefault();
 // }
-onmouseup = function (e) { eleControlbd.style.opacity = ""; };
+onmouseup = function (e) { eleCPBD.style.opacity = ""; };
 // 全屏
 function fullscreen() {
   try {
