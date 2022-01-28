@@ -54,24 +54,25 @@
               </div>
             </a>
             <div id="typelist" style="min-width: 6.4em; width: 100%;">
-              <a onclick="subject.to('s3r')">高三素质拓展</a>
-              <a onclick="subject.to('s3')">高三一检</a>
-              <a onclick="subject.to('s2s')">高二理科</a>
-              <a onclick="subject.to('s2a')">高二文科</a>
-              <a onclick="subject.to('s1')">高一</a>
-              <a onclick="subject.to('t');">
+              <a onclick="subject.to(30)">高三素质拓展</a>
+              <a onclick="subject.to(31)">高三一检</a>
+              <a onclick="subject.to(21)">高二理科</a>
+              <a onclick="subject.to(22)">高二文科</a>
+              <a onclick="subject.to(11)">高一</a>
+              <a onclick="subject.to('temp');">
                 <i class="fa-regular fa-square-plus"></i> 临时</a>
             </div>
           </span>
           &emsp;
-          <i class="fa-solid fa-house-chimney-user" id="outtaschool" data-sub="距离放假"></i>
+          <a class="fa-solid fa-house-chimney-user" id="outtaschool" data-sub="距离放假"
+           onclick="if(confirm('是否加大显示?')) this.style.fontSize='5em';"></a>
           <script>
             !function run() {
-              var tau = (new Date("2022-01-29T16:50+08:00") - Date.now()) / 6E4;
+              var tau = (new Date("2022-01-29T15:50+08:00") - Date.now()) / 6E4;
               document.getElementById("outtaschool").setAttribute("data-sub",
-                tau > 240 ? (tau / 60).toFixed(2) + "h" :
-                  tau > 0 ? tau.toFixed(1) + "min" : "START");
-              if (tau > 0) setTimeout(run, 1000);
+                tau > 240 ? (tau / 60).toFixed(3) + "h" :
+                  tau > 0 ? tau.toFixed(2) + "min" : "START");
+              if (tau > 0) setTimeout(run, 500);
               else document.getElementById("outtaschool").style.color = "#3f7";
             }()
           </script>
@@ -153,9 +154,9 @@
       </div>
       <div class="space-between">
         <p><i class="fa-solid fa-image"></i> <span id="bg">背景: 雨后校园</span></p>
-        <p><i class="fa-solid fa-hashtag"></i> 最近发热缺课人挺多，注意防护</p>
-        <p><i class="fa-solid fa-hashtag"></i> 此位置长期征集鸡汤{x:365}</p>
-        <p><i class="fa-solid fa-file-arrow-up"></i> ver_6.4.0_持续重构测试{z:791}</p>
+        <p style="color: #3a7;"><i class="fa-solid fa-hashtag"></i> 点击右上角那个房子图标试试! 不亏!</p>
+        <p><i class="fa-solid fa-hashtag"></i> 降水挺多啊{x:365}</p>
+        <p><i class="fa-solid fa-file-arrow-up"></i> ver_6.4.1_持续重构测试{z:791}</p>
       </div>
     </footer>
   </div>
@@ -180,35 +181,32 @@
     <div>
       <p><i class="fa-solid fa-gears"></i> 高级</p>
       <div class="alist -iconset">
-        <a href="?debug"><i class="fa-solid fa-list-check"></i>
+        <a href="?debug=1"><i class="fa-solid fa-list-check"></i>
           <span>新建调试页面</span></a>
-        <a --href="?noforewarn">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          <span>屏保预警已关闭</span></a>
         <a href="https://github.com/ThisisHost/exam-clock">
           <i class="fa-brands fa-github"></i>
           <span>访问源代码仓库</span></a>
         <details>
           <summary><i class="fa-solid fa-sliders"></i> 强制切换</summary>
           <div class="alist -iconset">
-            <a onclick="slogan.main=prompt('请输入考试大标语')||slogan.main">
+            <a onclick="slogan.main=prompt('请输入考试大标语',slogan.main)||slogan.main">
               <i class="fa-solid fa-quote-left"></i>
               <span>考试大标语</span>
             </a>
-            <a onclick="slogan.sub=[prompt('请输入考试副标语')]||slogan.sub">
+            <a onclick="slogan.sub=[prompt('请输入考试副标语',slogan.sub[0])]||slogan.sub">
               <i class="fa-solid fa-quote-right"></i>
               <span>考试副标语</span>
             </a>
-            <a onclick="subject.to(prompt('请输入考试类型','高一'))">
+            <a onclick="subject.to(prompt('请输入考试类型',subject.on))">
               <i class="fa-solid fa-box-archive"></i>
               <span>考试类型</span>
             </a>
             <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
-            <a onclick="document.getElementById('type').innerHTML= prompt('请输入机构名称','纸鹿教育')||subject.on">
+            <a onclick="document.getElementById('type').innerHTML=prompt('请输入机构名称','纸鹿教育')||exam[subject.on]()">
               <i class="fa-regular fa-building"></i>
               <span>机构名称(仅显示)</span>
             </a>
-            <a onclick="subject.name=prompt('考试科目名称','考练')||subject.name">
+            <a onclick="document.getElementById('subject').innerHTML=prompt('考试科目名称',subject.name)|| subject.name">
               <i class="fa-solid fa-book"></i>
               <span>考试科目</span>
             </a>

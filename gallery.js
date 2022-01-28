@@ -32,7 +32,7 @@ bg.vol = [gallery.length - 1, gallery.length - 2, gallery.length - 3];
   bg();
 }();
 function bg(v, p) {
-  // 若同时以new Date()作为volnum和picseed的随机种子，会产生特定的余数对应关系
+  // 若同时以new Date作为volnum和picseed的随机种子，会产生特定的余数对应关系
   if (v == null) v = bg.vol[~~(Math.random() * bg.vol.length)];
   if (p == null) p = ~~(Math.random() * gallery[v].list.length);
   try {

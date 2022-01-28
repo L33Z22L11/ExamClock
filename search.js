@@ -19,16 +19,16 @@ setInterval(function () {
   }
 }, 2000);
 // 正常或调试模式
-var now = new Date();
+var now = new Date;
 // 先根据地址参数判断考试类型
 if(SP.type in exam) subject.to(SP.type)
 // if (SP.type in Object.entries(exam)) subject.to(Object.entries(exam)[SP.type][0] );
 // 再在考试日期切换到考试类型
 // else if (today.date == "2022-01-02") subject.to("t1");
-else if (today.date.match("2022-01-0(8|9)")) subject.to("s3");
-else if (today.date.match("2022-01-2(0|1)")) subject.to("s2s");
+else if (today.date.match("2022-01-0(8|9)")) subject.to(31);
+else if (today.date.match("2022-01-2(0|1)")) subject.to(21);
 // 最后设置缺省考试类型
-else subject.to("s3r");
+else subject.to(30);
 // 若不再包一层，slogan.update内的this就会指向window
 setInterval(function () { slogan.update(); }, 2000);
 if (SP.debug) {
@@ -46,7 +46,7 @@ if (SP.debug) {
   }, 25);
 } else {
   setInterval(function () {
-    now = new Date();
+    now = new Date;
     // 设置相对时差
     now.setSeconds(now.getSeconds() + TOS);
     timer.update();

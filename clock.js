@@ -2,7 +2,7 @@
  * 时间更新
  */
 // 以当前日期为基础的日常/临时科目
-var today = new Date(), TOS = 0;
+var today = new Date, TOS = 0;
 var today = {
   date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
   week: parseInt((today - new Date("2021-08-22")) / 6048E5),
@@ -11,8 +11,8 @@ var today = {
 };
 // 各个对象内置功能
 var subject = {
-  get name() { return document.getElementById("subject").innerHTML; },
-  set name(name) { document.getElementById("subject").innerHTML = name; },
+  get _name() { return document.getElementById("subject").innerHTML; },
+  set _name(name) { document.getElementById("subject").innerHTML = name; },
   get duration() {
     if (now > this.end) return "";
     return getClock(this.start) + "~" + getClock(this.end);
@@ -34,21 +34,20 @@ var timer = {
 
 };
 subject.to = function (to) {
-  // 切换类型时需要重新初始化的内容
-  // this.name = "";
-  // this.start = new Date("2021-04");
+  // 切换类型时需要重置的内容
+  this.name = "";
+  this.start = new Date("2021-04");
   this.end = new Date("2021-04");
   timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
   slogan.$main = "沉着冷静&emsp;诚信考试";
   slogan.$sub = [""];
-  this.on = to || this.on;
+  this.on = to in exam ? to : this.on;
   document.getElementById("type").innerHTML = exam[this.on]();
   // 切换类型的对焦动画
   document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // “客户想提升‘应用流畅度’，就把延迟改小点”
   setTimeout(function () {
     document.getElementsByClassName("card")[0].style.filter = "blur(0)";
-    console.log(3, subject.name, now, subject.end);
     timer.update();
     slogan.update();
   }, 200);
@@ -63,8 +62,9 @@ function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
     subject.name = toSubject;
     subject.start = new Date(toDate + "T" + toStart + "+08:00");
     subject.end = new Date(toDate + "T" + toEnd + "+08:00");
-    console.log(now, subject.on, subject.duration)
-    subject.duration = subject.duration;
+    // subject.duration = subject.duration;
+    document.getElementById("subject").innerHTML = subject.name;
+    document.getElementById("duration").innerHTML = subject.duration;
     slogan.main = toMainslogan || slogan.$main;
     slogan.sub = toSubslogan || slogan.$sub;
     // 啊对对对，有很多种方法将变量转换为数字，我就用最麻烦的
@@ -80,7 +80,12 @@ slogan.update = function () {
 }
 timer.update = function () {
   document.getElementById("clock").innerHTML = getClock(now);
-  if (now >= subject.end) { } exam[subject.on]() && (subject.duration=subject.duration);
+  if (now >= subject.end) {
+    exam[subject.on]();
+    // subject.duration = subject.duration;
+    document.getElementById("subject").innerHTML = subject.name;
+    document.getElementById("duration").innerHTML = subject.duration;
+  }
   if (now < (subject.start - 6E5) && subject.on.match("日常")) {
     this.num = (subject.start - now) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
@@ -152,6 +157,7 @@ function getClock(date) { return date.getHours() + ":" + fixDigit(date.getMinute
 // 以分钟为单位相对调整Date对象的时间
 function fixMinutes(date, friendlyname) {
   date.setMinutes(date.getMinutes() + Number(prompt("以分钟为单位增减" + (friendlyname || getClock(date)), -5)));
+  document.getElementById("duration").innerHTML = subject.duration;
 }
 // 在一位数前补“0”
 function fixDigit(num) { num = parseInt(num); return num < 10 ? "0" + num : num; }
