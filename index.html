@@ -65,7 +65,7 @@
           </span>
           &emsp;
           <a class="fa-solid fa-house-chimney-user" id="outtaschool" data-sub="距离放假"
-           onclick="if(confirm('是否加大显示?')) this.style.fontSize='5em';"></a>
+           onclick="this.style.fontSize=this.style.fontSize?'':'5em'"></a>
           <script>
             !function run() {
               var tau = (new Date("2022-01-29T15:50+08:00") - Date.now()) / 6E4;
