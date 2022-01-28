@@ -2,48 +2,53 @@
  * 时间更新
  */
 // 以当前日期为基础的日常/临时科目
-var today = new Date(), TOS = 0,
-  today = {
-    date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
-    week: parseInt((today - new Date("2021-08-22")) / 6048E5),
-    day: today.getDay(),
-    weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()]
+var today = new Date(), TOS = 0;
+var today = {
+  date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
+  week: parseInt((today - new Date("2021-08-22")) / 6048E5),
+  day: today.getDay(),
+  weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()]
+};
+// 各个对象内置功能
+var subject = {
+  get name() { return document.getElementById("subject").innerHTML; },
+  set name(name) { document.getElementById("subject").innerHTML = name; },
+  get duration() {
+    if (now > this.end) return "";
+    return getClock(this.start) + "~" + getClock(this.end);
   },
-  // 各个对象内置功能
-  subject = {
-    get duration() {
-      if (now > this.end) return "";
-      else return getClock(this.start) + "~" + getClock(this.end);
-    },
-    set duration(duration) {
-      // document.getElementById("duration").innerHTML = duration;
-    },
-  },
-  slogan = {
+  set duration(duration) { document.getElementById("duration").innerHTML = duration; },
+  get _start() { },
+  set _start(start) { },
+  get _end() { },
+  set _end(start) { },
+};
+var slogan = {
 
 
 
-  },
-  timer = {
+};
+var timer = {
 
 
 
-  };
+};
 subject.to = function (to) {
-  if (!(to in exam)) return;
   // 切换类型时需要重新初始化的内容
-  this.name = "";
+  // this.name = "";
   // this.start = new Date("2021-04");
   this.end = new Date("2021-04");
   timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
   slogan.$main = "沉着冷静&emsp;诚信考试";
   slogan.$sub = [""];
-  document.getElementById("type").innerHTML = this.on = to;
+  this.on = to || this.on;
+  document.getElementById("type").innerHTML = exam[this.on]();
   // 切换类型的对焦动画
   document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // “客户想提升‘应用流畅度’，就把延迟改小点”
   setTimeout(function () {
     document.getElementsByClassName("card")[0].style.filter = "blur(0)";
+    console.log(3, subject.name, now, subject.end);
     timer.update();
     slogan.update();
   }, 200);
@@ -51,13 +56,15 @@ subject.to = function (to) {
 // 注入当前科目
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
   if (now < subject.end) {
-    // console.log("当前科目未结束，故不注入科目: " + toSubject);
+    console.log("当前科目未结束，故不注入科目: " + toSubject);
   } else if (now >= new Date(toDate + "T" + toEnd + "+08:00")) {
-    // console.log("请求科目已结束，故不注入科目: " + toSubject);
+    console.log("请求科目已结束，故不注入科目: " + toSubject);
   } else {
     subject.name = toSubject;
     subject.start = new Date(toDate + "T" + toStart + "+08:00");
     subject.end = new Date(toDate + "T" + toEnd + "+08:00");
+    console.log(now, subject.on, subject.duration)
+    subject.duration = subject.duration;
     slogan.main = toMainslogan || slogan.$main;
     slogan.sub = toSubslogan || slogan.$sub;
     // 啊对对对，有很多种方法将变量转换为数字，我就用最麻烦的
@@ -73,11 +80,7 @@ slogan.update = function () {
 }
 timer.update = function () {
   document.getElementById("clock").innerHTML = getClock(now);
-  if (now >= subject.end) {
-    exam[subject.on]();
-    document.getElementById("subject").innerHTML = subject.name;
-    document.getElementById("duration").innerHTML = subject.duration;
-  }
+  if (now >= subject.end) { } exam[subject.on]() && (subject.duration=subject.duration);
   if (now < (subject.start - 6E5) && subject.on.match("日常")) {
     this.num = (subject.start - now) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
