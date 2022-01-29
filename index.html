@@ -64,16 +64,18 @@
             </div>
           </span>
           &emsp;
-          <a class="fa-solid fa-house-chimney-user" id="outtaschool" data-sub="距离放假"
-           onclick="this.style.fontSize=this.style.fontSize?'':'5em'"></a>
+          <a class="fa-solid fa-house-chimney-user" id="outta" data-sub="距离放假" style="transition:0.5s;"
+            onclick="outta.style.fontSize=outta.style.fontSize?'':'5em'"></a>
           <script>
+            var outta = document.getElementById("outta");
             !function run() {
               var tau = (new Date("2022-01-29T16:00+08:00") - Date.now()) / 6E4;
-              document.getElementById("outtaschool").setAttribute("data-sub",
+              outta.style.color = (outta.style.fontSize && !outta.style.color) ? "#3af" : "";
+              outta.setAttribute("data-sub",
                 tau > 240 ? (tau / 60).toFixed(3) + "h" :
                   tau > 0 ? tau.toFixed(2) + "min" : "START");
               if (tau > 0) setTimeout(run, 500);
-              else document.getElementById("outtaschool").style.color = "#3f7";
+              else outta.style.color = "#3f7";
             }()
           </script>
           &emsp;

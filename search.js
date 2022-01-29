@@ -1,4 +1,5 @@
-try { var SP = Object.fromEntries(new URLSearchParams(location.search).entries()); } catch (e) { }
+try { var SP = Object.fromEntries(new URLSearchParams(location.search).entries()); }
+catch (e) { var SP = {}; }
 var TOS = isNaN(SP.tos) ? 0 : --SP.tos;
 // 篡改与浏览器检测
 setInterval(function () {
