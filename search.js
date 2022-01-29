@@ -1,5 +1,5 @@
-var SP = Object.fromEntries(new URLSearchParams(location.search).entries()),
-  TOS = isNaN(SP.tos) ? 0 : --SP.tos;
+try { var SP = Object.fromEntries(new URLSearchParams(location.search).entries()); } catch (e) { }
+var TOS = isNaN(SP.tos) ? 0 : --SP.tos;
 // 篡改与浏览器检测
 setInterval(function () {
   try {
@@ -21,7 +21,7 @@ setInterval(function () {
 // 正常或调试模式
 var now = new Date;
 // 先根据地址参数判断考试类型
-if(SP.type in exam) subject.to(SP.type)
+if (SP.type in exam) subject.to(SP.type)
 // if (SP.type in Object.entries(exam)) subject.to(Object.entries(exam)[SP.type][0] );
 // 再在考试日期切换到考试类型
 // else if (today.date == "2022-01-02") subject.to("t1");
