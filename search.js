@@ -26,7 +26,7 @@ if (SP.type in exam) subject.to(SP.type)
 // if (SP.type in Object.entries(exam)) subject.to(Object.entries(exam)[SP.type][0] );
 // 再在考试日期切换到考试类型
 // else if (today.date == "2022-01-02") subject.to("t1");
-else if (today.date.match("2022-01-0(8|9)")) subject.to(31);
+else if (today.date.match("2022-02-0(8|9)")) subject.to(31);
 else if (today.date.match("2022-01-2(0|1)")) subject.to(21);
 // 最后设置缺省考试类型
 else subject.to(30);
@@ -40,7 +40,10 @@ if (SP.debug) {
     // 跳转到科目开始前一小时
     if (now < subject.start - 36E5) now = new Date(subject.start - 36E5);
     // 最后一场科目结束后重置时间
-    if (now > subject.end - -36E5) now = new Date("2021-04");
+    if (now > subject.end - -36E5) {
+      now = new Date("2021-04");
+      subject.to(subject.on);
+    }
     // 调试模式速度设置
     now.setSeconds(now.getSeconds() + 30);
     timer.update();
