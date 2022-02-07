@@ -55,9 +55,9 @@ subject.to = function (to) {
 // 注入当前科目
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
   if (now < subject.end) {
-    console.log("当前科目未结束，故不注入科目: " + toSubject);
+    console.log("当前科目未结束，故不注入科目：" + toSubject);
   } else if (now >= new Date(toDate + "T" + toEnd + "+08:00")) {
-    console.log("请求科目已结束，故不注入科目: " + toSubject);
+    console.log("请求科目已结束，故不注入科目：" + toSubject);
   } else {
     subject.name = toSubject;
     subject.start = new Date(toDate + "T" + toStart + "+08:00");
@@ -68,7 +68,7 @@ function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
     slogan.main = toMainslogan || slogan.$main;
     slogan.sub = toSubslogan || slogan.$sub;
     // 啊对对对，有很多种方法将变量转换为数字，我就用最麻烦的
-    console.log(getClock(now) + "时成功注入科目: " + toSubject + "\n开始时间: " + toDate, toStart + "\n结束时间: " + toDate, toEnd + ["\n默认大标语: ", "\n指定大标语: "][~!toMainslogan + 2] + slogan.main + ["\n默认副标语: ", "\n指定副标语: "][!!toSubslogan - -0] + slogan.sub);
+    console.log(getClock(now) + "时成功注入科目：" + toSubject + "\n开始时间：" + toDate, toStart + "\n结束时间：" + toDate, toEnd + ["\n默认大标语：", "\n指定大标语："][~!toMainslogan + 2] + slogan.main + ["\n默认副标语：", "\n指定副标语："][!!toSubslogan - -0] + slogan.sub);
   }
 }
 slogan.update = function () {
@@ -92,7 +92,7 @@ timer.update = function () {
     this.sub = " h";
     this.activity = "距离开始";
     this.progress = 0;
-  } else if (now < subject.start && subject==31) {
+  } else if (now < subject.start && subject==33) {
     if (now < (subject.start - 3E6)) {
       this.num = (subject.start - now - 24E5) / 36E5;
       this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);

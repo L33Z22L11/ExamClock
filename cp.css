@@ -49,6 +49,7 @@
   margin: 0.5rem;
 }
 .barset > div {
+  margin: 0.5em 0;
   position: relative;
   overflow: hidden;
   border-radius: 0.2rem;

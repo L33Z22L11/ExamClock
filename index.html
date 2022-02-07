@@ -55,7 +55,9 @@
             </a>
             <div id="typelist" style="min-width: 6.4em; width: 100%;">
               <a onclick="subject.to(30)">高三素质拓展</a>
-              <a onclick="subject.to(31)">高三一检</a>
+              <a onclick="subject.to(31)">高三</a>
+              <!-- <a onclick="subject.to(32)">高三文科</a> -->
+              <!-- <a onclick="subject.to(33)">高三一检</a> -->
               <a onclick="subject.to(21)">高二理科</a>
               <a onclick="subject.to(22)">高二文科</a>
               <a onclick="subject.to(11)">高一</a>
@@ -63,21 +65,6 @@
                 <i class="fa-regular fa-square-plus"></i> 临时</a>
             </div>
           </span>
-          &emsp;
-          <a class="fa-solid fa-house-chimney-user" id="outta" data-sub="距离放假" style="transition:0.5s;"
-            onclick="outta.style.fontSize=outta.style.fontSize?'':'5em'"></a>
-          <script>
-            var outta = document.getElementById("outta");
-            !function run() {
-              var tau = (new Date("2022-01-29T16:00+08:00") - Date.now()) / 6E4;
-              outta.style.color = (outta.style.fontSize && !outta.style.color) ? "#3af" : "";
-              outta.setAttribute("data-sub",
-                tau > 240 ? (tau / 60).toFixed(3) + "h" :
-                  tau > 0 ? tau.toFixed(2) + "min" : "START");
-              if (tau > 0) setTimeout(run, 500);
-              else outta.style.color = "#3f7";
-            }()
-          </script>
           &emsp;
           <a href="https://img.xuewuzhibu.cn/bjzx"><i class="fa-regular fa-calendar-days" data-sub="高三课表"></i></a>
           &emsp;
@@ -109,7 +96,7 @@
                 一键PPT <span class="dim">适合演讲、班会</span></a>
               <a href="https://hi.thisis.host"><i class="fa-solid fa-up-right-from-square"></i> 野生技协官网
                 <span class="dim">175人了!</span>
-                <p class="dim">野生技协分群: 894656456<br>混技总群: 169994096</p>
+                <p class="dim">野生技协分群：894656456<br>混技总群：169994096</p>
               </a>
               <a href="/jump-to-exam-clock.html" download="跳转到考试时钟"><i class="fa-solid fa-file-arrow-down"></i>
                 下载跳转HTML文件
@@ -149,15 +136,15 @@
 
     <footer>
       <div class="space-between">
-        <p><i class="fa-solid fa-code"></i> 开发: 纸鹿@考试时钟项目组</p>
-        <p><i class="fa-solid fa-paw"></i> 野生技协合作: 划水方块 音幻宝中
+        <p><i class="fa-solid fa-code"></i> 开发：纸鹿@考试时钟项目组</p>
+        <p><i class="fa-solid fa-paw"></i> 野生技协合作：划水方块 音幻宝中
           朗诵社 排球社 合唱团 街舞社 汉服社 航模社 民乐社 心理社 书画社 动漫社
           舞蹈队 日语社 Instreet社 机器人社 推理社 篮裁社</p>
       </div>
       <div class="space-between">
-        <p><i class="fa-solid fa-image"></i> <span id="bg">背景: 雨后校园</span></p>
+        <p><i class="fa-solid fa-image"></i> <span id="bg">背景：雨后校园</span></p>
         <p><i class="fa-solid fa-hashtag"></i> 感谢lelekLuis提供更新推送环境的构建支持</p>
-        <p><i class="fa-solid fa-file-arrow-up"></i> ver_6.4.1_持续重构测试_[6!/2,8e2]</p>
+        <p><i class="fa-solid fa-file-arrow-up"></i> ver_6.4.2_更新一点重要内容</p>
       </div>
     </footer>
   </div>
@@ -168,14 +155,19 @@
   <div id="cp" style="display: none;">
     <span id="cpbd"></span>
 
-    <div class="barset">
-      <div id="sizebar">
-        <div><i class="fa-solid fa-text-height"></i></div>
-        <i class="fa-solid fa-text-height"></i>
-      </div>
-      <div id="contrastbar">
-        <div><i class="fa-solid fa-circle-half-stroke"></i></div>
-        <i class="fa-solid fa-circle-half-stroke"></i>
+    <div>
+      <p><i class="fa-solid fa-sliders"></i> 样式调节<br>
+        <span class="dim">小伙子，考试时别乱调，刷新能重置设置</span>
+      </p>
+      <div class="barset">
+        <div id="sizebar">
+          <div><i class="fa-solid fa-text-height"></i></div>
+          <i class="fa-solid fa-text-height"></i>
+        </div>
+        <div id="contrastbar">
+          <div><i class="fa-solid fa-circle-half-stroke"></i></div>
+          <i class="fa-solid fa-circle-half-stroke"></i>
+        </div>
       </div>
     </div>
 
@@ -188,7 +180,7 @@
           <i class="fa-brands fa-github"></i>
           <span>访问源代码仓库</span></a>
         <details>
-          <summary><i class="fa-solid fa-sliders"></i> 强制切换</summary>
+          <summary><i class="fa-solid fa-eject"></i> 强制切换</summary>
           <div class="alist -iconset">
             <a onclick="slogan.main=prompt('请输入考试大标语',slogan.main)||slogan.main">
               <i class="fa-solid fa-quote-left"></i>
@@ -240,40 +232,42 @@
 
     <div style="max-height: 50%;">
       <p><i class="fa-solid fa-info-circle"></i> 关于</p>
-      <details>
-        <summary>纸鹿</summary>
-        <div class="alist">
-          <a><i class="fa-brands fa-qq"></i> QQ 2399052066</a>
-          <a><i class="fa-brands fa-weixin"></i> 微信 zhilubenlu</a>
-          <a><i class="fa-brands fa-weixin"></i> 公众号 纸鹿本鹿</a>
-          <a href="https://music.163.com/user/444705789"><i class="fa-solid fa-compact-disc"></i> 网易云音乐 纸鹿本鹿</a>
-          <a href="https://github.com/L33Z22L11"><i class="fa-brands fa-github"></i> Github L33Z22L11</a>
-          <a href="https://zhilu.cyou"><i class="fa-solid fa-earth-asia"></i> 纸鹿小站 zhilu.cyou</a>
-        </div>
-      </details>
-
-      <details>
-        <summary>野生技协@混技</summary>
-        <div class="alist">
-          <a><i class="fa-brands fa-qq"></i> 野生技协分群 169994096</a>
-          <!-- <a href="https://hi.thisis.host"> 官网: hi.thisis.host</a> -->
-          <a href="https://github.com/ThisisHost"><i class="fa-brands fa-github"></i> Github ThisisHost</a>
-          <a><i class="fa-brands fa-qq"></i> 混技总群 894656456</a>
-          <a href="https://hi.thisis.host"><i class="fa-solid fa-earth-asia"></i> 官网 hi.thisis.host</a>
-        </div>
-      </details>
-      <details>
-        <summary>其他</summary>
-        <a><i class="fa-brands fa-qq"></i> 划水方块群 1142349003</a>
+      <div>
         <details>
-          <summary><i class="fa-brands fa-qq"></i> 其他个人QQ</summary>
+          <summary>纸鹿</summary>
           <div class="alist">
-            <a>拾汘 393501440</a><a>Star 2692292636</a>
-            <a>长安凛冬 2252855301</a><a>加零 3073246100</a><a>GX 63045083</a>
-            <a>yl 1413488450</a><a>純粋な 378655447</a>
+            <a><i class="fa-brands fa-qq"></i> QQ 2399052066</a>
+            <a><i class="fa-brands fa-weixin"></i> 微信 zhilubenlu</a>
+            <a><i class="fa-brands fa-weixin"></i> 公众号 纸鹿本鹿</a>
+            <a href="https://music.163.com/user/444705789"><i class="fa-solid fa-compact-disc"></i> 网易云音乐 纸鹿本鹿</a>
+            <a href="https://github.com/L33Z22L11"><i class="fa-brands fa-github"></i> Github L33Z22L11</a>
+            <a href="https://zhilu.cyou"><i class="fa-solid fa-earth-asia"></i> 纸鹿小站 zhilu.cyou</a>
           </div>
         </details>
-      </details>
+
+        <details>
+          <summary>野生技协@混技</summary>
+          <div class="alist">
+            <a><i class="fa-brands fa-qq"></i> 野生技协分群 169994096</a>
+            <a href="https://github.com/ThisisHost"><i class="fa-brands fa-github"></i> Github ThisisHost</a>
+            <a><i class="fa-brands fa-qq"></i> 混技总群 894656456</a>
+            <a href="https://hi.thisis.host"><i class="fa-solid fa-earth-asia"></i> 官网 hi.thisis.host</a>
+          </div>
+        </details>
+        <details>
+          <summary>其他</summary>
+          <a><i class="fa-brands fa-qq"></i> 划水方块群 1142349003</a>
+          <details>
+            <summary><i class="fa-brands fa-qq"></i> 其他个人QQ</summary>
+            <div class="alist">
+              <a>拾汘 393501440</a><a>Star 2692292636</a>
+              <a>长安凛冬 2252855301</a><a>加零 3073246100</a><a>GX 63045083</a>
+              <a>yl 1413488450</a><a>純粋な 378655447</a>
+            </div>
+          </details>
+        </details>
+        </details>
+      </div>
     </div>
   </div>
   <script src="./msg.js"></script>
