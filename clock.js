@@ -11,17 +11,17 @@ var today = {
 };
 // 各个对象内置功能
 var subject = {
-  get _name() { return document.getElementById("subject").innerHTML; },
-  set _name(name) { document.getElementById("subject").innerHTML = name; },
+  get name() { return document.getElementById("subject").innerHTML; },
+  set name(name) { document.getElementById("subject").innerHTML = name; },
   get duration() {
     if (now > this.end) return "";
     return getClock(this.start) + "~" + getClock(this.end);
   },
   set duration(duration) { document.getElementById("duration").innerHTML = duration; },
-  get _start() { },
-  set _start(start) { },
-  get _end() { },
-  set _end(start) { },
+  // get _start() { },
+  // set _start(start) { },
+  // get _end() { },
+  // set _end(end) { },
 };
 var slogan = {
 
@@ -35,6 +35,7 @@ var timer = {
 };
 subject.to = function (to) {
   // 切换类型时需要重置的内容
+  now = new Date("2021-04");
   this.name = "";
   this.start = new Date("2021-04");
   this.end = new Date("2021-04");
@@ -54,21 +55,19 @@ subject.to = function (to) {
 }
 // 注入当前科目
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
-  if (now < subject.end) {
-    console.log("当前科目未结束，故不注入科目：" + toSubject);
-  } else if (now >= new Date(toDate + "T" + toEnd + "+08:00")) {
-    console.log("请求科目已结束，故不注入科目：" + toSubject);
-  } else {
+  if (now < subject.end) console.log("当前科目未结束，故不注入科目：" + toSubject);
+  else if (now >= new Date(toDate + "T" + toEnd + "+08:00")) console.log("请求科目已结束，故不注入科目：" + toSubject);
+  else {
+    // document.getElementById("subject").innerHTML = subject.name;
     subject.name = toSubject;
     subject.start = new Date(toDate + "T" + toStart + "+08:00");
     subject.end = new Date(toDate + "T" + toEnd + "+08:00");
-    // subject.duration = subject.duration;
-    document.getElementById("subject").innerHTML = subject.name;
-    document.getElementById("duration").innerHTML = subject.duration;
+    // document.getElementById("duration").innerHTML = subject.duration;
+    subject.duration = subject.duration;
     slogan.main = toMainslogan || slogan.$main;
     slogan.sub = toSubslogan || slogan.$sub;
     // 啊对对对，有很多种方法将变量转换为数字，我就用最麻烦的
-    console.log(getClock(now) + "时成功注入科目：" + toSubject + "\n开始时间：" + toDate, toStart + "\n结束时间：" + toDate, toEnd + ["\n默认大标语：", "\n指定大标语："][~!toMainslogan + 2] + slogan.main + ["\n默认副标语：", "\n指定副标语："][!!toSubslogan - -0] + slogan.sub);
+    console.log(getClock(now) + " 成功注入科目：" + toSubject + "\n开始时间：" + toDate, toStart + "\n结束时间：" + toDate, toEnd + ["\n默认大标语：", "\n指定大标语："][~!toMainslogan + 2] + slogan.main + ["\n默认副标语：", "\n指定副标语："][!!toSubslogan - -0] + slogan.sub);
   }
 }
 slogan.update = function () {
@@ -86,13 +85,13 @@ timer.update = function () {
     document.getElementById("subject").innerHTML = subject.name;
     document.getElementById("duration").innerHTML = subject.duration;
   }
-  if (now < (subject.start - 6E5) && subject.on==30) {
+  if (now < (subject.start - 6E5) && subject.on == 30) {
     this.num = (subject.start - now) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
     this.sub = " h";
     this.activity = "距离开始";
     this.progress = 0;
-  } else if (now < subject.start && subject==33) {
+  } else if (now < subject.start && subject == 33) {
     if (now < (subject.start - 3E6)) {
       this.num = (subject.start - now - 24E5) / 36E5;
       this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);

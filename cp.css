@@ -31,8 +31,8 @@
   transition: 0.5s;
   background: linear-gradient(
     30deg,
-    rgba(51, 170, 255, 0.8),
-    rgba(51, 187, 153, 0.8)
+    rgba(51, 170, 255, 0.5),
+    rgba(51, 187, 153, 0.5)
   );
   /* backdrop-filter: blur(1em); */
 }

@@ -1,13 +1,15 @@
-try { var SP = Object.fromEntries(new URLSearchParams(location.search).entries()); }
+try {
+  var SP = Object.fromEntries(new URLSearchParams(location.search).entries());
+  TOS = isNaN(SP.tos) ? 0 : --SP.tos;
+}
 catch (e) { var SP = {}; }
-var TOS = isNaN(SP.tos) ? 0 : --SP.tos;
 // 篡改与浏览器检测
-setInterval(function () {
+!function verify() {
   try {
     function ifwarn(condition, warn) {
       if (condition) {
         document.getElementById("verify").style.display = "block";
-        console.warn(document.getElementById("verifycontent").innerHTML = warn);
+        document.getElementById("verifycontent").innerHTML = warn;
       }
     }
     ifwarn(navigator.userAgent.match(" Trident| QQBrowser"), "IE/QQ浏览器功能老旧，我们推荐使用Chrome/Edge/Firefox浏览器。");
@@ -18,11 +20,10 @@ setInterval(function () {
     alert("检测到非法篡改，请将此代码发送给纸鹿:\n" + e);
     if (confirm("是否访问在线考试时钟官网https://exam.thisis.host?")) location.href = "https://exam.thisis.host";
   }
-}, 2000);
-// 正常或调试模式
-var now = new Date;
+  setTimeout(verify, 2000);
+}();
 // 先根据地址参数判断考试类型
-if (SP.type in exam) subject.to(SP.type)
+if (SP.type in exam) subject.to(SP.type);
 // if (SP.type in Object.entries(exam)) subject.to(Object.entries(exam)[SP.type][0] );
 // 再在考试日期切换到考试类型
 // else if (today.date == "2022-01-02") subject.to("t1");
@@ -32,29 +33,25 @@ else if (today.date.match("2022-01-2(0|1)")) subject.to(21);
 else subject.to(30);
 // 若不再包一层，slogan.update内的this就会指向window
 setInterval(function () { slogan.update(); }, 2000);
+// 正常或调试模式
 if (SP.debug) {
   document.getElementById("bar").style.transition = "none";
-  now = new Date("2021-04");
-  setInterval(function () {
+  !function update() {
     // 用加号会直接连接字符串，所以这里得减去负数，太魔幻了
     // 跳转到科目开始前一小时
     if (now < subject.start - 36E5) now = new Date(subject.start - 36E5);
     // 最后一场科目结束后重置时间
-    if (now > subject.end - -36E5) {
-      now = new Date("2021-04");
-      subject.to(subject.on);
-    }
+    if (now > subject.end - -36E5) subject.to(subject.on);
     // 调试模式速度设置
     now.setSeconds(now.getSeconds() + 30);
     timer.update();
-  }, 25);
-} else {
-  setInterval(function () {
-    now = new Date;
-    // 设置相对时差
-    now.setSeconds(now.getSeconds() + TOS);
-    timer.update();
-    // setTimeout(update, 2000);
-    // };
-  }, 2000);
-}
+    setTimeout(update, 25);
+  }();
+} else !function update() {
+  now = new Date;
+  // 设置相对时差
+  now.setSeconds(now.getSeconds() + TOS);
+  timer.update();
+  setTimeout(update, 2000);
+}();
+
