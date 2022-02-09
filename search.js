@@ -24,9 +24,7 @@ catch (e) { var SP = {}; }
 }();
 // 先根据地址参数判断考试类型
 if (SP.type in exam) subject.to(SP.type);
-// if (SP.type in Object.entries(exam)) subject.to(Object.entries(exam)[SP.type][0] );
 // 再在考试日期切换到考试类型
-// else if (today.date == "2022-01-02") subject.to("t1");
 else if (today.date.match("2022-02-0(8|9)")) subject.to(31);
 else if (today.date.match("2022-01-2(0|1)")) subject.to(21);
 // 最后设置缺省考试类型

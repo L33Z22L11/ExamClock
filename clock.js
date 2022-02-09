@@ -91,7 +91,7 @@ timer.update = function () {
     this.sub = " h";
     this.activity = "距离开始";
     this.progress = 0;
-  } else if (now < subject.start && subject == 33) {
+  } else if (now < subject.start && subject.on == 33) {
     if (now < (subject.start - 3E6)) {
       this.num = (subject.start - now - 24E5) / 36E5;
       this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);

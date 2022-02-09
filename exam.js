@@ -7,13 +7,6 @@ console.log("%c\n野生技协(混技分部)\nQQ群：894656456\n", "font:3em Mon
  * 考试科目内容实现
  */
 var exam = {};
-exam[1] = function () {
-  // “希望这样的安排以后都不要有”
-  slogan.$main = "";
-  $("英语", today.date, "16:05", "18:00");
-  $("晚训", today.date, "18:25", "18:55", 0, ["我猜应该是历史/生物"]);
-  return "临时";
-};
 exam[30] = function () {
   // 特别注意，最后一轮求余后应该是数组第0项
   slogan.$main = "距离高考" + parseInt((new Date("2022-06-07T22:30+08:00") - Date.now()) / 864E5) + "天";
@@ -35,7 +28,6 @@ exam[30] = function () {
   if (today.day == 6) {
     // 周六的下午和晚上
     // console.log("6simulation" + new Date);
-    if (today.date == "2022-01-29") $("安排!", today.date, "16:05", Infinity, "新年快乐");
     // $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0, ["第" + today.week + "周" + today.weekday + "大考练：根据年级原定两小时考练安排，结束后请自行订正答案。"]);
   } else {
     if (today.day == 2 || today.day == 4) {
