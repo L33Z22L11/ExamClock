@@ -13,12 +13,12 @@ catch (e) { var SP = {}; }
       }
     }
     ifwarn(navigator.userAgent.match(" Trident| QQBrowser"), "IE/QQ浏览器功能老旧，我们推荐使用Chrome/Edge/Firefox浏览器。");
-    ifwarn(!location.host.match("exam.thisis.host|ec.vercel.app"), "您可能在使用第三方或离线的考试时钟，无法保证内容时效性。<u><a href='https://exam.thisis.host '>点击访问考试时钟在线官网 https://exam.thisis.host </a></u>");
-    ifwarn(SP.debug, "您目前处于科目检查(调试)模式。<u><a href='https://exam.thisis.host '>点击返回正常模式</a></u>");
+    ifwarn(!location.host.match("exam.cooo.site|ec.vercel.app"), "您可能在使用第三方或离线的考试时钟，无法保证内容时效性。<u><a href='https://exam.cooo.site '>点击访问考试时钟在线官网 https://exam.cooo.site </a></u>");
+    ifwarn(SP.debug, "您目前处于科目检查(调试)模式。<u><a href='https://exam.cooo.site '>点击返回正常模式</a></u>");
   }
   catch (e) {
     alert("检测到非法篡改，请将此代码发送给纸鹿:\n" + e);
-    if (confirm("是否访问在线考试时钟官网https://exam.thisis.host?")) location.href = "https://exam.thisis.host";
+    if (confirm("是否访问在线考试时钟官网https://exam.cooo.site?")) location.href = "https://exam.cooo.site";
   }
   setTimeout(verify, 2000);
 }();
