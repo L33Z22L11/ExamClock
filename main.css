@@ -136,6 +136,7 @@ footer {
 #clock {
   font-size: 5em;
   min-width: 2.5em;
+  height: 0.9em;
 }
 #subject,
 #timer {
@@ -151,7 +152,7 @@ footer {
 /* 适配竖屏 */
 @media (max-aspect-ratio: 4/5) {
   html {
-    font: 5vw "Montserrat", "微软雅黑", sans-serif;
+    font-size: 5vw;
     align-items: flex-start;
   }
   nav.space-between,

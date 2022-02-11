@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
-<!-- 纸鹿GitHub@L33Z22L11 ThisisHost/exam-clock-->
+<!-- 纸鹿 GitHub/L33Z22L11/ExamClock -->
 
 <head>
   <meta charset="UTF-8">
@@ -12,11 +12,9 @@
   <link rel="stylesheet" href="./main.css">
   <link rel="stylesheet" href="./cp.css">
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Montserrat:500,700">
-  <!-- <link rel="stylesheet" href="https://fonts.proxy.ustclug.org/css?family=Noto+Sans+SC:400,700"> -->
+  <link rel="stylesheet" href="https://fonts.proxy.ustclug.org/css?family=Noto+Sans+SC:400,700">
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> -->
   <base target="_blank">
-  <!-- Microsoft Clarity tracking code for https://exam.cooo.site/ -->
   <script type="text/javascript">
     (function (c, l, a, r, i, t, y) {
       c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -143,8 +141,9 @@
       </div>
       <div class="space-between">
         <p><i class="fa-solid fa-image"></i> <span id="bg">背景：雨后校园</span></p>
-        <p><i class="fa-solid fa-hashtag"></i> 此位置征集内容</p>
         <p><i class="fa-solid fa-hashtag"></i> 感谢lelekLuis提供更新推送环境的构建支持</p>
+        <a onclick="gsr(document.documentElement);" class="gsr">
+          <i class="fa-solid fa-font"></i> 点击切换字体(加载约需2分钟,uid:217875280)</a>
         <p><i class="fa-solid fa-file-arrow-up"></i> ver_6.4.3</p>
       </div>
     </footer>
@@ -217,7 +216,6 @@
       </div>
     </div>
 
-
     <div style="height: 100%;">
       <p><i class="fa-regular fa-images"></i> 背景列表</p>
       <div id="bglist">
@@ -274,6 +272,12 @@
   <script src="./msg.js"></script>
   <script src="./interact.js" msg></script>
   <script src="./gallery.js" msg interact></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/pubsite/GsFont/all.css">
+  <script>
+    function gsr(ele) { ele.setAttribute("class", ele.getAttribute("class") ? "" : "gsr"); }
+  </script>
+
 </body>
 
 </html>
