@@ -6,12 +6,23 @@ console.log("%c\n野生技协(混技分部)\nQQ群：894656456\n", "font:3em Mon
 /* 
  * 考试科目内容实现
  */
-var exam = {};
+var exam = {
+  default: function () {
+    slogan.$main = "考试时钟";
+    slogan.$sub = ["不存在的考试类型，请重新选择。"];
+    return "请选择";
+  }
+};
+exam[220214] = function () {
+  slogan.$main = "";
+  $("综合", today.date, "14:10", "16:40");
+  return "2月14日";
+};
 exam[30] = function () {
   // 特别注意，最后一轮求余后应该是数组第0项
   slogan.$main = "距离高考" + parseInt((new Date("2022-06-07T22:30+08:00") - Date.now()) / 864E5) + "天";
   // 这种情况就比较复杂了，代码和人有一个能跑就行
-  if (today.day == 0) {
+  if (today.day == 0.001) {
     // 周日下午
     // console.log("0simulation" + new Date);
     $(["综合", "语文",][today.week % 2], today.date, "14:10", "16:40", 0, ["第" + today.week + "周" + today.weekday + "大考练"]);
@@ -35,12 +46,12 @@ exam[30] = function () {
       // console.log("test" + new Date);
       // $("考练", today.date, "16:05", "16:50", 0, ["第" + today.week + "周(第" + (today.week % 3 || 3) + "轮)：" + today.weekday + ([[, , "语文", , "历史/物理"], [, , "政治/化学", , "数学"], [, , "英语", , "地理/生物"]][today.week % 3][today.day] || "无") + "限时纠错训练"]);
       $("考练", today.date, "16:05", "16:50", 0, ["年后素质拓展：请检查限时纠错训练科目"]);
-      // } else {
-      $("自习", today.date, "17:00", "17:45");
     }
+    $("自习", today.date, "16:05", "16:50");
+    $("自习", today.date, "17:00", "17:45");
     // 非周六的晚上
     // console.log("evening" + new Date);
-    $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物",], ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物",]][today.week % 2][today.day] || "无") + "小题精练"]);
+    // $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物",], ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物",]][today.week % 2][today.day] || "无") + "小题精练"]);
     $("晚训", today.date, "18:25", "18:45", 0, ["年后素质拓展：请检查" + today.weekday + "小题精练科目"]);
     $("晚写", today.date, "18:45", "18:55");
     $("晚一", today.date, "18:55", "19:40");
@@ -97,7 +108,7 @@ exam[11] = function () {
 exam.temp = function () {
   // “大多数人都没用过这个功能”
   var ts, tsh, tsm, teh, tem;
-  if (!(ts = prompt("考试科目名称(3个字以内)", "临时")) ||
+  if (!(ts = prompt("考试科目名称(3个字以内)", "考练")) ||
     !(tsh = prompt("考试开始时间(小时)", 16)) ||
     !(tsm = prompt("考试开始时间(分钟)", 25)) ||
     !(teh = prompt("考试结束时间(小时)", 23)) ||
@@ -111,10 +122,5 @@ exam.temp = function () {
     // alert("考试科目：" + subject.name + "\n起止时间：" + getClock(subject.start) + "~" + getClock(subject.end));
     console.log(send("添加了一门在 " + today.date + " 从 " + fixDigit(tsh) + ":" + fixDigit(tsm) + " 到 " + fixDigit(teh) + ":" + fixDigit(tem) + " 的科目：" + ts));
   }
-  return "临时";
-};
-exam.default = function () {
-  slogan.$main = "考试时钟";
-  slogan.$sub = ["不存在的考试类型，请重新选择。"];
-  return "请选择";
+  return "自定义";
 };

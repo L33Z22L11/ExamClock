@@ -8,10 +8,11 @@
 /* 网页字体及背景 */
 html {
   font-family: Ubuntu, Gs, sans-serif;
-  font-size: 48px ;
+  font-size: 48px;
   font-size: 2.75vw;
   color: white;
-  background: #333 fixed center url(https://images.xuewuzhibu.cn/02a08bf8bad1ef3e8e15d7da1066d62d.jpg);
+  background: #333 fixed center
+    url(https://images.xuewuzhibu.cn/02a08bf8bad1ef3e8e15d7da1066d62d.jpg);
   background-size: cover;
 }
 /* 分散对齐 */
