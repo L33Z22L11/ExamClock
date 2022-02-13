@@ -123,20 +123,22 @@ footer {
 /* 卡片元素字体间距等 */
 .card > div,
 .card > a {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
   margin: 0.25rem;
   padding: 0.25rem 0.75rem;
   transition: 0.5s;
-  text-align: center;
   border-radius: 0.5rem;
 }
 .card > div:hover {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.2);
 }
+
 /* 时钟字体 */
 #clock {
   font-size: 5em;
-  min-width: 2.5em;
 }
 #subject,
 #timer {
@@ -145,9 +147,7 @@ footer {
 #duration,
 #activity {
   font-size: 1.5em;
-  overflow: hidden;
   color: rgba(255, 255, 255, 0.6);
-  /* border-radius: 0.5rem; */
 }
 /* 适配竖屏 */
 @media (max-aspect-ratio: 4/5) {
@@ -228,8 +228,8 @@ a.hilit,
 #menu > *,
 .dropdown > :last-child > * {
   display: block;
-  padding: 0.2em;
   box-sizing: border-box;
+  padding: 0.2em;
 }
 /* 调节框样式 */
 .selectbar {

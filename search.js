@@ -22,18 +22,9 @@ catch (e) { var SP = {}; }
   }
   setTimeout(verify, 2000);
 }();
-// 先根据地址参数判断考试类型
-if (SP.type in exam) subject.to(SP.type);
-// 再在考试日期切换到考试类型
-else if (today.date.match("2022-02-14")) subject.to(220214);
-else if (today.date.match("2022-02-0(8|9)")) subject.to(31);
-else if (today.date.match("2022-01-2(0|1)")) subject.to(21);
-// 最后设置缺省考试类型
-else subject.to(30);
-// 若不再包一层，slogan.update内的this就会指向window
-setInterval(function () { slogan.update(); }, 2000);
 // 正常或调试模式
 if (SP.debug) {
+  now = new Date(0);
   document.getElementById("bar").style.transition = "none";
   !function update() {
     // 用加号会直接连接字符串，所以这里得减去负数，太魔幻了
@@ -53,4 +44,13 @@ if (SP.debug) {
   timer.update();
   setTimeout(update, 2000);
 }();
-
+// 先根据地址参数判断考试类型
+if (SP.type in exam) subject.to(SP.type);
+// 再在考试日期切换到考试类型
+else if (today.date.match("2022-02-14")) subject.to(220214);
+else if (today.date.match("2022-02-0(8|9)")) subject.to(31);
+else if (today.date.match("2022-01-2(0|1)")) subject.to(21);
+// 最后设置缺省考试类型
+else subject.to(30);
+// 若不再包一层，slogan.update内的this就会指向window
+setInterval(function () { slogan.update(); }, 2000);

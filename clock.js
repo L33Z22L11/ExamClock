@@ -5,7 +5,7 @@
 var today = new Date, TOS = 0;
 var today = {
   date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
-  week: parseInt((today - new Date("2021-08-22")) / 6048E5),
+  week: parseInt((today - new Date("2022-02-06")) / 6048E5),
   day: today.getDay(),
   weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()]
 };
@@ -35,10 +35,10 @@ var timer = {
 };
 subject.to = function (to) {
   // 切换类型时需要重置的内容
-  now = new Date("2021-04");
+  if (SP.debug) now = new Date(0);
   this.name = "";
-  this.start = new Date("2021-04");
-  this.end = new Date("2021-04");
+  this.start = new Date(0);
+  this.end = new Date(0);
   timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
   slogan.$main = "沉着冷静&emsp;诚信考试";
   slogan.$sub = [""];
@@ -58,14 +58,15 @@ function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
   if (now < subject.end) console.log("当前科目未结束，故不注入科目：" + toSubject);
   else if (now >= new Date(toDate + "T" + toEnd + "+08:00")) console.log("请求科目已结束，故不注入科目：" + toSubject);
   else {
-    // document.getElementById("subject").innerHTML = subject.name;
     subject.name = toSubject;
+    // document.getElementById("subject").innerHTML = subject.name;
     subject.start = new Date(toDate + "T" + toStart + "+08:00");
     subject.end = new Date(toDate + "T" + toEnd + "+08:00");
-    // document.getElementById("duration").innerHTML = subject.duration;
     subject.duration = subject.duration;
+    // document.getElementById("duration").innerHTML = subject.duration;
     slogan.main = toMainslogan || slogan.$main;
     slogan.sub = toSubslogan || slogan.$sub;
+    slogan.update();
     // 啊对对对，有很多种方法将变量转换为数字，我就用最麻烦的
     console.log(getClock(now) + " 成功注入科目：" + toSubject + "\n开始时间：" + toDate, toStart + "\n结束时间：" + toDate, toEnd + ["\n默认大标语：", "\n指定大标语："][~!toMainslogan + 2] + slogan.main + ["\n默认副标语：", "\n指定副标语："][!!toSubslogan - -0] + slogan.sub);
   }
