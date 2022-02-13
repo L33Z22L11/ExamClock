@@ -16,6 +16,8 @@ var exam = {
 exam[220214] = function () {
   slogan.$main = "";
   $("综合", today.date, "14:10", "16:40");
+  $("订正", today.date, "16:40", "17:00");
+  $(0, today.date, "17:00", 0, '<i class="fa-solid fa-spinner fa-spin-pulse"></i> 寒假(Part 4)加载中');
   return "2月14日";
 };
 exam[30] = function () {
