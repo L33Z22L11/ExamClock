@@ -109,7 +109,7 @@ footer {
 #bar {
   height: 100%;
   transition: linear 2s;
-  background: white;
+  background: #fff;
 }
 /* 卡片排版 */
 .card {
