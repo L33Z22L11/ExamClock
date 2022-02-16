@@ -40,15 +40,14 @@ exam[30] = function () {
     $(["英语", "数学",][today.week % 2], today.date, "15:55", "17:55", 0, ["第" + today.week + "周" + today.weekday + "大考练：根据年级原定两小时考练安排，结束后请自行订正答案。"]);
   } else {
     // 周二下午
-    if (today.day == 2) $("考练", today.date, "16:05", "16:50", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科" + ["双周数学", "单周化学"][today.week % 2] + "，文科第" + (today.week % 3 || 3) + "/3轮" + ["地理(明日)", "政治", "历史",][today.week % 3]]);
+    if (today.day == 2) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科" + ["双周数学", "单周化学"][today.week % 2] + "，文科第" + (today.week % 3 || 3) + "/3轮" + ["地理(明日)", "政治", "历史",][today.week % 3]]);
     // 周三下午
-    else if (today.day == 3 && !(today.week % 3)) $("考练", today.date, "16:05", "16:50", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
+    else if (today.day == 3 && !(today.week % 3)) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
     // 周四下午
-    else if (today.day == 4) $("考练", today.date, "16:05", "16:50", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
+    else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
     else $("自习", today.date, "17:00", "17:45");
     // 非周六的晚上
     $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物",], ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物",]][today.week % 2][today.day] || "无") + "小题精练"]);
-    // $("晚训", today.date, "18:25", "18:45", 0, ["年后素质拓展：请检查" + today.weekday + "小题精练科目"]);
     $("晚写", today.date, "18:45", "18:55");
     $("晚一", today.date, "18:55", "19:40");
     $("晚二", today.date, "19:50", "20:35");
