@@ -24,12 +24,12 @@ var subject = {
   // set _end(end) { },
 };
 var slogan = {
-
+  // 这块有机会再写
 
 
 };
 var timer = {
-
+  // 这块也一样，有机会再写
 
 
 };
@@ -46,7 +46,7 @@ subject.to = function (to) {
   document.getElementById("type").innerHTML = exam[this.on]();
   // 切换类型的对焦动画
   document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
-  // “客户想提升‘应用流畅度’，就把延迟改小点”
+  // 想提升应用启动速度，就把延迟改小点
   setTimeout(function () {
     document.getElementsByClassName("card")[0].style.filter = "blur(0)";
     timer.update();
@@ -101,12 +101,12 @@ timer.update = function () {
       this.progress = 0;
     } else if (now < (subject.start - 24E5)) {
       this.num = Math.round((subject.start - now - 24E5) / 6E4);
-      this.sub = "min";
+      this.sub = " min";
       this.activity = "距离入场";
       this.progress = (subject.start - now - 24E5) / 6E3;
     } else if (now < subject.start) {
       this.num = Math.round((subject.start - now) / 6E4);
-      this.sub = "min";
+      this.sub = " min";
       this.activity = "距离开始";
       this.progress = (subject.start - now) / 24E3;
     }
@@ -118,7 +118,7 @@ timer.update = function () {
     this.progress = 0;
   } else if (now < (subject.start - 12E5)) {
     this.num = Math.round((subject.start - now - 12E5) / 6E4);
-    this.sub = "min";
+    this.sub = " min";
     this.activity = "距离入场";
     this.progress = (subject.start - now - 12E5) / 6E3;
   } else if (now < (subject.start - 6E5)) {
@@ -128,7 +128,7 @@ timer.update = function () {
     this.progress = (now - subject.start + 12E5) / 6E3;
   } else if (now < subject.start) {
     this.num = Math.round((subject.start - now) / 6E4);
-    this.sub = "min";
+    this.sub = " min";
     this.activity = "距离开始";
     this.progress = (subject.start - now) / 6E3;
   } else if (now < subject.end) {
@@ -139,7 +139,7 @@ timer.update = function () {
       this.num = Math.round((subject.end - now) / 6E4);
       this.activity = "距离结束";
     }
-    this.sub = "min";
+    this.sub = " min";
     this.progress = (now - subject.start) / (subject.end - subject.start) * 100;
   } else {
     // 结束后的内容
