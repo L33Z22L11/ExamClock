@@ -13,7 +13,7 @@ var exam = {
     return "请选择";
   }
 };
-exam[220214] = function () {
+exam["2022-02-14"] = function () {
   slogan.$main = "";
   $("综合", today.date, "14:10", "16:40");
   $("订正", today.date, "16:40", "17:00");
@@ -24,34 +24,41 @@ exam[30] = function () {
   // 特别注意，最后一轮求余后应该是数组第0项
   slogan.$main = "距离高考" + parseInt((new Date("2022-06-07T22:30+08:00") - Date.now()) / 864E5) + "天";
   // 这种情况就比较复杂了，代码和人有一个能跑就行
-  if (!today.day) {
-    // 周日下午
-    $(["语文", "综合",][today.week % 2], today.date, "14:10", "16:40", 0, ["第" + today.week + "周" + today.weekday + "大考练"]);
-    $("订正", today.date, "16:50", "17:30");
-  } else {
-    // 非周日的早上
+  // 之前的条件在增加了一些需求的设置后竟然有bug
+  // 我不敢相信，不过是时候让兰神接手搞点大事情了
+  if (today.day) {
+    // 非周日的白天
     if (today.day == 5) $("听力", today.date, "07:05", "07:25");
     $("晨读1", today.date, "07:00", "07:25");
     $("晨会", today.date, "07:25", "07:30");
     $("晨读2", today.date, "07:30", "08:00");
-  }
-  if (today.day == 6) {
-    // 周六的下午和晚上
-    $(["英语", "数学",][today.week % 2], today.date, "15:55", "17:55", 0, ["第" + today.week + "周" + today.weekday + "大考练：根据年级原定两小时考练安排，结束后请自行订正答案。"]);
-  } else {
-    // 周二下午
-    if (today.day == 2) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科" + ["双周数学", "单周化学"][today.week % 2] + "，文科第" + (today.week % 3 || 3) + "/3轮" + ["地理(明日)", "政治", "历史",][today.week % 3]]);
-    // 周三下午
-    else if (today.day == 3 && !(today.week % 3)) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
-    // 周四下午
-    else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
+    if (today.day == 2) $("考练", today.date, "17:00", "17:45", 0,
+      ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科" + ["双周数学", "单周化学"][today.week % 2]
+        + "，文科第" + (today.week % 3 || 3) + "/3轮" + ["地理(明日)", "政治", "历史",][today.week % 3]]);
+    else if (today.day == 3 && !(today.week % 3)) $("考练", today.date, "17:00", "17:45", 0,
+      ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
+    else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0,
+      ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
+    else if (today.day == 6) $(["英语", "数学",][today.week % 2], today.date, "15:55", "17:55", 0,
+      ["第" + today.week + "周" + today.weekday + "大考练：根据年级原定两小时考练安排，结束后请自行订正答案。"]);
     else $("自习", today.date, "17:00", "17:45");
+  } else {
+    // 周日白天
+    $(["语文", "综合",][today.week % 2], today.date, "14:10", "16:40", 0,
+      ["第" + today.week + "周" + today.weekday + "大考练"]);
+    $("订正", today.date, "16:50", "17:30");
+  }
+  if (today.date != 6) {
     // 非周六的晚上
-    $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物",], ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物",]][today.week % 2][today.day] || "无") + "小题精练"]);
+    $("晚训", today.date, "18:25", "18:45", 0,
+      ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday +
+        ([["英语", "语文", "地理/物理", "数学", "政治/化学", "历史/生物",],
+        ["数学", "英语", "地理/物理", "政治/化学", "语文", "历史/生物",]]
+        [today.week % 2][today.day] || "无") + "小题精练"]);
     $("晚写", today.date, "18:45", "18:55");
     $("晚一", today.date, "18:55", "19:40");
     $("晚二", today.date, "19:50", "20:35");
-    $("晚三", today.date, "20:50", "22:00", 0, ["少躺平，多学习。，宝中生活才如意。"]);
+    $("晚三", today.date, "20:50", "22:00", 0, ["少躺平，多学习。宝中生活才如意。"]);
     $("晚修", today.date, "22:00", "23:30");
   }
   return "高三日常";
