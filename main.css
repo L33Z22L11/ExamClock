@@ -27,6 +27,7 @@ html {
 .bar,
 .card > div,
 .card > a {
+  /* border: 2px solid rgba(255, 255, 255, 0.4); */
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.2);
   text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.2);
@@ -34,7 +35,7 @@ html {
 /* 一级淡文本（保留字体颜色） */
 .dim {
   font-size: 0.75em;
-  opacity: 0.6;
+  opacity: 0.75;
 }
 /* 二级淡文本 */
 .sub {
@@ -61,7 +62,7 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.5);
 }
 /* 主体元素间距 */
 #main > * {
@@ -147,7 +148,7 @@ footer {
 #duration,
 #activity {
   font-size: 1.5em;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.75);
 }
 /* 适配竖屏 */
 @media (max-aspect-ratio: 4/5) {
