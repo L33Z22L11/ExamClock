@@ -86,7 +86,7 @@ timer.update = function () {
     document.getElementById("subject").innerHTML = subject.name;
     document.getElementById("duration").innerHTML = subject.duration;
   }
-  if (now < (subject.start - 6E5) && subject.on == 30) {
+  if (now < (subject.start - 6E5) && (subject.on == 30 || subject.on == 20)) {
     this.num = (subject.start - now) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
     this.sub = " h";
