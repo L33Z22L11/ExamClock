@@ -89,36 +89,36 @@ timer.update = function () {
   if (now < (subject.start - 6E5) && (subject.on == 30 || subject.on == 20)) {
     this.num = (subject.start - now) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
-    this.sub = " h";
+    this.sub = "h";
     this.activity = "距离开始";
     this.progress = 0;
   } else if (now < subject.start && subject.on == 33) {
     if (now < (subject.start - 3E6)) {
       this.num = (subject.start - now - 24E5) / 36E5;
       this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
-      this.sub = " h";
+      this.sub = "h";
       this.activity = "考试加油";
       this.progress = 0;
     } else if (now < (subject.start - 24E5)) {
       this.num = Math.round((subject.start - now - 24E5) / 6E4);
-      this.sub = " min";
+      this.sub = "min";
       this.activity = "距离入场";
       this.progress = (subject.start - now - 24E5) / 6E3;
     } else if (now < subject.start) {
       this.num = Math.round((subject.start - now) / 6E4);
-      this.sub = " min";
+      this.sub = "min";
       this.activity = "距离开始";
       this.progress = (subject.start - now) / 24E3;
     }
   } else if (now < (subject.start - 18E5)) {
     this.num = (subject.start - now - 12E5) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
-    this.sub = " h";
+    this.sub = "h";
     this.activity = "考试加油";
     this.progress = 0;
   } else if (now < (subject.start - 12E5)) {
     this.num = Math.round((subject.start - now - 12E5) / 6E4);
-    this.sub = " min";
+    this.sub = "min";
     this.activity = "距离入场";
     this.progress = (subject.start - now - 12E5) / 6E3;
   } else if (now < (subject.start - 6E5)) {
@@ -128,7 +128,7 @@ timer.update = function () {
     this.progress = (now - subject.start + 12E5) / 6E3;
   } else if (now < subject.start) {
     this.num = Math.round((subject.start - now) / 6E4);
-    this.sub = " min";
+    this.sub = "min";
     this.activity = "距离开始";
     this.progress = (subject.start - now) / 6E3;
   } else if (now < subject.end) {
@@ -139,7 +139,7 @@ timer.update = function () {
       this.num = Math.round((subject.end - now) / 6E4);
       this.activity = "距离结束";
     }
-    this.sub = " min";
+    this.sub = "min";
     this.progress = (now - subject.start) / (subject.end - subject.start) * 100;
   } else {
     // 结束后的内容

@@ -22,10 +22,10 @@ html {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.space{
+.space {
   margin: 0 -0.5em;
 }
-.space>*{
+.space > * {
   margin: 0 0.5em;
 }
 /* 淡色背景阴影 */
@@ -55,9 +55,11 @@ footer {
 }
 /* 选中 */
 ::selection {
-  color: #fc0;
-  background: rgba(255, 255, 255, 0.2);
-  text-shadow: #fa3 0 0 0.1em;
+  color: #fff;
+
+  /* background: rgba(255, 255, 255, 0.2); */
+  text-shadow: #f0f 0.05em 0.01em 0, #0ff -0.05em -0.01em 0,
+    #fff 0 0 1em,#fff 0 0 1em;
 }
 /*
  * elements
