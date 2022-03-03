@@ -57,9 +57,8 @@ footer {
 ::selection {
   color: #fff;
 
-  /* background: rgba(255, 255, 255, 0.2); */
-  text-shadow: #f7f 0.05em 0.01em 0, #7ff -0.05em -0.01em 0,
-    #fff 0 0 1em,#fff 0 0 1em;
+  background: rgba(255, 255, 255, 0.1);
+  text-shadow: #7af -0.05em -0.01em 0, #f7a 0.05em 0.01em 0;
 }
 /*
  * elements

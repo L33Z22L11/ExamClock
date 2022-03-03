@@ -7,7 +7,10 @@ var today = {
   date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
   week: parseInt((today - new Date("2022-02-06")) / 6048E5),
   day: today.getDay(),
-  weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()]
+  weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()],
+  cee: "",
+  entry: "",
+  total: "",
 };
 // 各个对象内置功能
 var subject = {
