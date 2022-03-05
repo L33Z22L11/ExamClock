@@ -4,21 +4,21 @@
   z-index: 1;
   top: 0;
   display: flex;
+  overflow: auto;
   align-content: center;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  box-sizing: border-box;
   width: 100vw;
   height: 100vh;
-  overflow: auto;
   padding: 1rem;
-  box-sizing: border-box;
   transition: 0.2s;
 }
 @media (max-aspect-ratio: 4/5) {
   #cp {
+    align-items: center;
     flex-wrap: nowrap;
-   align-items: center;
   }
 }
 #cpbd {
@@ -37,11 +37,13 @@
   /* backdrop-filter: blur(1em); */
 }
 #cp > div {
-  margin: 0.5em;
   display: inline-block;
   overflow: auto;
   width: 10rem;
+  margin: 0.5em;
+
   /* max-height: 90vh; */
+
   border-radius: 0.5rem;
   background: rgba(0, 0, 0, 0.5);
 }
@@ -49,9 +51,9 @@
   margin: 0.5rem;
 }
 .barset > div {
-  margin: 0.5em 0;
   position: relative;
   overflow: hidden;
+  margin: 0.5em 0;
   border-radius: 0.2rem;
   background: rgba(255, 255, 255, 0.2);
 }
@@ -84,4 +86,43 @@
 }
 .alist > a {
   display: block;
+}
+#cover {
+  font-size: 1.5em;
+
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+  transition: 0.5s;
+  color: #37a;
+  background: #fff;
+  transition: opacity 0.5s;
+}
+.coincide {
+  position: relative;
+  color: rgba(0, 0, 0, 0.8);
+}
+#coverbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transition: width 0.2s;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.8);
+}
+.uid{
+  position: fixed;
+  font-size: 1rem;
+  bottom: 0;right: 2em;
+  color: #fff;
+  text-shadow: 0 0 0.1em #000;
 }
