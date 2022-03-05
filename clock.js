@@ -5,12 +5,13 @@
 var today = new Date, TOS = 0;
 var today = {
   date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
-  week: parseInt((today - new Date("2022-02-06")) / 6048E5),
+  week: parseInt((today - new Date(2022, 1, 6)) / 6048E5),
   day: today.getDay(),
   weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()],
-  cee: "",
-  entry: "",
-  total: "",
+  cee: parseInt((new Date(2022, 5, 8) - today) / 864E5),
+  a: parseInt((today - new Date(2019, 7, 18)) / 864E5),
+  d: parseInt((new Date(2022, 6, 7) - new Date(2019, 7, 18)) / 864E5),
+  apt: parseInt((new Date(2022, 2, 27) - today) / 864E5),
 };
 // 各个对象内置功能
 var subject = {
@@ -57,21 +58,24 @@ subject.to = function (to) {
   }, 200);
 }
 // 注入当前科目
-function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan) {
-  if (now < subject.end) console.log("当前科目未结束，故不注入科目：" + toSubject);
-  else if (now >= new Date(toDate + "T" + toEnd + "+08:00")) console.log("请求科目已结束，故不注入科目：" + toSubject);
-  else {
+function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit) {
+  if (now < subject.end) {
+    // console.log("当前科目未结束，故不注入科目：" + toSubject);
+  } else if (now >= new Date(toDate + "T" + toEnd + "+08:00")) {
+    // console.log("请求科目已结束，故不注入科目：" + toSubject);
+  } else {
     subject.name = toSubject;
     // document.getElementById("subject").innerHTML = subject.name;
     subject.start = new Date(toDate + "T" + toStart + "+08:00");
     subject.end = new Date(toDate + "T" + toEnd + "+08:00");
     subject.duration = subject.duration;
+    subject.admit = toAdmit || (subject.on == 33 ? 30 : 20);
     // document.getElementById("duration").innerHTML = subject.duration;
     slogan.main = toMainslogan || slogan.$main;
     slogan.sub = toSubslogan || slogan.$sub;
     slogan.update();
     // 啊对对对，有很多种方法将变量转换为数字，我就用最麻烦的
-    console.log(getClock(now) + " 成功注入科目：" + toSubject + "\n开始时间：" + toDate, toStart + "\n结束时间：" + toDate, toEnd + ["\n默认大标语：", "\n指定大标语："][~!toMainslogan + 2] + slogan.main + ["\n默认副标语：", "\n指定副标语："][!!toSubslogan - -0] + slogan.sub);
+    console.log("[" + new Date + "]\n时钟时间：" + now + "\n注入科目：" + toSubject + "\n开始时间：" + toDate, toStart + "\n结束时间：" + toDate, toEnd + "\n提前入场：" + toAdmit + " min\n" + ["默认大标语：", "指定大标语："][~!toMainslogan + 2] + slogan.main + ["\n默认副标语：", "\n指定副标语："][!!toSubslogan - -0] + slogan.sub);
   }
 }
 slogan.update = function () {
@@ -95,45 +99,22 @@ timer.update = function () {
     this.sub = "h";
     this.activity = "距离开始";
     this.progress = 0;
-  } else if (now < subject.start && subject.on == 33) {
-    if (now < (subject.start - 3E6)) {
-      this.num = (subject.start - now - 24E5) / 36E5;
-      this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
-      this.sub = "h";
-      this.activity = "考试加油";
-      this.progress = 0;
-    } else if (now < (subject.start - 24E5)) {
-      this.num = Math.round((subject.start - now - 24E5) / 6E4);
-      this.sub = "min";
-      this.activity = "距离入场";
-      this.progress = (subject.start - now - 24E5) / 6E3;
-    } else if (now < subject.start) {
-      this.num = Math.round((subject.start - now) / 6E4);
-      this.sub = "min";
-      this.activity = "距离开始";
-      this.progress = (subject.start - now) / 24E3;
-    }
-  } else if (now < (subject.start - 18E5)) {
-    this.num = (subject.start - now - 12E5) / 36E5;
+  } else if (now < (subject.start - subject.admit * 6E4 - 6E5)) {
+    this.num = (subject.start - subject.admit * 6E4 - now) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
     this.sub = "h";
     this.activity = "考试加油";
     this.progress = 0;
-  } else if (now < (subject.start - 12E5)) {
-    this.num = Math.round((subject.start - now - 12E5) / 6E4);
+  } else if (now < (subject.start - subject.admit * 6E4)) {
+    this.num = Math.round((subject.start - now - subject.admit * 6E4) / 6E4);
     this.sub = "min";
     this.activity = "距离入场";
-    this.progress = (subject.start - now - 12E5) / 6E3;
-  } else if (now < (subject.start - 6E5)) {
-    this.num = Math.round((now - subject.start + 12E5) / 6E4);
-    this.sub = "/ 10 min";
-    this.activity = "入场扫描";
-    this.progress = (now - subject.start + 12E5) / 6E3;
+    this.progress = (subject.start - now - subject.admit * 6E4) / 6E3;
   } else if (now < subject.start) {
     this.num = Math.round((subject.start - now) / 6E4);
     this.sub = "min";
     this.activity = "距离开始";
-    this.progress = (subject.start - now) / 6E3;
+    this.progress = (subject.start - now) / subject.admit / 600;
   } else if (now < subject.end) {
     if ((now - subject.start) / (subject.end - subject.start) < 0.5) {
       this.num = Math.round((now - subject.start) / 6E4);
