@@ -41,9 +41,6 @@
   overflow: auto;
   width: 10rem;
   margin: 0.5em;
-
-  /* max-height: 90vh; */
-
   border-radius: 0.5rem;
   background: rgba(0, 0, 0, 0.5);
 }
@@ -69,27 +66,10 @@
   margin: 0.5em;
   pointer-events: none;
 }
-.iconset {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.iconset > * {
-  margin: 0.1rem;
-  padding: 0.2rem;
-  color: rgba(0, 0, 0, 0.8);
-  border-radius: 0.2rem;
-  background: rgba(255, 255, 255, 0.8);
-}
-.iconset > * > i {
-  font-size: 1rem;
-}
 .alist > a {
   display: block;
 }
 #cover {
-  font-size: 1.5em;
-
   position: fixed;
   z-index: 9;
   top: 0;
@@ -99,30 +79,32 @@
   display: none;
   align-items: center;
   flex-direction: column;
-  text-align: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   transition: 0.5s;
+  transition: opacity 0.5s;
+  text-align: center;
   color: #37a;
   background: #fff;
-  transition: opacity 0.5s;
 }
 .coincide {
+  font-size: 2em;
   position: relative;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.6);
 }
 #coverbar {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  transition: width 0.2s;
   overflow: hidden;
+  transition: width 0.2s;
   background: rgba(255, 255, 255, 0.8);
 }
-.uid{
+.uid {
+  font-size: 0.6rem;
   position: fixed;
-  font-size: 1rem;
-  bottom: 0;right: 2em;
+  right: 2em;
+  bottom: 0;
   color: #fff;
   text-shadow: 0 0 0.1em #000;
 }

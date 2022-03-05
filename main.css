@@ -22,6 +22,9 @@ html {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+.space-between > * {
+  display: inline-block;
+}
 .space {
   margin: 0 -0.5em;
 }
@@ -41,22 +44,20 @@ html {
 /* 一级淡文本（保留字体颜色） */
 .dim {
   font-size: 0.75em;
-  opacity: 0.75;
+  opacity: 0.8;
 }
 /* 二级淡文本 */
 .sub {
   font-size: 0.6em;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.8);
 }
 /* 页脚文本 */
 footer {
   font-size: 0.3rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
 }
 /* 选中 */
 ::selection {
-  color: #fff;
-
   background: rgba(255, 255, 255, 0.1);
   text-shadow: #7af -0.05em -0.01em 0, #f7a 0.05em 0.01em 0;
 }
@@ -156,7 +157,7 @@ footer {
 #duration,
 #activity {
   font-size: 1.5em;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
 }
 /* 适配竖屏 */
 @media (max-aspect-ratio: 4/5) {
@@ -219,11 +220,7 @@ a {
 .dropdown:hover,
 a:hover {
   color: #fff;
-  background: linear-gradient(
-    120deg,
-    rgba(51, 170, 255, 0.8),
-    rgba(51, 187, 153, 0.8)
-  );
+  background: linear-gradient(120deg, #7af, #f9a);
 }
 /* 高亮/菜单/下拉正文颜色 */
 .hilit,

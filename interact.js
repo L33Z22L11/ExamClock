@@ -29,10 +29,7 @@ function hideCP() {
   }, 200);
 }
 eleMain.oncontextmenu = function (e) {
-  if (!e.ctrlKey) {
-    e.preventDefault();
-    displayCP();
-  }
+  if (e.ctrlKey) { e.preventDefault(); displayCP(); }
 };
 eleCPBD.onclick = function (e) { hideCP(); }
 eleSizebar.firstElementChild.style.width = (parseInt(eleMain.style.fontSize) - 0.75) * 200 + "%";

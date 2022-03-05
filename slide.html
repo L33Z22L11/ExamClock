@@ -15,21 +15,21 @@
 </head>
 
 <body>
-  <div id="main" style="opacity: 0.9; font-size: 1em;">
-    <div class="notify">
-      <nav class="space-between">
-        <div></div>
-        <div class="sub space-between" style="gap:1em;">
-          <a class="fa-solid fa-shuffle" onclick="bg()" data-sub="换背景"></a>
-          <a onclick="fullscreen()"><i class="fa-solid fa-expand" id="fullscreen" data-sub="全屏"></i></a>
-      </nav>
-      <div class="space-between" id="msg">
-        <p><i class="fa-solid fa-circle-info"></i>
-          <span id="msgcontent">这是一条初始消息。</span>
-        </p>
-        <a class="fa-solid fa-xmark"></a>
+  <div id="main">
+    <nav class="space-between">
+      <div class="notify">
+        <div class="space-between" id="msg">
+          <p><i class="fa-solid fa-circle-info"></i>
+            <span id="msgcontent">这是一条初始消息。</span>
+          </p>
+          <a class="fa-solid fa-xmark"></a>
+        </div>
       </div>
-    </div>
+      <div class="sub space-between space">
+        <a class="fa-solid fa-shuffle" onclick="bg()" data-sub="换背景"></a>
+        <a onclick="fullscreen()"><i class="fa-solid fa-expand" id="fullscreen" data-sub="全屏"></i></a>
+      </div>
+    </nav>
 
     <div>
       <h2 id="activity" contenteditable>2021年度总结大会暨颁奖典礼</h2>

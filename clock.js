@@ -49,7 +49,7 @@ subject.to = function (to) {
   this.on = to in exam ? to : this.on;
   document.getElementById("type").innerHTML = exam[this.on]();
   // 切换类型的对焦动画
-  playCover();
+  if (!SP.debug) playCover();
   // document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // 想提升应用启动速度，就把延迟改小点
   setTimeout(function () {
@@ -62,14 +62,13 @@ subject.to = function (to) {
     var eleCover = document.getElementById("cover");
     var eleCoverbar = document.getElementById("coverbar");
     eleCoverbar.style.width = "100%";
-    eleCover.style.opacity = "0";
     eleCover.style.display = "flex";
     setTimeout(function () { eleCover.style.opacity = ""; }, 0);
-    setTimeout(function () { eleCoverbar.style.width = "97%"; }, 500);
-    setTimeout(function () { eleCoverbar.style.width = "52%"; }, 1000);
+    setTimeout(function () { eleCoverbar.style.width = "94%"; }, 500);
+    setTimeout(function () { eleCoverbar.style.width = "50%"; }, 1000);
     setTimeout(function () { eleCoverbar.style.width = "20%"; }, 1500);
-    setTimeout(function () { eleCoverbar.style.width = "3%"; }, 2000);
-    setTimeout(function () { eleCoverbar.style.width = "0"; }, 2500);
+    setTimeout(function () { eleCoverbar.style.width = "6%"; }, 2000);
+    setTimeout(function () { eleCoverbar.style.width = ""; }, 2500);
     setTimeout(function () { eleCover.style.opacity = "0"; }, 3000);
     setTimeout(function () { eleCover.style.display = ""; }, 3500);
   }
