@@ -48,7 +48,7 @@ subject.to = function (to) {
   slogan.$sub = [""];
   this.on = to in exam ? to : this.on;
   // 切换类型的对焦动画
-  if (!SP.debug) playCover("正在传送到考试时钟-" + (document.getElementById("type").innerHTML = exam[this.on]()) + "，请稍候……");
+  if (!SP.debug) playCover("正在传送到" + (document.getElementById("type").innerHTML = exam[this.on]()) + "，请稍候");
   // document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // 想提升应用启动速度，就把延迟改小点
   setTimeout(function () {
@@ -155,8 +155,7 @@ function playCover(msg) {
   setTimeout(function () { eleCover.style.opacity = ""; }, 0);
   setTimeout(function () { eleCoverbar.style.width = "94%"; }, 500);
   setTimeout(function () { eleCoverbar.style.width = "50%"; }, 1000);
-  setTimeout(function () { eleCoverbar.style.width = "20%"; }, 1500);
-  setTimeout(function () { eleCoverbar.style.width = "6%"; }, 2000);
+  setTimeout(function () { eleCoverbar.style.width = "6%"; }, 1500);
   setTimeout(function () { eleCoverbar.style.width = ""; }, 2500);
   setTimeout(function () { eleCover.style.opacity = "0"; }, 3000);
   setTimeout(function () { eleCover.style.display = ""; }, 3500);
