@@ -47,31 +47,15 @@ subject.to = function (to) {
   slogan.$main = "沉着冷静&emsp;诚信考试";
   slogan.$sub = [""];
   this.on = to in exam ? to : this.on;
-  document.getElementById("type").innerHTML = exam[this.on]();
   // 切换类型的对焦动画
-  if (!SP.debug) playCover();
+  if (!SP.debug) playCover("正在传送到考试时钟-" + (document.getElementById("type").innerHTML = exam[this.on]()) + "，请稍候……");
   // document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // 想提升应用启动速度，就把延迟改小点
   setTimeout(function () {
     // document.getElementsByClassName("card")[0].style.filter = "blur(0)";
     timer.update();
     slogan.update();
-  }, 200);
-
-  function playCover() {
-    var eleCover = document.getElementById("cover");
-    var eleCoverbar = document.getElementById("coverbar");
-    eleCoverbar.style.width = "100%";
-    eleCover.style.display = "flex";
-    setTimeout(function () { eleCover.style.opacity = ""; }, 0);
-    setTimeout(function () { eleCoverbar.style.width = "94%"; }, 500);
-    setTimeout(function () { eleCoverbar.style.width = "50%"; }, 1000);
-    setTimeout(function () { eleCoverbar.style.width = "20%"; }, 1500);
-    setTimeout(function () { eleCoverbar.style.width = "6%"; }, 2000);
-    setTimeout(function () { eleCoverbar.style.width = ""; }, 2500);
-    setTimeout(function () { eleCover.style.opacity = "0"; }, 3000);
-    setTimeout(function () { eleCover.style.display = ""; }, 3500);
-  }
+  }, 500);
 }
 // 注入当前科目
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit) {
@@ -161,3 +145,19 @@ function fixMinutes(date, friendlyname) {
 }
 // 在一位数前补“0”
 function fixDigit(num) { num = parseInt(num); return num < 10 ? "0" + num : num; }
+// 播放过渡动画
+function playCover(msg) {
+  var eleCover = document.getElementById("cover");
+  var eleCoverbar = document.getElementById("coverbar");
+  document.getElementById("covermsg").innerHTML = msg;
+  eleCoverbar.style.width = "100%";
+  eleCover.style.display = "flex";
+  setTimeout(function () { eleCover.style.opacity = ""; }, 0);
+  setTimeout(function () { eleCoverbar.style.width = "94%"; }, 500);
+  setTimeout(function () { eleCoverbar.style.width = "50%"; }, 1000);
+  setTimeout(function () { eleCoverbar.style.width = "20%"; }, 1500);
+  setTimeout(function () { eleCoverbar.style.width = "6%"; }, 2000);
+  setTimeout(function () { eleCoverbar.style.width = ""; }, 2500);
+  setTimeout(function () { eleCover.style.opacity = "0"; }, 3000);
+  setTimeout(function () { eleCover.style.display = ""; }, 3500);
+}

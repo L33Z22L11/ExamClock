@@ -43,6 +43,7 @@ function bg(v, p) {
     // 定时换壁纸（康总加成🙏）
     clearInterval(bg.interval);
     bg.interval = setInterval(bg, 2040411);
+    return "来自" + gallery[v].vol + "的" + gallery[v].list[p % (gallery[v].list.length)].name + "似乎具有某种神秘的力量";
   } catch (e) {
     // 虽然上面一般不会出错，出错了下面这段备用代码也可能无法运行，但还是写一段
     console.warn(send("主背景函数出错，已启用备用背景。\n") + e);

@@ -34,11 +34,11 @@
         <i class="fa-solid fa-wind fa-fw"></i>
         <i class="fa-solid fa-bolt fa-fw"></i>
         <i class="fa-solid fa-seedling fa-fw"></i>
-        <i class="fa-solid fa-icicles fa-fw"></i>
+        <i class="fa-solid fa-snowflake"></i>
         <i class="fa-solid fa-gem fa-fw"></i>
       </div>
     </div>
-    <b>考试时钟<p class="dim">你的科目正在装载中</p></b>
+    <b>考试时钟<p class="dim" id="covermsg">你的科目正在装载中</p></b>
     <b class="uid">UID:217875280</b>
   </div>
 
@@ -98,13 +98,15 @@
           </span>
 
           <span class="dropdown">
-            <i class="fa-solid fa-shuffle" onclick="bg()" data-sub="换背景"></i>
+            <i class="fa-solid fa-shuffle" onclick="playCover(bg())" data-sub="换背景"></i>
             <div style="right:-4em; min-width:12em;">
               <div>
-                <p><i class="fa-brands fa-qq"></i> 投稿QQ <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066</a>
+                <p><i class="fa-solid fa-shop-slash"></i> 投稿通道已锁定
+                  <!-- <i class="fa-brands fa-qq"></i> 投稿QQ <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066</a> -->
                 </p>
-                <p class="dim">通过<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">
-                    CC BY-NC-SA 4.0 </a>授权。</p>
+                <p class="dim"> 将于2022年6月9日重启。
+                  <!-- 通过<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"> CC BY-NC-SA 4.0 </a>授权。 -->
+                </p>
               </div>
               <a onclick="displayCP()"><i class="fa-solid fa-list-check"></i> 背景菜单</a>
               <a href="https://img.xuewuzhibu.cn/album/h8p"><i class="fa-solid fa-images"></i> 宝中一卷图库
@@ -124,9 +126,9 @@
               </a>
               <div><i class="fa-solid fa-gears"></i> 高级设置</div>
               <div class="space-between dim">
-              <a href="?debug=1"><i class="fa-solid fa-list-check"></i> 调试</a>
-              <a href="https://github.com/L33Z22L11/ExamClock">
-                <i class="fa-brands fa-github"></i> 源代码</a>
+                <a href="?debug=1"><i class="fa-solid fa-list-check"></i> 调试</a>
+                <a href="https://github.com/L33Z22L11/ExamClock">
+                  <i class="fa-brands fa-github"></i> 源代码</a>
                 <a onclick="slogan.main=prompt('请输入考试大标语',slogan.main)||slogan.main">
                   <i class="fa-solid fa-quote-left"></i> 大标语
                 </a>
@@ -204,13 +206,13 @@
   <div id="cp" style="display:none;">
     <span id="cpbd"></span>
 
-  <div style="height:100%;">
-    <p><i class="fa-regular fa-images"></i> 背景列表</p>
-    <div id="bglist">
-      <a onclick="bg(0)"><i class="fa-solid fa-pen-to-square"></i> 自定义url</a>
-      <a onclick="bg(-1)"><i class="fa-regular fa-square-minus"></i> 恢复默认</a>
+    <div style="height:100%;">
+      <p><i class="fa-regular fa-images"></i> 背景列表</p>
+      <div id="bglist">
+        <a onclick="bg(0)"><i class="fa-solid fa-pen-to-square"></i> 自定义url</a>
+        <a onclick="bg(-1)"><i class="fa-regular fa-square-minus"></i> 恢复默认</a>
+      </div>
     </div>
-  </div>
 
     <div>
       <p><i class="fa-solid fa-sliders"></i> 样式调节<br>
@@ -228,56 +230,56 @@
       </div>
     </div>
 
-  <div>
-    <p>一个未完成开发的控制中心。<br>诸多特性亟待实现。<br>
-      © 2022 Control Panel Digital Design (CPDD). All rights reserved.</p>
-  </div>
-
-  <div style="height:30%;">
-    <p><i class="fa-solid fa-info-circle"></i> 关于</p>
     <div>
-      <details>
-        <summary>纸鹿</summary>
-        <div class="alist">
-          <a><i class="fa-brands fa-qq"></i> QQ 2399052066</a>
-          <a><i class="fa-brands fa-weixin"></i> 微信 zhilubenlu</a>
-          <a><i class="fa-brands fa-weixin"></i> 公众号 纸鹿本鹿</a>
-          <a href="https://music.163.com/user/444705789"><i class="fa-solid fa-compact-disc"></i> 网易云音乐 纸鹿本鹿</a>
-          <a href="https://github.com/L33Z22L11"><i class="fa-brands fa-github"></i> Github L33Z22L11</a>
-          <a href="https://zhilu.cyou"><i class="fa-solid fa-earth-asia"></i> 纸鹿小站 zhilu.cyou</a>
-        </div>
-      </details>
+      <p>一个未完成开发的控制中心。<br>诸多特性亟待实现。<br>
+        © 2022 Control Panel Digital Design (CPDD). All rights reserved.</p>
+    </div>
 
-      <details>
-        <summary>野生技协@混技</summary>
-        <div class="alist">
-          <a><i class="fa-brands fa-qq"></i> 野生技协分群 169994096</a>
-          <a href="https://github.com/pubsite"><i class="fa-brands fa-github"></i> Github pubsite</a>
-          <a><i class="fa-brands fa-qq"></i> 混技总群 894656456</a>
-          <a href="https://thisis.host"><i class="fa-solid fa-earth-asia"></i> 官网 thisis.host</a>
-        </div>
-      </details>
-      <details>
-        <summary>其他</summary>
-        <a><i class="fa-brands fa-qq"></i> 划水方块群 1142349003</a>
+    <div style="height:30%;">
+      <p><i class="fa-solid fa-info-circle"></i> 关于</p>
+      <div>
         <details>
-          <summary><i class="fa-brands fa-qq"></i> 其他个人QQ</summary>
+          <summary>纸鹿</summary>
           <div class="alist">
-            <a>拾汘 393501440</a><a>Star 2692292636</a>
-            <a>长安凛冬 2252855301</a><a>加零 3073246100</a><a>GX 63045083</a>
-            <a>yl 1413488450</a><a>純粋な 378655447</a>
+            <a><i class="fa-brands fa-qq"></i> QQ 2399052066</a>
+            <a><i class="fa-brands fa-weixin"></i> 微信 zhilubenlu</a>
+            <a><i class="fa-brands fa-weixin"></i> 公众号 纸鹿本鹿</a>
+            <a href="https://music.163.com/user/444705789"><i class="fa-solid fa-compact-disc"></i> 网易云音乐 纸鹿本鹿</a>
+            <a href="https://github.com/L33Z22L11"><i class="fa-brands fa-github"></i> Github L33Z22L11</a>
+            <a href="https://zhilu.cyou"><i class="fa-solid fa-earth-asia"></i> 纸鹿小站 zhilu.cyou</a>
           </div>
         </details>
-      </details>
-      </details>
+
+        <details>
+          <summary>野生技协@混技</summary>
+          <div class="alist">
+            <a><i class="fa-brands fa-qq"></i> 野生技协分群 169994096</a>
+            <a href="https://github.com/pubsite"><i class="fa-brands fa-github"></i> Github pubsite</a>
+            <a><i class="fa-brands fa-qq"></i> 混技总群 894656456</a>
+            <a href="https://thisis.host"><i class="fa-solid fa-earth-asia"></i> 官网 thisis.host</a>
+          </div>
+        </details>
+        <details>
+          <summary>其他</summary>
+          <a><i class="fa-brands fa-qq"></i> 划水方块群 1142349003</a>
+          <details>
+            <summary><i class="fa-brands fa-qq"></i> 其他个人QQ</summary>
+            <div class="alist">
+              <a>拾汘 393501440</a><a>Star 2692292636</a>
+              <a>长安凛冬 2252855301</a><a>加零 3073246100</a><a>GX 63045083</a>
+              <a>yl 1413488450</a><a>純粋な 378655447</a>
+            </div>
+          </details>
+        </details>
+        </details>
+      </div>
     </div>
-  </div>
   </div>
   <script src="./msg.js"></script>
   <script src="./interact.js" msg></script>
   <script src="./gallery.js" msg interact></script>
 
-  <link rel="stylesheet" href="https://fonts.font.im/css?family=Source+Serif+Pro:600" >
+  <link rel="stylesheet" href="https://fonts.font.im/css?family=Source+Serif+Pro:600">
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Ubuntu:400,700">
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/pubsite/GsFont/r1.css">
