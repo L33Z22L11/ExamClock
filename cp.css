@@ -83,11 +83,11 @@
   transition: 0.5s;
   transition: opacity 0.5s;
   text-align: center;
-  color: #37a;
+  color: #59a;
   background: #fff;
 }
 .coincide {
-  font-size: 2em;
+  font-size: 1.5em;
   position: relative;
   color: rgba(0, 0, 0, 0.6);
 }
