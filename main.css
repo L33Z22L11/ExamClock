@@ -10,7 +10,7 @@ html {
   font-family: Ubuntu, Gs, sans-serif;
   font-size: 48px;
   font-size: 2.75vw;
-  color: white;
+  color: #fff;
   background: #333 fixed center
     url(https://images.xuewuzhibu.cn/02a08bf8bad1ef3e8e15d7da1066d62d.jpg);
   background-size: cover;
@@ -44,12 +44,12 @@ html {
 /* 一级淡文本（保留字体颜色） */
 .dim {
   font-size: 0.75em;
-  opacity: 0.8;
+  opacity: 0.75;
 }
 /* 二级淡文本 */
 .sub {
   font-size: 0.6em;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.75);
 }
 /* 页脚文本 */
 footer {
@@ -157,7 +157,7 @@ footer {
 #duration,
 #activity {
   font-size: 1.5em;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.75);
 }
 /* 适配竖屏 */
 @media (max-aspect-ratio: 4/5) {
@@ -226,9 +226,9 @@ a:hover {
 .hilit,
 #menu,
 .dropdown > :last-child {
-  color: rgba(0, 0, 0, 0.9);
+  color: #000;
   border-radius: 0.2rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.75);
   box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(0.5em);
 }
@@ -248,7 +248,7 @@ a.hilit,
   align-items: center;
   justify-content: space-between;
   min-width: 5em;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.75);
   border-radius: 0.2em;
   background: rgba(0, 0, 0, 0.1);
 }

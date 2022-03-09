@@ -34,7 +34,7 @@ exam[30] = function () {
     $("晨读2", today.date, "07:30", "08:00");
     $("第1节", today.date, "08:10", "08:55");
     $("第2节", today.date, "09:05", "09:50");
-    $("课间操", today.date, "09:50", "10:05","<a href=''>");
+    $("课间操", today.date, "09:50", "10:05", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
     $("第3节", today.date, "10:20", "11:05");
     $("第4节", today.date, "11:15", "12:00");
     $("午休", today.date, "12:50", "13:50");
@@ -101,7 +101,7 @@ exam[20] = function () {
     $("晨读2", today.date, "07:30", "08:00");
     $("第1节", today.date, "08:10", "08:55");
     $("第2节", today.date, "09:05", "09:50");
-    $("课间操", today.date, "09:50", "10:05");
+    $("课间操", today.date, "09:50", "10:05", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
     $("第3节", today.date, "10:20", "11:05");
     $("第4节", today.date, "11:15", "12:00");
     $("午休", today.date, "12:50", "13:50");
