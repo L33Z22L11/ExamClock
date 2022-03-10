@@ -88,14 +88,24 @@
 
           <span class="dropdown">
             <i class="fa-solid fa-newspaper" data-sub="疫情消息"></i>
-            <div style="right:-4em;min-width:8em;">
-              <a href="http://wjw.baoji.gov.cn/col/col5555/index.html">
-                <i class="fa-solid fa-hand-holding-medical fa-fw"></i> 宝鸡卫健委</a>
-              <a href="https://voice.baidu.com/act/newpneumonia/newpneumonia">
-                <i class="fa-solid fa-paw fa-fw"></i> 疫情大数据</a>
-              <a
-                href="https://voice.baidu.com/act/newpneumonia/newpneumonia?city=%E9%99%95%E8%A5%BF-%E5%AE%9D%E9%B8%A1">
-                <i class="fa-solid fa-map-location-dot fa-fw"></i> 宝鸡疫情</a>
+            <div style="right:-4em;min-width:7.5em;">
+              <div><i class="fa-solid fa-hand-holding-medical fa-fw"></i> 卫健委专栏
+                <div class="shieldlist">
+                  <a href="http://www.nhc.gov.cn/xcs/yqfkdt/gzbd_index.shtml">国家</a>
+                  <a href="http://sxwjw.shaanxi.gov.cn/sy/wjyw/">陕西</a>
+                  <a href="http://wjw.baoji.gov.cn/col/col5555/">宝鸡</a>
+                </div>
+              </div>
+              <div><i class="fa-solid fa-paw fa-fw"></i> 疫情大数据
+                <div class="shieldlist">
+                  <a href="https://voice.baidu.com/act/newpneumonia/newpneumonia">国内数据</a>
+                  <a href="https://voice.baidu.com/act/newpneumonia/newpneumonia#tab1">国内资讯</a>
+                  <a
+                    href="https://voice.baidu.com/act/newpneumonia/newpneumonia?city=%E9%99%95%E8%A5%BF-%E5%AE%9D%E9%B8%A1">宝鸡数据</a>
+                  <a
+                    href="https://voice.baidu.com/act/newpneumonia/newpneumonia?city=%E9%99%95%E8%A5%BF-%E5%AE%9D%E9%B8%A1#tab3">宝鸡资讯</a>
+                </div>
+              </div>
             </div>
           </span>
 
@@ -122,7 +132,7 @@
             <div style="right:-4em; min-width:10em;">
               <div>
                 <p><i class="fa-solid fa-shop-slash fa-fw"></i> 投稿暂停
-                  <span class="shield">6月9日恢复</span>
+                  <span class="shield">22.6.9恢复</span>
                   <!-- <i class="fa-brands fa-qq fa-fw"></i> 投稿QQ <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066</a> -->
                 </p>
                 <!-- <p class="dim">通过<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"> CC BY-NC-SA 4.0
@@ -132,7 +142,7 @@
                 <span class="shield">Ctrl+右键</span></a>
               <a href="https://img.xuewuzhibu.cn/album/h8p">
                 <i class="fa-solid fa-images fa-fw"></i> 一卷图库
-                <span class="shield"><i class="fa-regular fa-eye"></i>13.6k</span>
+                <span class="shield"><i class="fa-regular fa-eye"></i>14.0k</span>
                 <p class="dim">由学无止步图床托管</p>
               </a>
             </div>
@@ -150,23 +160,24 @@
                 <span class="shieldlist"><a href="?debug=1"><i class="fa-solid fa-list-check fa-fw"></i> 调试</a>
                   <a href="https://github.com/L33Z22L11/ExamClock"><i class="fa-brands fa-github fa-fw"></i> 源码</a>
                 </span>
-              </div>
-              <div class="space-between shieldlist">
-                <a onclick="slogan.main=prompt('考试大标语',slogan.main)||slogan.main">
-                  <i class="fa-solid fa-quote-left fa-fw"></i> 大标语</a>
-                <a onclick="slogan.sub=[prompt('考试副标语',slogan.sub[0])]||slogan.sub">
-                  <i class="fa-solid fa-quote-right fa-fw"></i> 小标语</a>
-                <a onclick="subject.to(prompt('考试类型',subject.on))">
-                  <i class="fa-solid fa-box-archive fa-fw"></i> 类型</a>
-                <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
-                <a onclick="document.getElementById('type').innerHTML=prompt('机构名称','纸鹿教育')||exam[subject.on]()">
-                  <i class="fa-regular fa-building fa-fw"></i> 机构</a>
-                <a onclick="document.getElementById('subject').innerHTML=prompt('考试科目名称',subject.name)|| subject.name">
-                  <i class="fa-solid fa-book fa-fw"></i> 科目</a>
-                <a onclick="fixMinutes(subject.start,'开始时间')">
-                  <i class="fa-solid fa-hourglass-start fa-fw"></i> 开始时间</a>
-                <a onclick="fixMinutes(subject.end,'结束时间')">
-                  <i class="fa-solid fa-hourglass-end fa-fw"></i> 结束时间</a>
+                <div class="shieldlist">
+                  <a onclick="slogan.main=prompt('考试大标语',slogan.main)||slogan.main">
+                    <i class="fa-solid fa-quote-left fa-fw"></i> 大标语</a>
+                  <a onclick="slogan.sub=[prompt('考试副标语',slogan.sub[0])]||slogan.sub">
+                    <i class="fa-solid fa-quote-right fa-fw"></i> 小标语</a>
+                  <a onclick="subject.to(prompt('考试类型',subject.on))">
+                    <i class="fa-solid fa-box-archive fa-fw"></i> 类型</a>
+                  <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
+                  <a onclick="document.getElementById('type').innerHTML=prompt('机构名称','纸鹿教育')||exam[subject.on]()">
+                    <i class="fa-regular fa-building fa-fw"></i> 机构</a>
+                  <a
+                    onclick="document.getElementById('subject').innerHTML=prompt('考试科目名称',subject.name)|| subject.name">
+                    <i class="fa-solid fa-book fa-fw"></i> 科目</a>
+                  <a onclick="fixMinutes(subject.start,'开始时间')">
+                    <i class="fa-solid fa-hourglass-start fa-fw"></i> 开始时间</a>
+                  <a onclick="fixMinutes(subject.end,'结束时间')">
+                    <i class="fa-solid fa-hourglass-end fa-fw"></i> 结束时间</a>
+                </div>
               </div>
             </div>
           </span>
