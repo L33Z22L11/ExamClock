@@ -240,15 +240,15 @@ a.hilit,
   box-sizing: border-box;
   padding: 0.2em;
 }
-/* 调节框样式 */
-.selectbar {
-  display: flex;
-  float: right;
-  overflow: hidden;
-  align-items: center;
-  justify-content: space-between;
-  min-width: 5em;
-  color: rgba(0, 0, 0, 0.75);
-  border-radius: 0.2em;
-  background: rgba(0, 0, 0, 0.1);
+/* 盾 */
+.shield,
+.shieldlist > * {
+  font-size: 0.5em;
+  display: inline-block;
+  margin: 0 0.5em;
+  padding: 0.1em 0.5em;
+  vertical-align: middle;
+  color: #fff;
+  border-radius: 1em;
+  background: rgba(0, 0, 0, 0.5);
 }

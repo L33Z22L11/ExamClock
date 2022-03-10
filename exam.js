@@ -22,7 +22,7 @@ exam["2022-02-14"] = function () {
 };
 exam[30] = function () {
   // 特别注意，最后一轮求余后应该是数组第0项
-  slogan.$main = today.cee + "天 乘风破浪 势不可挡";
+  slogan.$main =  "乘风破浪 势不可挡<span class='shield'>"+today.cee +"天</span>";
   // 这种情况就比较复杂了，代码和人有一个能跑就行
   // 之前的条件在增加了一些需求的设置后竟然有bug
   // 我不敢相信，不过是时候让兰神接手搞点大事情了
