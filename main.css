@@ -26,10 +26,10 @@ html {
   display: inline-block;
 }
 .space {
-  margin: 0 -0.5em;
+  margin: 0 -0.3em;
 }
 .space > * {
-  margin: 0 0.5em;
+  margin: 0 0.3em;
 }
 /* 淡色背景阴影 */
 .notify > div,
@@ -144,6 +144,7 @@ footer {
 .card > div:hover,
 .card > a:hover {
   background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
 }
 
 /* 时钟字体 */
@@ -175,21 +176,29 @@ footer {
  * functional
  */
 /* 下拉元素定位 */
+[data-title],
 .dropdown {
   position: relative;
   display: inline-block;
-  border-radius: 0.2rem;
 }
 /* 下拉正文定位（未下拉） */
-.iconset > * > :last-child,
+[data-title]::after,
 .dropdown > :last-child {
   position: absolute;
   z-index: 1;
   display: none;
   cursor: auto;
 }
+[data-title]::after {
+  top: -1em;
+  right: 0;
+  width: 10em;
+  padding: 0.1em;
+
+  content: attr(data-title);
+}
 /* 下拉正文定位（已下拉） */
-.iconset > *:hover > :last-child,
+[data-title]:hover::after,
 .dropdown:hover > :last-child {
   display: block;
   animation: fade 0.2s;
@@ -210,21 +219,24 @@ footer {
   max-height: 20em;
 }
 /* 下拉/点击文本 */
-.dropdown,
+.dropdown > a {
+  display: inline-block;
+}
 a {
   cursor: pointer;
   text-decoration: none;
   color: inherit;
   border-radius: 0.2rem;
 }
-.dropdown:hover,
 a:hover {
   color: #fff;
   background: linear-gradient(120deg, #7af, #f9a);
+  box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.2);
 }
 /* 高亮/菜单/下拉正文颜色 */
 .hilit,
 #menu,
+[data-title]::after,
 .dropdown > :last-child {
   color: #000;
   border-radius: 0.2rem;
@@ -243,12 +255,13 @@ a.hilit,
 /* 盾 */
 .shield,
 .shieldlist > * {
-  font-size: 0.5em;
+  font-size: 0.6em;
   display: inline-block;
   margin: 0.1em;
-  padding: 0.1em 0.5em;
+  padding: 0 0.2em;
   vertical-align: middle;
   color: #fff;
+  border: 0.1em solid rgba(255, 255, 255, 0.2);
   border-radius: 1em;
   background: rgba(0, 0, 0, 0.5);
 }

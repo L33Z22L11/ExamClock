@@ -66,11 +66,9 @@
 
         <div class="sub space-between space">
           <span class="dropdown" style="min-width:5.5em;">
-            <a class="hilit">
-              <div class="space-between">
-                <span id="type">选择类型</span>&nbsp;
-                <i class="fa-solid fa-caret-down"></i>
-              </div>
+            <a class="hilit space-between">
+              <span id="type">选择类型</span>&nbsp;
+              <i class="fa-solid fa-caret-down"></i>
             </a>
             <div id="typelist" style="width:100%;">
               <a onclick="subject.to(30)">高三日常</a>
@@ -87,7 +85,8 @@
           </span>
 
           <span class="dropdown">
-            <i class="fa-solid fa-newspaper" data-sub="疫情消息"></i>
+            <a data-sub="比搜索更快">
+              <i class="fa-solid fa-newspaper"></i> 疫情</a>
             <div style="right:-4em;min-width:7.5em;">
               <div><i class="fa-solid fa-hand-holding-medical fa-fw"></i> 卫健委专栏
                 <div class="shieldlist">
@@ -106,11 +105,18 @@
                     href="https://voice.baidu.com/act/newpneumonia/newpneumonia?city=%E9%99%95%E8%A5%BF-%E5%AE%9D%E9%B8%A1#tab3">宝鸡资讯</a>
                 </div>
               </div>
+              <div><i class="fa-solid fa-up-right-from-square fa-fw"></i>更多
+                <div class="shieldlist">
+                  <a href="https://www.baidu.com/s?wd=%E5%AE%9D%E9%B8%A1%E7%96%AB%E6%83%85">百度搜索</a>
+                  <a href="https://s.weibo.com/weibo?q=%E5%AE%9D%E9%B8%A1%E7%96%AB%E6%83%85">微博搜索</a>
+                  <a href="http://m.baoji.bendibao.com/news/yqdengji/">本地宝风险等级</a>
+                </div>
+              </div>
             </div>
           </span>
 
           <span class="dropdown">
-            <i class="fa-solid fa-baby-carriage" data-sub="宝中服务"></i>
+            <a class="fa-solid fa-baby-carriage" data-sub="宝中服务"></a>
             <div style="right:-4em;min-width:9em;">
               <a href="https://img.xuewuzhibu.cn/bjzx"><i class="fa-regular fa-calendar-days fa-fw"></i> 高三课表</a>
               <a href="https://img.xuewuzhibu.cn/album/0G4"><i class="fa-regular fa-calendar-days fa-fw"></i> 高二课表</a>
@@ -128,15 +134,14 @@
           </span>
 
           <span class="dropdown">
-            <i class="fa-solid fa-shuffle" onclick="playCover(bg())" data-sub="换背景"></i>
+            <a class="fa-solid fa-shuffle" onclick="playCover(bg())" data-sub="换背景"></a>
             <div style="right:-4em; min-width:10em;">
               <div>
-                <p><i class="fa-solid fa-shop-slash fa-fw"></i> 投稿暂停
-                  <span class="shield">22.6.9恢复</span>
-                  <!-- <i class="fa-brands fa-qq fa-fw"></i> 投稿QQ <a href="http://wpa.qq.com/msgrd?uin=2399052066">2399052066</a> -->
+                <p><i class="fa-brands fa-qq fa-fw"></i> 2399052066
+                  <span class="shield">投稿</span>
                 </p>
-                <!-- <p class="dim">通过<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"> CC BY-NC-SA 4.0
-                  </a>授权。</p> -->
+                <span class="dim">授权协议</span>
+                <a class="shield" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>
               </div>
               <a onclick="displayCP()"><i class="fa-solid fa-list-check fa-fw"></i> 背景菜单
                 <span class="shield">Ctrl+右键</span></a>
@@ -149,7 +154,7 @@
           </span>
 
           <span class="dropdown">
-            <i class="fa-solid fa-bars" data-sub="菜单"></i>
+            <a class="fa-solid fa-bars" data-sub="菜单"></a>
             <div style="right:-2em; min-width:10em;">
               <a href="/jump-to-exam-clock.html" download="跳转到考试时钟">
                 <i class="fa-solid fa-file-arrow-down fa-fw"></i> 下载跳转文件</a>
@@ -157,26 +162,26 @@
                 <i class="fa-solid fa-hourglass fa-fw"></i> 时光局
                 <span class="shield">历史版本/文档</span></a>
               <div><i class="fa-solid fa-gears fa-fw"></i> 高级
-                <span class="shieldlist"><a href="?debug=1"><i class="fa-solid fa-list-check fa-fw"></i> 调试</a>
-                  <a href="https://github.com/L33Z22L11/ExamClock"><i class="fa-brands fa-github fa-fw"></i> 源码</a>
+                <span class="shieldlist"><a href="?debug=1"><i class="fa-solid fa-list-check"></i> 调试</a>
+                  <a href="https://github.com/L33Z22L11/ExamClock"><i class="fa-brands fa-github"></i> 源码</a>
                 </span>
                 <div class="shieldlist">
                   <a onclick="slogan.main=prompt('考试大标语',slogan.main)||slogan.main">
-                    <i class="fa-solid fa-quote-left fa-fw"></i> 大标语</a>
+                    <i class="fa-solid fa-quote-left"></i> 大标语</a>
                   <a onclick="slogan.sub=[prompt('考试副标语',slogan.sub[0])]||slogan.sub">
-                    <i class="fa-solid fa-quote-right fa-fw"></i> 小标语</a>
+                    <i class="fa-solid fa-quote-right"></i> 小标语</a>
                   <a onclick="subject.to(prompt('考试类型',subject.on))">
-                    <i class="fa-solid fa-box-archive fa-fw"></i> 类型</a>
+                    <i class="fa-solid fa-box-archive"></i> 类型</a>
                   <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
                   <a onclick="document.getElementById('type').innerHTML=prompt('机构名称','纸鹿教育')||exam[subject.on]()">
-                    <i class="fa-regular fa-building fa-fw"></i> 机构</a>
+                    <i class="fa-regular fa-building"></i> 机构</a>
                   <a
                     onclick="document.getElementById('subject').innerHTML=prompt('考试科目名称',subject.name)|| subject.name">
-                    <i class="fa-solid fa-book fa-fw"></i> 科目</a>
+                    <i class="fa-solid fa-book"></i> 科目</a>
                   <a onclick="fixMinutes(subject.start,'开始时间')">
-                    <i class="fa-solid fa-hourglass-start fa-fw"></i> 开始时间</a>
+                    <i class="fa-solid fa-hourglass-start"></i> 开始时间</a>
                   <a onclick="fixMinutes(subject.end,'结束时间')">
-                    <i class="fa-solid fa-hourglass-end fa-fw"></i> 结束时间</a>
+                    <i class="fa-solid fa-hourglass-end"></i> 结束时间</a>
                 </div>
               </div>
             </div>
@@ -212,23 +217,24 @@
 
     <footer>
       <div class="space-between space">
-        <p title="QQ：2399052066"><i class="fa-solid fa-code fa-fw"></i>
+        <p data-title="QQ：2399052066"><i class="fa-solid fa-code fa-fw"></i>
           开发：纸鹿@考试时钟项目组</p>
         <p><i class="fa-solid fa-award fa-fw"></i>
-          <span title="QQ群：894656456">野生技协合作：</span>
-          <span title="QQ群：1142349003">方块茶话会</span>
+          <span data-title="QQ群：894656456">野生技协合作：</span>
+          <span data-title="QQ群：1142349003">方块茶话会</span>
           音幻宝中 朗诵社 排球社 合唱团 街舞社 汉服社 航模社 民乐社 心理社
           书画社 动漫社 舞蹈队 日语社 Instreet社 机器人社 推理社 篮裁社
+          <span data-title="QQ群：1004048547">冒险家协会</span>
         </p>
       </div>
       <div class="space-between space">
-        <p title="来自一卷图库，以CC BY-NC-SA 4.0方式使用"><i class="fa-solid fa-image fa-fw"></i>
+        <p data-title="来自一卷图库，以CC BY-NC-SA 4.0方式使用"><i class="fa-solid fa-image fa-fw"></i>
           <span id="bg">背景：雨后校园</span>
         </p>
-        <p title="欢迎发布内容"><i class="fa-solid fa-hashtag fa-fw"></i>
+        <p data-title="欢迎发布内容"><i class="fa-solid fa-hashtag fa-fw"></i>
           野生技协免费提供网站发布服务、Microsoft 365开发者账号、@thisis.host域名邮箱</p>
         <p><i class="fa-solid fa-file-arrow-up fa-fw"></i>
-          ver_6.5.3_学到就是赚到</p>
+          ver_6.5.4_增加疫情资讯</p>
       </div>
     </footer>
   </div>

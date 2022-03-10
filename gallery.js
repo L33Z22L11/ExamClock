@@ -43,7 +43,7 @@ function bg(v, p) {
     // 定时换壁纸（康总加成🙏）
     clearInterval(bg.interval);
     bg.interval = setInterval(bg, 2040411);
-    return "来自" + gallery[v].vol + "的神秘技能正在冷却中";
+    return "投稿QQ：2399052066<br>使用一卷图库须遵守<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'> CC BY-NC-SA 4.0 </a>许可。";
   } catch (e) {
     // 虽然上面一般不会出错，出错了下面这段备用代码也可能无法运行，但还是写一段
     console.warn(send("主背景函数出错，已启用备用背景。\n") + e);
