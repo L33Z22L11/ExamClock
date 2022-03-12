@@ -22,7 +22,7 @@ exam["2022-02-14"] = function () {
 };
 exam[30] = function () {
   // 特别注意，最后一轮求余后应该是数组第0项
-  slogan.$main =  "乘风破浪 势不可挡<span class='shield'>"+today.cee +"天</span>";
+  slogan.$main = "乘风破浪 势不可挡<span class='shield'>" + today.cee + "天</span>";
   // 这种情况就比较复杂了，代码和人有一个能跑就行
   // 之前的条件在增加了一些需求的设置后竟然有bug
   // 我不敢相信，不过是时候让兰神接手搞点大事情了
@@ -40,7 +40,7 @@ exam[30] = function () {
     $("午休", today.date, "12:50", "13:50");
     $("第5节", today.date, "14:10", "14:55");
     $("第6节", today.date, "15:05", "15:50");
-    $("第7节", today.date, "16:05", "16:50");
+    if (today.day != 6) $("第7节", today.date, "16:05", "16:50");
     if (today.day == 2) $("考练", today.date, "17:00", "17:45", 0,
       ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科" + ["双周数学", "单周化学"][today.week % 2]
         + "，文科第" + (today.week % 3 || 3) + "/3轮" + ["地理(明日)", "政治", "历史",][today.week % 3]]);
