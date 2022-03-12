@@ -48,7 +48,7 @@ exam[30] = function () {
       ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
     else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0,
       ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
-    else if (today.day == 6) $(["英语", "数学",][today.week % 2], today.date, "15:55", "17:55", 0,
+    else if (today.day == 6) $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0,
       ["第" + today.week + "周" + today.weekday + "大考练：根据年级原定两小时考练安排，结束后请自行订正答案。"]);
     else $("自习", today.date, "17:00", "17:45");
   } else {
