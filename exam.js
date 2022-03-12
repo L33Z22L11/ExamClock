@@ -3,9 +3,6 @@
  */
 console.log("%c\n加入Techaos! 混技\nQQ群：169994096\n", "font:3em Montserrat,sans-serif;");
 console.log("%c\n野生技协(混技分部)\nQQ群：894656456\n", "font:3em Montserrat,sans-serif;");
-/* 
- * 考试科目内容实现
- */
 var exam = {
   default: function () {
     slogan.$main = "考试时钟";
@@ -22,7 +19,7 @@ exam["2022-02-14"] = function () {
 };
 exam[30] = function () {
   // 特别注意，最后一轮求余后应该是数组第0项
-  slogan.$main = "乘风破浪 势不可挡<span class='shield'>" + today.cee + "天</span>";
+  slogan.$main = "乘风破浪 势不可挡 <span class='shield'>" + today.cee + "天</span>";
   // 这种情况就比较复杂了，代码和人有一个能跑就行
   // 之前的条件在增加了一些需求的设置后竟然有bug
   // 我不敢相信，不过是时候让兰神接手搞点大事情了
@@ -49,12 +46,12 @@ exam[30] = function () {
     else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0,
       ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
     else if (today.day == 6) $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0,
-      ["第" + today.week + "周" + today.weekday + "大考练：根据年级原定两小时考练安排，结束后请自行订正答案。"]);
+      ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
     else $("自习", today.date, "17:00", "17:45");
   } else {
     // 周日白天
-    $(["语文", "综合",][today.week % 2], today.date, "14:10", "16:40", 0,
-      ["第" + today.week + "周" + today.weekday + "大考练"]);
+    $(["综合", "语文",][today.week % 2], today.date, "14:10", "16:40", 0,
+      ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
     $("订正", today.date, "16:50", "17:30");
   }
   if (today.day != 6) {
@@ -160,23 +157,4 @@ exam[11] = function () {
   $("数学", "2022-01-21", "14:00", "15:40");
   $("政治", "2022-01-21", "16:10", "17:10");
   return "高一";
-};
-exam.temp = function () {
-  // “大多数人都没用过这个功能”
-  var ts, tsh, tsm, teh, tem;
-  if (!(ts = prompt("考试科目名称(3个字以内)", "考练")) ||
-    !(tsh = prompt("考试开始时间(小时)", 16)) ||
-    !(tsm = prompt("考试开始时间(分钟)", 25)) ||
-    !(teh = prompt("考试结束时间(小时)", 23)) ||
-    !(tem = prompt("考试结束时间(分钟)", 55))) {
-    // 取消创建临时科目
-    console.warn(send("由于操作取消，未生成临时科目。"));
-    subject.on = "default";
-  } else {
-    // 成功创建临时科目
-    $(ts, today.date, fixDigit(tsh) + ":" + fixDigit(tsm), fixDigit(teh) + ":" + fixDigit(tem));
-    // alert("考试科目：" + subject.name + "\n起止时间：" + getClock(subject.start) + "~" + getClock(subject.end));
-    console.log(send("添加了一门在 " + today.date + " 从 " + fixDigit(tsh) + ":" + fixDigit(tsm) + " 到 " + fixDigit(teh) + ":" + fixDigit(tem) + " 的科目：" + ts));
-  }
-  return "自定义";
 };

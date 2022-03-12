@@ -48,7 +48,7 @@ subject.to = function (to) {
   slogan.$sub = [""];
   this.on = to in exam ? to : this.on;
   document.getElementById("type").innerHTML = exam[this.on]();
-  if (!SP.debug) playCover("正在传送到" + (exam[this.on]()) + "，请稍候");
+  if (!SP.debug) playCover("正在传送到坐标 <span class='shield'>?type=" + this.on + "</span>，请稍候");
   // document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // 想提升应用启动速度，就把延迟改小点
   setTimeout(function () {
@@ -56,6 +56,23 @@ subject.to = function (to) {
     timer.update();
     slogan.update();
   }, 500);
+}
+// 设置临时科目
+function setTemp(ts, tsh, tsm, teh, tem) {
+  subject.end = new Date(0);
+  if (!(ts = prompt("考试科目名称(3个字以内)", "考练")) ||
+    !(tsh = prompt("考试开始时间(小时)", 16)) ||
+    !(tsm = prompt("考试开始时间(分钟)", 25)) ||
+    !(teh = prompt("考试结束时间(小时)", 23)) ||
+    !(tem = prompt("考试结束时间(分钟)", 55))) {
+    // 取消创建临时科目
+    console.warn(send("由于操作取消，未生成临时科目。"));
+  } else {
+    // 成功创建临时科目
+    console.log(send("添加了一门在 " + today.date + " 从 " + fixDigit(tsh) + ":" + fixDigit(tsm) + " 到 " + fixDigit(teh) + ":" + fixDigit(tem) + " 的科目：" + ts));
+    if (now > subject.end) console.log(send("设置的结束时间小于当前时间，你是认真的吗"));
+    $(ts, today.date, fixDigit(tsh) + ":" + fixDigit(tsm), fixDigit(teh) + ":" + fixDigit(tem));
+  }
 }
 // 注入当前科目
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit) {

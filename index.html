@@ -66,9 +66,11 @@
 
         <div class="sub space-between space">
           <span class="dropdown" style="min-width:5.5em;">
-            <a class="hilit space-between">
-              <span id="type">选择类型</span>&nbsp;
-              <i class="fa-solid fa-caret-down"></i>
+            <a class="hilit">
+              <div class="space-between">
+                <span id="type">选择类型</span>
+                <i class="fa-solid fa-caret-down fa-fw"></i>
+              </div>
             </a>
             <div id="typelist" style="width:100%;">
               <a onclick="subject.to(30)">高三日常</a>
@@ -79,8 +81,7 @@
               <a onclick="subject.to(21)">高二理科</a>
               <a onclick="subject.to(22)">高二文科</a>
               <a onclick="subject.to(11)">高一</a>
-              <a onclick="subject.to('temp');">
-                <i class="fa-regular fa-square-plus"></i> 临时</a>
+              <a onclick="setTemp()"><i class="fa-regular fa-square-plus"></i> 临时</a>
             </div>
           </span>
 
@@ -127,7 +128,7 @@
               <a href="https://book.thisis.host"><i class="fa-solid fa-book fa-fw"></i> 电子课本</a>
               <a href="https://term.cooo.site"><i class="fa-solid fa-business-time fa-fw"></i> 学期计时板</a>
               <a href="https://thisis.host"><i class="fa-solid fa-code-pull-request fa-fw"></i> 野生技协
-                <span class="shield"><i class="fa-solid fa-user-group"></i>170</span>
+                <span class="shield"><i class="fa-solid fa-user-group"></i> 170</span>
                 <p class="dim">官网：hi.thisis.host<br>QQ群：894656456</p>
               </a>
             </div>
@@ -140,14 +141,14 @@
                 <p><i class="fa-brands fa-qq fa-fw"></i> 2399052066
                   <span class="shield">投稿</span>
                 </p>
-                <span class="dim">授权协议</span>
+                <span class="dim">授权许可为</span>
                 <a class="shield" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>
               </div>
               <a onclick="displayCP()"><i class="fa-solid fa-list-check fa-fw"></i> 背景菜单
                 <span class="shield">Ctrl+右键</span></a>
               <a href="https://img.xuewuzhibu.cn/album/h8p">
                 <i class="fa-solid fa-images fa-fw"></i> 一卷图库
-                <span class="shield"><i class="fa-regular fa-eye"></i>14.0k</span>
+                <span class="shield"><i class="fa-regular fa-eye"></i> 14.9k</span>
                 <p class="dim">由学无止步图床托管</p>
               </a>
             </div>
@@ -163,25 +164,25 @@
                 <span class="shield">历史版本/文档</span></a>
               <div><i class="fa-solid fa-gears fa-fw"></i> 高级
                 <span class="shieldlist"><a href="?debug=1"><i class="fa-solid fa-list-check"></i> 调试</a>
-                  <a href="https://github.com/L33Z22L11/ExamClock"><i class="fa-brands fa-github"></i> 源码</a>
+                  <a href="https://github.com/L33Z22L11/ExamClock"><i class="fa-brands fa-github fa-fw"></i> 源码</a>
                 </span>
                 <div class="shieldlist">
                   <a onclick="slogan.main=prompt('考试大标语',slogan.main)||slogan.main">
-                    <i class="fa-solid fa-quote-left"></i> 大标语</a>
+                    <i class="fa-solid fa-quote-left fa-fw"></i> 大标语</a>
                   <a onclick="slogan.sub=[prompt('考试副标语',slogan.sub[0])]||slogan.sub">
-                    <i class="fa-solid fa-quote-right"></i> 小标语</a>
+                    <i class="fa-solid fa-quote-right fa-fw"></i> 小标语</a>
                   <a onclick="subject.to(prompt('考试类型',subject.on))">
-                    <i class="fa-solid fa-box-archive"></i> 类型</a>
+                    <i class="fa-solid fa-box-archive fa-fw"></i> 类型</a>
                   <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
                   <a onclick="document.getElementById('type').innerHTML=prompt('机构名称','纸鹿教育')||exam[subject.on]()">
-                    <i class="fa-regular fa-building"></i> 机构</a>
+                    <i class="fa-regular fa-building fa-fw"></i> 机构</a>
                   <a
                     onclick="document.getElementById('subject').innerHTML=prompt('考试科目名称',subject.name)|| subject.name">
-                    <i class="fa-solid fa-book"></i> 科目</a>
+                    <i class="fa-solid fa-book fa-fw"></i> 科目</a>
                   <a onclick="fixMinutes(subject.start,'开始时间')">
-                    <i class="fa-solid fa-hourglass-start"></i> 开始时间</a>
+                    <i class="fa-solid fa-hourglass-start fa-fw"></i> 开始时间</a>
                   <a onclick="fixMinutes(subject.end,'结束时间')">
-                    <i class="fa-solid fa-hourglass-end"></i> 结束时间</a>
+                    <i class="fa-solid fa-hourglass-end fa-fw"></i> 结束时间</a>
                 </div>
               </div>
             </div>
@@ -234,7 +235,7 @@
         <p data-title="欢迎发布内容"><i class="fa-solid fa-hashtag fa-fw"></i>
           野生技协免费提供网站发布服务、Microsoft 365开发者账号、@thisis.host域名邮箱</p>
         <p><i class="fa-solid fa-file-arrow-up fa-fw"></i>
-          ver_6.5.4_增加疫情资讯</p>
+          ver_6.5.5_修复临时科目bug</p>
       </div>
     </footer>
   </div>
