@@ -70,8 +70,8 @@ function setTemp(ts, tsh, tsm, teh, tem) {
   } else {
     // 成功创建临时科目
     console.log(send("添加了一门在 " + today.date + " 从 " + fixDigit(tsh) + ":" + fixDigit(tsm) + " 到 " + fixDigit(teh) + ":" + fixDigit(tem) + " 的科目：" + ts));
-    if (now > subject.end) console.log(send("设置的结束时间小于当前时间，你是认真的吗"));
     $(ts, today.date, fixDigit(tsh) + ":" + fixDigit(tsm), fixDigit(teh) + ":" + fixDigit(tem));
+    if (subject.end < now) console.log(send("设置的结束时间小于当前时间，你是认真的吗"));
   }
 }
 // 注入当前科目
