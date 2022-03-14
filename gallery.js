@@ -39,7 +39,7 @@ function bg(v, p) {
   if (p == null) p = ~~(Math.random() * gallery[v].list.length);
   try {
     document.documentElement.style.backgroundImage = "url(https://images.xuewuzhibu.cn/" + gallery[v].list[p % (gallery[v].list.length)].id + ".jpg)";
-    send((document.getElementById("bg").innerHTML = "背景：" + gallery[v].list[p % (gallery[v].list.length)].name + "@" + gallery[v].vol) + " <span class='dim'>在右键菜单可指定背景，使用须遵守<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'> CC BY-NC-SA 4.0 </a>许可。</div>");
+    send((document.getElementById("bg").innerHTML = "背景：" + gallery[v].list[p % (gallery[v].list.length)].name + "@" + gallery[v].vol) + " <span class='dim'>使用须遵守<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'> CC BY-NC-SA 4.0 </a>许可。</div>");
     // 定时换壁纸（康总加成🙏）
     clearInterval(bg.interval);
     bg.interval = setInterval(bg, 2040411);
