@@ -10,6 +10,7 @@ var exam = {
     return "请选择";
   }
 };
+exam["sp-2022"] = ["appkey", "flag"];
 exam["2022-02-14"] = function () {
   slogan.$main = "";
   $("综合", today.date, "14:10", "16:40");
