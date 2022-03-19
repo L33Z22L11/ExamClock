@@ -46,8 +46,11 @@ exam[30] = function () {
       ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
     else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0,
       ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
-    else if (today.day == 6) $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0,
-      ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
+    else if (today.day == 6) {
+      $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0,
+        ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
+      $("数学", today.date, "18:30", "20:30", 0, ["数学大考练：若信息异常，请自行修改或设置临时科目。"]);
+    }
     else $("自习", today.date, "17:00", "17:45");
   } else {
     // 周日白天
