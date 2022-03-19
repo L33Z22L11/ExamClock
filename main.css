@@ -22,9 +22,6 @@ html {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.space-between > * {
-  display: inline-block;
-}
 .space {
   margin: 0 -0.3em;
 }
@@ -99,6 +96,8 @@ footer {
 }
 /* 带注释的图标 */
 [data-sub] {
+  padding: 0.1em;
+  min-width: 1.2em;
   line-height: 1em;
   display: inline-block;
   text-align: center;
