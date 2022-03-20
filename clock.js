@@ -48,7 +48,7 @@ subject.to = function (to) {
   slogan.$sub = [""];
   this.on = to in exam ? to : this.on;
   document.getElementById("type").innerHTML = exam[this.on]();
-  if (!SP.debug) playCover("正在传送到坐标 <span class='shield'>?type=" + this.on + "</span>，请稍候");
+  if (SP.debug == null) playCover("正在传送到坐标 <span class='shield'>?type=" + this.on + "</span>，请稍候");
   // document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // 想提升应用启动速度，就把延迟改小点
   setTimeout(function () {

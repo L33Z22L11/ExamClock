@@ -17,7 +17,7 @@ html {
 }
 /* 分散对齐 */
 .space-between {
-  display: flex;
+  display: flex !important;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -27,16 +27,6 @@ html {
 }
 .space > * {
   margin: 0 0.3em;
-}
-/* 淡色背景阴影 */
-.notify > div,
-.bar,
-.card > div,
-.card > a {
-  /* border: 2px solid rgba(255, 255, 255, 0.4); */
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.2);
-  text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.2);
 }
 /* 一级淡文本（保留字体颜色） */
 .dim {
@@ -128,6 +118,17 @@ footer {
   margin: 0.5rem -1rem;
   transition: filter 0.2s;
 }
+/* 淡色背景阴影 */
+.notify > div,
+.bar,
+.card > div,
+.card > a {
+  /* border: 2px solid rgba(255, 255, 255, 0.4); */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0.2em 0.2em 1em rgba(0, 0, 0, 0.2);
+  text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(0.1em);
+}
 /* 卡片元素字体间距等 */
 .card > div,
 .card > a {
@@ -143,7 +144,7 @@ footer {
 .card > div:hover,
 .card > a:hover {
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(0);
 }
 
 /* 时钟字体 */
