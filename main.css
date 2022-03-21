@@ -84,11 +84,16 @@ footer {
   z-index: 1;
   display: none;
 }
+/* 等宽图标 */
+.fa-solid,
+.fa-regular,
+.fa-brands {
+  min-width: 1.2em;
+  text-align: center;
+}
 /* 带注释的图标 */
 [data-sub] {
   padding: 0.1em;
-  min-width: 1.2em;
-  line-height: 1em;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
