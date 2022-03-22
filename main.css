@@ -7,7 +7,7 @@
 }
 /* 网页字体及背景 */
 html {
-  font-family: Gs, sans-serif;
+  font-family: Ubuntu, Gs65, sans-serif;
   font-size: 48px;
   font-size: 2.75vw;
   color: #fff;
@@ -99,7 +99,7 @@ footer {
   vertical-align: middle;
 }
 [data-sub]::after {
-  font: normal normal 0.5em Ubuntu, Gs, sans-serif;
+  font: normal normal 0.5em Ubuntu, Gs65, sans-serif;
   display: block;
   margin-top: 0.2em;
   content: attr(data-sub);
