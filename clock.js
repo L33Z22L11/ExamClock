@@ -11,7 +11,7 @@ var today = {
   cee: parseInt((new Date(2022, 5, 8) - today) / 864E5),
   a: parseInt((today - new Date(2019, 7, 18)) / 864E5),
   d: parseInt((new Date(2022, 6, 7) - new Date(2019, 7, 18)) / 864E5),
-  apt: parseInt((new Date(2022, 2, 27) - today) / 864E5),
+  apt: parseInt((new Date(2022, 3, 11) - today) / 864E5),
 };
 // 各个对象内置功能
 var subject = {
@@ -48,7 +48,7 @@ subject.to = function (to) {
   slogan.$sub = [""];
   this.on = to in exam ? to : this.on;
   document.getElementById("type").innerHTML = exam[this.on]();
-  if (!SP.debug) playCover("正在传送到坐标 <span class='shield'>?type=" + this.on + "</span>，请稍候");
+  if (SP.debug == null) playCover("正在传送到坐标 <span class='shield'>?type=" + this.on + "</span>，请稍候");
   // document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // 想提升应用启动速度，就把延迟改小点
   setTimeout(function () {

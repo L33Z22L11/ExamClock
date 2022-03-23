@@ -10,6 +10,7 @@ var exam = {
     return "请选择";
   }
 };
+exam["sp-2022"] = ["appkey", "flag"];
 exam["2022-02-14"] = function () {
   slogan.$main = "";
   $("综合", today.date, "14:10", "16:40");
@@ -19,7 +20,7 @@ exam["2022-02-14"] = function () {
 };
 exam[30] = function () {
   // 特别注意，最后一轮求余后应该是数组第0项
-  slogan.$main = "乘风破浪 势不可挡 <span class='shield'>" + today.cee + "天</span>";
+  slogan.$main = today.cee + "天 奋勇争先";
   // 这种情况就比较复杂了，代码和人有一个能跑就行
   // 之前的条件在增加了一些需求的设置后竟然有bug
   // 我不敢相信，不过是时候让兰神接手搞点大事情了
@@ -45,8 +46,11 @@ exam[30] = function () {
       ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
     else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0,
       ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
-    else if (today.day == 6) $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0,
-      ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
+    else if (today.day == 6) {
+      $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0,
+        ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
+      $("数学", today.date, "18:30", "20:30", 0, ["大考练：若信息异常，请自行修改或设置临时科目。"]);
+    }
     else $("自习", today.date, "17:00", "17:45");
   } else {
     // 周日白天
@@ -65,7 +69,7 @@ exam[30] = function () {
     $("晚一", today.date, "18:55", "19:40");
     $("晚二", today.date, "19:50", "20:35");
     $("晚三", today.date, "20:50", "22:00", 0, ["晚三莫说话，争取上北大，晚三不抬头，冲向五道口。"]);
-    $("晚修", today.date, "22:00", "23:30");
+    $("晚修", today.date, "22:00", "23:30", 0, ["信息中心为各班设置了自动开关机，但时间点可能不对。"]);
   }
   return "高三日常";
 };

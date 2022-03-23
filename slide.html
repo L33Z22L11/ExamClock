@@ -6,9 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/logo_g_64.png" type="image/x-icon">
   <link rel="stylesheet" href="./main.css">
-  <link rel="stylesheet" href="./control.css">
-  <link rel="stylesheet" href="https://fonts.font.im/css?family=Montserrat:500,700">
-  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="./cp.css">
   <base target="_blank">
   <!-- Microsoft Clarity tracking code for https://thisis.host/ -->
   <title>一键PPT | 考试时钟</title>
@@ -26,29 +24,45 @@
         </div>
       </div>
       <div class="sub space-between space">
-        <a class="fa-solid fa-shuffle" onclick="bg()" data-sub="换背景"></a>
+        <span class="dropdown">
+          <a class="fa-solid fa-shuffle" onclick="bg()" data-sub="换背景"></a>
+          <div style="right:0;min-width:10em;">
+            <div>
+              <p><i class="fa-brands fa-qq fa-fw"></i> 2399052066
+                <span class="shield">投稿</span>
+              </p>
+              <span class="dim">授权许可为</span>
+              <a class="shield" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>
+            </div>
+            <a onclick="displayCP()"><i class="fa-solid fa-list-check fa-fw"></i> 背景菜单
+              <span class="shield">Ctrl+右键</span></a>
+            <a href="https://img.xuewuzhibu.cn/album/h8p">
+              <i class="fa-solid fa-images fa-fw"></i> 一卷图库
+              <span class="shield"><i class="fa-regular fa-eye"></i> 15.4k</span>
+              <p class="dim">由学无止步图床托管</p>
+            </a>
+          </div>
+        </span>
         <a onclick="fullscreen()"><i class="fa-solid fa-expand" id="fullscreen" data-sub="全屏"></i></a>
       </div>
     </nav>
 
-    <div>
-      <h2 id="activity" contenteditable>2021年度总结大会暨颁奖典礼</h2>
+    <div style="text-align: center;">
+      <h2 id="activity" contenteditable></h2>
       <h1 id="subject" contenteditable>开放互助 活跃创新</h1>
-      <h3 id="duration" contenteditable>做优质的自发性技术协助组织</h3>
-      <br>
-      <p class="dim" contenteditable>野生技协</p>
-      <p class="dim" contenteditable>2077年1月</p>
+      <h3 id="duration" contenteditable><br>野生技协</h3>
+      <p class="dim" contenteditable><br>2022年</p>
     </div>
 
     <footer class="space-between">
+      <p><i class="fa-solid fa-image"></i> <span id="bg">背景: 雨后校园</span></p>
       <p><i class="fa-solid fa-file-powerpoint"></i> 一键PPT - 内容不会被保存</p>
-      <p><i class="fa-solid fa-image"></i> <span id="bg">背景: campus</span></p>
     </footer>
   </div>
 
   </div>
-  <div id="control" style="display: none;">
-    <span id="controlbd"></span>
+  <div id="cp" style="display:none;">
+    <span id="cpbd"></span>
 
     <div class="barset">
       <div id="sizebar">
@@ -74,6 +88,10 @@
   <script src="./msg.js"></script>
   <script src="./interact.js" msg></script>
   <script src="./gallery.js" msg interact></script>
+  <link rel="stylesheet"
+    href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.font.im/css?family=Ubuntu:400,700">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/pubsite/GsFont/r1.css">
 </body>
 
 </html>

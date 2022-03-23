@@ -7,7 +7,7 @@
 }
 /* 网页字体及背景 */
 html {
-  font-family: Ubuntu, Gs, sans-serif;
+  font-family: Ubuntu, Gs65, sans-serif;
   font-size: 48px;
   font-size: 2.75vw;
   color: #fff;
@@ -22,24 +22,11 @@ html {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.space-between > * {
-  display: inline-block;
-}
 .space {
   margin: 0 -0.3em;
 }
 .space > * {
   margin: 0 0.3em;
-}
-/* 淡色背景阴影 */
-.notify > div,
-.bar,
-.card > div,
-.card > a {
-  /* border: 2px solid rgba(255, 255, 255, 0.4); */
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.2);
-  text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.2);
 }
 /* 一级淡文本（保留字体颜色） */
 .dim {
@@ -97,15 +84,22 @@ footer {
   z-index: 1;
   display: none;
 }
+/* 等宽图标 */
+.fa-solid,
+.fa-regular,
+.fa-brands {
+  min-width: 1.2em;
+  text-align: center;
+}
 /* 带注释的图标 */
 [data-sub] {
-  line-height: 1em;
+  padding: 0.1em;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
 }
 [data-sub]::after {
-  font: normal normal 0.5em Ubuntu, Gs, sans-serif;
+  font: normal normal 0.5em Ubuntu, Gs65, sans-serif;
   display: block;
   margin-top: 0.2em;
   content: attr(data-sub);
@@ -129,6 +123,17 @@ footer {
   margin: 0.5rem -1rem;
   transition: filter 0.2s;
 }
+/* 淡色背景阴影 */
+.notify > div,
+.bar,
+.card > div,
+.card > a {
+  /* border: 2px solid rgba(255, 255, 255, 0.4); */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0.2em 0.2em 1em rgba(0, 0, 0, 0.2);
+  text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.2);
+  /* backdrop-filter: blur(0.1em); */
+}
 /* 卡片元素字体间距等 */
 .card > div,
 .card > a {
@@ -144,7 +149,7 @@ footer {
 .card > div:hover,
 .card > a:hover {
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(0);
 }
 
 /* 时钟字体 */
