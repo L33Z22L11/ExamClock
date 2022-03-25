@@ -86,7 +86,7 @@ function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit
     subject.start = new Date(toDate + "T" + toStart + "+08:00");
     subject.end = new Date(toDate + "T" + toEnd + "+08:00");
     subject.duration = subject.duration;
-    subject.admit = toAdmit || (subject.on == 33 ? 30 : 20);
+    subject.admit = toAdmit || (subject.on == 31 ? 30 : 20);
     // document.getElementById("duration").innerHTML = subject.duration;
     slogan.main = toMainslogan || slogan.$main;
     slogan.sub = toSubslogan || slogan.$sub;
