@@ -35,7 +35,7 @@ exam[30] = function () {
     $("课间操", today.date, "09:50", "10:05", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
     $("第3节", today.date, "10:20", "11:05");
     $("第4节", today.date, "11:15", "12:00");
-    $("午休", today.date, "12:50", "13:50");
+    $("午休", today.date, "12:15", "13:55");
     $("第5节", today.date, "14:10", "14:55");
     $("第6节", today.date, "15:05", "15:50");
     if (today.day != 6) $("第7节", today.date, "16:05", "16:50");
@@ -68,8 +68,8 @@ exam[30] = function () {
     $("晚写", today.date, "18:45", "18:55");
     $("晚一", today.date, "18:55", "19:40");
     $("晚二", today.date, "19:50", "20:35");
-    $("晚三", today.date, "20:50", "22:00", 0, ["晚三莫说话，争取上北大，晚三不抬头，冲向五道口。"]);
-    $("晚修", today.date, "22:00", "23:30", 0, ["信息中心为各班设置了自动开关机，但时间点可能不对。"]);
+    $("晚三", today.date, "20:50", "22:10", 0, ["晚三莫说话，争取上北大，晚三不抬头，冲向五道口。"]);
+    $("晚修", today.date, "22:20", "23:30");
   }
   return "高三日常";
 };
@@ -101,21 +101,20 @@ exam[20] = function () {
     $("课间操", today.date, "09:50", "10:05", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
     $("第3节", today.date, "10:20", "11:05");
     $("第4节", today.date, "11:15", "12:00");
-    $("午休", today.date, "12:50", "13:50");
+    $("自习", today.date, "12:00", "12:15");
+    $("午休", today.date, "12:30", "13:55");
     $("第5节", today.date, "14:10", "14:55");
     $("第6节", today.date, "15:05", "15:50");
     $("第7节", today.date, "16:05", "16:50");
-    $("自习", today.date, "17:00", "17:45");
+    $("自习", today.date, "17:00", "17:35");
   } else {
     // 周日白天
   }
   if (today.date != 6) {
     // 非周六的晚上
-    $("晚饭", today.date, "17:45", "18:25");
+    $("晚饭", today.date, "17:35", "17:45");
     $("背诵", today.date, "18:25", "18:55");
-    // $("晚训", today.date, "18:25", "18:45", 0,
-    //   ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday +
-    //     (today.day % 2 ? "英语听力" : "语文视频")]);
+    // $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + (today.day % 2 ? "英语听力" : "语文视频")]);
     // $("晚写", today.date, "18:45", "18:55");
     $("晚一", today.date, "18:55", "19:40");
     $("晚二", today.date, "19:50", "20:35");
