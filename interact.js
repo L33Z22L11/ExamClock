@@ -14,6 +14,10 @@ onkeydown = function (e) {
     case "Escape": try { eleCP.style.display = "none"; } catch (e) { } break;
   }
 };
+// 宝鸡核酸码
+function bjhs() {
+  open("https://hsjc.jiankangbaoji.com/eqrcode/", "_blank", "left=640, top=120, width=400, height=720");
+}
 // 右键控制中心
 function displayCP() {
   eleCP.style.display = "";
