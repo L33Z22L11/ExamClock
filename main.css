@@ -77,12 +77,12 @@ footer {
   animation: fade 0.5s;
   border-radius: 0.2rem;
 }
-/* 右键菜单 */
-#menu {
-  font-size: 0.5rem;
-  position: fixed;
-  z-index: 1;
-  display: none;
+.hilit {
+  animation: hilit 60s;
+}
+@keyframes hilit {
+  from{color: #3fa;}
+  to{color: auto;}
 }
 /* 等宽图标 */
 .fa-solid,
@@ -239,7 +239,7 @@ a:hover {
   box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.2);
 }
 /* 高亮/菜单/下拉正文颜色 */
-.hilit,
+.btn,
 #menu,
 [data-title]::after,
 .dropdown > :last-child {
@@ -250,14 +250,14 @@ a:hover {
   backdrop-filter: blur(0.5em);
 }
 /* 高亮按钮/菜单元素/下拉正文元素边距 */
-a.hilit,
+a.btn,
 #menu > *,
 .dropdown > :last-child > * {
   display: block;
   box-sizing: border-box;
   padding: 0.2em;
 }
-/* 盾 */
+/* 标签 */
 .shield,
 .shieldlist > * {
   font-size: 0.6em;
