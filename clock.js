@@ -43,6 +43,7 @@ subject.to = function (to) {
   this.name = "";
   this.start = new Date(0);
   this.end = new Date(0);
+  this.$admit = 10;
   timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
   slogan.$main = "沉着冷静&emsp;诚信考试";
   slogan.$sub = [""];
@@ -86,7 +87,7 @@ function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit
     subject.start = new Date(toDate + "T" + toStart + "+08:00");
     subject.end = new Date(toDate + "T" + toEnd + "+08:00");
     subject.duration = subject.duration;
-    subject.admit = toAdmit || (subject.on == 31 ? 30 : 20);
+    subject.admit = toAdmit || subject.$admit;
     // document.getElementById("duration").innerHTML = subject.duration;
     slogan.main = toMainslogan || slogan.$main;
     slogan.sub = toSubslogan || slogan.$sub;
@@ -110,17 +111,11 @@ timer.update = function () {
     document.getElementById("subject").innerHTML = subject.name;
     document.getElementById("duration").innerHTML = subject.duration;
   }
-  if (now < (subject.start - 6E5) && (subject.on == 30 || subject.on == 20)) {
-    this.num = (subject.start - now) / 36E5;
-    this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
-    this.sub = "h";
-    this.activity = "距离开始";
-    this.progress = 0;
-  } else if (now < (subject.start - subject.admit * 6E4 - 6E5)) {
+  if (now < (subject.start - subject.admit * 6E4 - 6E5)) {
     this.num = (subject.start - subject.admit * 6E4 - now) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
     this.sub = "h";
-    this.activity = "考试加油";
+    this.activity = "距离入场";
     this.progress = 0;
   } else if (now < (subject.start - subject.admit * 6E4)) {
     this.num = Math.round((subject.start - now - subject.admit * 6E4) / 6E4);
