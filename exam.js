@@ -48,7 +48,7 @@ exam[30] = function () {
     else $("自习", today.date, "17:00", "17:45");
   } else {
     // 周日白天
-    $(["综合", "语文",][today.week % 2], today.date, "14:10", "16:40", 0, ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
+    $(["语文", "综合",][today.week % 2], today.date, "14:10", "16:40", 0, ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
     $("订正", today.date, "16:50", "17:30");
   }
   if (today.day != 6) {
