@@ -11,12 +11,10 @@ var exam = {
   }
 };
 exam["sp-2022"] = ["appkey", "flag"];
-exam["2022-02-14"] = function () {
+exam["2022-04-04"] = function () {
   slogan.$main = "";
-  $("综合", today.date, "14:10", "16:40");
-  $("订正", today.date, "16:40", "17:00");
-  $(0, today.date, "17:00", 0, '<i class="fa-solid fa-spinner fa-spin-pulse"></i> 寒假(Part 4)加载中');
-  return "2月14日";
+  $("英语", today.date, "15:55", "17:55");
+  return "4月4日";
 };
 exam[30] = function () {
   slogan.$main = today.cee + "天 奋勇争先";
