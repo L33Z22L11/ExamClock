@@ -13,7 +13,7 @@ var exam = {
 exam["sp-2022"] = ["appkey", "flag"];
 exam["2022-04-04"] = function () {
   slogan.$main = "";
-  $("英语", today.date, "15:55", "17:55");
+  $("英语", today.date, "16:00", "18:00");
   return "4月4日";
 };
 exam[30] = function () {
