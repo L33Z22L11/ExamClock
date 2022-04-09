@@ -8,7 +8,7 @@
 
 /* 网页字体及背景 */
 html {
-  font-family: Ubuntu, Gs65, sans-serif;
+  font-family: "Ubuntu", "Genshin65W", sans-serif;
   font-size: 48px;
   font-size: 2.75vw;
   color: #fff;
@@ -121,7 +121,7 @@ footer {
 }
 
 [data-sub]::after {
-  font: normal normal .5em Ubuntu, Gs65, sans-serif;
+  font: normal normal .5em "Ubuntu", "Genshin65W", sans-serif;
   display: block;
   margin-top: .2em;
   content: attr(data-sub);
