@@ -143,6 +143,8 @@ timer.update = function () {
     subject.name = this.num = this.sub = this.activity = "";
     this.progress = 100;
   }
+  if (subject.on == 30 && now.getHours() == 23 && now.getMinutes() > 27)
+    slogan.sub =["回复@完樱西：刷不完的是卷子，但这里会一直有晚霞，有操场，有宝中人的生活。"];
   document.getElementById("bar").style.width = this.progress + "%";
   document.getElementById("timer").innerHTML = this.num;
   document.getElementById("timersub").innerHTML = this.sub;
