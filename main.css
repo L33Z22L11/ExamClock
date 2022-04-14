@@ -236,9 +236,9 @@ footer {
 }
 
 [data-title]::after {
-  top: -1em;
+  bottom: 1em;
   right: 0;
-  width: 10em;
+  width: 12em;
   padding: .1em;
   content: attr(data-title);
 }

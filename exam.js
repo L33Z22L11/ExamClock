@@ -8,10 +8,9 @@ var exam = {
     slogan.$main = "考试时钟";
     slogan.$sub = ["不存在的考试类型，请重新选择。"];
     return "请选择";
-  }
+  },
 };
-exam["sp-2022"] = ["appkey", "flag"];
-exam["2022-04-0"] = function () {
+exam["2022-04-00"] = function () {
   slogan.$main = "";
   $("英语", today.date, "16:00", "18:00");
   return "4月4日";
