@@ -1,15 +1,10 @@
 /* 
  * 适用于宝鸡中学的考试科目列表
  */
-console.log("%c\n加入Techaos! 混技\nQQ群：169994096\n", "font:3em Montserrat,sans-serif;");
-console.log("%c\n野生技协(混技分部)\nQQ群：894656456\n", "font:3em Montserrat,sans-serif;");
-var exam = {
-  default: function () {
-    slogan.$main = "考试时钟";
-    slogan.$sub = ["不存在的考试类型，请重新选择。"];
-    return "请选择";
-  },
-};
+console.groupCollapsed("%c考试时钟 %c2021-03-30", "font:2em sans-serif;color:#f77;", "");
+console.log("开发：GitHub@L33Z22L11\n野生技协群：894656456\n");
+console.groupEnd();
+var exam = {};
 exam["2022-04-00"] = function () {
   slogan.$main = "";
   $("英语", today.date, "16:00", "18:00");
@@ -69,7 +64,7 @@ exam[31] = function () {
   return "高三";
 };
 exam[20] = function () {
-  // slogan.$main = "距离水考" + today.apt + "天";
+  slogan.$main = "";
   subject.$admit = 2;
   if (today.day) {
     // 非周日的白天

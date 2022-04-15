@@ -48,7 +48,7 @@ if (SP.debug) {
 if (SP.type in exam) subject.to(SP.type);
 // 再在考试日期切换到考试类型
 else if (today.date in exam) subject.to(today.date);
-else if (today.date.match("2022-03-2(5|6)")) subject.to(31);
+else if (today.date.match("2022-04-1(6|7)")) subject.to(31);
 else if (today.date.match("2022-01-2(0|1)")) subject.to(21);
 // 最后设置缺省考试类型
 else subject.to(30);
