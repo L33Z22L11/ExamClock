@@ -111,7 +111,7 @@ timer.update = function () {
     document.getElementById("subject").innerHTML = subject.name;
     document.getElementById("duration").innerHTML = subject.duration;
   }
-  if (now < (subject.start - subject.admit * 6E4 - 6E5)) {
+  if (now < (subject.start - subject.admit * 6E4 - 12E5)) {
     this.num = (subject.start - subject.admit * 6E4 - now) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
     this.sub = "h";
@@ -121,7 +121,7 @@ timer.update = function () {
     this.num = Math.round((subject.start - now - subject.admit * 6E4) / 6E4);
     this.sub = "min";
     this.activity = "距离入场";
-    this.progress = (subject.start - now - subject.admit * 6E4) / 6E3;
+    this.progress = 0;
   } else if (now < subject.start) {
     this.num = Math.round((subject.start - now) / 6E4);
     this.sub = "min";

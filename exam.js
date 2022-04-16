@@ -1,9 +1,9 @@
+console.groupCollapsed("\n%c  %c考试时钟 ExamClock", "background:url('https://exam.cooo.site/logo_g_64.png') no-repeat;padding:32px;", "font:bold 36px sans-serif;color:#3a9;");
+console.log("\n考试时钟“填补了业余与专业之间的空白”。\n项目仓库：https://github.com/L33Z22L11/ExamClock\n野生技协群：894656456\n\n");
+console.groupEnd();
 /* 
  * 适用于宝鸡中学的考试科目列表
  */
-console.groupCollapsed("%c考试时钟 %c2021-03-30", "font:2em sans-serif;color:#f77;", "");
-console.log("开发：GitHub@L33Z22L11\n野生技协群：894656456\n");
-console.groupEnd();
 var exam = {};
 exam["2022-04-00"] = function () {
   slogan.$main = "";
@@ -23,7 +23,7 @@ exam[30] = function () {
     $("晨读2", today.date, "07:30", "08:00");
     $("第1节", today.date, "08:10", "08:55");
     $("第2节", today.date, "09:05", "09:50");
-    $("课间操", today.date, "09:50", "10:05", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
+    $("课间操", today.date, "09:50", "10:00", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
     $("第3节", today.date, "10:20", "11:05");
     $("第4节", today.date, "11:15", "12:00");
     $("午休", today.date, "12:15", "13:55");
@@ -33,10 +33,7 @@ exam[30] = function () {
     if (today.day == 2) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科" + ["双周数学", "单周化学"][today.week % 2] + "，文科第" + (today.week % 3 || 3) + "/3轮" + ["地理(明日)", "政治", "历史",][today.week % 3]]);
     else if (today.day == 3 && !(today.week % 3)) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
     else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
-    else if (today.day == 6) {
-      $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0, ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
-      $("数学", today.date, "18:30", "20:30", 0, ["大考练：若信息异常，请自行修改或设置临时科目。"]);
-    }
+    else if (today.day == 6) $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0, ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
     else $("自习", today.date, "17:00", "17:45");
   } else {
     // 周日白天
@@ -66,36 +63,28 @@ exam[31] = function () {
 exam[20] = function () {
   slogan.$main = "";
   subject.$admit = 2;
-  if (today.day) {
-    // 非周日的白天
-    $("晨读1", today.date, "07:05", "07:25");
-    $("晨会", today.date, "07:25", "07:30");
-    $("晨读2", today.date, "07:30", "08:00");
-    $("第1节", today.date, "08:10", "08:55");
-    $("第2节", today.date, "09:05", "09:50");
-    $("课间操", today.date, "09:50", "10:05", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
-    $("第3节", today.date, "10:20", "11:05");
-    $("第4节", today.date, "11:15", "12:00");
-    $("自习", today.date, "12:00", "12:15");
-    $("午休", today.date, "12:30", "13:55");
-    $("第5节", today.date, "14:10", "14:55");
-    $("第6节", today.date, "15:05", "15:50");
-    $("第7节", today.date, "16:05", "16:50");
-    $("自习", today.date, "17:00", "17:35");
-  } else {
-    // 周日白天
-  }
-  if (today.date != 6) {
-    // 非周六的晚上
-    $("晚饭", today.date, "17:35", "17:45");
-    // $("背诵", today.date, "18:25", "18:55", 0, 0, 5);
-    $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + (today.day % 2 ? "英语听力" : "语文视频")]);
-    $("晚写", today.date, "18:45", "18:55");
-    $("晚一", today.date, "18:55", "19:40");
-    $("晚二", today.date, "19:50", "20:35");
-    $("晚三", today.date, "20:50", "22:00");
-    $("晚修", today.date, "22:10", "23:00");
-  }
+  $("晨读1", today.date, "07:05", "07:25");
+  $("晨会", today.date, "07:25", "07:30");
+  $("晨读2", today.date, "07:30", "08:00");
+  $("第1节", today.date, "08:10", "08:55");
+  $("第2节", today.date, "09:05", "09:50");
+  $("课间操", today.date, "09:50", "10:00", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
+  $("第3节", today.date, "10:20", "11:05");
+  $("第4节", today.date, "11:15", "12:00");
+  $("自习", today.date, "12:00", "12:15");
+  $("午休", today.date, "12:30", "13:55");
+  $("第5节", today.date, "14:10", "14:55");
+  $("第6节", today.date, "15:05", "15:50");
+  $("第7节", today.date, "16:05", "16:50");
+  $("自习", today.date, "17:00", "17:35");
+  $("晚饭", today.date, "17:35", "17:45");
+  // $("背诵", today.date, "18:25", "18:55", 0, 0, 5);
+  $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + (today.day % 2 ? "英语听力" : "语文视频")]);
+  $("晚写", today.date, "18:45", "18:55");
+  $("晚一", today.date, "18:55", "19:40");
+  $("晚二", today.date, "19:50", "20:35");
+  $("晚三", today.date, "20:50", "22:00");
+  $("晚修", today.date, "22:10", "23:00");
   return "高二日常";
 }
 exam[21] = function () {
