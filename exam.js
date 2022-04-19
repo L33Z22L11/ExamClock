@@ -5,10 +5,10 @@ console.groupEnd();
  * 适用于宝鸡中学的考试科目列表
  */
 var exam = {};
-exam["2022-04-00"] = function () {
+exam["2022-04-20"] = function () {
   slogan.$main = "";
-  $("英语", today.date, "16:00", "18:00");
-  return "4月4日";
+  $("语文", today.date, "14:15", "16:45");
+  return "本日临时";
 };
 exam[30] = function () {
   slogan.$main = today.cee + "天 奋勇争先";
