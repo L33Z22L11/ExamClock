@@ -50,6 +50,7 @@ exam[30] = function () {
     $("晚修", today.date, "22:10", "23:30");
   }
   return "高三日常";
+  // return "<span data-sub='可切换到三轮模拟'>高三日常</span>";
 };
 exam[31] = function () {
   slogan.$sub = ["高三第二学期第一次模拟考练：请以司号及广播通知为准，在答题卡上写清组别。"];
@@ -61,6 +62,23 @@ exam[31] = function () {
   $("综合", "2022-04-21", "14:15", "16:45");
   $("自习", "2022-04-21", "17:00", "17:45");
   return "高三三轮";
+};
+exam[300] = function () {
+  if (!today.day) {
+    $("", today.date, "14:10", "16:40");
+    $("", today.date, "16:50", "17:30");
+  }
+  if (today.day % 3 == 1) {
+    $("语文", today.date, "09:00", "11:30");
+    $("自习", today.date, "17:00", "17:45");
+    $("数学", today.date, "07:40", "09:40");
+  } else if (today.day % 3 == 2) {
+    $("英语", today.date, "10:00", "12:00");
+    $("综合", today.date, "14:15", "16:45");
+    $("自习", today.date, "17:00", "17:45");
+  } else {
+    $("讲评", today.date, "17:00", "17:45");
+  }
 };
 exam[20] = function () {
   slogan.$main = "";

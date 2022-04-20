@@ -203,7 +203,7 @@ footer {
 }
 
 /* 适配竖屏 */
-@media (max-aspect-ratio: 4/5) {
+@media (max-aspect-ratio: 8/7) {
   html {
     font-size: 5vw;
     align-items: flex-start;
