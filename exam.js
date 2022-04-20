@@ -49,8 +49,8 @@ exam[30] = function () {
     $("晚三", today.date, "20:50", "22:00");
     $("晚修", today.date, "22:10", "23:30");
   }
-  return "高三日常";
-  // return "<span data-sub='可切换到三轮模拟'>高三日常</span>";
+  // return "高三日常";
+  return "<span data-sub='可切换到三轮模考'>高三日常</span>";
 };
 exam[31] = function () {
   slogan.$sub = ["高三第二学期第一次模拟考练：请以司号及广播通知为准，在答题卡上写清组别。"];
