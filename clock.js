@@ -44,7 +44,7 @@ subject.to = function (to) {
   this.name = "";
   this.start = new Date(0);
   this.end = new Date(0);
-  this.$admit = 10;
+  this.$admit = 20;
   timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
   slogan.$main = "沉着冷静&emsp;诚信考试";
   slogan.$sub = [""];
