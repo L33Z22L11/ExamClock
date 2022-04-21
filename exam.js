@@ -4,7 +4,6 @@ console.groupEnd();
 /* 
  * 适用于宝鸡中学的考试科目列表
  */
-var exam = {};
 exam["2022-04-200"] = function () {
   slogan.$main = "";
   $("语文", today.date, "14:15", "16:45");
@@ -53,7 +52,7 @@ exam[30] = function () {
   return "<span data-sub='可切换到三轮模考'>高三日常</span>";
 };
 exam[31] = function () {
-  slogan.$sub = ["高三第二学期第一次模拟考练：请以司号及广播通知为准，在答题卡上写清组别。"];
+  slogan.$sub = ["高三第二学期第二次模拟考练：请以司号及广播通知为准，在答题卡上写清组别。"];
   // subject.$admit = 30;
   $("语文", "2022-04-20", "09:00", "11:30");
   $("自习", "2022-04-20", "17:00", "17:45");
@@ -63,10 +62,12 @@ exam[31] = function () {
   $("自习", "2022-04-21", "17:00", "17:45");
   return "高三三轮";
 };
-exam[300] = function () {
+exam[32] = function () {
+  slogan.$sub = ["高三第二学期第" + (today.day < 4 ? today.week * 2 - 20 : today.week * 2 - 19) + "次模拟考练：请在答题卡上写清组别。"];
   if (!today.day) {
-    $("", today.date, "14:10", "16:40");
-    $("", today.date, "16:50", "17:30");
+    slogan.$sub=["自主整理纠错"];
+    // $("", today.date, "14:10", "16:40");
+    // $("", today.date, "16:50", "17:30");
   }
   if (today.day % 3 == 1) {
     $("语文", today.date, "09:00", "11:30");
@@ -77,8 +78,10 @@ exam[300] = function () {
     $("综合", today.date, "14:15", "16:45");
     $("自习", today.date, "17:00", "17:45");
   } else {
-    $("讲评", today.date, "17:00", "17:45");
+    slogan.$sub=["讲评试卷"];
+    // $("讲评", today.date, "17:00", "17:45");
   }
+  return "高三三轮(测试)";
 };
 exam[20] = function () {
   slogan.$main = "";

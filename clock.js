@@ -14,6 +14,7 @@ var today = {
   apt: parseInt((new Date(2022, 3, 10) - today) / 864E5),
 };
 // 各个对象内置功能
+var exam = {};
 var subject = {
   get name() { return document.getElementById("subject").innerHTML; },
   set name(name) { document.getElementById("subject").innerHTML = name; },
