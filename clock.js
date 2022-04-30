@@ -2,8 +2,8 @@
  * 时间更新
  */
 // 以当前日期为基础的日常/临时科目
-var today = new Date, TOS = 0;
-var today = {
+var today = new Date;
+today = {
   date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
   week: parseInt((today - new Date(2022, 1, 6)) / 6048E5),
   day: today.getDay(),
@@ -13,6 +13,7 @@ var today = {
   d: parseInt((new Date(2022, 6, 7) - new Date(2019, 7, 18)) / 864E5),
   apt: parseInt((new Date(2022, 3, 10) - today) / 864E5),
 };
+today.round3=["高三第二学期第" + (today.day < 4 ? today.week * 2 - 20 : today.week * 2 - 19) + "次模拟考练：请在答题卡上写清组别。"];
 // 各个对象内置功能
 var exam = {};
 var subject = {

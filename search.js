@@ -1,8 +1,8 @@
 try {
   var SP = Object.fromEntries(new URLSearchParams(location.search).entries());
-  TOS = isNaN(SP.tos) ? 0 : --SP.tos;
 }
 catch (e) { var SP = {}; }
+var TOS = isNaN(SP.tos) ? 0 : --SP.tos;
 // 篡改与浏览器检测
 !function verify() {
   try {
