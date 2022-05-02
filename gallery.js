@@ -32,7 +32,9 @@ bg.vol = [];
     // console.log(l);
     return l;
   }();
-  bg();
+  // bg();
+  document.documentElement.style.backgroundImage="url(https://images.xuewuzhibu.cn/53a64fce971db97bcce1d6963052b1de.jpg)";
+  send("图床挂了，随后修复。");
 }();
 function bg(v, p) {
   // 若同时以new Date作为volnum和picseed的随机种子，会产生特定的余数对应关系
