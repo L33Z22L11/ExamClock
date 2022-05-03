@@ -79,9 +79,9 @@ exam[30] = function () {
     $("自习", today.date, "14:25", "15:10");
     $("数学", today.date, "15:30", "17:30", 0, today.round3, 15);
   } else if (today.day % 3 == 2) {
-    $("英语", today.date, "09:15", "11:45", 0, today.round3, 15);
+    $("综合", today.date, "09:15", "11:45", 0, today.round3, 15);
     $("自习", today.date, "14:25", "15:10");
-    $("综合", today.date, "15:30", "17:30", 0, today.round3, 15);
+    $("英语", today.date, "15:30", "17:30", 0, today.round3, 15);
   } else if (today.day == 3) {
     $("第2节", today.date, "09:05", "09:50");
     $("第3节", today.date, "10:20", "11:05");
