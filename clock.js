@@ -8,12 +8,9 @@ today = {
   week: parseInt((today - new Date(2022, 1, 6)) / 6048E5),
   day: today.getDay(),
   weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()],
-  cee: parseInt((new Date(2022, 5, 8) - today) / 864E5),
-  a: parseInt((today - new Date(2019, 7, 18)) / 864E5),
-  d: parseInt((new Date(2022, 6, 7) - new Date(2019, 7, 18)) / 864E5),
-  apt: parseInt((new Date(2022, 3, 10) - today) / 864E5),
+  cee22: parseInt((new Date(2022, 5, 8) - today) / 864E5),
+  cee23: parseInt((new Date(2023, 5, 8) - today) / 864E5),
 };
-today.round3=["高三第二学期第" + (today.day < 4 ? today.week * 2 - 20 : today.week * 2 - 19) + "次模拟考练：请在答题卡上写清组别。"];
 // 各个对象内置功能
 var exam = {};
 var subject = {

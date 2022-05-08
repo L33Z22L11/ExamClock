@@ -4,6 +4,12 @@ console.groupEnd();
 /* 
  * 适用于宝鸡中学的考试科目列表
  */
+today.entry22 = parseInt((today - new Date(2019, 7, 18)) / 864E5);
+today.total22 = parseInt((new Date(2022, 6, 7) - new Date(2019, 7, 18)) / 864E5);
+today.correct1 = "第" + today.week + "周周日：第" + (today.week % 3 || 3) + "/3轮" + today.weekday + ["英语?", "语文", "数学?",][today.week % 3] + "自主整理纠错";
+today.correct2 = "第" + today.week + "周周日：第" + (today.week % 3 || 3) + "/3轮" + today.weekday + ["化学?/历史?", "物理/地理", "生物?/政治?",][today.week % 3] + "自主整理纠错";
+today.refine = "第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练";
+today.practice = "高三第二学期第" + (today.day < 4 ? today.week * 2 - 20 : today.week * 2 - 19) + "次模拟考练：请在答题卡上写清组别。";
 exam[-"2022-04-20"] = function () {
   slogan.$main = "";
   $("语文", today.date, "14:15", "16:45");
@@ -58,16 +64,14 @@ exam[-31] = function () {
   return "高三三轮";
 };
 exam[30] = function () {
-  slogan.$main = today.cee + "天 奋勇争先";
+  slogan.$main = today.cee22 + "天 奋勇争先";
   subject.$admit = 2;
   // 这种情况就比较复杂了，代码和人有一个能跑就行
   // 特别注意，最后一轮求余后应该是数组第0项
   if (!today.day) {
     // 周日白天
-    $("第1节", today.date, "14:25", "15:10");
-    $("第2节", today.date, "15:20", "16:05");
-    $("第3节", today.date, "16:20", "17:05", 0, 0, 7);
-    $("第4节", today.date, "17:15", "18:00");
+    $("纠错", today.date, "14:25", "15:55", 0, [today.correct1]);
+    $("纠错", today.date, "16:15", "17:45", 0, [today.correct2]);
   }
   // 非周日的白天
   if (today.day == 5) $("听力", today.date, "07:05", "07:25");
@@ -78,13 +82,13 @@ exam[30] = function () {
     $("第1节", today.date, "08:10", "08:55");
   }
   if (today.day % 3 == 1) {
-    $("语文", today.date, "09:15", "11:45", 0, today.round3, 15);
+    $("语文", today.date, "09:15", "11:45", 0, [today.practice], 15);
     $("第2节", today.date, "14:25", "15:10");
-    $("数学", today.date, "15:30", "17:30", 0, today.round3, 15);
+    $("数学", today.date, "15:30", "17:30", 0, [today.practice], 15);
   } else if (today.day % 3 == 2) {
-    $("综合", today.date, "09:15", "11:45", 0, today.round3, 15);
+    $("综合", today.date, "09:15", "11:45", 0, [today.practice], 15);
     $("第2节", today.date, "14:25", "15:10");
-    $("英语", today.date, "15:30", "17:30", 0, today.round3, 15);
+    $("英语", today.date, "15:30", "17:30", 0, [today.practice], 15);
   } else if (today.day == 3) {
     $("第2节", today.date, "09:05", "09:50");
     $("第3节", today.date, "10:20", "11:05");
@@ -106,7 +110,7 @@ exam[30] = function () {
   }
   if (today.day != 6) {
     // 非周六的晚上
-    $("晚训", today.date, "18:40", "19:00", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练"], 5);
+    $("晚训", today.date, "18:40", "19:00", 0, [today.refine], 5);
     $("晚写", today.date, "19:05", "19:15", 0, 0, 5);
     $("晚一", today.date, "19:15", "20:00");
     $("晚二", today.date, "20:10", "20:55");
@@ -116,7 +120,7 @@ exam[30] = function () {
   return "高三日常";
 };
 exam[20] = function () {
-  slogan.$main = "";
+  slogan.$main = "距离高考" + today.cee23 + "天";
   subject.$admit = 2;
   $("晨读1", today.date, "07:05", "07:25");
   $("晨会", today.date, "07:25", "07:30");
