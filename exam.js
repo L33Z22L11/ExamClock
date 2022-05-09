@@ -10,9 +10,21 @@ today.correct1 = "第" + today.week + "周周日：第" + (today.week % 3 || 3) 
 today.correct2 = "第" + today.week + "周周日：第" + (today.week % 3 || 3) + "/3轮" + today.weekday + ["化学?/历史?", "物理/地理", "生物?/政治?",][today.week % 3] + "自主整理纠错";
 today.refine = "第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练";
 today.practice = "高三第二学期第" + (today.day < 4 ? today.week * 2 - 20 : today.week * 2 - 19) + "次模拟考练：请在答题卡上写清组别。";
-exam[-"2022-04-20"] = function () {
+exam["2022-05-11"] = function () {
   slogan.$main = "";
-  $("语文", today.date, "14:15", "16:45");
+  $("晨读1", today.date, "06:55", "07:25");
+  $("晨会", today.date, "07:25", "07:30");
+  $("晨读2", today.date, "07:30", "08:00");
+  $("第1节", today.date, "08:10", "08:55");
+  $("综合", today.date, "09:15", "11:45", 0, [today.practice], 15);
+  $("第2节", today.date, "14:25", "15:10");
+  $("英语", today.date, "15:30", "17:30", 0, [today.practice], 15);
+  $("晚训", today.date, "18:40", "19:00", 0, [today.refine], 5);
+  $("晚写", today.date, "19:05", "19:15", 0, 0, 5);
+  $("晚一", today.date, "19:15", "20:00");
+  $("晚二", today.date, "20:10", "20:55");
+  $("晚三", today.date, "21:00", "22:20", 0, 0, 7);
+  $("晚修", today.date, "22:30", "23:30");
   return "本日临时";
 };
 exam[-30] = function () {
@@ -64,7 +76,7 @@ exam[-31] = function () {
   return "高三三轮";
 };
 exam[30] = function () {
-  slogan.$main = today.cee22 + "天 奋勇争先";
+  slogan.$main = today.cee22 + "天";
   subject.$admit = 2;
   // 这种情况就比较复杂了，代码和人有一个能跑就行
   // 特别注意，最后一轮求余后应该是数组第0项
@@ -85,6 +97,7 @@ exam[30] = function () {
     $("语文", today.date, "09:15", "11:45", 0, [today.practice], 15);
     $("第2节", today.date, "14:25", "15:10");
     $("数学", today.date, "15:30", "17:30", 0, [today.practice], 15);
+    $("自习", today.date, "17:30", "18:00");
   } else if (today.day % 3 == 2) {
     $("综合", today.date, "09:15", "11:45", 0, [today.practice], 15);
     $("第2节", today.date, "14:25", "15:10");
