@@ -9,7 +9,7 @@ today.total22 = parseInt((new Date(2022, 6, 7) - new Date(2019, 7, 18)) / 864E5)
 today.correct1 = "第" + today.week + "周周日：第" + (today.week % 3 || 3) + "/3轮" + today.weekday + ["英语", "语文", "数学",][today.week % 3] + "自主整理纠错";
 today.correct2 = "第" + today.week + "周周日：第" + (today.week % 3 || 3) + "/3轮" + today.weekday + ["物理/地理", "生物/政治", "化学/历史",][today.week % 3] + "自主整理纠错";
 today.refine = "第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练";
-today.practice = "高三第二学期第" + (today.day < 4 ? today.week * 2 - 19 : today.week * 2 - 18) + "次模拟考练：请在答题卡上写清组别。";
+today.practice = "高三第二学期第" + (today.day < 4 ? today.week * 2 - 21 : today.week * 2 - 20) + "次模拟考练：请在答题卡上写清组别。";
 exam["2022-05-14"] = function () {
   slogan.$main = today.cee22 + "天后 峰顶相会";
   // $("晨读1", today.date, "06:55", "07:25");
