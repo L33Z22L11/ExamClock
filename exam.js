@@ -99,15 +99,18 @@ exam[30] = function () {
     $("晨读2", today.date, "07:30", "08:00");
     $("第1节", today.date, "08:10", "08:55");
   }
-  if (now > new Date("2022-05-15") && today.day % 3 == 1) {
+  if (today.day % 3 == 1) {
     $("语文", today.date, "09:15", "11:45", 0, [today.practice], 15);
     $("第2节", today.date, "14:25", "15:10");
     $("数学", today.date, "15:30", "17:30", 0, [today.practice], 15);
     $("自习", today.date, "17:30", "18:00");
-  } else if (now > new Date("2022-05-15") && today.day % 3 == 2) {
+  } else if (today.day % 3 == 2) {
     $("综合", today.date, "09:15", "11:45", 0, [today.practice], 15);
     $("第2节", today.date, "14:25", "15:10");
-    $("英语", today.date, "15:30", "17:30", 0, [today.practice], 15);
+    if (now < new Date("2022-05-18")) {
+      $("英语", today.date, "14:05", "16:05", 0, [today.practice], 15);
+    } else
+      $("英语", today.date, "15:30", "17:30", 0, [today.practice], 15);
   } else if (today.day == 6) {
     $("第1节", today.date, "07:30", "08:15");
     $("第2节", today.date, "08:25", "09:10");
