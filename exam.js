@@ -107,10 +107,7 @@ exam[30] = function () {
   } else if (today.day % 3 == 2) {
     $("综合", today.date, "09:15", "11:45", 0, [today.practice], 15);
     $("第2节", today.date, "14:25", "15:10");
-    if (now < new Date("2022-05-18")) {
-      $("英语", today.date, "14:05", "16:05", 0, [today.practice], 15);
-    } else
-      $("英语", today.date, "15:30", "17:30", 0, [today.practice], 15);
+    $("英语", today.date, "15:30", "17:30", 0, [today.practice], 15);
   } else if (today.day == 6) {
     $("第1节", today.date, "07:30", "08:15");
     $("第2节", today.date, "08:25", "09:10");
@@ -137,7 +134,7 @@ exam[30] = function () {
     $("晚写", today.date, "19:05", "19:15", 0, 0, 5);
     $("晚一", today.date, "19:15", "20:00");
     $("晚二", today.date, "20:10", "20:55");
-    $("晚三", today.date, "21:10", "22:20", 0, 0, 7);
+    $("晚三", today.date, "21:10", "22:20");
     $("晚修", today.date, "22:30", "23:30");
   }
   return "高三日常";
