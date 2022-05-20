@@ -12,4 +12,5 @@ function playCover(msg) {
   setTimeout(function () { eleCoverbar.style.width = ""; }, 2000);
   setTimeout(function () { eleCover.style.opacity = "0"; }, 2500);
   setTimeout(function () { eleCover.style.display = ""; }, 3000);
+  return msg;
 }
