@@ -107,7 +107,7 @@ exam[30] = function () {
   } else if (today.day % 3 == 2) {
     $("综合", today.date, "09:15", "11:45", 0, [today.practice], 15);
     $("第2节", today.date, "14:25", "15:10");
-    $("英语", today.date, "15:30", "17:30", 0, [today.practice], 15);
+    $("英语", today.date, "15:30", "17:30", 0, [today.practice,'<a href="https://cowtransfer.com/s/c94b8dbbbe7e47">点击下载英语听力</a>'], 15);
   } else if (today.day == 6) {
     $("第1节", today.date, "07:30", "08:15");
     $("第2节", today.date, "08:25", "09:10");
