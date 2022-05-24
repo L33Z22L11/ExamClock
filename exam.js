@@ -9,7 +9,7 @@ today.total22 = parseInt((new Date(2022, 6, 7) - new Date(2019, 7, 18)) / 864E5)
 today.correct1 = "第" + today.week + "周：第" + (today.week % 3 || 3) + "/3轮" + today.weekday + ["数学", "语文", "物理/地理",][today.week % 3] + "自主整理纠错";
 today.correct2 = "第" + today.week + "周：第" + (today.week % 3 || 3) + "/3轮" + today.weekday + ["英语", "生物/政治", "化学/历史",][today.week % 3] + "自主整理纠错";
 today.refine = "第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练";
-today.practice = "高三第二学期第" + (today.day < 4 ? today.week * 2 - 21 : today.week * 2 - 20) + "次模拟考练：请在答题卡上写清组别。";
+today.practice = "高三第二学期第" + (today.day < 4 ? today.week * 2 - 21 : today.week * 2 - 20) + "次模拟考练：请在答题卡上写清组别A/B/C/AB/AC/BC/ABC/D。";
 exam["2022-05-14"] = function () {
   slogan.$main = today.cee22 + "天后 峰顶相会";
   // $("晨读1", today.date, "06:55", "07:25");
@@ -22,14 +22,14 @@ exam["2022-05-14"] = function () {
   // $("第4节", today.date, "11:15", "12:00");
   // $("第5节", today.date, "14:25", "15:10");
   // $("第6节", today.date, "15:20", "16:05");
-  // $("第7节", today.date, "16:20", "17:05", 0, 0, 7);
+  // $("第7节", today.date, "16:20", "17:05", null, null, 7);
   // $("自习", today.date, "17:15", "18:00");
-  $("纠错", today.date, "16:15", "17:45", 0, ["第13周周日自主整理纠错"]);
-  $("晚训", today.date, "18:40", "19:00", 0, ["第13周：单周周五生物/历史小题精练"], 5);
-  $("晚写", today.date, "19:05", "19:15", 0, 0, 5);
+  $("纠错", today.date, "16:15", "17:45", null, ["第13周周日自主整理纠错"]);
+  $("晚训", today.date, "18:40", "19:00", null, ["第13周：单周周五生物/历史小题精练"], 5);
+  $("晚写", today.date, "19:05", "19:15", null, null, 5);
   $("晚一", today.date, "19:15", "20:00");
   $("晚二", today.date, "20:10", "20:55");
-  $("晚三", today.date, "21:10", "22:20", 0, 0, 7);
+  $("晚三", today.date, "21:10", "22:20", null, null, 7);
   $("晚修", today.date, "22:30", "23:30");
   return today.date + "临时";
 };
@@ -57,11 +57,11 @@ exam[-30] = function () {
     $("自习", today.date, "17:00", "17:45");
   } else {
     // 周日白天
-    $("纠错", today.date, "14:10", "17:30", 0, ["第" + today.week + "周" + today.weekday + "自主整理纠错"]);
+    $("纠错", today.date, "14:10", "17:30", null, ["第" + today.week + "周" + today.weekday + "自主整理纠错"]);
   }
   if (today.day != 6) {
     // 非周六的晚上
-    $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练"], 5);
+    $("晚训", today.date, "18:25", "18:45", null, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练"], 5);
     $("晚写", today.date, "18:45", "18:55");
     $("晚一", today.date, "18:55", "19:40");
     $("晚二", today.date, "19:50", "20:35");
@@ -88,8 +88,8 @@ exam[30] = function () {
   // 特别注意，最后一轮求余后应该是数组第0项
   if (!today.day) {
     // 周日白天
-    $("纠错", today.date, "14:25", "15:55", 0, [today.correct1]);
-    $("纠错", today.date, "16:15", "17:45", 0, [today.correct2]);
+    $("纠错", today.date, "14:25", "15:55", null, [today.correct1]);
+    $("纠错", today.date, "16:15", "17:45", null, [today.correct2]);
   }
   // 非周日的白天
   if (today.day == 5) $("听力", today.date, "07:05", "07:25");
@@ -100,14 +100,14 @@ exam[30] = function () {
     $("第1节", today.date, "08:10", "08:55");
   }
   if (today.day % 3 == 1) {
-    $("语文", today.date, "09:15", "11:45", 0, [today.practice], 15);
+    $("语文", today.date, "09:15", "11:45", null, [today.practice], 15);
     $("第2节", today.date, "14:25", "15:10");
-    $("数学", today.date, "15:30", "17:30", 0, [today.practice], 15);
+    $("数学", today.date, "15:30", "17:30", null, [today.practice], 15);
     $("自习", today.date, "17:30", "18:00");
   } else if (today.day % 3 == 2) {
-    $("综合", today.date, "09:15", "11:45", 0, [today.practice], 15);
+    $("综合", today.date, "09:15", "11:45", null, [today.practice], 15);
     $("第2节", today.date, "14:25", "15:10");
-    $("英语", today.date, "15:30", "17:30", 0, [today.practice], 15);
+    $("英语", today.date, "15:30", "17:30", null, [today.practice], 15);
   } else if (today.day == 6) {
     $("第1节", today.date, "07:30", "08:15");
     $("第2节", today.date, "08:25", "09:10");
@@ -116,7 +116,7 @@ exam[30] = function () {
     $("第5节", today.date, "11:15", "12:00");
     $("第6节", today.date, "14:25", "15:10");
     $("第7节", today.date, "15:20", "16:05");
-    $("第8节", today.date, "16:20", "17:05", 0, 0, 7);
+    $("第8节", today.date, "16:20", "17:05", null, null, 7);
     $("第9节", today.date, "17:15", "18:00");
   } else {
     $("第2节", today.date, "09:05", "09:50");
@@ -125,13 +125,13 @@ exam[30] = function () {
     $("第4节", today.date, "11:15", "12:00");
     $("第5节", today.date, "14:25", "15:10");
     $("第6节", today.date, "15:20", "16:05");
-    $("第7节", today.date, "16:20", "17:05", 0, 0, 7);
+    $("第7节", today.date, "16:20", "17:05", null, null, 7);
     $("自习", today.date, "17:15", "18:00");
   }
   if (today.day != 6) {
     // 非周六的晚上
-    $("晚训", today.date, "18:40", "19:00", 0, [today.refine], 5);
-    $("晚写", today.date, "19:05", "19:15", 0, 0, 5);
+    $("晚训", today.date, "18:40", "19:00", null, [today.refine], 5);
+    $("晚写", today.date, "19:05", "19:15", null, null, 5);
     $("晚一", today.date, "19:15", "20:00");
     $("晚二", today.date, "20:10", "20:55");
     $("晚三", today.date, "21:10", "22:20");
@@ -152,15 +152,15 @@ exam[20] = function () {
   $("第4节", today.date, "11:15", "12:00");
   $("第5节", today.date, "14:25", "15:10");
   $("第6节", today.date, "15:20", "16:05");
-  $("第7节", today.date, "16:20", "17:05", 0, 0, 7);
+  $("第7节", today.date, "16:20", "17:05", null, null, 7);
   $("自习", today.date, "17:15", "18:00");
   $("晚饭", today.date, "18:00", "18:25");
-  // $("背诵", today.date, "18:25", "18:55", 0, 0, 5);
-  $("晚训", today.date, "18:40", "19:00", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + (today.day % 2 ? "英语听力" : "语文视频")], 5);
-  $("晚写", today.date, "19:05", "19:15", 0, 0, 5);
+  // $("背诵", today.date, "18:25", "18:55", null, null, 5);
+  $("晚训", today.date, "18:40", "19:00", null, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + (today.day % 2 ? "英语听力" : "语文视频")], 5);
+  $("晚写", today.date, "19:05", "19:15", null, null, 5);
   $("晚一", today.date, "19:15", "20:00");
   $("晚二", today.date, "20:10", "20:55");
-  $("晚三", today.date, "21:10", "22:20", 0, 0, 7);
+  $("晚三", today.date, "21:10", "22:20", null, null, 7);
   $("晚修", today.date, "22:20", "23:20");
   return "高二日常";
 }
