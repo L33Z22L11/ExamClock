@@ -48,7 +48,7 @@ subject.to = function (to) {
   slogan.$sub = [""];
   this.on = to in exam ? to : this.on;
   document.getElementById("type").innerHTML = exam[this.on]();
-  if (SP.debug == null) playCover("正在传送到坐标 <span class='shield'>?type=" + this.on + "</span>，请稍候");
+  if (SP.debug != null) playCover("正在传送到坐标 <span class='shield'>?type=" + this.on + "</span>，请稍候");
   // document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // 想提升应用启动速度，就把延迟改小点
   setTimeout(function () {
@@ -86,10 +86,10 @@ function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit
     subject.start = new Date(toDate + "T" + toStart + "+08:00");
     subject.end = new Date(toDate + "T" + toEnd + "+08:00");
     subject.duration = subject.duration;
-    subject.admit = toAdmit == null ? toAdmit : subject.$admit;
+    subject.admit = toAdmit != null ? toAdmit : subject.$admit;
     // document.getElementById("duration").innerHTML = subject.duration;
-    slogan.main = toMainslogan == null ? toMainslogan : slogan.$main;
-    slogan.sub = toSubslogan == null ? toSubslogan : slogan.$sub;
+    slogan.main = toMainslogan != null ? toMainslogan : slogan.$main;
+    slogan.sub = toSubslogan != null ? toSubslogan : slogan.$sub;
     slogan.update();
     // 啊对对对，有很多种方法将变量转换为数字，我就用最麻烦的
     console.log("[" + new Date + "]\n时钟时间：" + now + "\n注入科目：" + toSubject + "\n开始时间：" + toDate, toStart + "\n结束时间：" + toDate, toEnd + "\n提前入场：" + subject.admit + " min\n" + ["默认大标语：", "指定大标语："][~!toMainslogan + 2] + slogan.main + ["\n默认副标语：", "\n指定副标语："][!!toSubslogan - -0] + slogan.sub);
