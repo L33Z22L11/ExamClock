@@ -99,16 +99,7 @@ exam[30] = function () {
     $("晨读2", today.date, "07:30", "08:00");
     $("第1节", today.date, "08:10", "08:55");
   }
-  if (today.day % 3 == 1) {
-    $("语文", today.date, "09:15", "11:45", null, [today.practice], 15);
-    $("第2节", today.date, "14:25", "15:10");
-    $("数学", today.date, "15:30", "17:30", null, [today.practice], 15);
-    $("自习", today.date, "17:30", "18:00");
-  } else if (today.day % 3 == 2) {
-    $("综合", today.date, "09:15", "11:45", null, [today.practice], 15);
-    $("第2节", today.date, "14:25", "15:10");
-    $("英语", today.date, "15:30", "17:30", null, [today.practice], 15);
-  } else if (today.day == 6) {
+  if (today.day == 6) {
     $("第1节", today.date, "07:30", "08:15");
     $("第2节", today.date, "08:25", "09:10");
     $("第3节", today.date, "09:20", "10:05");
@@ -130,8 +121,9 @@ exam[30] = function () {
   }
   if (today.day != 6) {
     // 非周六的晚上
-    $("晚训", today.date, "18:40", "19:00", null, [today.refine], 5);
-    $("晚写", today.date, "19:05", "19:15", null, null, 5);
+    // $("晚训", today.date, "18:40", "19:00", null, [today.refine], 5);
+    // $("晚写", today.date, "19:05", "19:15", null, null, 5);
+    $("听力", today.date, "18:55", "19:15");
     $("晚一", today.date, "19:15", "20:00");
     $("晚二", today.date, "20:10", "20:55");
     $("晚三", today.date, "21:10", "22:20");
