@@ -81,10 +81,14 @@
             </div>
           </div>
 
+          <a class="hilit fa-solid fa-qrcode" data-sub="核酸"
+            onclick='open("https\:\/\/hsjc.jiankangbaoji.com/eqrcode/","_blank","left=640,top=120,width=400,height=720");'>
+          </a>
+
           <div class="dropdown">
             <a class="fa-solid fa-school" data-sub="校园"></a>
             <div style="right:-4em;min-width:8.5em;">
-              <div><i class="fa-regular fa-calendar-days"></i> 宝中人安排
+              <div><i class="fa-regular fa-calendar-days"></i> 课表安排
                 <div class="shieldlist">
                   <a href="https://img.xuewuzhibu.cn/bjzx">高三</a>
                   <a href="https://img.xuewuzhibu.cn/album/0G4">高二</a>
@@ -137,8 +141,6 @@
                   <!-- <a href="http://m.baoji.bendibao.com/news/yqdengji/">风险等级</a> -->
                 </div>
               </div>
-              <a onclick='open("https\:\/\/hsjc.jiankangbaoji.com/eqrcode/", "_blank", "left=640, top=120, width=400, height=720");
-              '><i class="fa-solid fa-qrcode"></i> 宝鸡核酸码</a>
             </div>
           </div>
 
@@ -269,7 +271,7 @@
         <p><i class="fa-solid fa-hashtag"></i> 带带纸鹿本鹿217875280，渡渡摸鱼真君219989658</p>
         <p><i class="fa-solid fa-hashtag"></i> 带带暮草兮231385129，龟龟197861375</p>
         <p><i class="fa-solid fa-file-arrow-up"></i>
-          ver_6.7.5 科目加载函数优化</p>
+          ver_6.7.6 核酸检测提权</p>
       </div>
     </footer>
   </div>
@@ -350,8 +352,9 @@
   <script src="./interact.js" msg></script>
   <script src="./gallery.js" msg interact></script>
 
+
   <script>
-    send('<b>各位最近复习还好吗？这里有一张高三复习安排的壁纸，<a href="https://images.xuewuzhibu.cn/216959d8a36fcaeb9cba45e5213f2b71.png" download="高三壁纸"><u>点击查收</u></a>。</b>');
+    send('<big><b>查不到核酸结果的，可以在下方使用用本人身份证号登录查询</b></big><br>做核酸检测时，若扫描本人账号生成的二维码，可能只有本人账号能查询到结果。<br>若家长为孩子生成的二维码被刷新，先前家长为孩子生成的二维码可能无法扫描。');
   </script>
 
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Ubuntu:400,700">
