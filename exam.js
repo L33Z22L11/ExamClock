@@ -82,7 +82,7 @@ exam[-31] = function () {
   return "高三三轮";
 };
 exam[30] = function () {
-  slogan.$main = "努力" + today.cee22 + "天 而不是挣扎" + today.cee23 + "天";
+  slogan.$main = today.cee22 + "天之后 峰顶相会";
   subject.$admit = 2;
   // 这种情况就比较复杂了，代码和人有一个能跑就行
   // 特别注意，最后一轮求余后应该是数组第0项
