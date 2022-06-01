@@ -1,8 +1,12 @@
 /* 
  * 时间更新
  */
-// 以当前日期为基础的日常/临时科目
+
+// 这里可以修改today.date
+// 测试结束后一定要删除测试数据
+// 否则“今天”就是today.date
 var today = new Date;
+
 today = {
   date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
   week: parseInt((today - new Date(2022, 1, 6)) / 6048E5),

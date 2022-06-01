@@ -1,5 +1,5 @@
 console.groupCollapsed("\n%c  %c考试时钟 ExamClock", "background:url('https://exam.cooo.site/logo_g_64.png') no-repeat;padding:32px;", "font:bold 36px sans-serif;color:#3a9;");
-console.log("\n考试时钟“填补了业余与专业之间的空白”。\n项目仓库：https://github.com/L33Z22L11/ExamClock\n野生技协群：894656456\n\n");
+console.log("\n项目仓库：https://github.com/L33Z22L11/ExamClock\n野生技协群：894656456\n\n");
 console.groupEnd();
 /* 
  * 适用于宝鸡中学的考试科目列表
@@ -33,44 +33,6 @@ exam["2022-05-14"] = function () {
   $("晚修", today.date, "22:30", "23:30");
   return today.date + "临时";
 };
-exam[-30] = function () {
-  slogan.$main = today.cee + "天 奋勇争先";
-  subject.$admit = 2;
-  // 这种情况就比较复杂了，代码和人有一个能跑就行
-  // 特别注意，最后一轮求余后应该是数组第0项
-  if (today.day) {
-    // 非周日的白天
-    if (today.day == 5) $("听力", today.date, "07:05", "07:25");
-    $("晨读1", today.date, "06:55", "07:25");
-    $("晨会", today.date, "07:25", "07:30");
-    $("晨读2", today.date, "07:30", "08:00");
-    $("第1节", today.date, "08:10", "08:55");
-    $("第2节", today.date, "09:05", "09:50");
-    $("课间操", today.date, "09:50", "10:00", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
-    $("第3节", today.date, "10:20", "11:05");
-    $("第4节", today.date, "11:15", "12:00");
-    $("午休", today.date, "12:15", "13:55");
-    $("第5节", today.date, "14:10", "14:55");
-    $("第6节", today.date, "15:05", "15:50");
-    // if (today.day != 6) {};
-    $("第7节", today.date, "16:05", "16:50");
-    $("自习", today.date, "17:00", "17:45");
-  } else {
-    // 周日白天
-    $("纠错", today.date, "14:10", "17:30", null, ["第" + today.week + "周" + today.weekday + "自主整理纠错"]);
-  }
-  if (today.day != 6) {
-    // 非周六的晚上
-    $("晚训", today.date, "18:25", "18:45", null, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练"], 5);
-    $("晚写", today.date, "18:45", "18:55");
-    $("晚一", today.date, "18:55", "19:40");
-    $("晚二", today.date, "19:50", "20:35");
-    $("晚三", today.date, "20:50", "22:00");
-    $("晚修", today.date, "22:10", "23:30");
-  }
-  // return "高三日常";
-  return "<span data-sub='可切换到三轮模考'>高三日常</span>";
-};
 exam[-31] = function () {
   slogan.$sub = ["高三第二学期第三次模拟考练：请在答题卡上写清组别。"];
   $("英语", "2022-04-28", "07:40", "09:40");
@@ -95,6 +57,14 @@ exam[30] = function () {
   if (today.day == 5) $("听力", today.date, "07:05", "07:25");
   $("晨读1", today.date, "06:55", "07:25");
   $("晨会", today.date, "07:25", "07:30");
+  if (today.date == "2022-06-02") {
+    $("语文", today.date, "09:00", "11:30", "沉着冷静&emsp;诚信考试", ["高三第二学期关门考试：考试时钟仅供参考，请以广播通知为准。"], 20);
+    $("数学", today.date, "15:00", "17:00", "沉着冷静&emsp;诚信考试", ["高三第二学期关门考试：考试时钟仅供参考，请以广播通知为准。"], 20);
+  }
+  if (today.date == "2022-06-03") {
+    $("综合", today.date, "09:00", "11:30", "沉着冷静&emsp;诚信考试", ["高三第二学期关门考试：考试时钟仅供参考，请以广播通知为准。"], 20);
+    $("英语", today.date, "15:00", "17:00", "沉着冷静&emsp;诚信考试", ["高三第二学期关门考试：考试时钟仅供参考，请以广播通知为准。"], 20);
+  }
   if (today.day != 6) {
     $("晨读2", today.date, "07:30", "08:00");
     $("第1节", today.date, "08:10", "08:55");
