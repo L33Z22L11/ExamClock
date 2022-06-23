@@ -4,8 +4,8 @@ console.groupEnd();
 /* 
  * 适用于宝鸡中学的考试科目列表
  */
-today.entry22 = parseInt((today - new Date(2019, 7, 18)) / 864E5);
-today.total22 = parseInt((new Date(2022, 6, 7) - new Date(2019, 7, 18)) / 864E5);
+today.gone22 = parseInt((Date.now() - new Date(2022, 5, 9)) / 864E5);
+today.cee23 = parseInt((new Date(2023, 5, 8) - Date.now()) / 864E5);
 today.correct1 = "第" + today.week + "周：第" + (today.week % 3 || 3) + "/3轮" + today.weekday + ["数学", "语文", "物理/地理",][today.week % 3] + "自主整理纠错";
 today.correct2 = "第" + today.week + "周：第" + (today.week % 3 || 3) + "/3轮" + today.weekday + ["英语", "生物/政治", "化学/历史",][today.week % 3] + "自主整理纠错";
 today.refine = "第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练";
@@ -33,18 +33,9 @@ exam["2022-05-14"] = function () {
   $("晚修", today.date, "22:30", "23:30");
   return today.date + "临时";
 };
-exam[-31] = function () {
-  slogan.$sub = ["高三第二学期第三次模拟考练：请在答题卡上写清组别。"];
-  $("英语", "2022-04-28", "07:40", "09:40");
-  $("数学", "2022-04-28", "10:00", "12:00");
-  $("语文", "2022-04-28", "14:15", "16:45");
-  $("自习", "2022-04-28", "17:00", "17:45");
-  $("综合", "2022-04-28", "18:30", "21:00");
-  $("自习", "2022-04-28", "21:15", "22:00");
-  return "高三三轮";
-};
 exam[30] = function () {
-  slogan.$main = today.cee22 + "天之后 峰顶相会";
+  slogan.$main = "出舱" + today.gone22 + "天 感觉良好";
+  return "高三走了。";
   subject.$admit = 2;
   // 这种情况就比较复杂了，代码和人有一个能跑就行
   // 特别注意，最后一轮求余后应该是数组第0项

@@ -12,8 +12,6 @@ today = {
   week: parseInt((today - new Date(2022, 1, 6)) / 6048E5),
   day: today.getDay(),
   weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()],
-  cee22: parseInt((new Date(2022, 5, 8) - today) / 864E5),
-  cee23: parseInt((new Date(2023, 5, 8) - today) / 864E5),
 };
 // 各个对象内置功能
 var exam = {};

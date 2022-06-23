@@ -51,7 +51,7 @@ else if (today.date in exam) subject.to(today.date);
 else if (today.date.match("2022-04-1(6|7)")) subject.to(31);
 else if (today.date.match("2022-01-2(0|1)")) subject.to(21);
 // 最后设置缺省考试类型
-else subject.to(30);
+else subject.to(20);
 // 若不再包一层，slogan.update内的this就会指向window
 setInterval(function () { slogan.update(); }, 2000);
 // 清明节、公祭日黑白滤镜
