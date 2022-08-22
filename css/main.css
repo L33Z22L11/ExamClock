@@ -1,0 +1,322 @@
+/*
+ * default
+ */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 网页字体及背景 */
+html {
+  font-family: 'Ubuntu', 'Genshin65W', sans-serif;
+  font-size: 48px;
+  font-size: 2.75vw;
+  color: #fff;
+  background: #333 fixed center url(https://images.xuewuzhibu.cn/02a08bf8bad1ef3e8e15d7da1066d62d.jpg);
+  background-size: cover;
+}
+
+/* 分散对齐 */
+.space-between {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.space {
+  margin: 0 -.3em;
+}
+
+.space>* {
+  margin: 0 .3em;
+}
+
+/* 一级淡文本（保留字体颜色） */
+.dim {
+  font-size: .75em;
+  opacity: .75;
+}
+
+/* 二级淡文本 */
+.sub {
+  font-size: .6em;
+  color: rgba(255, 255, 255, .75);
+}
+
+/* 页脚文本 */
+footer {
+  font-size: .3rem;
+  color: rgba(255, 255, 255, .5);
+}
+
+/* 选中 */
+::selection {
+  background: rgba(255, 255, 255, .1);
+  text-shadow: #7af -.05em -.01em 0, #7d9 .05em .01em 0;
+}
+
+/*
+ * elements
+ */
+/* 主体排版 */
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, .5);
+}
+
+/* 主体元素间距 */
+#main>* {
+  margin: .5rem 1rem;
+}
+
+/* 通知气泡 */
+.notify {
+  z-index: 1;
+  top: 0;
+}
+
+/* 通知气泡元素 */
+.notify>div {
+  font-size: .5rem;
+  display: none;
+  margin: .2rem auto;
+  padding: .2rem;
+  animation: fade .5s;
+  border-radius: .2rem;
+}
+
+.hilit {
+  animation: hilit 60s;
+}
+
+@keyframes hilit {
+  from {
+    color: #3fa;
+  }
+
+  to {
+    color: auto;
+  }
+}
+
+/* 等宽图标 */
+.fa-solid,
+.fa-regular,
+.fa-brands,
+.fa-width {
+  min-width: 1.2em;
+  text-align: center;
+}
+
+/* 带注释的图标 */
+[data-sub] {
+  display: inline-block;
+  padding: .1em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+[data-sub]::after {
+  font: normal normal .5em 'Ubuntu', 'Genshin65W', sans-serif;
+  display: block;
+  margin-top: .2em;
+  content: attr(data-sub);
+}
+
+/* 进度条 */
+.bar {
+  height: .25rem;
+  margin: .5rem auto;
+}
+
+#bar {
+  height: 100%;
+  transition: linear 2s;
+  background: #fff;
+}
+
+/* 卡片排版 */
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100vw;
+  margin: .5rem -1rem;
+}
+
+/* 淡色背景阴影 */
+.notify>div,
+.bar,
+.card>* {
+  transition: .2s;
+  /* border: 2px solid rgba(255, 255, 255, 0.4); */
+
+  background: rgba(255, 255, 255, .1);
+  box-shadow: .2em .2em 1em rgba(0, 0, 0, .2);
+  text-shadow: .1em .1em .2em rgba(0, 0, 0, .2);
+}
+
+/* 卡片元素字体间距等 */
+.card>* {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: .25rem;
+  padding: .25rem .75rem;
+  text-align: center;
+  border-radius: .5rem;
+}
+
+:hover .notify>div,
+:hover .bar,
+:hover .card>* {
+  backdrop-filter: blur(.1rem);
+}
+
+.notify>div:hover,
+.bar:hover,
+.card>*:hover {
+  background: rgba(255, 255, 255, .2);
+  backdrop-filter: blur(0);
+}
+
+/* 时钟字体 */
+#clock {
+  font-size: 5em;
+}
+
+#subject,
+#timer {
+  font-size: 3em;
+  width: 100%;
+}
+
+#duration,
+#activity {
+  font-size: 1.5em;
+  color: rgba(255, 255, 255, .75);
+}
+
+/* 适配竖屏 */
+@media (max-aspect-ratio: 8/7) {
+  html {
+    font-size: 5vw;
+    align-items: flex-start;
+  }
+
+  nav.space-between,
+  .card {
+    flex-direction: column;
+    margin: auto;
+  }
+}
+
+/*
+ * functional
+ */
+/* 下拉元素定位 */
+[data-title],
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* 下拉正文定位（未下拉） */
+[data-title]::after,
+.dropdown> :last-child {
+  position: absolute;
+  z-index: 1;
+  display: none;
+  cursor: auto;
+}
+
+[data-title]::after {
+  bottom: 1em;
+  right: 0;
+  width: 12em;
+  padding: .1em;
+  content: attr(data-title);
+}
+
+/* 下拉正文定位（已下拉） */
+[data-title]:hover::after,
+.dropdown:hover> :last-child {
+  display: block;
+  animation: fade .2s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* 菜单展开定位 */
+#menu .dropdown> :last-child {
+  bottom: 0;
+  left: 5em;
+  min-width: 12em;
+  max-height: 20em;
+}
+
+/* 下拉/点击文本 */
+.dropdown>a {
+  display: inline-block;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  border-radius: .2rem;
+}
+
+a:hover {
+  color: #fff;
+  background: linear-gradient(120deg, #7af, #7d9);
+  box-shadow: .2em .2em .5em rgba(0, 0, 0, .2);
+}
+
+/* 高亮/菜单/下拉正文颜色 */
+.btn,
+#menu,
+[data-title]::after,
+.dropdown> :last-child {
+  color: #000;
+  border-radius: .2rem;
+  background: rgba(255, 255, 255, .75);
+  box-shadow: .2rem .2rem 1rem rgba(0, 0, 0, .2);
+  backdrop-filter: blur(.5em);
+}
+
+/* 高亮按钮/菜单元素/下拉正文元素边距 */
+a.btn,
+#menu>*,
+.dropdown> :last-child>* {
+  display: block;
+  box-sizing: border-box;
+  padding: .2em;
+}
+
+/* 标签 */
+.shield,
+.shieldlist>* {
+  font-size: .6em;
+  display: inline-block;
+  margin: .1em;
+  padding: .1em .3em;
+  vertical-align: middle;
+  color: #fff;
+  border-radius: 1em;
+  outline: .1em solid rgba(255, 255, 255, .2);
+  background: rgba(0, 0, 0, .5);
+}
