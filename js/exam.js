@@ -95,26 +95,28 @@ exam[22] = function () {
 exam[23] = function () {
   slogan.$main = "距离高考" + today.cee23 + "天";
   subject.$admit = 2;
-  $("晨读1", today.date, "07:05", "07:25");
-  $("晨会", today.date, "07:25", "07:30");
-  $("晨读2", today.date, "07:30", "08:00");
-  $("第1节", today.date, "08:10", "08:55");
-  $("第2节", today.date, "09:05", "09:50");
-  $("课间操", today.date, "09:50", "10:05", "<a href='https://mp.weixin.qq.com/s/61Voi3s4tFtAup2-eOg1Lg'><i class='fa-regular fa-circle-play'></i> 点击播放高清室内操", ["《鳌拜鳌拜鳌拜拜》(原曲《Batte Forte》)《夜空中最亮的星》《虫儿飞》"]);
-  $("第3节", today.date, "10:20", "11:05");
-  $("第4节", today.date, "11:15", "12:00");
-  $("第5节", today.date, "14:25", "15:10");
-  $("第6节", today.date, "15:20", "16:05");
-  $("第7节", today.date, "16:20", "17:05", null, null, 7);
-  $("自习", today.date, "17:15", "18:00");
-  $("晚饭", today.date, "18:00", "18:25");
+  // 夏季作息时间，上午竟然要上五节课
+  $("晨读1", today.date, "07:05", "07:20");
+  $("晨会", today.date, "07:20", "07:25");
+  $("晨读2", today.date, "07:25", "07:45");
+  $("第1节", today.date, "07:55", "08:35");
+  $("第2节", today.date, "08:45", "09:25");
+  $("课间操", today.date, "09:25", "09:50", "<a href='https://mp.weixin.qq.com/s/61Voi3s4tFtAup2-eOg1Lg'><i class='fa-regular fa-circle-play'></i> 点击播放高清室内操", ["《鳌拜鳌拜鳌拜拜》(原曲《Batte Forte》)《夜空中最亮的星》《虫儿飞》"]);
+  $("第3节", today.date, "09:50", "10:30");
+  $("第4节", today.date, "10:40", "11:20");
+  $("第5节", today.date, "11:30", "12:10");
+  $("第6节", today.date, "14:25", "15:05", null, null, 5);
+  $("第7节", today.date, "15:15", "15:55");
+  $("第8节", today.date, "16:10", "16:50", null, null, 7);
+  $("自习", today.date, "17:00", "18:00");
+  // $("晚饭", today.date, "18:00", "18:25");
   // $("背诵", today.date, "18:25", "18:55", null, null, 5);
-  $("晚训", today.date, "18:40", "19:00", null, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + (today.day % 2 ? "英语听力" : "语文视频")], 5);
+  // $("晚训", today.date, "18:40", "19:00", null, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + (today.day % 2 ? "英语听力" : "语文视频")], 5);
   $("晚写", today.date, "19:05", "19:15", null, null, 5);
-  $("晚一", today.date, "19:15", "20:00");
-  $("晚二", today.date, "20:10", "20:55");
-  $("晚三", today.date, "21:10", "22:20", null, null, 7);
-  $("晚修", today.date, "22:20", "23:20");
+  $("晚一", today.date, "19:15", "19:55");
+  $("晚二", today.date, "20:05", "20:45");
+  $("晚三", today.date, "21:00", "22:30", null, null, 7);
+  // $("晚修", today.date, "22:20", "23:20");
   return "高三日常";
 }
 exam[231] = function () {
