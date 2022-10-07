@@ -6,11 +6,11 @@ function playCover(msg) {
   eleCoverbar.style.width = "100%";
   eleCover.style.display = "flex";
   setTimeout(function () { eleCover.style.opacity = ""; }, 0);
-  setTimeout(function () { eleCoverbar.style.width = "94%"; }, 500);
-  setTimeout(function () { eleCoverbar.style.width = "50%"; }, 1000);
-  setTimeout(function () { eleCoverbar.style.width = "6%"; }, 1500);
-  setTimeout(function () { eleCoverbar.style.width = ""; }, 2000);
-  setTimeout(function () { eleCover.style.opacity = "0"; }, 2500);
-  setTimeout(function () { eleCover.style.display = ""; }, 3000);
+  setTimeout(function () { eleCoverbar.style.width = "94%"; }, 300);
+  setTimeout(function () { eleCoverbar.style.width = "50%"; }, 600);
+  setTimeout(function () { eleCoverbar.style.width = "6%"; }, 900);
+  setTimeout(function () { eleCoverbar.style.width = ""; }, 1200);
+  setTimeout(function () { eleCover.style.opacity = "0"; }, 1500);
+  setTimeout(function () { eleCover.style.display = ""; }, 1800);
   return msg;
 }
