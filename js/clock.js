@@ -12,6 +12,8 @@ today = {
   week: parseInt((today - new Date(2022, 1, 6)) / 6048E5),
   day: today.getDay(),
   weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()],
+  // 夏季作息：5月1日~9月30日
+  summer: today.getMonth() > 3 && today.getMonth() < 9,
 };
 // 各个对象内置功能
 var exam = {};
@@ -44,7 +46,7 @@ subject.to = function (to) {
   this.name = "";
   this.start = new Date(0);
   this.end = new Date(0);
-  this.$admit = 15;
+  this.$admit = 20;
   timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
   slogan.$main = "沉着冷静&emsp;诚信考试";
   slogan.$sub = [""];
