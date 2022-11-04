@@ -47,11 +47,13 @@
 
   <div id="main" style="opacity:1;font-size:1em;">
     <div class="notify">
-      <div id="verify"><i class="fa-solid fa-shield"></i>
+      <div id="verify">
+        <i class="fa-solid fa-shield"></i>
         <span id="verifycontent">安全提示内容</span>
       </div>
-      <div class="space-between" id="msg">
-        <p><i class="fa-solid fa-circle-info"></i>
+      <div id="msg">
+        <p>
+          <i class="fa-solid fa-circle-info"></i>
           <span id="msgcontent">消息内容</span>
         </p>
         <a class="fa-solid fa-xmark"></a>
@@ -232,10 +234,10 @@
           <i class="fa-solid fa-image"></i>
           <span id="bg">背景：雨后校园</span>
         </p>
-        <p><i class="fa-solid fa-hashtag"></i> 野生技协群：89 4656 456</p>
-        <!-- <p class="hilit"><i class="fa-solid fa-hashtag"></i> “校园”菜单内有仨高考倒计时和跑操音乐</p> -->
+        <p class="hilit"><i class="fa-solid fa-hashtag"></i> 考试时钟相关疑问、需求或反馈请前往野生技协群：89 4656 456，多名管理在线回复</p>
+        <!-- <p><i class="fa-solid fa-hashtag"></i> “校园”菜单内有仨高考倒计时和跑操音乐</p> -->
         <p><i class="fa-solid fa-file-arrow-up"></i>
-          ver_6.8.4 更新图片</p>
+          ver_6.8.5 修复通知气泡和背景加载异常时的行为</p>
       </div>
     </footer>
   </div>
@@ -318,7 +320,8 @@
   <script src="./js/gallery.js" msg interact></script>
 
   <script>
-    // send("");
+    send("留意到相关舆情并结合从高一获取的考试安排修正稿，经考试时钟项目组讨论，我们已将高三的“生物/地理”与“物理/历史”考试对调。\
+    <br>另，点击科目名称可直接修改，如有相关疑问，可浏览页面底部信息。");
   </script>
 
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Ubuntu:400,700">
