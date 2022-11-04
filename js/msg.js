@@ -5,10 +5,10 @@
 var eleMsg = document.getElementById("msg");
 // 发送气泡通知
 function send(msg) {
-  eleMsg.style.display = "flex";
+  eleMsg.style.display = "";
   document.getElementById("msgcontent").innerHTML = msg;
   clearInterval(send.interval);
-  send.interval = setInterval(function () { eleMsg.style.display = ""; }, 30000);
+  send.interval = setInterval(function () { eleMsg.style.display = "none"; }, 30000);
   return msg;
 }
-eleMsg.onclick = function () { this.style.display = ""; };
+eleMsg.onclick = function () { this.style.display = "none"; };

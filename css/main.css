@@ -12,7 +12,7 @@ html {
   font-size: 48px;
   font-size: 2.75vw;
   color: #fff;
-  background: #333 fixed center url(https://images.xuewuzhibu.cn/02a08bf8bad1ef3e8e15d7da1066d62d.jpg);
+  background: #333 fixed center url(https://ace.cooo.site/campus.jpg);
   background-size: cover;
 }
 
@@ -22,6 +22,14 @@ html {
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+#msg {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
 }
 
 .space {
