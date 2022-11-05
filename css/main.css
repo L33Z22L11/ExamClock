@@ -16,6 +16,11 @@ html {
   background-size: cover;
 }
 
+body {
+  background: transparent fixed center url(https://ace.cooo.site/campus.jpg);
+  background-size: cover;
+}
+
 /* 分散对齐 */
 .space-between {
   display: flex;
