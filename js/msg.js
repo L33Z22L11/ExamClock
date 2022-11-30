@@ -3,6 +3,7 @@
  */
 // 页面基本元素
 var eleMsg = document.getElementById("msg");
+eleMsg.style.display = "none";
 // 发送气泡通知
 function send(msg) {
   eleMsg.style.display = "";

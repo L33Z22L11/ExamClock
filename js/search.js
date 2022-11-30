@@ -54,5 +54,9 @@ else if (today.date.match("2022-01-2(0|1)")) subject.to(231);
 else subject.to(23);
 // 若不再包一层，slogan.update内的this就会指向window
 setInterval(function () { slogan.update(); }, 2000);
-// 清明节、公祭日黑白滤镜
-// if (today.date.match("-04-05|-12-13"))document.documentElement.style.filter="grayscale(0.75)";
+
+// 黑白滤镜
+if (today.date.match("-11-30|-12-01|-12-13")) {
+  document.documentElement.style.filter = "grayscale(1)";
+  document.getElementById("filterSwitch").style.display = "";
+}
