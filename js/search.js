@@ -56,7 +56,7 @@ else subject.to(23);
 setInterval(function () { slogan.update(); }, 2000);
 
 // 黑白滤镜
-if (today.date.match("-11-30|-12-01|-12-13")) {
+if (today.date.match("-12-06|-12-13")) {
   document.documentElement.style.filter = "grayscale(1)";
   document.getElementById("filterSwitch").style.display = "";
 }
