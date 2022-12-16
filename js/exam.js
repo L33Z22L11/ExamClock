@@ -62,6 +62,8 @@ exam[23] = function () {
     $("晚一", today.date, "18:55", "19:35");
     $("晚二", today.date, "19:45", "20:25");
     $("晚三", today.date, "20:40", "22:10", null, null, 7);
+    $("晚修", today.date, "22:20", "23:30");
+
   }
   return "高三日常";
 }
