@@ -66,7 +66,7 @@ footer {
 /* 选中 */
 ::selection {
   background: rgba(255, 255, 255, .1);
-  text-shadow: #7af -.05em -.01em 0, #7d9 .05em .01em 0;
+  text-shadow: #fa7 -.05em -.01em .1em, #f7a .05em .01em .1em;
 }
 
 /*
@@ -108,7 +108,7 @@ footer {
 
 @keyframes hilit {
   from {
-    color: #3fa;
+    color: #fa7;
   }
 
   to {
@@ -294,8 +294,8 @@ a {
 }
 
 a:hover {
-  color: #fff;
-  background: linear-gradient(120deg, #7af, #7d9);
+  color: #fff !important;
+  background: linear-gradient(120deg, #fa7, #f7a);
   box-shadow: .2em .2em .5em rgba(0, 0, 0, .2);
 }
 

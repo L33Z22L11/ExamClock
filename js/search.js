@@ -13,8 +13,8 @@ var TOS = isNaN(SP.tos) ? 0 : +SP.tos;
       }
     }
     ifwarn(navigator.userAgent.match(" Trident| QQBrowser"), "IE/QQ浏览器功能老旧，我们推荐使用Chrome/Edge/Firefox浏览器。");
-    ifwarn(!location.host.match("exam.thisis.host"), "您可能在使用第三方或离线的考试时钟，无法保证内容时效性。<u><a href='https://exam.thisis.host '>点击访问考试时钟在线官网 exam.thisis.host </a></u>");
-    ifwarn(location.host.match("exam.cooo.site"), "我们于近日解决了野生技协免费网站服务的域名保护冲突，考试时钟的网址已经恢复为<u><a href='https://exam.thisis.host '>exam.thisis.host 点击访问</a></u>");
+    ifwarn(!location.host.match("exam.thisis.host"), "您可能在使用第三方或离线的考试时钟，无法保证内容时效性。<u><a href='https://exam.thisis.host'>点击访问考试时钟在线官网 exam.thisis.host</a></u>");
+    ifwarn(location.host.match("exam.cooo.site"), "我们于近日解决了野生技协免费网站服务的域名保护冲突，考试时钟的网址已经恢复为<u><a href='https://exam.thisis.host'>exam.thisis.host(点击访问)</a></u>");
     ifwarn(SP.debug, "您目前处于科目检查(调试)模式。<u><a href='https://exam.thisis.host '>点击返回正常模式</a></u>");
   }
   catch (e) {
