@@ -1,4 +1,4 @@
-console.groupCollapsed("\n%c  %c考试时钟 ExamClock", "background:url('https://exam.cooo.site/logo_g_64.png') no-repeat;padding:32px;", "font:bold 36px sans-serif;color:#3a9;");
+console.groupCollapsed("\n%c  %c考试时钟 ExamClock", "background:url('https://exam.thisis.host/logo_g_64.png') no-repeat;padding:32px;", "font:bold 36px sans-serif;color:#3a9;");
 console.log("\n项目仓库：https://github.com/L33Z22L11/ExamClock\n野生技协群：894656456\n\n");
 console.groupEnd();
 /* 
