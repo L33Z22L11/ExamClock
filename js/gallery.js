@@ -33,7 +33,8 @@ var gallery = [
 bg.vol = [];
 !function () {
   for (var v in gallery) for (var p in gallery[v].list) bg.vol.push(~~v);
-  document.getElementById("bglist").innerHTML = function () {
+  var bgList = document.getElementById("bglist");
+  if (bgList) bgList.innerHTML = function () {
     var l = "";
     for (v in gallery) {
       l += "<details>\n  <summary>" + gallery[v].vol + "</summary>\n  <div class='alist'>\n";
