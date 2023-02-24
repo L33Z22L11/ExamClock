@@ -44,8 +44,7 @@ subject.to = function (to) {
   // 切换类型时需要重置的内容
   if (SP.debug) now = new Date(0);
   this.name = "";
-  this.start = new Date(0);
-  this.end = new Date(0);
+  this.start = this.end = new Date(0);
   this.$admit = 20;
   timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
   slogan.$main = "沉着冷静&emsp;诚信考试";
@@ -81,9 +80,9 @@ function setTemp(ts, tsh, tsm, teh, tem) {
 // 注入当前科目
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit) {
   if (now < subject.end) {
-    // console.log("当前科目未结束，故不注入科目：" + toSubject);
+    console.log("当前科目未结束，故不注入科目：" + toSubject);
   } else if (now >= new Date(toDate + "T" + toEnd + "+08:00")) {
-    // console.log("请求科目已结束，故不注入科目：" + toSubject);
+    console.log("请求科目已结束，故不注入科目：" + toSubject);
   } else {
     subject.name = toSubject;
     // document.getElementById("subject").innerHTML = subject.name;
@@ -111,8 +110,8 @@ timer.update = function () {
   if (now >= subject.end) {
     exam[subject.on]();
     // subject.duration = subject.duration;
-    document.getElementById("subject").innerHTML = subject.name;
-    document.getElementById("duration").innerHTML = subject.duration;
+    // document.getElementById("subject").innerHTML = subject.name;
+    // document.getElementById("duration").innerHTML = subject.duration;
   }
   if (now < (subject.start - subject.admit * 6E4 - 12E5)) {
     this.num = (subject.start - subject.admit * 6E4 - now) / 36E5;

@@ -12,12 +12,12 @@ html {
   font-size: 48px;
   font-size: 2.75vw;
   color: #fff;
-  background: #333 fixed center url(https://ace.cooo.site/campus.jpg);
+  background: #333 fixed center url(https://examined.thisis.host/campus.jpg);
   background-size: cover;
 }
 
 body {
-  background: transparent fixed center url(https://ace.cooo.site/campus.jpg);
+  background: transparent fixed center;
   background-size: cover;
 }
 

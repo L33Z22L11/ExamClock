@@ -1,4 +1,4 @@
-console.groupCollapsed("\n%c  %c考试时钟 ExamClock", "background:url('https://exam.thisis.host/logo_g_64.png') no-repeat;padding:32px;", "font:bold 36px sans-serif;color:#3a9;");
+console.groupCollapsed("\n%c  %c考试时钟 ExamClock", "background:url('./favicon.ico') no-repeat;padding:32px;", "font:bold 36px sans-serif;color:#3a9;");
 console.log("\n项目仓库：https://github.com/L33Z22L11/ExamClock\n野生技协群：894656456\n\n");
 console.groupEnd();
 /* 
@@ -63,7 +63,6 @@ exam[23] = function () {
     $("晚二", today.date, "19:45", "20:25");
     $("晚三", today.date, "20:40", "22:10", null, null, 7);
     $("晚修", today.date, "22:20", "23:30");
-
   }
   return "高三日常";
 }
