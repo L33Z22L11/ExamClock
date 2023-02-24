@@ -109,7 +109,7 @@ timer.update = function () {
   document.getElementById("clock").innerHTML = getClock(now);
   if (now >= subject.end) {
     exam[subject.on]();
-    // subject.duration = subject.duration;
+    subject.duration = subject.duration;
     // document.getElementById("subject").innerHTML = subject.name;
     // document.getElementById("duration").innerHTML = subject.duration;
   }
