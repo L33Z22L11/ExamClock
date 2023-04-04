@@ -61,20 +61,33 @@ subject.to = function (to) {
   }, 500);
 }
 // 设置临时科目
-function setTemp(ts, tsh, tsm, teh, tem) {
+function setTemp(ts, sh, sm, eh, em) {
   subject.end = new Date(0);
   if (!(ts = prompt("考试科目名称(3个字以内)", "考练")) ||
-    !(tsh = prompt("考试开始时间(小时)", 16)) ||
-    !(tsm = prompt("考试开始时间(分钟)", 25)) ||
-    !(teh = prompt("考试结束时间(小时)", 23)) ||
-    !(tem = prompt("考试结束时间(分钟)", 55))) {
+    !(sh = prompt("考试开始时间(小时)", 16)) ||
+    !(sm = prompt("考试开始时间(分钟)", 25)) ||
+    !(eh = prompt("考试结束时间(小时)", 23)) ||
+    !(em = prompt("考试结束时间(分钟)", 55))) {
     // 取消创建临时科目
     console.warn(send("由于操作取消，未生成临时科目。"));
   } else {
     // 成功创建临时科目
-    console.log(send("添加了一门在 " + today.date + " 从 " + fixDigit(tsh) + ":" + fixDigit(tsm) + " 到 " + fixDigit(teh) + ":" + fixDigit(tem) + " 的科目：" + ts));
-    $(ts, today.date, fixDigit(tsh) + ":" + fixDigit(tsm), fixDigit(teh) + ":" + fixDigit(tem));
-    if (subject.end < now) console.log(send("设置的结束时间小于当前时间，你是认真的吗"));
+    console.log(send("添加了一门在 " + today.date + " 从 " + fixDigit(sh) + ":" + fixDigit(sm) + " 到 " + fixDigit(eh) + ":" + fixDigit(em) + " 的科目：" + ts));
+    $(ts, today.date, fixDigit(sh) + ":" + fixDigit(sm), fixDigit(eh) + ":" + fixDigit(em));
+    if (subject.end < now) console.log(send("设置的结束时间小于当前时间，你是认真的吗？"));
+  }
+}
+// 分钟倒计时 by 加零
+function setTimer(min) {
+  subject.end = new Date(0);
+  if (!(min = prompt("倒计时分钟数", 20))) {
+    console.warn(send("由于操作取消，未生成临时科目。"));
+  } else {
+    var end = new Date(now);
+    end.setMinutes(end.getMinutes() + +min);
+    console.log(send("添加了一门在 " + today.date + " 从 " + fixDigit(now.getHours()) + ":" + fixDigit(now.getMinutes()) + " 到 " + fixDigit(end.getHours()) + ":" + fixDigit(end.getMinutes()) + " 的倒计时"));
+    $("⏱️", today.date, now.getHours() + ":" + now.getMinutes(), fixDigit(end.getHours()) + ":" + fixDigit(end.getMinutes()));
+    if (end < now) console.log(send("编写本功能的加零提示：时光无法回溯……"));
   }
 }
 // 注入当前科目
