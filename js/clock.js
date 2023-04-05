@@ -67,30 +67,35 @@ function setTemp(ts, sh, sm, eh, em) {
     !(sh = prompt("考试开始时间(小时)", 16)) ||
     !(sm = prompt("考试开始时间(分钟)", 25)) ||
     !(eh = prompt("考试结束时间(小时)", 23)) ||
-    !(em = prompt("考试结束时间(分钟)", 55))) {
+    !(em = prompt("考试结束时间(分钟)", 55)))
     // 取消创建临时科目
-    console.warn(send("由于操作取消，未生成临时科目。"));
-  } else {
-    // 成功创建临时科目
-    console.log(send("添加了一门在 " + today.date + " 从 " + fixDigit(sh) + ":" + fixDigit(sm) + " 到 " + fixDigit(eh) + ":" + fixDigit(em) + " 的科目：" + ts));
-    $(ts, today.date, fixDigit(sh) + ":" + fixDigit(sm), fixDigit(eh) + ":" + fixDigit(em));
-    if (subject.end < now) console.log(send("设置的结束时间小于当前时间，你是认真的吗？"));
-  }
+    return console.warn(send("由于操作取消，未生成临时科目。"));
+  // 成功创建临时科目
+  $(ts, today.date, fixDigit(sh) + ":" + fixDigit(sm), fixDigit(eh) + ":" + fixDigit(em));
+  console.log(send("添加了一门在 " + today.date + " 从 " + getClock(subject.start) + " 到 " + getClock(subject.end) + " 的科目：" + ts));
+  if (subject.end < now) console.log(send("设置的结束时间小于当前时间，你是认真的吗？"));
 }
 // 分钟倒计时 by 加零
 function setTimer(min) {
   subject.end = new Date(0);
-  if (!(min = prompt("倒计时分钟数", 20))) {
-    console.warn(send("由于操作取消，未生成临时科目。"));
-  } else {
-    var end = new Date(now);
-    end.setMinutes(end.getMinutes() + +min);
-    console.log(send("添加了一门在 " + today.date + " 从 " + fixDigit(now.getHours()) + ":" + fixDigit(now.getMinutes()) + " 到 " + fixDigit(end.getHours()) + ":" + fixDigit(end.getMinutes()) + " 的倒计时"));
-    $("⏱️", today.date, now.getHours() + ":" + now.getMinutes(), fixDigit(end.getHours()) + ":" + fixDigit(end.getMinutes()));
-    if (end < now) console.log(send("编写本功能的加零提示：时光无法回溯……"));
-  }
+  if (!(min = prompt("倒计时分钟数", 20)))
+    return console.warn(send("由于操作取消，未生成临时科目。"));
+  var end = new Date(now);
+  end.setMinutes(end.getMinutes() + +min);
+  $("⏱️", today.date, fixDigit(now.getHours()) + ":" + fixDigit(now.getMinutes()), fixDigit(end.getHours()) + ":" + fixDigit(end.getMinutes()));
+  console.log(send("添加了一个 " + today.date + " 从 " + getClock(subject.start) + " 到 " + getClock(subject.end) + " 的倒计时"));
+  if (end < now) console.log(send("编写本功能的加零提示：时光无法回溯……"));
 }
-// 注入当前科目
+/**
+@brief 注入科目信息
+@param toSubject 科目名称
+@param toDate 日期（格式为 yyyy-mm-dd）
+@param toStart 开始时间（格式为 hh:mm）
+@param toEnd 结束时间（格式为 hh:mm）
+@param toMainslogan 大标语
+@param toSubslogan 小标语
+@param toAdmit 提前入场分钟数，默认为exam对象中的$admit
+*/
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit) {
   if (now < subject.end) {
     console.log("当前科目未结束，故不注入科目：" + toSubject);
