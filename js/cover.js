@@ -9,8 +9,8 @@ function playCover(msg) {
   setTimeout(function () { eleCoverbar.style.width = "94%"; }, 300);
   setTimeout(function () { eleCoverbar.style.width = "50%"; }, 600);
   setTimeout(function () { eleCoverbar.style.width = "6%"; }, 900);
-  setTimeout(function () { eleCoverbar.style.width = ""; }, 1200);
-  setTimeout(function () { eleCover.style.opacity = "0"; }, 1500);
-  setTimeout(function () { eleCover.style.display = ""; }, 1800);
+  setTimeout(function () { eleCoverbar.style.width = ""; }, 1800);
+  setTimeout(function () { eleCover.style.opacity = "0"; }, 1800);
+  setTimeout(function () { eleCover.style.display = ""; }, 2000);
   return msg;
 }
