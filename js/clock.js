@@ -131,12 +131,7 @@ timer.update = function () {
     // document.getElementById("subject").innerHTML = subject.name;
     // document.getElementById("duration").innerHTML = subject.duration;
   }
-  if (subject.name == "高中") {
-    this.num = 1017;
-    this.sub = "天";
-    this.activity = "高中时长";
-    this.progress = 99;
-  } else if (now < (subject.start - subject.admit * 6E4 - 12E5)) {
+  if (now < (subject.start - subject.admit * 6E4 - 12E5)) {
     this.num = (subject.start - subject.admit * 6E4 - now) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
     this.sub = "h";
