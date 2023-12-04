@@ -60,7 +60,7 @@
     </div>
     <div class="space-between">
       <p>Tips: ?</p>
-      <p>Loading...</p>
+      <p class="loadingBar">Loading...</p>
     </div>
   </div>
 
@@ -94,13 +94,13 @@
               </div>
             </a>
             <div id="typelist" style="width:100%;">
-              <a onclick="subject.to(23)">23届</a>
-              <a onclick="subject.to(24)">高三日常</a>
-              <a onclick="subject.to(241)">高三理科</a>
-              <a onclick="subject.to(242)">高三文科</a>
-              <a onclick="subject.to(251)">高二物理</a>
-              <a onclick="subject.to(252)">高二历史</a>
-              <a onclick="subject.to(261)">高一</a>
+              <a onclick="subject.switch(23)">23届</a>
+              <a onclick="subject.switch(24)">高三日常</a>
+              <a onclick="subject.switch(241)">高三理科</a>
+              <a onclick="subject.switch(242)">高三文科</a>
+              <a onclick="subject.switch(251)">高二物理</a>
+              <a onclick="subject.switch(252)">高二历史</a>
+              <a onclick="subject.switch(261)">高一</a>
               <a onclick="setTemp()"><i class="fa-regular fa-square-plus"></i> 临时</a>
               <a onclick="setTimer()"><i class="fa-solid fa-stopwatch"></i> 倒计时</a>
 
@@ -227,7 +227,7 @@
         </p>
         <p><i class="fa-solid fa-hashtag"></i> 考试时钟相关疑问、需求或反馈请前往野生技协群：89 4656 456，多名管理在线回复</p>
         <p><i class="fa-solid fa-file-arrow-up"></i>
-          ver_7.0.1 ys & φ</p>
+          ver_7.0.2 优化部分源代码</p>
       </div>
     </footer>
   </div>

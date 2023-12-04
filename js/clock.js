@@ -5,7 +5,7 @@
 // 这里可以修改today.date
 // 测试结束后一定要删除测试数据
 // 否则“今天”就是today.date
-var today = new Date;
+let today = new Date;
 
 today = {
   date: today.getFullYear() + "-" + fixDigit(today.getMonth() + 1) + "-" + fixDigit(today.getDate()),
@@ -13,11 +13,12 @@ today = {
   day: today.getDay(),
   weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][today.getDay()],
   // 夏季作息：5月1日~9月30日
-  summer: today.getMonth() > 3 && today.getMonth() < 9,
+  isSummer: today.getMonth() > 3 && today.getMonth() < 9
 };
+console.log(today);
+
 // 各个对象内置功能
-var exam = {};
-var subject = {
+let subject = {
   get name() { return document.getElementById("subject").innerHTML; },
   set name(name) { document.getElementById("subject").innerHTML = name; },
   get duration() {
@@ -30,17 +31,18 @@ var subject = {
   // get _end() { },
   // set _end(end) { },
 };
-var slogan = {
+
+let exams = {};
+
+let slogan = {
   // 这块有机会再写
-
-
 };
-var timer = {
+
+let timer = {
   // 这块也一样，有机会再写
-
-
 };
-subject.to = function (to) {
+
+subject.switch = function (type) {
   // 切换类型时需要重置的内容
   if (SP.debug) now = new Date(0);
   this.name = "";
@@ -49,9 +51,13 @@ subject.to = function (to) {
   timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
   slogan.$main = "沉着冷静&emsp;诚信考试";
   slogan.$sub = [""];
-  this.on = to in exam ? to : this.on;
-  document.getElementById("type").innerHTML = exam[this.on]();
-  if (SP.debug == null) playCover("正在传送到坐标 <span class='shield'>?type=" + this.on + "</span>，请稍候");
+  this.current = type in exams ? type : this.current;
+  console.log(this.current);
+  exams[this.current]();
+  slogan.update();
+  document.getElementById("type").innerHTML = subject.type;
+
+  if (SP.debug == null) playCover("正在传送到坐标 <span class='shield'>?type=" + this.current + "</span>，请稍候");
   // document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // 想提升应用启动速度，就把延迟改小点
   setTimeout(function () {
@@ -80,7 +86,7 @@ function setTimer(min) {
   subject.end = new Date(0);
   if (!(min = prompt("倒计时分钟数", 20)))
     return console.warn(send("由于操作取消，未生成临时科目。"));
-  var end = new Date(now);
+  let end = new Date(now);
   end.setMinutes(end.getMinutes() + +min);
   $("⏱️", today.date, fixDigit(now.getHours()) + ":" + fixDigit(now.getMinutes()), fixDigit(end.getHours()) + ":" + fixDigit(end.getMinutes()));
   console.log(send("添加了一个 " + today.date + " 从 " + getClock(subject.start) + " 到 " + getClock(subject.end) + " 的倒计时"));
@@ -94,7 +100,7 @@ function setTimer(min) {
 @param toEnd 结束时间（格式为 hh:mm）
 @param toMainslogan 大标语
 @param toSubslogan 小标语
-@param toAdmit 提前入场分钟数，默认为exam对象中的$admit
+@param toAdmit 提前入场分钟数，默认为exams对象中的$admit
 */
 function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit) {
   if (now < subject.end) {
@@ -126,7 +132,7 @@ slogan.update = function () {
 timer.update = function () {
   document.getElementById("clock").innerHTML = getClock(now);
   if (now >= subject.end) {
-    exam[subject.on]();
+    exams[subject.current]();
     subject.duration = subject.duration;
     // document.getElementById("subject").innerHTML = subject.name;
     // document.getElementById("duration").innerHTML = subject.duration;

@@ -34,7 +34,7 @@ if (SP.debug) {
     // 跳转到科目开始前一小时
     if (now < subject.start - 36E5) now = new Date(subject.start - 36E5);
     // 最后一场科目结束后重置时间
-    if (now > subject.end + +36E5) subject.to(subject.on);
+    if (now > subject.end + +36E5) subject.switch(subject.on);
     // 调试模式速度设置
     now.setSeconds(now.getSeconds() + 30);
     timer.update();
@@ -49,12 +49,12 @@ if (SP.debug) {
 }();
 
 // 先根据地址参数判断考试类型
-// if (SP.type in exam) subject.to(SP.type);
+// if (SP.type in exams) subject.switch(SP.type);
 // 再在考试日期切换到考试类型
-if (today.date in exam) subject.to(today.date);
-else if (today.date.match("2023-01-1(6|7)")) subject.to(231);
+if (today.date in exams) subject.switch(today.date);
+else if (today.date.match("2023-01-1(6|7)")) subject.switch(231);
 // 最后设置缺省考试类型
-else subject.to(24);
+else subject.switch(24);
 // 若不再包一层，slogan.update内的this就会指向window
 setInterval(function () { slogan.update(); }, 3000);
 
