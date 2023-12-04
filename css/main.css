@@ -38,11 +38,11 @@ body {
 }
 
 .space {
-  margin: 0 -.3em;
+  margin: 0 -.2em;
 }
 
 .space>* {
-  margin: 0 .3em;
+  margin: 0 .2em;
 }
 
 /* 一级淡文本（保留字体颜色） */
@@ -59,7 +59,7 @@ body {
 
 /* 页脚文本 */
 footer {
-  font-size: .3rem;
+  font-size: .4rem;
   color: rgba(255, 255, 255, .5);
 }
 
@@ -142,7 +142,7 @@ footer {
 
 /* 进度条 */
 .bar {
-  height: .25rem;
+  height: .2rem;
   margin: .5rem auto;
 }
 
@@ -179,8 +179,8 @@ footer {
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  margin: .25rem;
-  padding: .25rem .75rem;
+  margin: .2rem;
+  padding: .2rem .75rem;
   text-align: center;
   border-radius: .5rem;
 }
@@ -326,7 +326,7 @@ a.btn,
   font-size: .6em;
   display: inline-block;
   margin: .1em;
-  padding: .1em .3em;
+  padding: .1em .2em;
   vertical-align: middle;
   color: #fff;
   border-radius: 1em;

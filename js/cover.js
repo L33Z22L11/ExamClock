@@ -1,6 +1,6 @@
 // 过渡动画
-var eleCover = document.getElementById("cover"),
-  eleCoverbar = document.getElementById("coverbar");
+let eleCover = document.getElementById("cover");
+
 function playCover(msg) {
   // document.getElementById("covermsg").innerHTML = msg;
   // eleCoverbar.style.width = "100%"; 
