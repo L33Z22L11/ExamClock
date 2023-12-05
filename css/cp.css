@@ -34,7 +34,7 @@
   background: linear-gradient(30deg,
       rgba(51, 170, 255, 0.5),
       rgba(51, 187, 153, 0.5));
-  /* backdrop-filter: blur(1em); */
+  backdrop-filter: blur(.5em);
 }
 
 #cp>div {

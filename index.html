@@ -96,13 +96,13 @@
               </div>
             </a>
             <div id="typelist" style="width:100%;">
-              <a onclick="subject.switch(23)">23届</a>
               <a onclick="subject.switch(24)">高三日常</a>
               <a onclick="subject.switch(241)">高三理科</a>
               <a onclick="subject.switch(242)">高三文科</a>
               <a onclick="subject.switch(251)">高二物理</a>
               <a onclick="subject.switch(252)">高二历史</a>
-              <a onclick="subject.switch(261)">高一</a>
+              <a onclick="subject.switch(261)">高一考试</a>
+              <a onclick="subject.switch(23)">23届<span class="shield">彩蛋</span></a>
               <a onclick="setTemp()"><i class="fa-regular fa-square-plus"></i> 临时</a>
               <a onclick="setTimer()"><i class="fa-solid fa-stopwatch"></i> 倒计时</a>
 
@@ -135,9 +135,9 @@
               </div>
               <a onclick="displayCP()"><i class="fa-solid fa-list-check"></i> 背景菜单
                 <span class="shield">Ctrl+右键</span></a>
-              <a href="https://imgtg.com/album/54wL">
+              <a href="https://img.tg/album/54wL">
                 <i class="fa-solid fa-box-archive"></i> 一卷图库
-                <span class="shield">更换图源</span>
+                <!-- <span class="shield">更换图源</span> -->
                 <!-- <span class="shield"><i class="fa-regular fa-eye"></i> 4.7w</span> -->
               </a>
             </div>
@@ -170,10 +170,11 @@
                     <i class="fa-solid fa-hourglass-start"></i> 开始时间</a>
                   <a onclick="fixMinutes(subject.end,'结束时间')">
                     <i class="fa-solid fa-hourglass-end"></i> 结束时间</a>
-                  <a onclick="subject.to(prompt('考试类型',subject.on))">
+                  <a onclick="subject.to(prompt('考试类型',subject.current))">
                     <i class="fa-solid fa-box-archive"></i> 类型</a>
                   <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
-                  <a onclick="document.getElementById('type').innerHTML=prompt('机构名称','纸鹿教育')||exam[subject.on]()">
+                  <a onclick="document.getElementById('type').innerHTML=prompt('机构名称','纸鹿教育')
+                    ||exam[subject.current].schedule()">
                     <i class="fa-regular fa-building"></i> 机构</a>
                   <a href="?debug=1"><i class="fa-solid fa-bug"></i> 调试</a>
                 </div>
@@ -227,11 +228,11 @@
           <i class="fa-solid fa-image"></i>
           <span id="bg">背景：雨后校园</span>
         </p>
-        <p><i class="fa-solid fa-hashtag"></i> 野生技协群：89 4656 456，
-          <span class="hilit">招募各考试类型维护者，无需会代码！</span>
+        <p style="color:#fff"><i class="fa-solid fa-hashtag"></i>
+          欢迎小伙伴加入野生技协群：89 4656 456，同时招募各考试类型维护者，要能及时联系。</span>
         </p>
         <p><i class="fa-solid fa-file-arrow-up"></i>
-          ver_7.0.3 anim_polyfill</p>
+          ver_7.0.4 界面/加载速度优化</p>
       </div>
     </footer>
   </div>
@@ -286,24 +287,11 @@
         <details>
           <summary>野生技协@混技</summary>
           <div class="alist">
-            <a><i class="fa-brands fa-qq"></i> 野生技协分群 169994096</a>
+            <a><i class="fa-brands fa-qq"></i> 野生技协 群169994096</a>
             <a href="https://github.com/pubsite"><i class="fa-brands fa-github"></i> Github pubsite</a>
-            <a><i class="fa-brands fa-qq"></i> 混技总群 894656456</a>
+            <a><i class="fa-brands fa-qq"></i> 混技 群894656456</a>
             <a href="https://hi.thisis.host"><i class="fa-solid fa-earth-asia"></i> 官网 hi.thisis.host</a>
           </div>
-        </details>
-        <details>
-          <summary>其他</summary>
-          <a><i class="fa-brands fa-qq"></i> 方块茶话会群 1142349003</a>
-          <details>
-            <summary><i class="fa-brands fa-qq"></i> 其他个人QQ</summary>
-            <div class="alist">
-              <a>拾汘 393501440</a><a>Star 2692292636</a>
-              <a>长安凛冬 2252855301</a><a>加零 3073246100</a><a>GX 63045083</a>
-              <a>yl 1413488450</a><a>純粋な 378655447</a>
-            </div>
-          </details>
-        </details>
         </details>
       </div>
     </div>
@@ -313,12 +301,11 @@
   <script src="./js/gallery.js" msg interact></script>
 
   <script>
-    // send("留意到相关舆情并结合从高一获取的考试安排修正稿，经考试时钟项目组讨论，我们已将高三的“生物/地理”与“物理/历史”考试对调。\
-    // <br>另，点击科目名称可直接修改，如有相关疑问，可浏览页面底部信息。");
+    // send("我们需要人员提供考试信息，详见页面底部。");
   </script>
 
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Ubuntu:400,700">
-  <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/pubsite/GenshinWebfont/rel1.css">
+  <!-- <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/pubsite/GenshinWebfont/rel1.css"> -->
 </body>
 
 </html>

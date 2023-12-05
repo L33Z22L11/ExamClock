@@ -37,14 +37,8 @@ function playCover(msg) {
   } catch { }
   eleCoverTips.innerHTML = msg || coverTips[~~(Math.random() * coverTips.length)]
   eleCover.style.display = "";
-  setTimeout(function () {
-    eleCover.style.opacity = "";
-  }, 0);
-  setTimeout(function () {
-    eleCover.style.opacity = "0";
-  }, 2000);
-  setTimeout(function () {
-    eleCover.style.display = "none";
-  }, 2500);
+  setTimeout(function () { eleCover.style.opacity = ""; }, 0);
+  setTimeout(function () { eleCover.style.opacity = "0"; }, 2000);
+  setTimeout(function () { eleCover.style.display = "none"; }, 2500);
   return msg;
 }
