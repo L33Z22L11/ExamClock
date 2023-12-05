@@ -43,21 +43,23 @@ let timer = {
 };
 
 subject.switch = function (type) {
+  if (!(type in exams))
+    return send(`没有${type}考试类型，切换失败。`);
   // 切换类型时需要重置的内容
   if (SP.debug) now = new Date(0);
   this.name = "";
   this.start = this.end = new Date(0);
-  this.$admit = 20;
-  timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
-  slogan.$main = "沉着冷静&emsp;诚信考试";
-  slogan.$sub = [""];
-  this.current = type in exams ? type : this.current;
-  console.log(this.current);
-  exams[this.current]();
-  slogan.update();
-  document.getElementById("type").innerHTML = subject.type;
 
-  if (SP.debug == null) playCover("正在传送到坐标 <span class='shield'>?type=" + this.current + "</span>，请稍候");
+  this.current = type;
+  this.$admit = exams[type].earlyAdmit || 20;
+  timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
+  slogan.$main = exams[type].mainSlogan || "沉着冷静&emsp;诚信考试";
+  slogan.$sub = exams[type].rollSlogan || [""];
+  exams[this.current].schedule();
+  slogan.update();
+  document.getElementById("type").innerHTML = exams[this.current].type;
+
+  if (SP.debug == null) playCover();
   // document.getElementsByClassName("card")[0].style.filter = "blur(.5em)";
   // 想提升应用启动速度，就把延迟改小点
   setTimeout(function () {
@@ -132,7 +134,7 @@ slogan.update = function () {
 timer.update = function () {
   document.getElementById("clock").innerHTML = getClock(now);
   if (now >= subject.end) {
-    exams[subject.current]();
+    exams[subject.current].schedule();
     subject.duration = subject.duration;
     // document.getElementById("subject").innerHTML = subject.name;
     // document.getElementById("duration").innerHTML = subject.duration;

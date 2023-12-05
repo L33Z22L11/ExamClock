@@ -30,9 +30,25 @@ var gallery = [
   { vol: "2022年底", author: ["2413任子祺", "23?刘岩"], list: [{ name: "221101_呱唧_山望", id: "2/12/16/HBqoL" }, { name: "221102_呱唧_瞰林", id: "2/12/16/HBBGX" }, { name: "221103_呱唧_朦云", id: "2/12/16/HB5ri" }, { name: "22104_呱唧_云驻", id: "2/12/16/HBasC" }, { name: "221201_鱼柾_遮(冬季限定)", id: "2/12/16/HBOgN" },] },
   { vol: "2023年1月", author: ["2309孙瑄梓", "24?猴墩"], list: [{ name: "230101_酸子_云中印象", id: "3/01/03/E8Lwa" }, { name: "230102_酸子_镜中暮", id: "3/01/03/E8HSK" }, { name: "230103_酸子_穹下楼影", id: "3/01/03/E845B" }, { name: "230104_酸子_枝上有佳果", id: "3/01/03/E8GnS" }, { name: "230105_酸子_谁人窗中晖", id: "3/01/03/E8DAs" }, { name: "230106_猴墩_花下行", id: "3/01/05/Ge8qq" }, { name: "230107_猴墩_窥篁", id: "3/01/05/Ge9bU" }, { name: "230108_猴墩_不忘初心", id: "3/01/05/GejgY" }, { name: "230109_猴墩_馆中灯火", id: "3/01/05/Gef2p" }, { name: "230110_猴墩_楼林蔽空", id: "3/01/05/Ge2Vv" },] },
 ];
-bg.vol = [];
-!function () {
-  for (var v in gallery) for (var p in gallery[v].list) bg.vol.push(~~v);
+
+function bg(v, p) {
+  bg.cur = getBg(v, p);
+  // 定时换壁纸
+  clearInterval(bg.interval);
+  bg.interval = setInterval(bg, 2E6);
+  document.body.style.backgroundImage = `url(${bg.cur.url})`;
+  return document.getElementById("bg").innerHTML = "背景：" + bg.cur.name + "@" + bg.cur.vol;
+}
+
+// 若同时以new Date作为volnum和picseed的随机种子，会产生特定的余数对应关系
+let getBg = (v = ~~(Math.random() * gallery.length), p = ~~(Math.random() * gallery[v].list.length)) => ({
+  vol: gallery[v].vol,
+  name: gallery[v].list[p].name,
+  url: `https://i.imgtg.com/202${gallery[v].list[p % (gallery[v].list.length)].id}.jpg`,
+})
+
+!function genBgList() {
+  // for (var v in gallery) for (var p in gallery[v].list) currentBg.preferredVol.push(~~v);
   var bgList = document.getElementById("bglist");
   if (bgList) bgList.innerHTML = function () {
     var l = "";
@@ -44,15 +60,7 @@ bg.vol = [];
     // console.log(l);
     return l;
   }();
-  bg([gallery.length - 1, gallery.length - 2][~~(Math.random() * 2)]);
 }();
-function bg(v, p) {
-  // 若同时以new Date作为volnum和picseed的随机种子，会产生特定的余数对应关系
-  if (v == null) v = bg.vol[~~(Math.random() * bg.vol.length)];
-  if (p == null) p = ~~(Math.random() * gallery[v].list.length);
-  document.body.style.backgroundImage = "url(https://i.imgtg.com/202" + gallery[v].list[p % (gallery[v].list.length)].id + ".jpg)";
-  // 定时换壁纸（康总加成🙏）
-  clearInterval(bg.interval);
-  bg.interval = setInterval(bg, 2040411);
-  return document.getElementById("bg").innerHTML = "背景：" + gallery[v].list[p % (gallery[v].list.length)].name + "@" + gallery[v].vol;
-}
+
+bg([gallery.length - 1, gallery.length - 2][~~(Math.random() * 2)]);
+

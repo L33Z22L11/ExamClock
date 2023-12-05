@@ -15,6 +15,7 @@
 
     animation: whiteSplash 2.5s forwards;
     text-align: center;
+    pointer-events: none;
 
     color: #333;
     background: #fff fixed center url(https://a.xuewuzhibu.cn/24/656d964db3c37-24.png) no-repeat;
@@ -49,7 +50,7 @@
     bottom: 0;
     left: 0;
 
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
 
@@ -137,6 +138,7 @@
     text-overflow: ellipsis;
 }
 
+#coverAuthor,
 .coverMain>.info>.desc,
 #cover> :last-child {
     font-size: .6em;
@@ -147,11 +149,12 @@
 
     width: 40vw;
     height: 30vw;
+    margin: auto 0;
 
     box-shadow: 0 0 2rem rgba(0, 0, 0, .5);
 }
 
-.coverMain>.cover>.coverImage {
+#coverImage {
     position: fixed;
     top: 0;
     right: -5vw;
@@ -164,6 +167,7 @@
 
 #cover .loadingBar {
     position: relative;
+
     overflow: hidden;
 }
 
@@ -182,8 +186,8 @@
     animation: loadingBarMask 1s ease-in-out infinite;
 
     background: #fff;
-    backdrop-filter: brightness(.6) contrast(3);
 
+    backdrop-filter: brightness(.6) contrast(3);
     mix-blend-mode: exclusion;
 }
 

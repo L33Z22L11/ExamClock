@@ -36,8 +36,8 @@
       <div class="info skew">
         <div class="title">
           <div class="reskew">
-            <p>考试时钟</p>
-            <p style="font-size:.6em">野生技协</p>
+            <p id="coverTitle">考试时钟</p>
+            <p id="coverAuthor">野生技协</p>
           </div>
           <div class="titleBadge">
             <div class="reskew">
@@ -47,19 +47,21 @@
           </div>
         </div>
         <div class="desc reskew">
-          <p><span class="dim">Chart</span><br>宝鸡中学</p>
+          <p><span class="dim">Chart</span><br>
+            <span id="coverOrigin">宝鸡中学</span>
+          </p>
         </div>
         <div class="desc reskew">
           <p class="dim"><br>Illustration</p>
-          <p>一卷图库</p>
+          <p id="bgHook">一卷图库</p>
         </div>
       </div>
       <div class="cover skew">
-        <div class="reskew coverImage"></div>
+        <div class="reskew" id="coverImage"></div>
       </div>
     </div>
     <div class="space-between">
-      <p>Tips: ?</p>
+      <p>Tips: <span id="coverTips"></span></p>
       <p class="loadingBar">Loading...</p>
     </div>
   </div>
@@ -225,9 +227,11 @@
           <i class="fa-solid fa-image"></i>
           <span id="bg">背景：雨后校园</span>
         </p>
-        <p><i class="fa-solid fa-hashtag"></i> 考试时钟相关疑问、需求或反馈请前往野生技协群：89 4656 456，多名管理在线回复</p>
+        <p><i class="fa-solid fa-hashtag"></i> 野生技协群：89 4656 456，
+          <span class="hilit">招募各考试类型维护者，无需会代码！</span>
+        </p>
         <p><i class="fa-solid fa-file-arrow-up"></i>
-          ver_7.0.2 优化部分源代码</p>
+          ver_7.0.3 anim_polyfill</p>
       </div>
     </footer>
   </div>
