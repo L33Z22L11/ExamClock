@@ -102,15 +102,16 @@ footer {
 }
 
 .hilit {
-  animation: hilit 60s;
+  animation: hilit 60s infinite alternate;
 }
 
 @keyframes hilit {
-  from {
-    color: #daf;
+  50% {
+    color: #fff;
+    text-shadow: 0 0 .1em #fff;
   }
 
-  to {
+  100% {
     color: auto;
   }
 }
@@ -148,7 +149,7 @@ footer {
 #bar {
   height: 100%;
   transition: linear 2s;
-  background: #fff;
+  background: #9cf;
 }
 
 /* 卡片排版 */

@@ -150,7 +150,7 @@ exams[252] = {
 };
 exams[261] = {
   type: "高一",
-  author: "招募“高一”维护者",
+  author: "心向太阳",
   origin: "2025级年级部",
   rollSlogan: ["高一第一学期期中考试：请以实际铃声为准。"],
   schedule() {

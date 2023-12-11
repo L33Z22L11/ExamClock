@@ -52,9 +52,9 @@ subject.switch = function (type) {
 
   this.current = type;
   this.$admit = exams[type].earlyAdmit || 20;
-  timer.progress = slogan.main = slogan.sub = slogan.subnum = 0;
+  timer.progress = slogan.main = slogan.roll = slogan.subnum = 0;
   slogan.$main = exams[type].mainSlogan || "沉着冷静&emsp;诚信考试";
-  slogan.$sub = exams[type].rollSlogan || [""];
+  slogan.$roll = exams[type].rollSlogan || [""];
   exams[this.current].schedule();
   slogan.update();
   document.getElementById("type").innerHTML = exams[this.current].type;
@@ -101,10 +101,10 @@ function setTimer(min) {
 @param toStart 开始时间（格式为 hh:mm）
 @param toEnd 结束时间（格式为 hh:mm）
 @param toMainslogan 大标语
-@param toSubslogan 小标语
+@param toRollslogan 小标语
 @param toAdmit 提前入场分钟数，默认为exams对象中的$admit
 */
-function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit) {
+function $(toSubject, toDate, toStart, toEnd, toMainslogan, toRollslogan, toAdmit) {
   if (now < subject.end) {
     console.log("当前科目未结束，故不注入科目：" + toSubject);
   } else if (now >= new Date(toDate + "T" + toEnd + "+08:00")) {
@@ -118,18 +118,18 @@ function $(toSubject, toDate, toStart, toEnd, toMainslogan, toSubslogan, toAdmit
     subject.admit = toAdmit != null ? toAdmit : subject.$admit;
     // document.getElementById("duration").innerHTML = subject.duration;
     slogan.main = toMainslogan != null ? toMainslogan : slogan.$main;
-    slogan.sub = toSubslogan != null ? toSubslogan : slogan.$sub;
+    slogan.roll = toRollslogan != null ? toRollslogan : slogan.$roll;
     slogan.update();
     // 啊对对对，有很多种方法将变量转换为数字，我就用最麻烦的
-    console.log("[" + new Date + "]\n时钟时间：" + now + "\n注入科目：" + toSubject + "\n开始时间：" + toDate, toStart + "\n结束时间：" + toDate, toEnd + "\n提前入场：" + subject.admit + " min\n" + ["默认大标语：", "指定大标语："][~!toMainslogan + 2] + slogan.main + ["\n默认副标语：", "\n指定副标语："][!!toSubslogan - -0] + slogan.sub);
+    console.log("[" + new Date + "]\n时钟时间：" + now + "\n注入科目：" + toSubject + "\n开始时间：" + toDate, toStart + "\n结束时间：" + toDate, toEnd + "\n提前入场：" + subject.admit + " min\n" + ["默认大标语：", "指定大标语："][~!toMainslogan + 2] + slogan.main + ["\n默认副标语：", "\n指定副标语："][!!toRollslogan - -0] + slogan.roll);
   }
 }
 slogan.update = function () {
   this.main = this.main || this.$main;
   document.getElementById("mainslogan").innerHTML = this.main || this.$main;
-  this.sub = this.sub || this.$sub;
-  this.subnum < this.sub.length - 1 ? this.subnum++ : this.subnum = 0;
-  document.getElementById("subslogan").innerHTML = (this.sub || this.$sub)[this.subnum];
+  this.roll = this.roll || this.$roll;
+  this.subnum < this.roll.length - 1 ? this.subnum++ : this.subnum = 0;
+  document.getElementById("subslogan").innerHTML = (this.roll || this.$roll)[this.subnum];
 }
 timer.update = function () {
   document.getElementById("clock").innerHTML = getClock(now);
@@ -142,17 +142,17 @@ timer.update = function () {
   if (now < (subject.start - subject.admit * 6E4 - 12E5)) {
     this.num = (subject.start - subject.admit * 6E4 - now) / 36E5;
     this.num = this.num.toFixed(this.num >= 10 ? 0 : 1);
-    this.sub = "h";
+    this.roll = "h";
     this.activity = "距离入场";
     this.progress = 0;
   } else if (now < (subject.start - subject.admit * 6E4)) {
     this.num = Math.round((subject.start - now - subject.admit * 6E4) / 6E4);
-    this.sub = "min";
+    this.roll = "min";
     this.activity = "距离入场";
     this.progress = 0;
   } else if (now < subject.start) {
     this.num = Math.round((subject.start - now) / 6E4);
-    this.sub = "min";
+    this.roll = "min";
     this.activity = "距离开始";
     this.progress = (subject.start - now) / subject.admit / 600;
   } else if (now < subject.end) {
@@ -163,16 +163,16 @@ timer.update = function () {
       this.num = Math.round((subject.end - now) / 6E4);
       this.activity = "距离结束";
     }
-    this.sub = "min";
+    this.roll = "min";
     this.progress = (now - subject.start) / (subject.end - subject.start) * 100;
   } else {
     // 结束后的内容
-    subject.name = this.num = this.sub = this.activity = "";
+    subject.name = this.num = this.roll = this.activity = "";
     this.progress = 100;
   }
   document.getElementById("bar").style.width = this.progress + "%";
   document.getElementById("timer").innerHTML = this.num;
-  document.getElementById("timersub").innerHTML = this.sub;
+  document.getElementById("timersub").innerHTML = this.roll;
   document.getElementById("activity").innerHTML = this.activity;
 }
 // 输入Date对象，返回友好的时间(如"8:00")

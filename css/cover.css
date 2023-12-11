@@ -70,32 +70,30 @@
 .coverMain {
     display: flex;
     justify-content: center;
-    gap: 5vw;
 }
 
 .skew {
-    overflow: hidden;
     transform: skew(-15deg);
 }
 
 .coverMain>.info {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .coverMain>.info>.title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 40vw;
+    min-width: 36vw;
     margin: .5rem;
-    padding: .2rem;
+    padding: .1rem .3rem;
     background: #222;
 }
 
 .coverMain>.info>.title>.titleBadge {
-    height: calc(100% + 1rem);
+    height: calc(100% + .6rem);
     color: #222;
     background: #fff;
 }
@@ -105,7 +103,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 3.5em;
+    width: 3em;
     height: 100%;
 }
 
@@ -125,8 +123,13 @@
     font-size: .6em;
 }
 
+.coverMain>.info>.desc>* {
+    margin: 1em 0;
+}
+
 .coverMain>.cover {
     position: relative;
+    overflow: hidden;
     width: 40vw;
     height: 30vw;
     margin: auto 0;
@@ -139,7 +142,7 @@
     right: -5vw;
     bottom: 0;
     left: -5vw;
-    background: #333 fixed center url(https://a.xuewuzhibu.cn/24/656ca7c42eb90-24.jpg);
+    background: #fff center url(https://a.xuewuzhibu.cn/24/656ca7c42eb90-24.jpg);
     background-size: cover;
 }
 
@@ -155,10 +158,10 @@
     top: 0;
     left: 0;
     display: block;
-    width: 100%;
+    width: 200%;
     height: 100%;
     content: '';
-    animation: loadingBarMask 1s ease-in-out infinite;
+    animation: loadingBarMask 1.5s ease-in-out infinite;
     background: #fff;
     backdrop-filter: brightness(.6) contrast(3);
     mix-blend-mode: exclusion;
@@ -166,7 +169,7 @@
 
 @keyframes loadingBarMask {
     0% {
-        left: -100%;
+        left: -200%;
     }
 
     100% {
