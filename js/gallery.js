@@ -29,6 +29,7 @@ var gallery = [
   { vol: "2022年10月", author: ["24?王艺珈", "2306史雨晖", "2216刘子璐"], list: [{ name: "221001_KT_乒乒乓乓", id: "2/10/07/pt9kS" }, { name: "221002_KT_东云", id: "2/10/07/ptVns" }, { name: "221003_KT_夜月", id: "2/10/07/ptdwB" }, { name: "221004_KT_问晨", id: "2/10/07/ptf8a" }, { name: "221005_KT_筐日", id: "2/10/07/ptYDK" }, { name: "221006_KT_觅空", id: "2/10/07/ptjpN" }, { name: "221007_KT_楼后", id: "2/10/07/p4M8p" }, { name: "221008_KT_纸浅", id: "2/10/07/p4axU" }, { name: "221009_KT_望红", id: "2/10/07/p4opY" }, { name: "221010_KT_携月", id: "2/10/07/ptC1x" }, { name: "221011_KT_其会", id: "2/10/07/ptwDj" }, { name: "221012_prlgrim_午后", id: "2/10/26/PfBnI" }, { name: "221013_prlgrim_柳上云", id: "2/10/26/Pfqw1" }, { name: "221014_纸某鹿_AI朝霞", id: "2/10/26/PfLlq" }, { name: "221015_纸某鹿_AI日出", id: "2/10/26/PfHJv" }, { name: "221016_纸某鹿_AI日落", id: "2/10/26/PfDxY" }, { name: "221017_纸某鹿_AI远峰落日", id: "2/10/26/PftXU" },] },
   { vol: "2022年底", author: ["2413任子祺", "23?刘岩"], list: [{ name: "221101_呱唧_山望", id: "2/12/16/HBqoL" }, { name: "221102_呱唧_瞰林", id: "2/12/16/HBBGX" }, { name: "221103_呱唧_朦云", id: "2/12/16/HB5ri" }, { name: "22104_呱唧_云驻", id: "2/12/16/HBasC" }, { name: "221201_鱼柾_遮(冬季限定)", id: "2/12/16/HBOgN" },] },
   { vol: "2023年1月", author: ["2309孙瑄梓", "24?猴墩"], list: [{ name: "230101_酸子_云中印象", id: "3/01/03/E8Lwa" }, { name: "230102_酸子_镜中暮", id: "3/01/03/E8HSK" }, { name: "230103_酸子_穹下楼影", id: "3/01/03/E845B" }, { name: "230104_酸子_枝上有佳果", id: "3/01/03/E8GnS" }, { name: "230105_酸子_谁人窗中晖", id: "3/01/03/E8DAs" }, { name: "230106_猴墩_花下行", id: "3/01/05/Ge8qq" }, { name: "230107_猴墩_窥篁", id: "3/01/05/Ge9bU" }, { name: "230108_猴墩_不忘初心", id: "3/01/05/GejgY" }, { name: "230109_猴墩_馆中灯火", id: "3/01/05/Gef2p" }, { name: "230110_猴墩_楼林蔽空", id: "3/01/05/Ge2Vv" },] },
+  { vol: "2023年12月", author: ["25?杨家诚"], list: [{ name: "231201_Kc_鳞光", id: "3/12/16/OK53vX" }, { name: "231202_Kc_追梦", id: "3/12/16/OK5Cdt" },] },
 ];
 
 function bg(v, p) {
@@ -44,7 +45,7 @@ function bg(v, p) {
 let getBg = (v = ~~(Math.random() * gallery.length), p = ~~(Math.random() * gallery[v].list.length)) => ({
   vol: gallery[v].vol,
   name: gallery[v].list[p].name,
-  url: `https://i.imgtg.com/202${gallery[v].list[p % (gallery[v].list.length)].id}.jpg`,
+  url: `https://ooo.0x0.ooo/202${gallery[v].list[p % (gallery[v].list.length)].id}.jpg`,
 })
 
 !function genBgList() {

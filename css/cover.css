@@ -47,7 +47,7 @@
     flex-direction: column;
     justify-content: space-between;
     transition: .2s;
-    background: #333 fixed center url(https://7.isyangs.cn/24/656ca7c42eb90-24.jpg);
+    background: #000 fixed center url(https://7.isyangs.cn/24/656ca7c42eb90-24.jpg);
     background-size: cover;
 }
 
@@ -142,7 +142,7 @@
     right: -5vw;
     bottom: 0;
     left: -5vw;
-    background: #fff center url(https://7.isyangs.cn/24/656ca7c42eb90-24.jpg);
+    background: rgba(255, 255, 255, 0.6) center url(https://7.isyangs.cn/24/656ca7c42eb90-24.jpg);
     background-size: cover;
 }
 
