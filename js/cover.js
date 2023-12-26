@@ -36,9 +36,9 @@ function playCover(msg) {
     eleCoverOrigin.innerHTML = curExam.origin;
   } catch { }
   eleCoverTips.innerHTML = msg || coverTips[~~(Math.random() * coverTips.length)]
-  eleCover.style.display = "";
+  eleCover.style.display = "flex";
   setTimeout(function () { eleCover.style.opacity = ""; }, 0);
   setTimeout(function () { eleCover.style.opacity = "0"; }, 2000);
-  setTimeout(function () { eleCover.style.display = "none"; }, 2500);
+  setTimeout(function () { eleCover.style.display = ""; }, 2500);
   return msg;
 }
