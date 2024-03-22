@@ -149,6 +149,7 @@ footer {
 #bar {
   height: 100%;
   transition: linear 2s;
+  background: linear-gradient(to right, transparent, #fff);
 }
 
 /* 卡片排版 */
