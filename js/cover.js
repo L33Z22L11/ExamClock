@@ -27,18 +27,22 @@ let coverTips = [
 
 function playCover(msg) {
   try {
-    eleBgHook.innerHTML = bg.cur.name;
+    eleBgHook.innerHTML = `${bg.cur.author} - ${bg.cur.name} (${bg.cur.vol})`;
     eleCover.style.backgroundImage = `url(${bg.cur.url})`;
     eleCoverImage.style.backgroundImage = `url(${bg.cur.url})`;
+
     let curExam = exams[subject.current];
     eleCoverTitle.innerHTML = curExam.type;
     eleCoverAuthor.innerHTML = curExam.author;
     eleCoverOrigin.innerHTML = curExam.origin;
   } catch { }
+
   eleCoverTips.innerHTML = msg || coverTips[~~(Math.random() * coverTips.length)]
+
   eleCover.style.display = "flex";
   setTimeout(function () { eleCover.style.opacity = ""; }, 0);
   setTimeout(function () { eleCover.style.opacity = "0"; }, 2000);
   setTimeout(function () { eleCover.style.display = ""; }, 2500);
+
   return msg;
 }

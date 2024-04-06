@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="纸鹿(L33Z22L11@Github)">
   <meta name="description" content="考试时钟用于宝中考试时展示考试科目、起止时间、当前时间等信息。考试时钟背景由一卷图库提供，祝各位同学使用考试时钟时心情愉悦，考试顺利。">
-  <meta name="keywords" content="考试时钟,网页时钟,在线时钟,考试时间">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="./css/cp.css">
-  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"
+    media="none" onload="this.media='all'">
+  <link rel="stylesheet" href="https://fonts.font.im/css?family=Ubuntu:400,700" media="none" onload="this.media='all'">
   <base target="_blank">
   <script type="text/javascript">
     (function (c, l, a, r, i, t, y) {
@@ -106,7 +106,6 @@
               <a onclick="subject.switch(23)">23届<span class="shield">彩蛋</span></a>
               <a onclick="setTemp()"><i class="fa-regular fa-square-plus"></i> 临时</a>
               <a onclick="setTimer()"><i class="fa-solid fa-stopwatch"></i> 倒计时</a>
-
             </div>
           </div>
 
@@ -115,14 +114,9 @@
 
           <div class="dropdown">
             <a class="fa-regular fa-images" data-sub="背景"></a>
-            <div style="right:-4em;min-width:10em;">
+            <div style="right:-4em;min-width:13em;">
               <div><i class="fa-solid fa-wand-magic-sparkles"></i> 选张背景
-                <div class="shieldlist">
-                  <a onclick="playCover(bg(27))">23.12</a>
-                  <a onclick="playCover(bg(26))">23.1</a>
-                  <a onclick="playCover(bg(25))">年底</a>
-                  <a onclick="playCover(bg(24))">10月</a>
-                  <a onclick="playCover(bg(23))">9月</a>
+                <div class="shieldlist" id="bgVolList">
                   <a onclick="playCover(bg())">全部</a>
                 </div>
               </div>
@@ -130,21 +124,18 @@
                 <p><i class="fa-brands fa-qq"></i> 2399052066
                   <span class="shield">投稿</span>
                 </p>
-                <p class="dim">协议:
+                <p class="dim">遵照
                   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>
+                  协议使用作品。
                 </p>
               </div>
-              <a onclick="displayCP()"><i class="fa-solid fa-list-check"></i> 背景菜单
-                <span class="shield">Ctrl+右键</span></a>
               <a href="https://img.tg/album/54wL">
                 <i class="fa-solid fa-box-archive"></i> 一卷图库
-                <!-- <span class="shield">更换图源</span> -->
-                <!-- <span class="shield"><i class="fa-regular fa-eye"></i> 4.7w</span> -->
               </a>
             </div>
           </div>
 
-          <a onclick="document.documentElement.style.filter='';document.getElementById('filterSwitch').style.display='none'"
+          <a onclick="document.documentElement.style.filter='';this.style.display='none'"
             class="fa-solid fa-circle-half-stroke" id="filterSwitch" style="display:none" data-sub="关闭滤镜"></a>
 
           <div class="dropdown">
@@ -217,7 +208,7 @@
           <span data-title="QQ群：894656456">技协合作：</span>
           <span data-title="QQ群：1142349003">方块茶话会</span>
           <span data-title="QQ群：1004048547">冒险家协会</span>
-          <span data-title="频道号:qxL848k6r0">宝中频道</span>
+          <span data-title="频道号：qxL848k6r0">宝中频道</span>
           <span data-title="QQ：2124089415">宝中万能墙</span>
         </p>
         <p><i class="fa-solid fa-user-group"></i>
@@ -233,85 +224,28 @@
         <p class="hilit"><i class="fa-solid fa-hashtag"></i>
           欢迎小伙伴加入野生技协群：89 4656 456，各考试/日常作息需要热心人士提供信息。</span>
         </p>
-        <p><i class="fa-solid fa-file-arrow-up"></i>
-          V 7.2.0 优化更新时间展示
-          <a href="https://github.com/L33Z22L11/ExamClock"><i class="fa-brands fa-github"></i>
+        <p><a href="https://github.com/L33Z22L11/ExamClock"><i class="fa-brands fa-github"></i>
             更新于 <span id="lastCommit">(获取中)</span></a>
+        </p>
+        <p><i class="fa-solid fa-file-arrow-up"></i>
+          V 7.3.0 优化背景模块，删除冗余代码
         </p>
       </div>
     </footer>
   </div>
   <script src="./js/clock.js"></script>
-  <script src="./js/exam.js" clock></script>
-  <script src="./js/search.js" clock></script>
+  <script src="./js/exam.js" defer data-dependencies="clock"></script>
+  <script src="./js/search.js" defer data-dependencies="clock"></script>
   <script src="./js/commit.js"
     onload="getLastCommit(document.getElementById('lastCommit'), 'L33Z22L11/ExamClock')"></script>
-  <div id="cp" style="display:none;">
-    <span id="cpbd"></span>
-
-    <div style="height:100%;">
-      <p><i class="fa-regular fa-images"></i> 背景列表</p>
-      <div id="bglist"></div>
-    </div>
-
-    <div>
-      <p><i class="fa-solid fa-sliders"></i> 样式调节<br>
-        <span class="dim">小伙子，考试时别乱调，刷新能重置设置</span>
-      </p>
-      <div class="barset">
-        <div id="sizebar">
-          <div><i class="fa-solid fa-text-height"></i></div>
-          <i class="fa-solid fa-text-height"></i>
-        </div>
-        <div id="contrastbar">
-          <div><i class="fa-solid fa-circle-half-stroke"></i></div>
-          <i class="fa-solid fa-circle-half-stroke"></i>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <p>一个未完成开发的控制中心。<br>诸多特性亟待实现。<br>
-        © 2022 Control Panel Digital Design (CPDD). All rights reserved.</p>
-    </div>
-
-    <div style="height:30%;">
-      <p><i class="fa-solid fa-info-circle"></i> 关于</p>
-      <div>
-        <details>
-          <summary>纸鹿</summary>
-          <div class="alist">
-            <a><i class="fa-brands fa-qq"></i> QQ 2399052066</a>
-            <a><i class="fa-brands fa-weixin"></i> 微信 zhilubenlu</a>
-            <a><i class="fa-brands fa-weixin"></i> 公众号 纸鹿本鹿</a>
-            <a href="https://music.163.com/user/444705789"><i class="fa-solid fa-compact-disc"></i> 网易云音乐 纸鹿本鹿</a>
-            <a href="https://github.com/L33Z22L11"><i class="fa-brands fa-github"></i> Github L33Z22L11</a>
-            <a href="https://zhilu.cyou"><i class="fa-solid fa-earth-asia"></i> 纸鹿小站 zhilu.cyou</a>
-          </div>
-        </details>
-
-        <details>
-          <summary>野生技协@混技</summary>
-          <div class="alist">
-            <a><i class="fa-brands fa-qq"></i> 野生技协 群169994096</a>
-            <a href="https://github.com/pubsite"><i class="fa-brands fa-github"></i> Github pubsite</a>
-            <a><i class="fa-brands fa-qq"></i> 混技 群894656456</a>
-            <a href="https://hi.thisis.host"><i class="fa-solid fa-earth-asia"></i> 官网 hi.thisis.host</a>
-          </div>
-        </details>
-      </div>
-    </div>
-  </div>
   <script src="./js/msg.js"></script>
-  <script src="./js/interact.js" msg></script>
-  <script src="./js/gallery.js" msg interact></script>
+  <script src="./js/interact.js" defer data-dependencies="msg"></script>
+  <script src="./js/gallery.js" defer data-dependencies="msg,interact"></script>
 
   <script>
     // send("我们需要人员提供考试信息，详见页面底部。");
   </script>
 
-  <link rel="stylesheet" href="https://fonts.font.im/css?family=Ubuntu:400,700">
-  <!-- <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/pubsite/GenshinWebfont/rel1.css"> -->
 </body>
 
 </html>
