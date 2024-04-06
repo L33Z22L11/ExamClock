@@ -1,3 +1,4 @@
+// 此处代码需要兼容IE浏览器，以保证报错正常显示
 try {
   var SP = Object.fromEntries(new URLSearchParams(location.search).entries());
 }
@@ -14,7 +15,7 @@ catch (e) { var SP = {}; }
     ifwarn(navigator.userAgent.match("Trident"), "IE浏览器过于老旧，不保证功能的可用性。我们推荐使用Chrome/Edge/Firefox浏览器。");
     // ifwarn(location.host != "exam.thisis.host", "您可能在使用第三方或离线的考试时钟，无法保证内容时效性。<u><a href='https://exam.thisis.host'>点击访问考试时钟在线官网 exam.thisis.host</a></u>");
     ifwarn(SP.fromold, "检测到跳转自旧网址，请勿依赖此方式访问考试时钟。建议收藏本页或在考试时钟菜单内下载快捷方式。");
-    ifwarn(SP.debug, `您目前处于${SP.debug}倍时间流速的科目检查(调试)模式。<u><a href='?'>点击返回正常模式</a></u>`);
+    ifwarn(SP.debug, "您目前处于" + SP.debug + "倍时间流速的科目检查(调试)模式。<u><a href='?'>点击返回正常模式</a></u>");
   }
   catch (e) {
     alert("检测到非法篡改，请将此代码发送给QQ 2399052066:\n" + e);
@@ -29,7 +30,7 @@ if (SP.debug) {
   document.getElementById("bar").style.transition = "none";
   !function update() {
     // 移除动画
-    try { document.getElementById("coverLaunch").remove(); } catch { }
+    try { document.getElementById("coverLaunch").remove(); } catch (err) { }
     // 跳转到科目开始前一小时
     if (now < subject.start - 36E5) now = new Date(subject.start - 36E5);
     // 用加号会直接连接字符串，所以这里得减去负数，太魔幻了
