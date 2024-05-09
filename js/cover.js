@@ -5,6 +5,7 @@ let eleCoverAuthor = document.getElementById("coverAuthor");
 let eleCoverOrigin = document.getElementById("coverOrigin");
 let eleCoverImage = document.getElementById("coverImage");
 let eleCoverTips = document.getElementById("coverTips");
+let elesCoverBadge = document.querySelectorAll("#coverBadge p");
 let eleBgHook = document.getElementById("bgHook");
 
 let coverTips = [
@@ -24,6 +25,9 @@ let coverTips = [
   "啊！要给你看什么Tip好呢…(翻",
   "上次看到这条Tip还是在上次",
 ];
+
+elesCoverBadge[0].textContent = new Date().getDate();
+elesCoverBadge[1].textContent = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AUG", "SEPT", "OCT", "NOV", "DEC"][new Date().getMonth()];
 
 function playCover(msg) {
   try {

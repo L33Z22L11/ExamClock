@@ -9,7 +9,7 @@
   <meta name="description" content="考试时钟用于宝中考试时展示考试科目、起止时间、当前时间等信息。考试时钟背景由一卷图库提供，祝各位同学使用考试时钟时心情愉悦，考试顺利。">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"
+  <link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/6.5.1/css/all.min.css"
     media="none" onload="this.media='all'">
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Ubuntu:400,700" media="none" onload="this.media='all'">
   <base target="_blank">
@@ -39,7 +39,7 @@
             <p id="coverTitle">考试时钟</p>
             <p id="coverAuthor">野生技协</p>
           </div>
-          <div class="titleBadge">
+          <div id="coverBadge">
             <div class="reskew">
               <p style="font-size:1.5em">7</p>
               <p style="font-size:.6em">EZ</p>
@@ -102,8 +102,8 @@
               <a onclick="subject.switch(242)">高三文科</a>
               <a onclick="subject.switch(251)">高二物理</a>
               <a onclick="subject.switch(252)">高二历史</a>
+              <a onclick="subject.switch(253)">高二模考<span class="shield">每日循环</span></a>
               <a onclick="subject.switch(261)">高一考试</a>
-              <!-- <a onclick="subject.switch(23)">23届<span class="shield">彩蛋</span></a> -->
               <a onclick="setTemp()"><i class="fa-regular fa-square-plus"></i> 临时</a>
               <a onclick="setTimer()"><i class="fa-solid fa-stopwatch"></i> 倒计时</a>
             </div>
@@ -121,9 +121,7 @@
                 </div>
               </div>
               <div>
-                <p><i class="fa-brands fa-qq"></i> 2399052066
-                  <span class="shield">投稿</span>
-                </p>
+                <p><i class="fa-brands fa-qq"></i> 投稿QQ: 2399052066</p>
                 <p class="dim">遵照
                   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>
                   协议使用作品。
@@ -148,7 +146,7 @@
               <a><i class="fa-solid fa-users"></i> 反馈交流QQ群
                 <p class="dim">野生技协：89 4656 456</p>
               </a>
-              <div><i class="fa-solid fa-gears"></i> 开发选项
+              <div><i class="fa-solid fa-gears"></i> 开发人员选项
                 <div class="shieldlist">
                   <a onclick="slogan.main=prompt('考试大标语',slogan.main)||slogan.main">
                     <i class="fa-solid fa-quote-left"></i> 大标语</a>
@@ -229,7 +227,7 @@
             更新于 <span id="lastCommit">(获取中)</span></a>
         </p>
         <p><i class="fa-solid fa-file-arrow-up"></i>
-          V 7.3.2 优化背景模块,移除冗余代码
+          V 7.3.3 修复全屏,fa-icon,coverBadge
         </p>
       </div>
     </footer>
@@ -243,6 +241,7 @@
   <script src="./js/interact.js" defer data-dependencies="msg"></script>
   <script src="./js/gallery.js" defer data-dependencies="msg,interact"></script>
 
+  <!-- 此处为页面加载时的弹出信息 -->
   <script>
     // send("我们需要人员提供考试信息，详见页面底部。");
   </script>

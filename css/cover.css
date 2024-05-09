@@ -92,13 +92,13 @@
     background: #222;
 }
 
-.coverMain>.info>.title>.titleBadge {
+#coverBadge {
     height: calc(100% + .6rem);
     color: #222;
     background: #fff;
 }
 
-.coverMain>.info>.title>.titleBadge>.reskew {
+#coverBadge>.reskew {
     display: flex;
     align-items: center;
     flex-direction: column;

@@ -2,6 +2,8 @@
  * 页面交互
  */
 
+var eleFullscreen = document.getElementById("fullscreen");
+
 // 全屏
 function fullscreen() {
   try {
