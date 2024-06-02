@@ -1,20 +1,17 @@
 #coverLaunch {
-    font-size: .6em;
-    position: fixed;
-    z-index: 3;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     display: flex;
+    position: fixed;
     flex-direction: column-reverse;
-    padding: 1rem;
+    z-index: 3;
     animation: whiteSplash 2.5s forwards;
-    text-align: center;
+    inset: 0;
+    background: #fff fixed center url("https://7.isyangs.cn/24/656d964db3c37-24.png") no-repeat;
+    background-size: 20em;
+    padding: 1rem;
     pointer-events: none;
     color: #333;
-    background: #fff fixed center url(https://7.isyangs.cn/24/656d964db3c37-24.png) no-repeat;
-    background-size: 20em;
+    font-size: .6em;
+    text-align: center;
 }
 
 @keyframes whiteSplash {
@@ -37,17 +34,14 @@
 }
 
 #cover {
-    position: fixed;
-    z-index: 2;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     display: none;
+    position: fixed;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 2;
     transition: .2s;
-    background: #000 fixed center url(https://7.isyangs.cn/24/656ca7c42eb90-24.jpg);
+    inset: 0;
+    background: #000 fixed center url("https://7.isyangs.cn/24/656ca7c42eb90-24.jpg");
     background-size: cover;
 }
 
@@ -58,13 +52,10 @@
 #coverMask {
     position: absolute;
     z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    background: rgba(0, 0, 0, .5);
     backdrop-filter: blur(.2rem);
+    margin: 0;
+    inset: 0;
+    background: rgb(0 0 0 / 50%);
 }
 
 .coverMain {
@@ -84,25 +75,25 @@
 
 .coverMain>.info>.title {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    min-width: 36vw;
+    align-items: center;
     margin: .5rem;
-    padding: .1rem .3rem;
     background: #222;
+    padding: .1rem .3rem;
+    min-width: 36vw;
 }
 
 #coverBadge {
+    background: #fff;
     height: calc(100% + .6rem);
     color: #222;
-    background: #fff;
 }
 
 #coverBadge>.reskew {
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 3em;
     height: 100%;
 }
@@ -113,8 +104,8 @@
 
 .reskew>* {
     margin: 0 .5rem;
-    white-space: nowrap;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #coverAuthor,
@@ -129,42 +120,39 @@
 
 .coverMain>.cover {
     position: relative;
-    overflow: hidden;
+    margin: auto 0;
+    box-shadow: 0 0 2rem rgb(0 0 0 / 50%);
     width: 40vw;
     height: 30vw;
-    margin: auto 0;
-    box-shadow: 0 0 2rem rgba(0, 0, 0, .5);
+    overflow: hidden;
 }
 
 #coverImage {
     position: fixed;
-    top: 0;
-    right: -5vw;
-    bottom: 0;
-    left: -5vw;
-    background: rgba(255, 255, 255, 0.6) center url(https://7.isyangs.cn/24/656ca7c42eb90-24.jpg);
+    inset: 0 -5vw;
+    background: rgb(255 255 255 / 60%) center url("https://7.isyangs.cn/24/656ca7c42eb90-24.jpg");
     background-size: cover;
 }
 
 #cover .loadingBar {
     position: relative;
-    overflow: hidden;
     padding: 0 .5em;
+    overflow: hidden;
 }
 
 #cover .loadingBar::after {
+    display: block;
     position: absolute;
-    z-index: 1;
     top: 0;
     left: 0;
-    display: block;
+    z-index: 1;
+    mix-blend-mode: exclusion;
+    backdrop-filter: brightness(.6) contrast(3);
+    animation: loadingBarMask 1.5s ease-in-out infinite;
+    background: #fff;
     width: 200%;
     height: 100%;
     content: '';
-    animation: loadingBarMask 1.5s ease-in-out infinite;
-    background: #fff;
-    backdrop-filter: brightness(.6) contrast(3);
-    mix-blend-mode: exclusion;
 }
 
 @keyframes loadingBarMask {

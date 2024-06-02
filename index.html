@@ -9,8 +9,8 @@
   <meta name="description" content="考试时钟用于宝中考试时展示考试科目、起止时间、当前时间等信息。考试时钟背景由一卷图库提供，祝各位同学使用考试时钟时心情愉悦，考试顺利。">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/6.5.1/css/all.min.css"
-    media="none" onload="this.media='all'">
+  <link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/6.5.1/css/all.min.css" media="none"
+    onload="this.media='all'">
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Ubuntu:400,700" media="none" onload="this.media='all'">
   <base target="_blank">
   <script type="text/javascript">
@@ -148,22 +148,12 @@
               </a>
               <div><i class="fa-solid fa-gears"></i> 开发人员选项
                 <div class="shieldlist">
-                  <a onclick="slogan.main=prompt('考试大标语',slogan.main)||slogan.main">
+                  <a onclick="sendFeatureRemoved('试图修改大标语时触发')">
                     <i class="fa-solid fa-quote-left"></i> 大标语</a>
-                  <a onclick="slogan.sub=[prompt('考试副标语',slogan.sub[0])]||slogan.sub">
-                    <i class="fa-solid fa-quote-right"></i> 小标语</a>
-                  <a onclick="document.getElementById('subject').innerHTML=prompt('科目名称',subject.name)||subject.name">
-                    <i class="fa-solid fa-book"></i> 科目</a>
                   <a onclick="fixMinutes(subject.start,'开始时间')">
                     <i class="fa-solid fa-hourglass-start"></i> 开始时间</a>
                   <a onclick="fixMinutes(subject.end,'结束时间')">
                     <i class="fa-solid fa-hourglass-end"></i> 结束时间</a>
-                  <a onclick="subject.to(prompt('考试类型',subject.current))">
-                    <i class="fa-solid fa-box-archive"></i> 类型</a>
-                  <!-- “离谱了，同样的代码在控制台和点击执行出来的就不一样” -->
-                  <a onclick="document.getElementById('type').innerHTML=prompt('机构名称','纸鹿教育')
-                    ||exam[subject.current].schedule()">
-                    <i class="fa-regular fa-building"></i> 机构</a>
                   <a href="?debug=1000"><i class="fa-solid fa-bug"></i> 调试</a>
                 </div>
               </div>
@@ -227,7 +217,7 @@
             更新于 <span id="lastCommit">(获取中)</span></a>
         </p>
         <p><i class="fa-solid fa-file-arrow-up"></i>
-          V 7.3.3 修复全屏,fa-icon,coverBadge
+          V 7.3.4 移除部分调试工具
         </p>
       </div>
     </footer>

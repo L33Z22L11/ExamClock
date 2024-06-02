@@ -8,12 +8,12 @@
 
 /* 网页字体及背景 */
 html {
-  font-family: 'Ubuntu', 'Genshin65W', sans-serif;
+  background: #333 fixed center url("https://examined.thisis.host/campus.jpg");
+  background-size: cover;
+  color: #fff;
   font-size: 48px;
   font-size: 2.7vw;
-  color: #fff;
-  background: #333 fixed center url(https://examined.thisis.host/campus.jpg);
-  background-size: cover;
+  font-family: Ubuntu, 'Genshin65W', sans-serif;
 }
 
 body {
@@ -24,16 +24,16 @@ body {
 /* 分散对齐 */
 .space-between {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
 }
 
 #msg {
   display: flex;
-  align-items: baseline;
   flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .space {
@@ -46,38 +46,39 @@ body {
 
 /* 一级淡文本（保留字体颜色） */
 .dim {
-  font-size: .75em;
   opacity: .75;
+  font-size: .75em;
 }
 
 /* 二级淡文本 */
 .sub {
+  color: rgb(255 255 255 / 75%);
   font-size: .6em;
-  color: rgba(255, 255, 255, .75);
 }
 
 /* 页脚文本 */
 footer {
+  color: rgb(255 255 255 / 50%);
   font-size: .3rem;
-  color: rgba(255, 255, 255, .5);
 }
 
 /* 选中 */
 ::selection {
-  background: rgba(255, 255, 255, .1);
+  background: rgb(255 255 255 / 10%);
   text-shadow: #7af -.05em -.01em .1em, #a7f .05em .01em .1em;
 }
 
 /*
  * elements
  */
+
 /* 主体排版 */
 #main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: rgb(0 0 0 / 50%);
   min-height: 100vh;
-  background: rgba(0, 0, 0, .5);
 }
 
 /* 主体元素间距 */
@@ -87,18 +88,18 @@ footer {
 
 /* 通知气泡 */
 .notify {
-  z-index: 1;
   top: 0;
+  z-index: 1;
 }
 
 /* 通知气泡元素 */
 .notify>div {
-  font-size: .5rem;
   display: none;
-  margin: .2rem auto;
-  padding: .2rem;
   animation: fade .5s;
+  margin: .2rem auto;
   border-radius: .2rem;
+  padding: .2rem;
+  font-size: .5rem;
 }
 
 .hilit {
@@ -128,28 +129,28 @@ footer {
 /* 带注释的图标 */
 [data-sub] {
   display: inline-block;
+  vertical-align: middle;
   padding: .1em;
   text-align: center;
-  vertical-align: middle;
 }
 
 [data-sub]::after {
-  font: normal normal .5em 'Ubuntu', 'Genshin65W', sans-serif;
   display: block;
   margin-top: .2em;
   content: attr(data-sub);
+  font: normal normal .5em Ubuntu, 'Genshin65W', sans-serif;
 }
 
 /* 进度条 */
 .bar {
-  height: .2rem;
   margin: .5rem auto;
+  height: .2rem;
 }
 
 #bar {
-  height: 100%;
   transition: linear 2s;
   background: linear-gradient(to right, transparent, #fff);
+  height: 100%;
 }
 
 /* 卡片排版 */
@@ -157,8 +158,8 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 100vw;
   margin: .5rem -1rem;
+  max-width: 100vw;
 }
 
 /* 淡色背景阴影 */
@@ -166,24 +167,21 @@ footer {
 .bar,
 .card>* {
   transition: .2s;
-
-  /* border: 2px solid rgba(255, 255, 255, 0.4); */
-
-  background: rgba(255, 255, 255, .1);
-  box-shadow: .2em .2em 1em rgba(0, 0, 0, .2);
-  text-shadow: .1em .1em .2em rgba(0, 0, 0, .2);
+  box-shadow: .2em .2em 1em rgb(0 0 0 / 20%);
+  background: rgb(255 255 255 / 10%);
+  text-shadow: .1em .1em .2em rgb(0 0 0 / 20%);
 }
 
 /* 卡片元素字体间距等 */
 .card>* {
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   margin: .2rem;
+  border-radius: .5rem;
   padding: .2rem .75rem;
   text-align: center;
-  border-radius: .5rem;
 }
 
 :hover .notify>div,
@@ -195,8 +193,8 @@ footer {
 .notify>div:hover,
 .bar:hover,
 .card>*:hover {
-  background: rgba(255, 255, 255, .2);
   backdrop-filter: blur(0);
+  background: rgb(255 255 255 / 20%);
 }
 
 /* 时钟字体 */
@@ -206,21 +204,21 @@ footer {
 
 #subject,
 #timer {
-  font-size: 3em;
   width: 100%;
+  font-size: 3em;
 }
 
 #duration,
 #activity {
+  color: rgb(255 255 255 / 75%);
   font-size: 1.5em;
-  color: rgba(255, 255, 255, .75);
 }
 
 /* 适配竖屏 */
-@media (max-aspect-ratio: 8/7) {
+@media (aspect-ratio <=8/7) {
   html {
-    font-size: 5vw;
     align-items: flex-start;
+    font-size: 5vw;
   }
 
   nav.space-between,
@@ -233,27 +231,28 @@ footer {
 /*
  * functional
  */
+
 /* 下拉元素定位 */
 [data-title],
 .dropdown {
-  position: relative;
   display: inline-block;
+  position: relative;
 }
 
 /* 下拉正文定位（未下拉） */
 [data-title]::after,
 .dropdown> :last-child {
+  display: none;
   position: absolute;
   z-index: 1;
-  display: none;
   cursor: auto;
 }
 
 [data-title]::after {
   right: 0;
   bottom: 1em;
-  width: 12em;
   padding: .1em;
+  width: 12em;
   content: attr(data-title);
 }
 
@@ -289,15 +288,15 @@ footer {
 
 a {
   cursor: pointer;
-  text-decoration: none;
-  color: inherit;
   border-radius: .2rem;
+  color: inherit;
+  text-decoration: none;
 }
 
 a:hover {
-  color: #fff !important;
+  box-shadow: .2em .2em .5em rgb(0 0 0 / 20%);
   background: linear-gradient(120deg, #7af, #a7f);
-  box-shadow: .2em .2em .5em rgba(0, 0, 0, .2);
+  color: #fff !important;
 }
 
 /* 高亮/菜单/下拉正文颜色 */
@@ -305,11 +304,11 @@ a:hover {
 #menu,
 [data-title]::after,
 .dropdown> :last-child {
-  color: #000;
-  border-radius: .2rem;
-  background: rgba(255, 255, 255, .75);
-  box-shadow: .2rem .2rem 1rem rgba(0, 0, 0, .2);
   backdrop-filter: blur(.5em);
+  box-shadow: .2rem .2rem 1rem rgb(0 0 0 / 20%);
+  border-radius: .2rem;
+  background: rgb(255 255 255 / 75%);
+  color: #000;
 }
 
 /* 高亮按钮/菜单元素/下拉正文元素边距 */
@@ -324,13 +323,13 @@ a.btn,
 /* 标签 */
 .shield,
 .shieldlist>* {
-  font-size: .6em;
   display: inline-block;
-  margin: .1em;
-  padding: .1em .2em;
   vertical-align: middle;
-  color: #fff;
+  margin: .1em;
+  outline: .1em solid rgb(255 255 255 / 20%);
   border-radius: 1em;
-  outline: .1em solid rgba(255, 255, 255, .2);
-  background: rgba(0, 0, 0, .5);
+  background: rgb(0 0 0 / 50%);
+  padding: .1em .2em;
+  color: #fff;
+  font-size: .6em;
 }
