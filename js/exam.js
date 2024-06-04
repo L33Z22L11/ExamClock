@@ -23,6 +23,7 @@ exams[24] = {
   author: "招募“高三日常”维护者",
   origin: "2024级年级部",
   mainSlogan: `距离高考${specialDate.cee24}天`,
+  rollSlogan: ["一会三年", "别也多年", "多会多别", "何年再会"],
   earlyAdmit: 2,
   schedule() {
     // 夏季作息时间，上午竟然要上五节课
