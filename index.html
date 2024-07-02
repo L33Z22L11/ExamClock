@@ -97,9 +97,7 @@
               </div>
             </a>
             <div id="typelist" style="width:100%;">
-              <a onclick="subject.switch(24)">高三日常</a>
-              <a onclick="subject.switch(241)">高三理科</a>
-              <a onclick="subject.switch(242)">高三文科</a>
+              <a onclick="subject.switch(25)">高二日常</a>
               <a onclick="subject.switch(251)">高二物理</a>
               <a onclick="subject.switch(252)">高二历史</a>
               <a onclick="subject.switch(253)">高二模考<span class="shield">每日循环</span></a>
@@ -172,18 +170,18 @@
 
       <b class="card">
         <div>
-          <div id="subject" contenteditable>科目</div>
-          <div id="duration">16:66~17:77</div>
+          <span id="subject" contenteditable>科目</span>
+          <span id="duration">16:66~17:77</span>
         </div>
         <div>
-          <div id="clock">18:88</div>
+          <span id="clock">18:88</span>
         </div>
         <div>
-          <div>
+          <span>
             <span id="timer">199</span>
             <span class="dim" id="timersub">sub</span>
-          </div>
-          <div id="activity">当前活动</div>
+          </span>
+          <span id="activity">当前活动</span>
         </div>
         <!-- <div><br><br><br>test<br><br><br></div> -->
       </b>
@@ -217,7 +215,7 @@
             更新于 <span id="lastCommit">(获取中)</span></a>
         </p>
         <p><i class="fa-solid fa-file-arrow-up"></i>
-          V 7.3.4 移除部分调试工具
+          V 7.3.5 修复科目改名bug
         </p>
       </div>
     </footer>
