@@ -54,7 +54,7 @@ if (SP.debug) {
 // 先根据地址参数判断考试类型
 if (SP.type in exams) subject.switch(SP.type);
 // 再在考试日期切换到考试类型
-if (today.date in exams) subject.switch(today.date);
+else if (today.date in exams) subject.switch(today.date);
 else if (today.date.match("2023-01-1(6|7)")) subject.switch(231);
 // 最后设置缺省考试类型
 else subject.switch(25);
