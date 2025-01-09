@@ -167,7 +167,7 @@ exams[27] = {
 exams[271] = {
   type: "高一",
   author: "来源:Cl-base",
-  origin: "阳毅@yearnstudio",
+  origin: "2026届年级部",
   rollSlogan: ["高一第一学期期末考试：请以实际铃声为准。"],
   schedule() {
     $("语文", "2025-01-13", "08:00", "10:00");
