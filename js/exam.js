@@ -31,7 +31,8 @@ exams[25] = {
     $("晨会", today.date, "07:20", "07:25");
     $("晨读2", today.date, "07:25", "07:45");
     $("第1节", today.date, "07:55", "08:35");
-    $("课间操", today.date, "08:35", "09:00", "<a href='https://mp.weixin.qq.com/s/61Voi3s4tFtAup2-eOg1Lg'><i class='fa-regular fa-circle-play'></i> 点击播放高清室内操", ["《鳌拜鳌拜鳌拜拜》(原曲《Batte Forte》)《夜空中最亮的星》《虫儿飞》"]);
+    // $("课间操", today.date, "08:35", "09:00", "<a href='https://mp.weixin.qq.com/s/61Voi3s4tFtAup2-eOg1Lg'><i class='fa-regular fa-circle-play'></i> 点击播放高清室内操", ["《鳌拜鳌拜鳌拜拜》(原曲《Batte Forte》)《夜空中最亮的星》《虫儿飞》"]);
+    $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操");
     $("第2节", today.date, "09:00", "09:40");
     $("第3节", today.date, "09:50", "10:30");
     $("第4节", today.date, "10:40", "11:20");
@@ -155,8 +156,8 @@ exams[27] = {
     $("晨会", today.date, "07:20", "07:25");
     $("晨读2", today.date, "07:25", "07:45");
     $("第1节", today.date, "07:55", "08:35");
-    //第一节下课后跑操，其余不变
-    $("课间操", today.date, "08:35", "09:00", "<a href='https://mp.weixin.qq.com/s/61Voi3s4tFtAup2-eOg1Lg'><i class='fa-regular fa-circle-play'></i> 点击播放高清室内操", ["《鳌拜鳌拜鳌拜拜》(原曲《Batte Forte》)《夜空中最亮的星》《虫儿飞》"]);
+    // 第一节下课后跑操，其余不变
+    $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操");
     $("第2节", today.date, "09:00", "09:40");
     $("第3节", today.date, "09:50", "10:30");
     $("第4节", today.date, "10:40", "11:20");
