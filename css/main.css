@@ -65,7 +65,7 @@ footer {
 /* 选中 */
 ::selection {
   background: rgb(255 255 255 / 10%);
-  text-shadow: #7af -.05em -.01em .1em, #a7f .05em .01em .1em;
+  text-shadow: #f84 -.05em -.01em .1em, #f66 .05em .01em .1em;
 }
 
 /*
@@ -295,7 +295,7 @@ a {
 
 a:hover {
   box-shadow: .2em .2em .5em rgb(0 0 0 / 20%);
-  background: linear-gradient(120deg, #7af, #a7f);
+  background: linear-gradient(120deg, #f84, #f66);
   color: #fff !important;
 }
 
