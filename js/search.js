@@ -56,9 +56,9 @@ if (SP.debug) {
 if (SP.type in exams) subject.switch(SP.type);
 // 再在考试日期切换到考试类型
 else if (today.date in exams) subject.switch(today.date);
-else if (today.date.match("2023-01-1(6|7)")) subject.switch(231);
+// else if (today.date.match("2023-01-1(6|7)")) subject.switch(231);
 // 最后设置缺省考试类型
-else subject.switch(25);
+else subject.switch(Object.keys(exams)[0]);
 // 若不再包一层，slogan.update内的this就会指向window
 setInterval(function () { slogan.update(); }, 3000);
 
