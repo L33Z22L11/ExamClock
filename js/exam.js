@@ -25,13 +25,92 @@ exams[26] = {
   rollSlogan: [""],
   earlyAdmit: 2,
   schedule() {
-    // 夏季作息时间，上午竟然要上五节课
-    // 秋季作息时间竟然也是
+    const isSaturday = today.day === 6; // 0是周日，6是周六
+    const isSunday = today.day === 0;
+    
+    // 如果有其他考试安排，则不设置周末考练
+    if (now < subject.end && 
+        subject.name !== "" && 
+        subject.name !== "考练" && 
+        subject.name !== "考练1" &&
+        subject.name !== "考练2" &&
+        subject.name !== "⏱️") {
+      console.log("检测到有其他考试安排，跳过周末考练设置");
+    } else {
+      // 周六考练（16:10-18:00）
+      if (isSaturday) {
+        // 设置周六上午正常课程
+        $("晨读1", today.date, "07:05", "07:20");
+        $("晨会", today.date, "07:20", "07:25");
+        $("晨读2", today.date, "07:25", "07:45");
+        $("第1节", today.date, "07:55", "08:35");
+        $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操");
+        $("第2节", today.date, "09:00", "09:40");
+        $("第3节", today.date, "09:50", "10:30");
+        $("第4节", today.date, "10:40", "11:20");
+        $("第5节", today.date, "11:30", "12:10");
+        
+        // 设置周六下午课程（考练时间段替换原有课程）
+        if (today.isSummer) {
+          $("第6节", today.date, "14:25", "15:05", null, null, 5);
+          $("第7节", today.date, "15:15", "15:55");
+          // 第8节和自习时间段被考练替换
+          $("考练", today.date, "16:10", "18:00");
+        } else {
+          $("第6节", today.date, "14:10", "14:50", null, null, 5);
+          $("第7节", today.date, "15:00", "15:40");
+          // 第8节和自习时间段被考练替换
+          $("考练", today.date, "16:10", "18:00");
+        }
+        
+        // 设置晚上课程
+        if (today.isSummer) {
+          $("晚写", today.date, "19:05", "19:15", null, null, 5);
+          $("晚一", today.date, "19:15", "19:55");
+          $("晚二", today.date, "20:05", "20:45");
+          $("晚三", today.date, "21:00", "22:30", null, null, 7);
+        } else {
+          $("晚写", today.date, "18:45", "18:55", null, null, 5);
+          $("晚一", today.date, "18:55", "19:35");
+          $("晚二", today.date, "19:45", "20:25");
+          $("晚三", today.date, "20:40", "22:10", null, null, 7);
+          $("晚修", today.date, "22:20", "23:30");
+        }
+        
+        console.log("设置周六考练: 16:10-18:00");
+        return;
+      }
+      
+      // 周日下午考练（两场）
+      if (isSunday) {
+        
+        $("考练1", today.date, "14:25", "16:25");
+        $("考练2", today.date, "16:35", "18:05");
+        
+        // 设置晚上课程
+        if (today.isSummer) {
+          $("晚写", today.date, "19:05", "19:15", null, null, 5);
+          $("晚一", today.date, "19:15", "19:55");
+          $("晚二", today.date, "20:05", "20:45");
+          $("晚三", today.date, "21:00", "22:30", null, null, 7);
+        } else {
+          $("晚写", today.date, "18:45", "18:55", null, null, 5);
+          $("晚一", today.date, "18:55", "19:35");
+          $("晚二", today.date, "19:45", "20:25");
+          $("晚三", today.date, "20:40", "22:10", null, null, 7);
+          $("晚修", today.date, "22:20", "23:30");
+        }
+        
+        console.log("设置周日考练: 14:25-16:25 和 16:35-18:05");
+        return;
+      }
+    }
+    
+    // 非周末的正常课程安排
     $("晨读1", today.date, "07:05", "07:20");
     $("晨会", today.date, "07:20", "07:25");
     $("晨读2", today.date, "07:25", "07:45");
     $("第1节", today.date, "07:55", "08:35");
-    // $("课间操", today.date, "08:35", "09:00", "<a href='https://mp.weixin.qq.com/s/61Voi3s4tFtAup2-eOg1Lg'><i class='fa-regular fa-circle-play'></i> 点击播放高清室内操", ["《鳌拜鳌拜鳌拜拜》(原曲《Batte Forte》)《夜空中最亮的星》《虫儿飞》"]);
     $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操");
     $("第2节", today.date, "09:00", "09:40");
     $("第3节", today.date, "09:50", "10:30");
