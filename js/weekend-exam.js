@@ -17,12 +17,12 @@ const weekendExamConfig = {
       {
         name: "考练1",
         start: "14:25",
-        end: "15:55"
+        end: "16:25"
       },
       {
         name: "考练2", 
-        start: "16:15",
-        end: "17:45"
+        start: "16:35",
+        end: "18:05"
       }
     ]
   }
