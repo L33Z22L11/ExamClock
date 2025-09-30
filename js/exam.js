@@ -6,9 +6,11 @@ console.groupEnd();
  */
 
 let specialDate = {
+  cee22: parseInt((new Date(2022, 5, 8) - Date.now()) / 864E5),
   cee26: parseInt((new Date(2026, 5, 8) - Date.now()) / 864E5),
 }
 
+// 当天自动切换
 exams["2022-05-14"] = {
   type: "临时考练",
   mainSlogan: `${specialDate.cee22}天后 峰顶相会`,
@@ -17,124 +19,105 @@ exams["2022-05-14"] = {
   }
 };
 
+exams[22] = {
+  type: "2019级日常(示例代码)",
+  author: "纸鹿",
+  origin: "2019级年级部",
+  mainSlogan: `距离高考${specialDate.cee22}天`,
+  rollSlogan: [""],
+  earlyAdmit: 2,
+  schedule() {
+    // 这种情况就比较复杂了，代码和人有一个能跑就行
+    // 特别注意，最后一轮求余后应该是数组第0项
+    if (today.day != 0) {
+      // 非周日的白天
+      if (today.day == 5) $("听力", today.date, "07:05", "07:25");
+      $("晨读1", today.date, "06:55", "07:25");
+      $("晨会", today.date, "07:25", "07:30");
+      $("晨读2", today.date, "07:30", "08:00");
+      $("第1节", today.date, "08:10", "08:55");
+      $("第2节", today.date, "09:05", "09:50");
+      $("课间操", today.date, "09:50", "10:00", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
+      $("第3节", today.date, "10:20", "11:05");
+      $("第4节", today.date, "11:15", "12:00");
+      $("午休", today.date, "12:15", "13:55");
+      $("第5节", today.date, "14:10", "14:55");
+      $("第6节", today.date, "15:05", "15:50");
+      if (today.day != 6) $("第7节", today.date, "16:05", "16:50");
+      if (today.day == 2) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科" + ["双周数学", "单周化学"][today.week % 2] + "，文科第" + (today.week % 3 || 3) + "/3轮" + ["地理(明日)", "政治", "历史",][today.week % 3]]);
+      else if (today.day == 3 && !(today.week % 3)) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
+      else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
+      else if (today.day == 6) $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0, ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
+      else $("自习", today.date, "17:00", "17:45");
+    } else {
+      // 周日白天
+      $(["语文", "综合",][today.week % 2], today.date, "14:10", "16:40", 0, ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
+      $("订正", today.date, "16:50", "17:30");
+    }
+    if (today.day != 6) {
+      // 非周六的晚上
+      $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练"], 5);
+      $("晚写", today.date, "18:45", "18:55");
+      $("晚一", today.date, "18:55", "19:40");
+      $("晚二", today.date, "19:50", "20:35");
+      $("晚三", today.date, "20:50", "22:00");
+      $("晚修", today.date, "22:10", "23:30");
+    }
+  }
+}
+
 exams[26] = {
   type: "高三日常",
-  author: "招募“高三日常”维护者",
-  origin: "2025级年级部",
+  author: "Vince-Alex",
+  origin: "2023级年级部",
   mainSlogan: `距离高考${specialDate.cee26}天`,
   rollSlogan: [""],
   earlyAdmit: 2,
   schedule() {
-    const isSaturday = today.day === 6; // 0是周日，6是周六
-    const isSunday = today.day === 0;
-    
-    // 如果有其他考试安排，则不设置周末考练
-    if (now < subject.end && 
-        subject.name !== "" && 
-        subject.name !== "考练" && 
-        subject.name !== "考练1" &&
-        subject.name !== "考练2" &&
-        subject.name !== "⏱️") {
-      console.log("检测到有其他考试安排，跳过周末考练设置");
+    if (today.day != 0) {
+      // 非周日的白天
+      $("晨读1", today.date, "07:05", "07:20");
+      $("晨会", today.date, "07:20", "07:25");
+      $("晨读2", today.date, "07:25", "07:45");
+      $("第1节", today.date, "07:55", "08:35");
+      $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操");
+      $("第2节", today.date, "09:00", "09:40");
+      $("第3节", today.date, "09:50", "10:30");
+      $("第4节", today.date, "10:40", "11:20");
+      $("第5节", today.date, "11:30", "12:10");
+      if (today.isSummer) {
+        $("第6节", today.date, "14:25", "15:05", null, null, 5);
+        $("第7节", today.date, "15:15", "15:55");
+        if (today.day == 6) $("考练", today.date, "16:10", "18:00");
+        $("第8节", today.date, "16:10", "16:50", null, null, 7);
+        $("自习", today.date, "17:00", "18:00");
+      } else {
+        $("第6节", today.date, "14:10", "14:50", null, null, 5);
+        $("第7节", today.date, "15:00", "15:40");
+        if (today.day == 6) $("考练", today.date, "16:10", "18:00");
+        $("第8节", today.date, "15:55", "16:35", null, null, 7);
+        $("自习", today.date, "16:45", "17:45");
+      }
     } else {
-      // 周六考练（16:10-18:00）
-      if (isSaturday) {
-        // 设置周六上午正常课程
-        $("晨读1", today.date, "07:05", "07:20");
-        $("晨会", today.date, "07:20", "07:25");
-        $("晨读2", today.date, "07:25", "07:45");
-        $("第1节", today.date, "07:55", "08:35");
-        $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操");
-        $("第2节", today.date, "09:00", "09:40");
-        $("第3节", today.date, "09:50", "10:30");
-        $("第4节", today.date, "10:40", "11:20");
-        $("第5节", today.date, "11:30", "12:10");
-        
-        // 设置周六下午课程（考练时间段替换原有课程）
-        if (today.isSummer) {
-          $("第6节", today.date, "14:25", "15:05", null, null, 5);
-          $("第7节", today.date, "15:15", "15:55");
-          // 第8节和自习时间段被考练替换
-          $("考练", today.date, "16:10", "18:00");
-        } else {
-          $("第6节", today.date, "14:10", "14:50", null, null, 5);
-          $("第7节", today.date, "15:00", "15:40");
-          // 第8节和自习时间段被考练替换
-          $("考练", today.date, "16:10", "18:00");
-        }
-        
-        // 设置晚上课程
-        if (today.isSummer) {
-          $("晚写", today.date, "19:05", "19:15", null, null, 5);
-          $("晚一", today.date, "19:15", "19:55");
-          $("晚二", today.date, "20:05", "20:45");
-          $("晚三", today.date, "21:00", "22:30", null, null, 7);
-        } else {
-          $("晚写", today.date, "18:45", "18:55", null, null, 5);
-          $("晚一", today.date, "18:55", "19:35");
-          $("晚二", today.date, "19:45", "20:25");
-          $("晚三", today.date, "20:40", "22:10", null, null, 7);
-          $("晚修", today.date, "22:20", "23:30");
-        }
-        
-        console.log("设置周六考练: 16:10-18:00");
-        return;
-      }
-      
-      // 周日下午考练（两场）
-      if (isSunday) {
-        
-        $("考练1", today.date, "14:25", "16:25");
-        $("考练2", today.date, "16:35", "18:05");
-        
-        // 设置晚上课程
-        if (today.isSummer) {
-          $("晚写", today.date, "19:05", "19:15", null, null, 5);
-          $("晚一", today.date, "19:15", "19:55");
-          $("晚二", today.date, "20:05", "20:45");
-          $("晚三", today.date, "21:00", "22:30", null, null, 7);
-        } else {
-          $("晚写", today.date, "18:45", "18:55", null, null, 5);
-          $("晚一", today.date, "18:55", "19:35");
-          $("晚二", today.date, "19:45", "20:25");
-          $("晚三", today.date, "20:40", "22:10", null, null, 7);
-          $("晚修", today.date, "22:20", "23:30");
-        }
-        
-        console.log("设置周日考练: 14:25-16:25 和 16:35-18:05");
-        return;
-      }
+      // 周日白天
+      $("考练1", today.date, "14:25", "16:25");
+      $("考练2", today.date, "16:35", "18:05");
     }
-    
-    // 非周末的正常课程安排
-    $("晨读1", today.date, "07:05", "07:20");
-    $("晨会", today.date, "07:20", "07:25");
-    $("晨读2", today.date, "07:25", "07:45");
-    $("第1节", today.date, "07:55", "08:35");
-    $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操");
-    $("第2节", today.date, "09:00", "09:40");
-    $("第3节", today.date, "09:50", "10:30");
-    $("第4节", today.date, "10:40", "11:20");
-    $("第5节", today.date, "11:30", "12:10");
-    if (today.isSummer) {
-      $("第6节", today.date, "14:25", "15:05", null, null, 5);
-      $("第7节", today.date, "15:15", "15:55");
-      $("第8节", today.date, "16:10", "16:50", null, null, 7);
-      $("自习", today.date, "17:00", "18:00");
-      $("晚写", today.date, "19:05", "19:15", null, null, 5);
-      $("晚一", today.date, "19:15", "19:55");
-      $("晚二", today.date, "20:05", "20:45");
-      $("晚三", today.date, "21:00", "22:30", null, null, 7);
-    } else {
-      $("第6节", today.date, "14:10", "14:50", null, null, 5);
-      $("第7节", today.date, "15:00", "15:40");
-      $("第8节", today.date, "15:55", "16:35", null, null, 7);
-      $("自习", today.date, "16:45", "17:45");
-      $("晚写", today.date, "18:45", "18:55", null, null, 5);
-      $("晚一", today.date, "18:55", "19:35");
-      $("晚二", today.date, "19:45", "20:25");
-      $("晚三", today.date, "20:40", "22:10", null, null, 7);
-      $("晚修", today.date, "22:20", "23:30");
+
+    // 非周六的晚上
+    if (today.day != 6) {
+      if (today.isSummer) {
+        $("晚写", today.date, "19:05", "19:15", null, null, 5);
+        $("晚一", today.date, "19:15", "19:55");
+        $("晚二", today.date, "20:05", "20:45");
+        $("晚三", today.date, "21:00", "22:30", null, null, 7);
+      } else {
+        $("晚写", today.date, "18:45", "18:55", null, null, 5);
+        $("晚一", today.date, "18:55", "19:35");
+        $("晚二", today.date, "19:45", "20:25");
+        $("晚三", today.date, "20:40", "22:10", null, null, 7);
+        $("晚修", today.date, "22:20", "23:30");
+      }
     }
   }
 }

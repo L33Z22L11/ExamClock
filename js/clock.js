@@ -1,17 +1,6 @@
 /* 
  * 时间更新
  */
-/* —— 仅用于本地验证周末考练 —— */
-/*
-(function () {
-  const RealDate = window.Date;
-  const fake     = new Date('2025-08-31T16:30:00+08:00'); // 想要验证的日期
-  window.Date    = class extends RealDate {
-    constructor(...a) { return a.length ? new RealDate(...a) : new RealDate(fake); }
-    static now()      { return +fake; }
-  };
-})(); 
-*/
 
 // 这里可以修改today.date
 // 测试结束后一定要删除测试数据
