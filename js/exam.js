@@ -94,7 +94,7 @@ exams[26] = {
       } else {
         $("第6节", today.date, "14:10", "14:50", null, null, 5);
         $("第7节", today.date, "15:00", "15:40");
-        if (today.day == 6) $("考练", today.date, "16:10", "18:00");
+        if (today.day == 6) $("考练", today.date, "15:55", "17:45");
         $("第8节", today.date, "15:55", "16:35", null, null, 7);
         $("自习", today.date, "16:45", "17:45");
       }
@@ -111,12 +111,13 @@ exams[26] = {
         $("晚一", today.date, "19:15", "19:55");
         $("晚二", today.date, "20:05", "20:45");
         $("晚三", today.date, "21:00", "22:30", null, null, 7);
+        $("晚修", today.date, "22:40", "23:30");
       } else {
         $("晚写", today.date, "18:45", "18:55", null, null, 5);
         $("晚一", today.date, "18:55", "19:35");
         $("晚二", today.date, "19:45", "20:25");
         $("晚三", today.date, "20:40", "22:10", null, null, 7);
-        $("晚修", today.date, "22:20", "23:30");
+        $("晚修", today.date, "22:20", "23:10");
       }
     }
   }
