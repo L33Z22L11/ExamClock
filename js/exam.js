@@ -19,53 +19,6 @@ exams["2022-05-14"] = {
   }
 };
 
-exams[22] = {
-  type: "2019级日常(示例代码)",
-  author: "纸鹿",
-  origin: "2019级年级部",
-  mainSlogan: `距离高考${specialDate.cee22}天`,
-  rollSlogan: [""],
-  earlyAdmit: 2,
-  schedule() {
-    // 这种情况就比较复杂了，代码和人有一个能跑就行
-    // 特别注意，最后一轮求余后应该是数组第0项
-    if (today.day != 0) {
-      // 非周日的白天
-      if (today.day == 5) $("听力", today.date, "07:05", "07:25");
-      $("晨读1", today.date, "06:55", "07:25");
-      $("晨会", today.date, "07:25", "07:30");
-      $("晨读2", today.date, "07:30", "08:00");
-      $("第1节", today.date, "08:10", "08:55");
-      $("第2节", today.date, "09:05", "09:50");
-      $("课间操", today.date, "09:50", "10:00", "<a href='http://player.bilibili.com/player.html?aid=971208498'><i class='fa-regular fa-circle-play'></i> 点击播放宝中室内健身操</a>");
-      $("第3节", today.date, "10:20", "11:05");
-      $("第4节", today.date, "11:15", "12:00");
-      $("午休", today.date, "12:15", "13:55");
-      $("第5节", today.date, "14:10", "14:55");
-      $("第6节", today.date, "15:05", "15:50");
-      if (today.day != 6) $("第7节", today.date, "16:05", "16:50");
-      if (today.day == 2) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科" + ["双周数学", "单周化学"][today.week % 2] + "，文科第" + (today.week % 3 || 3) + "/3轮" + ["地理(明日)", "政治", "历史",][today.week % 3]]);
-      else if (today.day == 3 && !(today.week % 3)) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
-      else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
-      else if (today.day == 6) $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0, ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
-      else $("自习", today.date, "17:00", "17:45");
-    } else {
-      // 周日白天
-      $(["语文", "综合",][today.week % 2], today.date, "14:10", "16:40", 0, ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
-      $("订正", today.date, "16:50", "17:30");
-    }
-    if (today.day != 6) {
-      // 非周六的晚上
-      $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练"], 5);
-      $("晚写", today.date, "18:45", "18:55");
-      $("晚一", today.date, "18:55", "19:40");
-      $("晚二", today.date, "19:50", "20:35");
-      $("晚三", today.date, "20:50", "22:00");
-      $("晚修", today.date, "22:10", "23:30");
-    }
-  }
-}
-
 exams[26] = {
   type: "高三日常",
   author: "Vince-Alex",
