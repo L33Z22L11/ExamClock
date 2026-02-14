@@ -5,7 +5,7 @@
     z-index: 3;
     animation: whiteSplash 2.5s forwards;
     inset: 0;
-    background: #fff fixed center url("https://7.isyangs.cn/24/656d964db3c37-24.png") no-repeat;
+    background: #fff fixed center url("https://campus.assets.zhilu.cyou/exam/logo_231204.png") no-repeat;
     background-size: 20em;
     padding: 1rem;
     pointer-events: none;
@@ -41,7 +41,7 @@
     z-index: 2;
     transition: .2s;
     inset: 0;
-    background: #000 fixed center url("https://7.isyangs.cn/24/656ca7c42eb90-24.jpg");
+    background: #000 fixed center url("https://campus.assets.zhilu.cyou/exam/cover_231204.jpg");
     background-size: cover;
 }
 
@@ -130,7 +130,7 @@
 #coverImage {
     position: fixed;
     inset: 0 -5vw;
-    background: rgb(255 255 255 / 60%) center url("https://7.isyangs.cn/24/656ca7c42eb90-24.jpg");
+    background: rgb(255 255 255 / 60%) center url("https://campus.assets.zhilu.cyou/exam/cover_231204.jpg");
     background-size: cover;
 }
 
