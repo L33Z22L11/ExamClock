@@ -1,30 +1,30 @@
+import { patchSchedule as $, schedules as exams, today } from "../engine/schedule-clock.js";
+import { daysUntil } from "../utils/time.js";
+
 console.groupCollapsed("\n%c  %c考试时钟 ExamClock", "background:url('./favicon.ico') no-repeat;padding:32px;", "font:bold 36px sans-serif;color:#3a9;");
 console.log("\n项目仓库：https://github.com/L33Z22L11/ExamClock\n野生技协群：894656456\n\n");
 console.groupEnd();
+
 /* 
  * 适用于宝鸡中学的考试科目列表
  */
 
-const specialDate = {
-  cee22: parseInt((new Date(2022, 5, 8) - Date.now()) / 864E5),
-  cee26: parseInt((new Date(2026, 5, 8) - Date.now()) / 864E5),
-  cee28: parseInt((new Date(2028, 5, 8) - Date.now()) / 864E5),
-}
-
 // 当天自动切换
 exams["2022-05-14"] = {
+  hidden: true,
   type: "临时考练",
-  mainSlogan: `${specialDate.cee22}天后 峰顶相会`,
+  mainSlogan: `${daysUntil("2022-06-08")}天后 峰顶相会`,
   schedule() {
     $("考练", today.date, "22:30", "23:30");
   }
 };
 
 exams[220] = {
+  hidden: true,
   type: "2019级日常(示例代码)",
   author: "纸鹿",
   origin: "2019级年级部",
-  mainSlogan: `距离高考${specialDate.cee22}天`,
+  mainSlogan: `距离高考${daysUntil("2022-06-08")}天`,
   rollSlogan: [""],
   earlyAdmit: 2,
   schedule() {
@@ -45,19 +45,19 @@ exams[220] = {
       $("第5节", today.date, "14:10", "14:55");
       $("第6节", today.date, "15:05", "15:50");
       if (today.day != 6) $("第7节", today.date, "16:05", "16:50");
-      if (today.day == 2) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科" + ["双周数学", "单周化学"][today.week % 2] + "，文科第" + (today.week % 3 || 3) + "/3轮" + ["地理(明日)", "政治", "历史",][today.week % 3]]);
-      else if (today.day == 3 && !(today.week % 3)) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科无，文科第3/3轮地理"]);
-      else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0, ["第" + today.week + "周" + today.weekday + "限时纠错训练：理科物理，文科数学"]);
-      else if (today.day == 6) $(["数学", "英语",][today.week % 2], today.date, "15:55", "17:55", 0, ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
+      if (today.day == 2) $("考练", today.date, "17:00", "17:45", 0, [`第${today.week}周${today.weekday}限时纠错训练：理科${["双周数学", "单周化学"][today.week % 2]}，文科第${today.week % 3 || 3}/3轮${["地理(明日)", "政治", "历史"][today.week % 3]}`]);
+      else if (today.day == 3 && !(today.week % 3)) $("考练", today.date, "17:00", "17:45", 0, [`第${today.week}周${today.weekday}限时纠错训练：理科无，文科第3/3轮地理`]);
+      else if (today.day == 4) $("考练", today.date, "17:00", "17:45", 0, [`第${today.week}周${today.weekday}限时纠错训练：理科物理，文科数学`]);
+      else if (today.day == 6) $(["数学", "英语"][today.week % 2], today.date, "15:55", "17:55", 0, [`第${today.week}周${today.weekday}大考练：若信息异常，请自行修改或设置临时科目。`]);
       else $("自习", today.date, "17:00", "17:45");
     } else {
       // 周日白天
-      $(["语文", "综合",][today.week % 2], today.date, "14:10", "16:40", 0, ["第" + today.week + "周" + today.weekday + "大考练：若信息异常，请自行修改或设置临时科目。"]);
+      $(["语文", "综合"][today.week % 2], today.date, "14:10", "16:40", 0, [`第${today.week}周${today.weekday}大考练：若信息异常，请自行修改或设置临时科目。`]);
       $("订正", today.date, "16:50", "17:30");
     }
     if (today.day != 6) {
       // 非周六的晚上
-      $("晚训", today.date, "18:25", "18:45", 0, ["第" + today.week + ["周：双周", "周：单周"][today.week % 2] + today.weekday + ([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史",], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史",]][today.week % 2][today.day] || "无") + "小题精练"], 5);
+      $("晚训", today.date, "18:25", "18:45", 0, [`第${today.week}${["周：双周", "周：单周"][today.week % 2]}${today.weekday}${([["英语", "语文", "物理/地理", "数学", "生物/政治", "化学/历史"], ["数学", "英语", "物理/地理", "化学/政治", "语文", "生物/历史"]][today.week % 2][today.day] || "无")}小题精练`], 5);
       $("晚写", today.date, "18:45", "18:55");
       $("晚一", today.date, "18:55", "19:40");
       $("晚二", today.date, "19:50", "20:35");
@@ -71,7 +71,7 @@ exams[26] = {
   type: "高三日常",
   author: "Vince-Alex",
   origin: "2023级年级部",
-  mainSlogan: `距离高考${specialDate.cee26}天`,
+  mainSlogan: `距离高考${daysUntil("2026-06-08")}天`,
   rollSlogan: [""],
   earlyAdmit: 2,
   schedule() {
@@ -160,6 +160,7 @@ exams[262] = {
 
 // 模考入口已在html中注释
 exams[263] = {
+  hidden: true,
   type: "高三模考",
   author: "",
   origin: "2026届年级部",
@@ -308,6 +309,7 @@ exams[284] = {
 
 // 实验班入口已在html中注释
 exams[291] = {
+  hidden: true,
   type: "实验班",
   author: "来源:高一30班 Lucas A Danny",
   origin: "贯通培养实验班教学计划",
@@ -322,6 +324,8 @@ exams[291] = {
 };
 
 exams[301] = {
+  menu: "social",
+  displayName: "研究生模拟",
   type: "研究生",
   author: "whatever",
   origin: "公共服务",

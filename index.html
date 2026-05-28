@@ -7,7 +7,8 @@
   <meta name="author" content="纸鹿 <hi@zhilu.cyou>" data-github="https://github.com/L33Z22L11">
   <meta name="description" content="考试时钟用于宝中考试时展示考试科目、起止时间、当前时间等信息。考试时钟背景由一卷图库提供，祝各位同学使用考试时钟时心情愉悦，考试顺利。">
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./assets/main.css">
+  <link rel="stylesheet" href="./assets/cover.css">
   <link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/7.0.0/css/all.min.css" media="none"
     onload="this.media='all'">
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Ubuntu:400,700" media="none" onload="this.media='all'">
@@ -23,61 +24,58 @@
 </head>
 
 <body>
-  <link rel="stylesheet" href="./css/cover.css">
-  <div id="coverLaunch">
+  <div id="cover-launch">
     <p>考试时钟用于宝中考试时展示考试科目、起止时间、当前时间等信息。考试时钟背景由一卷图库提供，祝各位同学使用考试时钟时心情愉悦，考试顺利。</p>
   </div>
 
-  <div id="cover">
-    <div id="coverMask"></div>
+  <div id="cover-screen">
+    <div id="cover-mask"></div>
     <div></div>
-    <div class="coverMain">
-      <div class="info">
-        <div class="title skew">
+    <div class="cover-main">
+      <div class="cover-info">
+        <div class="cover-title-card skew">
           <div class="reskew">
-            <p id="coverTitle">考试时钟</p>
-            <p id="coverAuthor">野生技协</p>
+            <p id="cover-title">考试时钟</p>
+            <p id="cover-author">野生技协</p>
           </div>
-          <div id="coverBadge">
+          <div id="cover-date-badge">
             <div class="reskew">
-              <p style="font-size:1.5em">7</p>
-              <p style="font-size:.6em">EZ</p>
+              <p class="cover-date-day">7</p>
+              <p class="cover-date-month">EZ</p>
             </div>
           </div>
         </div>
-        <div class="desc skew">
+        <div class="cover-meta skew">
           <p class="reskew">
             <span class="dim">Chart</span><br>
-            <span id="coverOrigin">宝鸡中学</span>
+            <span id="cover-origin">宝鸡中学</span>
           </p>
           <p class="reskew">
             <span class="dim">Illustration</span><br>
-            <span id="bgHook">一卷图库</span>
+            <span id="gallery-hook">一卷图库</span>
           </p>
         </div>
       </div>
-      <div class="cover skew">
-        <div class="reskew" id="coverImage"></div>
+      <div class="cover-image-frame skew">
+        <div class="reskew" id="cover-image"></div>
       </div>
     </div>
     <div class="dim space-between">
-      <p>Tip: <span id="coverTips"></span></p>
-      <p class="loadingBar">Loading...</p>
+      <p>Tip: <span id="cover-tips"></span></p>
+      <p class="loading-bar">Loading...</p>
     </div>
   </div>
 
-  <script src="./js/cover.js"></script>
-
-  <div id="main" style="opacity:1;font-size:1em;">
+  <div id="main">
     <div class="notify">
-      <div id="verify">
+      <div id="verify-toast">
         <i class="fa-solid fa-shield"></i>
-        <span id="verifycontent">安全提示内容</span>
+        <span id="verify-content">安全提示内容</span>
       </div>
-      <div id="msg">
+      <div id="message-toast">
         <p>
           <i class="fa-solid fa-circle-info"></i>
-          <span id="msgcontent">消息内容</span>
+          <span id="message-content">消息内容</span>
         </p>
         <a class="fa-solid fa-xmark"></a>
       </div>
@@ -85,31 +83,19 @@
 
     <div>
       <nav class="space-between">
-        <h2 id="mainslogan">考试时钟</h2>
+        <h2 id="main-slogan">考试时钟</h2>
 
         <div class="sub space-between space">
-          <div class="dropdown" style="min-width:5.5em;">
+          <div class="dropdown exam-type-dropdown">
             <a class="btn">
               <div class="space-between">
-                <span id="type">选择类型</span>
+                <span id="exam-type-current">选择类型</span>
                 <i class="fa-solid fa-caret-down"></i>
               </div>
             </a>
-            <div id="typelist" style="min-width:100%;white-space:nowrap;">
-              <a onclick="subject.switch(26)">高三日常</a>
-              <!-- <a onclick="subject.switch(263)">高三模考<span class="shield">每日循环</span></a> -->
-              <a onclick="subject.switch(261)">高三物理</a>
-              <a onclick="subject.switch(262)">高三历史</a>
-              <a onclick="subject.switch(27)">高二日常</a>
-              <a onclick="subject.switch(271)">高二物理/生物</a>
-              <a onclick="subject.switch(272)">高二历史/地理</a>
-              <a onclick="subject.switch(281)">高一物化生</a>
-              <a onclick="subject.switch(282)">高一物化地</a>
-              <a onclick="subject.switch(283)">高一物化政</a>
-              <a onclick="subject.switch(284)">高一史政地</a>
-              <!-- <a onclick="subject.switch(291)">实验班</a> -->
-              <a onclick="setTemp()"><i class="fa-regular fa-square-plus"></i> 临时</a>
-              <a onclick="setTimer()"><i class="fa-solid fa-stopwatch"></i> 倒计时</a>
+            <div id="exam-type-list">
+              <a data-action="temporary-exam"><i class="fa-regular fa-square-plus"></i> 临时</a>
+              <a data-action="countdown-exam"><i class="fa-solid fa-stopwatch"></i> 倒计时</a>
             </div>
           </div>
 
@@ -118,10 +104,10 @@
 
           <div class="dropdown">
             <a class="fa-regular fa-images" data-sub="背景"></a>
-            <div style="right:-4em;min-width:13em;">
+            <div class="gallery-menu">
               <div><i class="fa-solid fa-wand-magic-sparkles"></i> 选张背景
-                <div class="shieldlist" id="bgVolList">
-                  <a onclick="playCover(bg())">全部</a>
+                <div class="shieldlist" id="gallery-batch-list">
+                  <a data-action="random-background">全部</a>
                 </div>
               </div>
               <div>
@@ -138,31 +124,28 @@
             </div>
           </div>
 
-          <a onclick="document.documentElement.style.filter='';this.style.display='none'"
-            class="fa-solid fa-circle-half-stroke" id="filterSwitch" style="display:none" data-sub="关闭滤镜"></a>
+          <a data-action="clear-filter" class="fa-solid fa-circle-half-stroke" id="filter-switch" data-sub="关闭滤镜"></a>
 
           <div class="dropdown">
             <a class="fa-solid fa-bars" data-sub="菜单"></a>
-            <div style="right:-2em;min-width:10em;">
+            <div class="more-menu">
               <a href="/jump-to-exam-clock.html" download="跳转到考试时钟">
                 <i class="fa-solid fa-file-arrow-down"></i> 下载快捷方式
-                <p class="dim">失败可右键-目标链接另存为</p>
+                <p class="dim">失败可右键目标链接另存为</p>
               </a>
               <a><i class="fa-solid fa-users"></i> 反馈交流QQ群
                 <p class="dim">野生技协：89 4656 456</p>
               </a>
               <div><i class="fa-solid fa-flask"></i> 社会科目
-                <div class="shieldlist">
-                  <a onclick="subject.switch(301)">研究生模拟</a>
-                </div>
+                <div class="shieldlist" id="social-exam-list"></div>
               </div>
               <div><i class="fa-solid fa-gears"></i> 开发人员选项
                 <div class="shieldlist">
-                  <a onclick="sendFeatureRemoved('试图修改大标语时触发')">
+                  <a data-action="removed-slogan">
                     <i class="fa-solid fa-quote-left"></i> 大标语</a>
-                  <a onclick="fixMinutes(subject.start,'开始时间')">
+                  <a data-action="adjust-start">
                     <i class="fa-solid fa-hourglass-start"></i> 开始时间</a>
-                  <a onclick="fixMinutes(subject.end,'结束时间')">
+                  <a data-action="adjust-end">
                     <i class="fa-solid fa-hourglass-end"></i> 结束时间</a>
                   <a href="?debug=1000"><i class="fa-solid fa-bug"></i> 调试</a>
                 </div>
@@ -170,11 +153,11 @@
             </div>
           </div>
 
-          <a class="fa-solid fa-expand" id="fullscreen" data-sub="全屏" onclick="fullscreen()"></a>
+          <a class="fa-solid fa-expand" id="fullscreen-button" data-sub="全屏" data-action="fullscreen"></a>
         </div>
       </nav>
 
-      <div class="dim" id="subslogan"></div>
+      <div class="dim" id="sub-slogan"></div>
 
       <div class="bar">
         <div id="bar"></div>
@@ -183,26 +166,25 @@
       <b class="card">
         <div>
           <span id="subject" contenteditable>科目</span>
-          <span id="duration">16:66~17:77</span>
+          <span id="duration"></span>
         </div>
         <div>
-          <span id="clock">18:88</span>
+          <span id="clock"></span>
         </div>
         <div>
           <span>
-            <span id="timer">199</span>
-            <span class="dim" id="timersub">sub</span>
+            <span id="timer"></span>
+            <span class="dim" id="timer-unit"></span>
           </span>
           <span id="activity">当前活动</span>
         </div>
-        <!-- <div><br><br><br>test<br><br><br></div> -->
       </b>
     </div>
 
     <footer>
       <div class="space-between space">
-        <p --data-title="跑路了"><i class="fa-solid fa-code"></i>
-          开发：纸鹿(2019级)@野生技协&emsp;
+        <p><i class="fa-solid fa-code"></i>
+          开发：纸鹿(2019级)@野生技协&nbsp;
           <a href="https://blog.zhilu.site/">
             <i class="fa-regular fa-newspaper"></i> 个人博客</a>
         </p>
@@ -216,20 +198,20 @@
           <span data-title="QQ群：1142349003">方块茶话会</span>
           <span data-title="QQ群：1004048547">冒险家协会</span>
           <span data-title="频道号：qxL848k6r0">宝中频道</span>
-          <span data-title="QQ：2124089415">宝中万能墙</span>
+          <span data-title="QQ：124089415">宝中万能墙</span>
         </p>
         <p><i class="fa-solid fa-user-group"></i>
-          友好社团：宝鸡中学广播站 朗诵社 排球社 合唱团 街舞社 汉服社 航模社 民乐社 心理社
+          友好社团：宝鸡中学广播站 朗读社 排球社 合唱团 街舞社 汉服社 航模社 民乐社 心理社
           书画社 动漫社 舞蹈队 日语社 Instreet社 机器人社 推理社 篮裁社 魔术社
         </p>
       </div>
       <div class="space-between space">
-        <p data-title="来自一卷图库，以CC BY-NC-SA 4.0方式使用">
+        <p data-title="来自一卷图库，以 CC BY-NC-SA 4.0 方式使用">
           <i class="fa-solid fa-image"></i>
-          <span id="bg">背景：雨后校园</span>
+          <span id="gallery-credit">背景：雨后校园</span>
         </p>
         <a href="https://github.com/L33Z22L11/ExamClock"><i class="fa-brands fa-github"></i>
-          更新于 <span id="lastCommit">(获取中)</span>
+          更新于 <span id="last-commit-time">(获取中)</span>
         </a>
         <a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn/"><i class="fa-solid fa-address-card"></i>
           陕ICP备2025072742号-2</a>
@@ -239,20 +221,10 @@
       </div>
     </footer>
   </div>
-  <script src="./js/clock.js" defer></script>
-  <script src="./js/exam.js" defer data-dependencies="clock"></script>
-  <script src="./js/search.js" defer data-dependencies="clock"></script>
-  <script src="./js/msg.js" defer></script>
-  <script src="./js/interact.js" defer data-dependencies="msg"></script>
-  <script src="./js/gallery.js" defer data-dependencies="msg,interact"></script>
-  <script src="./js/commit.js" async
-    onload="getLastCommit(document.querySelector('#lastCommit'), 'L33Z22L11/ExamClock')"></script>
-
-  <!-- 此处为页面加载时的弹出信息 -->
-  <script>
-    // send("我们需要人员提供考试信息，详见页面底部。");
+  <script nomodule>
+    alert("当前浏览器过于老旧，无法运行考试时钟。请使用 Chrome、Edge、Firefox 或其他支持 ES Modules 的现代浏览器。");
   </script>
-
+  <script type="module" src="./main.js"></script>
 </body>
 
 </html>
