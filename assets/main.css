@@ -1,0 +1,346 @@
+/* #region Base */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --text-primary: #fff;
+  --text-muted: rgb(255 255 255 / 75%);
+  --text-faint: rgb(255 255 255 / 50%);
+  --text-dark: #000;
+  --panel-dark: rgb(0 0 0 / 50%);
+  --panel-glass: rgb(255 255 255 / 10%);
+  --panel-glass-hover: rgb(255 255 255 / 20%);
+  --panel-light: rgb(255 255 255 / 75%);
+  --soft-shadow: .2em .2em 1em rgb(0 0 0 / 20%);
+  --accent-gradient: linear-gradient(120deg, #f84, #f66);
+}
+
+html {
+  background: #333 fixed center url("https://examined.thisis.host/campus.jpg");
+  background-size: cover;
+  color: var(--text-primary);
+  font: 2.7vw/1.2 Ubuntu, sans-serif;
+}
+
+body {
+  background: transparent fixed center;
+  background-size: cover;
+}
+
+a {
+  cursor: pointer;
+  border-radius: .2rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  box-shadow: .2em .2em .5em rgb(0 0 0 / 20%);
+  background: var(--accent-gradient);
+  color: var(--text-primary) !important;
+}
+
+::selection {
+  background: rgb(255 255 255 / 10%);
+  text-shadow: #f84 -.05em -.01em .1em, #f66 .05em .01em .1em;
+}
+/* #endregion */
+
+/* #region Layout */
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 1;
+  background: var(--panel-dark);
+  min-height: 100vh;
+  font-size: 1em;
+}
+
+#main>* {
+  margin: .5rem 1rem;
+}
+
+footer {
+  color: var(--text-faint);
+  font-size: .3rem;
+}
+
+.space-between {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.space {
+  margin: 0 -.2em;
+}
+
+.space>* {
+  margin: 0 .2em;
+}
+/* #endregion */
+
+/* #region Text */
+.dim {
+  opacity: .75;
+  font-size: .75em;
+}
+
+.sub {
+  color: var(--text-muted);
+  font-size: .6em;
+}
+
+.hilit {
+  animation: hilit 60s infinite alternate;
+}
+
+@keyframes hilit {
+  50% {
+    color: #fff;
+    text-shadow: 0 0 .1em #fff;
+  }
+}
+/* #endregion */
+
+/* #region Toasts */
+#message-toast {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#filter-switch {
+  display: none;
+}
+
+.notify {
+  top: 0;
+  z-index: 1;
+}
+
+.notify>div {
+  display: none;
+  animation: fade .5s;
+  margin: .2rem auto;
+  border-radius: .2rem;
+  padding: .2rem;
+  font-size: .5rem;
+}
+
+.notify>div,
+.bar,
+.card>* {
+  transition: .2s;
+  box-shadow: var(--soft-shadow);
+  background: var(--panel-glass);
+  text-shadow: .1em .1em .2em rgb(0 0 0 / 20%);
+}
+
+:hover .notify>div,
+:hover .bar,
+:hover .card>* {
+  backdrop-filter: blur(.1rem);
+}
+
+.notify>div:hover,
+.bar:hover,
+.card>*:hover {
+  backdrop-filter: blur(0);
+  background: var(--panel-glass-hover);
+}
+/* #endregion */
+
+/* #region Clock */
+.bar {
+  margin: .5rem auto;
+  height: .2rem;
+}
+
+#bar {
+  transition: linear 2s;
+  background: linear-gradient(to right, transparent, #fff);
+  height: 100%;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: .5rem -1rem;
+  max-width: 100vw;
+}
+
+.card>* {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: .2rem;
+  border-radius: .5rem;
+  padding: .2rem .75rem;
+  text-align: center;
+}
+
+#clock {
+  font-size: 5em;
+}
+
+#subject,
+#timer {
+  width: 100%;
+  font-size: 3em;
+}
+
+#duration,
+#activity {
+  color: var(--text-muted);
+  font-size: 1.5em;
+}
+/* #endregion */
+
+/* #region Icons */
+.fa-solid,
+.fa-regular,
+.fa-brands,
+.fa-width {
+  min-width: 1.2em;
+  text-align: center;
+}
+
+[data-sub] {
+  display: inline-block;
+  vertical-align: middle;
+  padding: .1em;
+  text-align: center;
+}
+
+[data-sub]::after {
+  display: block;
+  margin-top: .2em;
+  content: attr(data-sub);
+  font: normal normal .5em Ubuntu, 'Genshin65W', sans-serif;
+}
+/* #endregion */
+
+/* #region Dropdowns */
+[data-title],
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+[data-title]::after,
+.dropdown> :last-child {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  cursor: auto;
+}
+
+[data-title]::after {
+  right: 0;
+  bottom: 1em;
+  padding: .1em;
+  width: 12em;
+  content: attr(data-title);
+}
+
+[data-title]:hover::after,
+.dropdown:hover> :last-child {
+  display: block;
+  animation: fade .2s;
+}
+
+.dropdown>a {
+  display: inline-block;
+}
+
+.exam-type-dropdown {
+  min-width: 5.5em;
+}
+
+#exam-type-list {
+  min-width: 100%;
+  white-space: nowrap;
+}
+
+.gallery-menu {
+  right: -4em;
+  min-width: 13em;
+}
+
+.more-menu {
+  right: -2em;
+  min-width: 10em;
+}
+
+.gallery-menu,
+.more-menu {
+  max-height: 20em;
+}
+
+.btn,
+[data-title]::after,
+.dropdown> :last-child {
+  backdrop-filter: blur(.5em);
+  box-shadow: .2rem .2rem 1rem rgb(0 0 0 / 20%);
+  border-radius: .2rem;
+  background: var(--panel-light);
+  color: var(--text-dark);
+}
+
+a.btn,
+.dropdown> :last-child>* {
+  display: block;
+  box-sizing: border-box;
+  padding: .2em;
+}
+/* #endregion */
+
+/* #region Badges */
+.shield,
+.shieldlist>* {
+  display: inline-block;
+  vertical-align: middle;
+  margin: .1em;
+  outline: .1em solid rgb(255 255 255 / 20%);
+  border-radius: 1em;
+  background: var(--panel-dark);
+  padding: .1em .2em;
+  color: var(--text-primary);
+  font-size: .6em;
+}
+/* #endregion */
+
+/* #region Animations */
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+/* #endregion */
+
+/* #region Responsive */
+@media (aspect-ratio <=8/7) {
+  html {
+    align-items: flex-start;
+    font-size: 5vw;
+  }
+
+  nav.space-between,
+  .card {
+    flex-direction: column;
+    margin: auto;
+  }
+}
+/* #endregion */
