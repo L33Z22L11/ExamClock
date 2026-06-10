@@ -13,15 +13,15 @@ const LOG_TIMEZONE = "+08:00";
 const DEFAULT_MAIN_SLOGAN = "沉着冷静&emsp;诚信考试";
 const EMPTY_SLOGAN_LIST = [""];
 const ACTIVITY_WAITING = "距离入场";
-const ACTIVITY_STARTING = "距离开考";
-const ACTIVITY_ELAPSED = "已用";
-const ACTIVITY_REMAINING = "剩余";
+const ACTIVITY_STARTING = "距离开始";
+const ACTIVITY_ELAPSED = "已经开始";
+const ACTIVITY_REMAINING = "距离结束";
 const INJECTED_SLOGAN = "临时大标语: ";
 const DEFAULT_SLOGAN = "默认大标语: ";
 const INJECTED_ROLL_SLOGAN = "\n临时小标语: ";
 const DEFAULT_ROLL_SLOGAN = "\n默认小标语: ";
 
-const noop = () => {};
+const noop = () => { };
 let coverPlayer = noop;
 
 export let now = new Date();

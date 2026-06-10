@@ -21,7 +21,7 @@ html {
   background: #333 fixed center url("https://examined.thisis.host/campus.jpg");
   background-size: cover;
   color: var(--text-primary);
-  font: 2.7vw/1.2 Ubuntu, sans-serif;
+  font: 2.7vw/1.2 Ubuntu, Arial, sans-serif;
 }
 
 body {
