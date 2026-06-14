@@ -1,15 +1,18 @@
+/*
+ * 启动流程：选择初始考试类型，启动真实/调试时钟，并处理页面级运行提示。
+ */
 import { queryParams, setRouteParam } from "../utils/query-params.js";
-import { schedules, now, setNow, sloganRotator, engine, countdownDisplay, today } from "./schedule-clock.js";
+import { exams, slogan, engine, timer, today } from "./clock.js";
 import { select } from "../utils/dom.js";
 import { MS_PER_HOUR } from "../utils/time.js";
 
-const DEBUG_TICK_MS = 25;
-const DEBUG_STEP_RATIO = 0.025;
-const CLOCK_TICK_MS = 2_000;
-const SLOGAN_ROTATE_INTERVAL = 3_000;
-const OFFICIAL_HOST = "exam.thisis.host";
-const LEGACY_HOST = "exam.cooo.site";
-const MEMORIAL_DATES = /-12-06|-12-13/;
+const debugTick = 25;
+const debugStepRatio = 0.025;
+const clockTick = 2_000;
+const sloganRotateInterval = 3_000;
+const officialHost = "exam.thisis.host";
+const legacyHost = "exam.cooo.site";
+const memorialDates = /-12-06|-12-13/;
 
 function warnIf(condition, html) {
   if (!condition) return;
@@ -17,29 +20,30 @@ function warnIf(condition, html) {
   select("#verify-content").html(html);
 }
 
-export function startExamClock() {
+export function startExamClock(showCoverScreen) {
   showRuntimeNotices();
   selectInitialSchedule();
+  if (queryParams.debug == null) showCoverScreen?.();
 
   if (queryParams.debug) {
-    setNow(new Date(0));
+    engine.now = new Date(0);
     select("#bar").style("transition", "none");
     updateDebugClock();
   } else {
     updateClock();
   }
 
-  setInterval(() => sloganRotator.update(), SLOGAN_ROTATE_INTERVAL);
+  setInterval(() => slogan.update(), sloganRotateInterval);
   applyMemorialFilter();
 }
 
 function showRuntimeNotices() {
   warnIf(
-    location.host !== OFFICIAL_HOST,
+    location.host !== officialHost,
     "您可能在使用第三方或离线的考试时钟，无法保证内容时效性。<u><a href='https://exam.thisis.host'>点击访问考试时钟在线官网 exam.thisis.host</a></u>",
   );
   warnIf(
-    document.referrer.match(LEGACY_HOST),
+    document.referrer.match(legacyHost),
     "检测到跳转自旧网址，请勿依赖此方式访问考试时钟。建议收藏本页或在考试时钟菜单内下载快捷方式。",
   );
   warnIf(
@@ -49,18 +53,18 @@ function showRuntimeNotices() {
 }
 
 function selectInitialSchedule() {
-  if (queryParams.type in schedules) {
+  if (queryParams.type in exams) {
     engine.switch(queryParams.type);
     return;
   }
 
-  if (today.date in schedules) {
+  if (today.date in exams) {
     engine.switch(today.date);
     setRouteParam("type", today.date, { replace: true });
     return;
   }
 
-  const defaultType = Object.keys(schedules)[0];
+  const defaultType = Object.keys(exams)[0];
   engine.switch(defaultType);
   setRouteParam("type", defaultType, { replace: true });
 }
@@ -68,27 +72,27 @@ function selectInitialSchedule() {
 function updateDebugClock() {
   try { select("#cover-launch").remove(); } catch (error) { }
 
-  if (now < engine.start - MS_PER_HOUR) setNow(new Date(engine.start - MS_PER_HOUR));
-  if (now > Number(engine.end) + MS_PER_HOUR) engine.switch(engine.current);
+  if (engine.now < engine.start - MS_PER_HOUR) engine.now = new Date(engine.start - MS_PER_HOUR);
+  if (engine.now > Number(engine.end) + MS_PER_HOUR) engine.switch(engine.current);
 
-  now.setSeconds(now.getSeconds() + queryParams.debug * DEBUG_STEP_RATIO);
-  countdownDisplay.update();
-  setTimeout(updateDebugClock, DEBUG_TICK_MS);
+  engine.now.setSeconds(engine.now.getSeconds() + queryParams.debug * debugStepRatio);
+  timer.update();
+  setTimeout(updateDebugClock, debugTick);
 }
 
 function updateClock() {
-  setNow(new Date());
+  engine.now = new Date();
 
   if (!Number.isNaN(Number(queryParams.tos))) {
-    now.setSeconds(now.getSeconds() + Number(queryParams.tos));
+    engine.now.setSeconds(engine.now.getSeconds() + Number(queryParams.tos));
   }
 
-  countdownDisplay.update();
-  setTimeout(updateClock, CLOCK_TICK_MS);
+  timer.update();
+  setTimeout(updateClock, clockTick);
 }
 
 function applyMemorialFilter() {
-  if (!today.date.match(MEMORIAL_DATES)) return;
+  if (!today.date.match(memorialDates)) return;
 
   document.documentElement.style.filter = "grayscale(1)";
   select("#filter-switch").show();

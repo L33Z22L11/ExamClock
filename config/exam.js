@@ -1,4 +1,4 @@
-import { patchSchedule as $, schedules as exams, today } from "../engine/schedule-clock.js";
+import { patchSchedule as $, exams, today } from "../engine/clock.js";
 import { daysUntil } from "../utils/time.js";
 
 console.groupCollapsed("\n%c  %c考试时钟 ExamClock", "background:url('./favicon.ico') no-repeat;padding:32px;", "font:bold 36px sans-serif;color:#3a9;");
