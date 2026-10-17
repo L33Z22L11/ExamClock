@@ -1,0 +1,9 @@
+[[headers]]
+  for = "/monoroll.js"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/config/gallery.js"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"

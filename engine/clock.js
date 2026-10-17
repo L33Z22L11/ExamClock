@@ -2,13 +2,11 @@
  * 时钟主逻辑：沿用旧版 subject/exams/slogan/timer 的直白语义，只换成 ES Modules 导出。
  */
 import { showToast } from "../scripts/page.js";
-import { select } from "../utils/dom.js";
 import { queryParams } from "../utils/query-params.js";
-import { createToday, formatClockTime, MS_PER_HOUR, MS_PER_MINUTE, padTwoDigits } from "../utils/time.js";
+import { createToday, formatDate, formatClockTime, MS_PER_HOUR, MS_PER_MINUTE } from "../utils/time.js";
 
 const defaultAdmitMinutes = 20;
 const minuteCountdownWindow = 20;
-const switchDelay = 500;
 const localTimeZone = "+08:00";
 const defaultSlogan = {
   main: "沉着冷静&emsp;诚信考试",
@@ -37,9 +35,9 @@ export const slogan = {
     const main = this.main || this.defaultMain;
     const roll = this.roll.length ? this.roll : this.defaultRoll;
 
-    this.index = this.index < roll.length - 1 ? this.index + 1 : 0;
-    select("#main-slogan").html(main);
-    select("#sub-slogan").html(roll[this.index] ?? "");
+    document.querySelector("#main-slogan").innerHTML = main;
+    document.querySelector("#sub-slogan").innerHTML = roll[this.index] ?? "";
+    this.index = (this.index + 1) % (roll.length || 1);
   },
 };
 
@@ -50,18 +48,23 @@ export const timer = {
   label: "",
 
   update() {
-    select("#clock").html(formatClockTime(engine.now));
+    document.querySelector("#clock").textContent = formatClockTime(engine.now);
+
+    // 刷新日常排期使用的日期，但保留仍在进行的跨午夜科目。
+    if (!queryParams.debug && today.date !== formatDate(engine.now)) {
+      Object.assign(today, createToday(engine.now));
+    }
 
     if (engine.now >= engine.end) {
       exams[engine.current]?.schedule();
-      engine.duration = engine.duration;
+      document.querySelector("#duration").textContent = engine.duration;
     }
 
     this.updateStage();
-    select("#bar").style("width", `${this.progress}%`);
-    select("#timer").html(this.value);
-    select("#timer-unit").html(this.unit);
-    select("#activity").html(this.label);
+    document.querySelector("#bar").style.width = `${this.progress}%`;
+    document.querySelector("#timer").textContent = this.value;
+    document.querySelector("#timer-unit").textContent = this.unit;
+    document.querySelector("#activity").textContent = this.label;
   },
 
   updateStage() {
@@ -122,29 +125,26 @@ export const engine = {
   defaultAdmitMinutes,
 
   get name() {
-    return select("#subject").html();
+    return document.querySelector("#subject").textContent;
   },
 
   set name(name) {
-    select("#subject").html(name);
+    document.querySelector("#subject").textContent = name;
   },
 
   get duration() {
-    if (this.now > this.end) return "";
+    if (this.now >= this.end) return "";
     return `${formatClockTime(this.start)}~${formatClockTime(this.end)}`;
-  },
-
-  set duration(duration) {
-    select("#duration").html(duration);
   },
 
   switch(type) {
     const exam = exams[type];
-    if (!exam) return showToast(`没有 ${type} 考试类型，切换失败。`);
+    if (!Object.hasOwn(exams, type)) return showToast(`没有 ${type} 考试类型，切换失败。`);
 
     if (queryParams.debug) this.now = new Date(0);
 
     this.name = "";
+    // 清空上一场的截止时间，允许切回时间更早、但尚未结束的排期。
     this.start = new Date(0);
     this.end = new Date(0);
     this.current = type;
@@ -153,19 +153,15 @@ export const engine = {
     slogan.reset(exam);
 
     exam.schedule();
-    slogan.update();
-    select("#exam-type-current").html(exam.type);
+    if (this.end.getTime() === 0) slogan.update();
+    document.querySelector("#exam-type-current").textContent = exam.type;
 
-    setTimeout(() => {
-      timer.update();
-      slogan.update();
-    }, switchDelay);
+    timer.update();
+    document.querySelector("#duration").textContent = this.duration;
   },
 };
 
 export function createTemporaryExam() {
-  engine.end = new Date(0);
-
   const subjectName = prompt("考试科目名称(3个字以内)", "考练");
   if (!subjectName) return console.warn(showToast("由于操作取消，未生成临时科目。"));
 
@@ -181,34 +177,45 @@ export function createTemporaryExam() {
   const endMinute = prompt("考试结束时间(分钟)", 55);
   if (!endMinute) return console.warn(showToast("由于操作取消，未生成临时科目。"));
 
-  patchSchedule(
-    subjectName,
-    today.date,
-    `${padTwoDigits(startHour)}:${padTwoDigits(startMinute)}`,
-    `${padTwoDigits(endHour)}:${padTwoDigits(endMinute)}`,
-  );
+  const parts = [startHour, startMinute, endHour, endMinute].map(Number);
+  if (parts.some((value, index) => !Number.isInteger(value) || value < 0 || value > (index % 2 ? 59 : 23))) {
+    return showToast("请输入有效的小时（0~23）和分钟（0~59）。");
+  }
+  const [startH, startM, endH, endM] = parts.map(value => String(value).padStart(2, "0"));
+  const startTime = `${startH}:${startM}`;
+  const endTime = `${endH}:${endM}`;
+  const start = atLocalTime(today.date, startTime);
+  const end = atLocalTime(today.date, endTime);
+  if (end <= engine.now) return console.warn(showToast("设置的结束时间小于当前时间，你是认真的吗？"));
+  if (end <= start) return showToast("结束时间应晚于开始时间。");
+  engine.end = new Date(0);
+  patchSchedule(subjectName, today.date, startTime, endTime);
 
   console.log(showToast(`添加了一门在 ${today.date} 从 ${formatClockTime(engine.start)} 到 ${formatClockTime(engine.end)} 的科目：${subjectName}`));
-  if (engine.end < engine.now) console.log(showToast("设置的结束时间小于当前时间，你是认真的吗？"));
+  timer.update();
 }
 
 export function createCountdownExam() {
-  engine.end = new Date(0);
-
   const minutes = prompt("倒计时分钟数", 20);
   if (!minutes) return console.warn(showToast("由于操作取消，未生成临时科目。"));
 
-  const end = new Date(engine.now);
-  end.setMinutes(end.getMinutes() + Number(minutes));
-  patchSchedule(
-    "⏱️",
-    today.date,
-    `${padTwoDigits(engine.now.getHours())}:${padTwoDigits(engine.now.getMinutes())}`,
-    `${padTwoDigits(end.getHours())}:${padTwoDigits(end.getMinutes())}`,
-  );
-
-  console.log(showToast(`添加了一个 ${today.date} 从 ${formatClockTime(engine.start)} 到 ${formatClockTime(engine.end)} 的倒计时`));
-  if (end < engine.now) console.log(showToast("编写本功能的加零提示：时光无法回溯……"));
+  const duration = Number(minutes) * MS_PER_MINUTE;
+  const end = new Date(engine.now.getTime() + duration);
+  if (duration < 0) return console.warn(showToast("编写本功能的加零提示：时光无法回溯……"));
+  if (!Number.isFinite(duration) || duration <= 0 || Number.isNaN(end.getTime())) {
+    return showToast("请输入大于零的有效分钟数。");
+  }
+  // 直接使用时间戳，保留秒数并支持跨午夜倒计时。
+  engine.name = "⏱️";
+  engine.start = new Date(engine.now);
+  engine.end = end;
+  slogan.main = slogan.defaultMain;
+  slogan.roll = slogan.defaultRoll;
+  slogan.index = 0;
+  slogan.update();
+  document.querySelector("#duration").textContent = engine.duration;
+  timer.update();
+  console.log(showToast(`添加了一个 ${formatDate(engine.start)} 从 ${formatClockTime(engine.start)} 到 ${formatClockTime(end)} 的倒计时`));
 }
 
 /**
@@ -226,23 +233,28 @@ export function patchSchedule(subject, date, startTime, endTime, mainSlogan, rol
   const startAt = atLocalTime(date, startTime);
   const endAt = atLocalTime(date, endTime);
 
-  if (engine.now < engine.end) {
-    console.log(`当前科目未结束，故不注入科目：${subject}`);
+  if (!Number.isFinite(startAt.getTime()) || !Number.isFinite(endAt.getTime()) || endAt <= startAt) {
+    console.warn(`科目时间无效，故不注入科目：${subject}`);
     return;
   }
 
+  if (engine.now < engine.end) {
+    console.debug(`当前科目未结束，故不注入科目：${subject}`);
+    return;
+  }
   if (engine.now >= endAt) {
-    console.log(`请求科目已结束，故不注入科目：${subject}`);
+    console.debug(`请求科目已结束，故不注入科目：${subject}`);
     return;
   }
 
   engine.name = subject;
   engine.start = startAt;
   engine.end = endAt;
-  engine.duration = engine.duration;
+  document.querySelector("#duration").textContent = engine.duration;
   engine.admitMinutes = admitMinutes ?? engine.defaultAdmitMinutes;
   slogan.main = mainSlogan ?? slogan.defaultMain;
   slogan.roll = rollSlogans ?? slogan.defaultRoll;
+  slogan.index = 0;
   slogan.update();
 
   console.log(
@@ -254,14 +266,12 @@ export function patchSchedule(subject, date, startTime, endTime, mainSlogan, rol
 
 export function adjustMinutes(date, label = formatClockTime(date)) {
   const minutes = prompt(`以分钟为单位增减${label}`, -5);
-  if (minutes == null) return;
+  if (minutes == null || !Number.isFinite(Number(minutes))) return;
 
   date.setMinutes(date.getMinutes() + Number(minutes));
-  select("#duration").html(engine.duration);
+  document.querySelector("#duration").textContent = engine.duration;
 }
 
 function atLocalTime(date, time) {
   return new Date(`${date}T${time}${localTimeZone}`);
 }
-
-export { formatClockTime, padTwoDigits };

@@ -16,10 +16,11 @@
 - `engine/clock.js` 放时钟主逻辑，沿用旧版 `subject / exams / slogan / timer` 的直白语义，导出 `engine`、`exams`、`slogan`、`timer`、`today`、`patchSchedule()` 等稳定入口。
 - `engine/startup.js` 放启动流程，包括选择初始 `type`、启动真实/调试时钟、运行时提示和纪念日滤镜。
 - `scripts/main.js` 是页面入口，只负责渲染菜单、绑定 `data-action`、把用户操作连接到现有模块。
-- `scripts/gallery.js` 放图库运行逻辑：读取配置、拼图片地址、切换背景、渲染批次菜单。
+- `monoroll.js` 是公共图库入口：读取配置、拼图片地址、按批次或全库随机选图；不能操作 DOM 或启动定时器。图库数据与公共模块统一由 ExamClock 发布。
+- `scripts/gallery.js` 放考试时钟的图库界面：切换背景、轮换定时和渲染批次菜单。
 - `scripts/cover.js` 放封面过渡动画和 cover tips。
 - `scripts/page.js` 放页面杂项：提示气泡、菜单渲染、全屏、最近更新时间。
-- `utils/` 只放跨模块高频工具，如 DOM、时间、路由。不要把一行随机选择之类的小函数抽到 `utils`。
+- `utils/` 只放跨模块的时间语义和地址参数处理。原生 DOM 查询、字符串补零等直接使用浏览器 API，不单独包装。
 - `assets/` 放样式和静态资源。CSS 使用 `/* #region ... */` / `/* #endregion */` 组织区块，方便 minimap 导航。
 
 ## 务实重构边界
@@ -45,13 +46,14 @@
 
 ## 代码风格
 
-- DOM 操作统一用 `select(selector)`，需要限定作用域时用 `select(selector, root)`。重要 DOM 工具保留中文 JSDoc。
+- DOM 查询直接使用 `document.querySelector()` 或元素的 `querySelector()`；读写使用原生属性，不另设 `select` 别名或 DOM 门面。数字补零直接使用 `String(value).padStart(2, "0")`。
 - 空值 fallback 优先用 `??`。
 - 文本拼接优先用模板字符串，不用 `+` 拼字符串。
 - 避免 `parseInt`、`~~`、`864E5`、`6E4` 这类隐晦写法。
 - 注释和 JSDoc 使用中文；代码里的注释只解释不明显的业务或历史语义，不写空泛说明。
 - HTML id/class 使用语义化 kebab-case；JS 变量用清晰 camelCase。
-- UI 文案、倒计时提醒、cover tip 尽量沿用旧版考试时钟的语气；必要改动要保证用户熟悉感。
+- 重构时保留现有 UI 文案、倒计时提醒、cover tip、作者署名和入口链接，不顺手缩写、润色或删除。修复校验时把原提示移到正确分支；只有用户要求或功能事实变化时才修改相应文字。
+- 当前版本以 `index.html` 的 `#app-version` 为准；控制台与 cover tip 从该元素读取，不单独硬编码版本号。
 
 ## 编码安全
 
@@ -78,6 +80,7 @@ node -e "const fs=require('fs'); const bad=/[\u00e6\u00e7\u00e9\u20ac\u6d93\u928
 
 ```powershell
 Get-ChildItem -Recurse -Filter *.js | Where-Object { $_.FullName -notmatch '\\.git' } | ForEach-Object { node --check $_.FullName }
+node --test tests/*.test.mjs
 ```
 
 常用残留检查：

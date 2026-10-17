@@ -19,24 +19,13 @@ export function parseDate(value) {
 }
 
 /**
- * 把数字补成两位时间片段。
- *
- * @param {number|string} value 小时、分钟、月份或日期。
- * @returns {string}
- */
-export function padTwoDigits(value) {
-  const normalized = Math.floor(Number(value));
-  return normalized < 10 ? `0${normalized}` : `${normalized}`;
-}
-
-/**
  * 格式化日期为排期配置使用的 `yyyy-mm-dd`。
  *
  * @param {Date} date 日期对象。
  * @returns {string}
  */
 export function formatDate(date) {
-  return `${date.getFullYear()}-${padTwoDigits(date.getMonth() + 1)}-${padTwoDigits(date.getDate())}`;
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 
 /**
@@ -46,7 +35,7 @@ export function formatDate(date) {
  * @returns {string}
  */
 export function formatClockTime(date) {
-  return `${date.getHours()}:${padTwoDigits(date.getMinutes())}`;
+  return `${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`;
 }
 
 /**

@@ -1,55 +1,26 @@
-/*
- * 图库背景切换：读取纯配置，拼出图片地址，并渲染批次菜单。
- */
-import { galleryCollections } from "../config/gallery.js";
-import { select } from "../utils/dom.js";
-
-const rotateInterval = 2_000_000;
-const imageHost = "https://ooo.0x0.ooo";
-
-const allGalleryItems = Object.entries(galleryCollections).flatMap(([collectionName, imageInfos]) =>
-  imageInfos.map((imageInfo) => createGalleryItem(collectionName, imageInfo))
-);
+import { collections, pickImage } from "../monoroll.js";
 
 export let currentBackground = null;
-let rotateTimer = null;
+let rotateTimer;
 
-export function chooseBackground(collectionName) {
-  currentBackground = pickBackground(collectionName);
-  // 重新设置换壁纸定时器，避免手动切换后立刻自动跳走。
-  clearInterval(rotateTimer);
-  rotateTimer = setInterval(chooseBackground, rotateInterval);
-  document.body.style.backgroundImage = `url(${currentBackground.url})`;
-  return select("#gallery-credit").html(
-    `背景: ${currentBackground.author} - ${currentBackground.name} (${currentBackground.collectionName})`,
-  );
+export function chooseBackground(collection) {
+  currentBackground = pickImage(collection);
+  // 手动切换后重新计时，避免紧接着自动换图。
+  clearTimeout(rotateTimer);
+  rotateTimer = setTimeout(chooseBackground, 2_000_000);
+  document.body.style.backgroundImage = `url("${currentBackground.url}")`;
+  const credit = `背景: ${currentBackground.author} - ${currentBackground.name} (${currentBackground.collection})`;
+  document.querySelector("#gallery-credit").textContent = credit;
+  return credit;
 }
 
-export function renderGalleryMenu(onSelect) {
-  const collectionList = select("#gallery-batch-list").element;
-  const collectionNames = Object.keys(galleryCollections).reverse();
-  collectionNames.forEach((collectionName) => {
+export function renderGalleryMenu() {
+  const list = document.querySelector("#gallery-batch-list");
+  Object.entries(collections).reverse().forEach(([collection, images]) => {
     const link = document.createElement("a");
-    link.innerText = `${collectionName}(${galleryCollections[collectionName].length})`;
-    link.addEventListener("click", () => onSelect(chooseBackground(collectionName)));
-    collectionList.appendChild(link);
+    link.textContent = `${collection}(${images.length})`;
+    link.dataset.action = "random-background";
+    link.dataset.collection = collection;
+    list.appendChild(link);
   });
 }
-
-function pickBackground(collectionName) {
-  if (collectionName in galleryCollections) {
-    return createGalleryItem(collectionName, pickOne(galleryCollections[collectionName]));
-  }
-  return pickOne(allGalleryItems);
-}
-
-function createGalleryItem(collectionName, imageInfo) {
-  const [author, name, shortURL] = imageInfo;
-  return { collectionName, author, name, url: `${imageHost}/202${shortURL}.jpg` };
-}
-
-function pickOne(items) {
-  return items[Math.floor(Math.random() * items.length)];
-}
-
-chooseBackground(Object.keys(galleryCollections).at(-1));

@@ -3,10 +3,6 @@ import { daysUntil } from "../utils/time.js";
 
 /** 适用于宝鸡中学的考试科目列表 */
 
-console.groupCollapsed("\n%c  %c考试时钟 ExamClock", "background:url('./favicon.ico') no-repeat;padding:32px;", "font:bold 36px sans-serif;color:#3a9;");
-console.log("\n项目仓库：https://github.com/L33Z22L11/ExamClock\n野生技协群：894656456\n\n");
-console.groupEnd();
-
 /** 当天自动切换 */
 exams["2022-05-14"] = {
   hidden: true,
@@ -80,7 +76,7 @@ exams[260] = {
       $("晨会", today.date, "07:20", "07:25");
       $("晨读2", today.date, "07:25", "07:45");
       $("第1节", today.date, "07:55", "08:35");
-      $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操");
+      $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操</a>");
       $("第2节", today.date, "09:00", "09:40");
       $("第3节", today.date, "09:50", "10:30");
       $("第4节", today.date, "10:40", "11:20");
@@ -151,7 +147,7 @@ exams[27] = {
     $("晨读2", today.date, "07:25", "07:45");
     $("第1节", today.date, "07:55", "08:35");
     // 第一节下课后跑操，其余不变
-    $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操");
+    $("课间操", today.date, "08:35", "09:00", "<a href='http://172.29.29.30/'><i class='fa-regular fa-circle-play'></i> 点击播放室内操</a>");
     $("第2节", today.date, "09:00", "09:40");
     $("第3节", today.date, "09:50", "10:30");
     $("第4节", today.date, "10:40", "11:20");
